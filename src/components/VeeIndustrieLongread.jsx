@@ -1,0 +1,265 @@
+import React, { useState, useEffect } from 'react';
+import { ChevronDown, Users, TrendingUp, Building2, AlertCircle } from 'lucide-react';
+import './VeeIndustrieLongread.css';
+
+export default function VeeIndustrieLongread() {
+    const [scrollY, setScrollY] = useState(0);
+    const [pollVote, setPollVote] = useState(null);
+    const [showPollResults, setShowPollResults] = useState(false);
+    const [pollResults, setPollResults] = useState({
+        transparanter: 42,
+        strengereRegels: 38,
+        onafhankelijkOnderzoek: 56,
+        statusQuo: 12
+    });
+
+    useEffect(() => {
+        const handleScroll = () => setScrollY(window.scrollY);
+        window.addEventListener('scroll', handleScroll);
+        return () => window.removeEventListener('scroll', handleScroll);
+    }, []);
+
+    const handlePollVote = (option) => {
+        setPollVote(option);
+        setShowPollResults(true);
+        setPollResults(prev => ({
+            ...prev,
+            [option]: prev[option] + 1
+        }));
+    };
+
+    const totalVotes = Object.values(pollResults).reduce((a, b) => a + b, 0);
+
+    return (
+        <div className="longread-container bg-neutral-900 text-neutral-100">
+            {/* Hero Section met Parallax */}
+            <section className="hero-section relative h-screen flex items-center justify-center overflow-hidden">
+                <div
+                    className="hero-background absolute inset-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1600)',
+                        transform: `translateY(${scrollY * 0.5}px)`
+                    }}
+                />
+
+                <div className="hero-content relative z-10 text-center px-6 max-w-4xl">
+                    <h1 className="hero-title text-6xl md:text-7xl font-bold mb-6 leading-tight">
+                        De Verborgen Macht
+                    </h1>
+                    <p className="hero-subtitle text-2xl md:text-3xl text-neutral-300 mb-8">
+                        Hoe de vee-industrie de politiek beïnvloedt
+                    </p>
+                    <ChevronDown className="animate-bounce mx-auto" size={48} />
+                </div>
+            </section>
+
+            {/* Introductie */}
+            <section className="content-section bg-white text-neutral-900 py-24 px-6">
+                <article className="article-content max-w-3xl mx-auto">
+                    <p className="text-xl leading-relaxed mb-6 first-letter:text-6xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">
+                        Achter de schermen van het Nederlandse beleid speelt zich een machtsstrijd af die de meeste burgers nooit zien. De vee-industrie, goed voor miljarden euro's omzet, heeft een invloed op politieke beslissingen die verder reikt dan veel mensen beseffen.
+                    </p>
+                    <p className="text-xl leading-relaxed mb-6">
+                        In deze longread duiken we in de wereld van lobby, belangen en de impact op milieu en maatschappij.
+                    </p>
+                </article>
+            </section>
+
+            {/* Statistieken Sectie */}
+            <section className="stats-section bg-emerald-900 text-white py-24 px-6">
+                <div className="max-w-6xl mx-auto">
+                    <h2 className="section-title text-4xl font-bold mb-16 text-center">De Cijfers</h2>
+                    <div className="stats-grid grid md:grid-cols-3 gap-8">
+                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
+                            <Users className="mb-4" size={48} />
+                            <div className="stat-number text-5xl font-bold mb-2">12,5M</div>
+                            <div className="stat-label text-xl">Runderen in Nederland</div>
+                        </div>
+                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
+                            <TrendingUp className="mb-4" size={48} />
+                            <div className="stat-number text-5xl font-bold mb-2">€8,5Mrd</div>
+                            <div className="stat-label text-xl">Jaarlijkse omzet</div>
+                        </div>
+                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
+                            <Building2 className="mb-4" size={48} />
+                            <div className="stat-number text-5xl font-bold mb-2">45.000</div>
+                            <div className="stat-label text-xl">Veehouderijen</div>
+                        </div>
+                    </div>
+                </div>
+            </section>
+
+            {/* Hoofdverhaal 1 */}
+            <section className="content-section bg-white text-neutral-900 py-24 px-6">
+                <article className="article-content max-w-3xl mx-auto">
+                    <h2 className="article-title text-4xl font-bold mb-8">Het Lobbynetwerk</h2>
+                    <p className="text-xl leading-relaxed mb-6">
+                        De vee-industrie heeft een uitgebreid netwerk van belangenorganisaties opgebouwd. LTO Nederland, de grootste landbouworganisatie, heeft directe lijnen naar Den Haag. Wekelijks vinden er gesprekken plaats met beleidsmakers en Kamerleden.
+                    </p>
+                    <p className="text-xl leading-relaxed mb-6">
+                        "De invloed is substantieel," vertelt een anonieme ambtenaar van het ministerie van Landbouw. "Bij elk nieuw beleid wordt eerst overlegd met de sector. Dat is logisch, maar de balans met andere belangen zoals milieu en volksgezondheid is soms zoek."
+                    </p>
+                </article>
+            </section>
+
+            {/* Parallax Beeld 2 */}
+            <section className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
+                <div
+                    className="parallax-background absolute inset-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1600)',
+                        transform: `translateY(${(scrollY - 1000) * 0.3}px)`
+                    }}
+                />
+                <blockquote className="parallax-quote relative z-10 text-center px-6 max-w-3xl">
+                    <p className="text-3xl md:text-4xl font-light italic">
+                        "Bij elk nieuw beleid wordt eerst overlegd met de sector"
+                    </p>
+                </blockquote>
+            </section>
+
+            {/* Poll Sectie */}
+            <section className="poll-section bg-neutral-800 py-24 px-6">
+                <div className="max-w-2xl mx-auto">
+                    <h2 className="poll-title text-3xl font-bold mb-8 text-center">Wat vind jij?</h2>
+                    <div className="poll-card bg-neutral-700 p-8 rounded-lg">
+                        {!showPollResults ? (
+                            <>
+                                <p className="poll-question text-xl mb-6">
+                                    Hoe moet de overheid omgaan met lobby door de vee-industrie?
+                                </p>
+                                <div className="poll-options space-y-4">
+                                    <button
+                                        onClick={() => handlePollVote('transparanter')}
+                                        className="poll-option w-full p-4 bg-neutral-600 hover:bg-emerald-600 rounded-lg text-left transition-colors"
+                                    >
+                                        Transparanter maken - alle contacten openbaar
+                                    </button>
+                                    <button
+                                        onClick={() => handlePollVote('strengereRegels')}
+                                        className="poll-option w-full p-4 bg-neutral-600 hover:bg-emerald-600 rounded-lg text-left transition-colors"
+                                    >
+                                        Strengere regels voor lobbyisten
+                                    </button>
+                                    <button
+                                        onClick={() => handlePollVote('onafhankelijkOnderzoek')}
+                                        className="poll-option w-full p-4 bg-neutral-600 hover:bg-emerald-600 rounded-lg text-left transition-colors"
+                                    >
+                                        Meer onafhankelijk onderzoek verplichten
+                                    </button>
+                                    <button
+                                        onClick={() => handlePollVote('statusQuo')}
+                                        className="poll-option w-full p-4 bg-neutral-600 hover:bg-emerald-600 rounded-lg text-left transition-colors"
+                                    >
+                                        Huidige situatie is prima
+                                    </button>
+                                </div>
+                            </>
+                        ) : (
+                            <div className="poll-results">
+                                <p className="text-xl mb-6 text-emerald-400">Bedankt voor je stem!</p>
+                                <div className="poll-results-list space-y-4">
+                                    {Object.entries(pollResults).map(([key, votes]) => {
+                                        const percentage = Math.round((votes / totalVotes) * 100);
+                                        const labels = {
+                                            transparanter: 'Transparanter maken',
+                                            strengereRegels: 'Strengere regels',
+                                            onafhankelijkOnderzoek: 'Meer onafhankelijk onderzoek',
+                                            statusQuo: 'Status quo'
+                                        };
+                                        return (
+                                            <div key={key} className="poll-result-item">
+                                                <div className="flex justify-between mb-2">
+                          <span className={pollVote === key ? 'text-emerald-400' : ''}>
+                            {labels[key]}
+                          </span>
+                                                    <span className="font-bold">{percentage}%</span>
+                                                </div>
+                                                <div className="poll-result-bar w-full bg-neutral-600 rounded-full h-3">
+                                                    <div
+                                                        className={`poll-result-fill h-3 rounded-full ${pollVote === key ? 'bg-emerald-400' : 'bg-emerald-600'}`}
+                                                        style={{ width: `${percentage}%` }}
+                                                    />
+                                                </div>
+                                            </div>
+                                        );
+                                    })}
+                                </div>
+                                <p className="text-sm text-neutral-400 mt-6 text-center">
+                                    {totalVotes} stemmen
+                                </p>
+                            </div>
+                        )}
+                    </div>
+                </div>
+            </section>
+
+            {/* Hoofdverhaal 2 */}
+            <section className="content-section bg-white text-neutral-900 py-24 px-6">
+                <article className="article-content max-w-3xl mx-auto">
+                    <h2 className="article-title text-4xl font-bold mb-8">De Kosten voor het Milieu</h2>
+                    <p className="text-xl leading-relaxed mb-6">
+                        De vee-industrie staat voor ongeveer 15% van de Nederlandse stikstofuitstoot. Het is de grootste bron van methaanemissies in het land. Toch blijft strengere regelgeving uit, mede door intensieve lobby.
+                    </p>
+                    <div className="callout-box bg-amber-50 border-l-4 border-amber-500 p-6 my-8">
+                        <div className="flex items-start">
+                            <AlertCircle className="text-amber-600 mr-4 flex-shrink-0" size={24} />
+                            <p className="text-lg">
+                                Tussen 2015 en 2024 zijn er meer dan 200 geregistreerde lobbygesprekken geweest tussen vertegenwoordigers van de vee-industrie en ministers. Milieuorganisaties hadden er in dezelfde periode slechts 45.
+                            </p>
+                        </div>
+                    </div>
+                    <p className="text-xl leading-relaxed mb-6">
+                        Professor Anneke van der Meer, milieubeleidexpert aan de Universiteit Utrecht, is kritisch: "We zien een patroon waarbij economische belangen zwaarder wegen dan ecologische noodzaak. De lobby speelt daar een cruciale rol in."
+                    </p>
+                </article>
+            </section>
+
+            {/* Parallax Beeld 3 */}
+            <section className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
+                <div
+                    className="parallax-background absolute inset-0 bg-cover bg-center"
+                    style={{
+                        backgroundImage: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600)',
+                        transform: `translateY(${(scrollY - 2500) * 0.3}px)`
+                    }}
+                />
+                <div className="parallax-stat relative z-10 text-center px-6">
+                    <div className="text-7xl font-bold mb-4">15%</div>
+                    <div className="text-2xl">van de Nederlandse stikstofuitstoot</div>
+                </div>
+            </section>
+
+            {/* Conclusie */}
+            <section className="content-section bg-white text-neutral-900 py-24 px-6">
+                <article className="article-content max-w-3xl mx-auto">
+                    <h2 className="article-title text-4xl font-bold mb-8">De Weg Vooruit</h2>
+                    <p className="text-xl leading-relaxed mb-6">
+                        De discussie over de rol van de vee-industrie in Nederland staat niet op zichzelf. Het raakt aan grotere vragen over hoe we democratie vormgeven en wie toegang heeft tot macht.
+                    </p>
+                    <p className="text-xl leading-relaxed mb-6">
+                        Transparantie over lobby-activiteiten zou een eerste stap kunnen zijn. Verschillende maatschappelijke organisaties pleiten voor een openbaar lobbyregister, zoals dat in Brussel al bestaat.
+                    </p>
+                    <p className="text-xl leading-relaxed mb-6">
+                        De vraag blijft: wiens belangen tellen het zwaarst in de afweging tussen economie, milieu en toekomst?
+                    </p>
+                </article>
+            </section>
+
+            {/* Footer */}
+            <footer className="footer-section bg-neutral-900 py-12 px-6 text-center text-neutral-400">
+                <p className="mb-2">Een interactieve longread</p>
+                <p className="text-sm">Bronnen: CBS, RIVM, Universiteit Utrecht, LTO Nederland</p>
+            </footer>
+
+            <style jsx>{`
+
+                .article-content p {
+                    line-height: 1.8;
+                }
+
+                
+            `}</style>
+        </div>
+    );
+}
