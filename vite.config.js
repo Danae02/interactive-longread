@@ -1,13 +1,21 @@
+// import { defineConfig } from 'vite'
+// import react from '@vitejs/plugin-react'
+//
+// // https://vitejs.dev/config/
+// export default defineConfig({
+//   plugins: [react()],
+//   base: '/interactive-longread',
+//   build: {
+//     outDir: 'dist',
+//     assetsDir: 'assets',
+//     emptyOutDir: true
+//   }
+// })
+
 import { defineConfig } from 'vite'
 import react from '@vitejs/plugin-react'
 
-// https://vitejs.dev/config/
 export default defineConfig({
   plugins: [react()],
-  base: '/interactive-longread/',
-  build: {
-    outDir: 'dist',
-    assetsDir: 'assets',
-    emptyOutDir: true
-  }
+  base: '/', // Belangrijk: geen pad meer
 })
