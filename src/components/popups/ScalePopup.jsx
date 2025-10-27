@@ -9,8 +9,6 @@ const ScalePopup = ({ onClose }) => {
     const rates = {
         second: { animals: 17, label: 'per seconde', interval: 1000 },
         minute: { animals: 1015, label: 'per minuut', interval: 500 },
-        hour: { animals: 60900, label: 'per uur', interval: 200 },
-        day: { animals: 1460000, label: 'per dag', interval: 100 }
     };
 
     useEffect(() => {
@@ -106,8 +104,8 @@ const ScalePopup = ({ onClose }) => {
                                     >
                                         {key === 'second' && 'Seconde'}
                                         {key === 'minute' && 'Minuut'}
-                                        {key === 'hour' && 'Uur'}
-                                        {key === 'day' && 'Dag'}
+
+
                                     </button>
                                 ))}
                             </div>
@@ -127,7 +125,7 @@ const ScalePopup = ({ onClose }) => {
 
                         <div className="grid md:grid-cols-2 gap-4 mb-6">
                             <div className="bg-blue-50 p-4 rounded-lg">
-                                <h4 className="font-bold mb-2 text-blue-900">🏟️ Vergelijking met bevolking</h4>
+                                <h4 className="font-bold mb-2 text-blue-900">Vergelijking met bevolking</h4>
                                 <ul className="space-y-1 text-blue-800">
                                     <li>• <strong>31x</strong> de Nederlandse bevolking (17 miljoen)</li>
                                     <li>• Meer dan de bevolking van de VS, Duitsland en Frankrijk bij elkaar</li>
@@ -136,33 +134,15 @@ const ScalePopup = ({ onClose }) => {
                             </div>
 
                             <div className="bg-green-50 p-4 rounded-lg">
-                                <h4 className="font-bold mb-2 text-green-900">⏱️ In de tijd</h4>
+                                <h4 className="font-bold mb-2 text-green-900">In de tijd</h4>
                                 <ul className="space-y-1 text-green-800">
-                                    <li>• <strong>17 dieren per seconde</strong></li>
-                                    <li>• <strong>1.015 dieren per minuut</strong></li>
-                                    <li>• <strong>60.900 dieren per uur</strong></li>
-                                    <li>• <strong>1,46 miljoen dieren per dag</strong></li>
+                                    <li>• <strong>17 dieren </strong>per seconde </li>
+                                    <li>• <strong>1.015 dieren </strong>per minuut</li>
+                                    <li>• <strong>60.900 dieren </strong>per uur </li>
+                                    <li>• <strong>1,46 miljoen dieren </strong>per dag </li>
                                 </ul>
                             </div>
 
-                            <div className="bg-purple-50 p-4 rounded-lg">
-                                <h4 className="font-bold mb-2 text-purple-900">🗺️ Geografisch</h4>
-                                <ul className="space-y-1 text-purple-800">
-                                    <li>• Als elk dier 1 meter ruimte nodig heeft: een file van <strong>Amsterdam naar Sydney</strong></li>
-                                    <li>• Verdeeld over Nederland: <strong>12.800 dieren per km²</strong></li>
-                                    <li>• Per Nederlander: <strong>31 dieren per jaar</strong></li>
-                                </ul>
-                            </div>
-
-                            <div className="bg-amber-50 p-4 rounded-lg">
-                                <h4 className="font-bold mb-2 text-amber-900">📊 Verdeling</h4>
-                                <ul className="space-y-1 text-amber-800">
-                                    <li>• <strong>92%</strong> van alle geslachte dieren zijn kippen</li>
-                                    <li>• <strong>2,8%</strong> zijn varkens</li>
-                                    <li>• <strong>0,4%</strong> zijn runderen</li>
-                                    <li>• De rest (4,8%) zijn overige diersoorten</li>
-                                </ul>
-                            </div>
                         </div>
 
                         <div className="mt-6 p-4 bg-neutral-100 rounded-lg">
@@ -178,7 +158,7 @@ const ScalePopup = ({ onClose }) => {
                         onClick={handleClose}
                         className="w-full bg-emerald-600 text-white py-3 rounded-lg hover:bg-emerald-700 transition-colors font-semibold"
                     >
-                        Begrepen
+                        Sluiten
                     </button>
                 </div>
             </div>

@@ -73,7 +73,7 @@ const FarmsPopup = ({ onClose }) => {
                             <div className="grid md:grid-cols-2 gap-4">
                                 {/* Graasdierbedrijven */}
                                 <div className="bg-emerald-50 p-4 rounded-lg">
-                                    <h5 className="font-bold mb-3 text-emerald-900">🐄 Graasdierbedrijven (24.185
+                                    <h5 className="font-bold mb-3 text-emerald-900">Graasdierbedrijven (24.185
                                         bedrijven)</h5>
                                     <div className="space-y-2 text-sm">
                                         <div className="flex justify-between">
@@ -111,7 +111,7 @@ const FarmsPopup = ({ onClose }) => {
 
                                 {/* Hokdierbedrijven */}
                                 <div className="bg-amber-50 p-4 rounded-lg">
-                                    <h5 className="font-bold mb-3 text-amber-900">🐖 Hokdierbedrijven (3.435
+                                    <h5 className="font-bold mb-3 text-amber-900">Hokdierbedrijven (3.435
                                         bedrijven)</h5>
                                     <div className="space-y-2 text-sm">
                                         <div className="flex justify-between">
@@ -150,7 +150,7 @@ const FarmsPopup = ({ onClose }) => {
 
                             {/* Combinaties */}
                             <div className="bg-purple-50 p-4 rounded-lg mt-4">
-                                <h5 className="font-bold mb-3 text-purple-900">🧩 Veeteeltcombinaties (357
+                                <h5 className="font-bold mb-3 text-purple-900">Veeteeltcombinaties (357
                                     bedrijven)</h5>
                                 <div className="grid md:grid-cols-2 gap-4 text-sm">
                                     <div>
