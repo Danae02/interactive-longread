@@ -37,17 +37,17 @@ export default function VeeIndustrieLongread() {
                 <div
                     className="hero-background absolute inset-0 bg-cover bg-center"
                     style={{
-                        backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(https://images.unsplash.com/photo-1500595046743-cd271d694d30?w=1600)',
+                        backgroundImage: 'linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), url(https://mla20yrfoj5x.i.optimole.com/cb:CQ-e.5ba07/w:1200/h:799/q:90/f:best/sm:0/ig:avif/https://weanimals.org/wp-content/uploads/2022/10/WAM26923.jpg)',
                         transform: `translateY(${scrollY * 0.5}px)`
                     }}
                 />
 
                 <div className="hero-content relative z-10 text-center px-6 max-w-4xl">
                     <h1 className="hero-title text-6xl md:text-7xl font-bold mb-6 leading-tight">
-                        De Verborgen Macht
+                        Achter de Schermen van de Vee-industrie
                     </h1>
                     <p className="hero-subtitle text-2xl md:text-3xl text-neutral-300 mb-8">
-                        Hoe de vee-industrie de politiek beïnvloedt
+                        Wie bepaalt wat we eten?
                     </p>
                     <ChevronDown className="animate-bounce mx-auto" size={48} />
                 </div>
@@ -72,8 +72,8 @@ export default function VeeIndustrieLongread() {
                     <div className="stats-grid grid md:grid-cols-3 gap-8">
                         <div className="stat-card bg-emerald-800 p-8 rounded-lg">
                             <Users className="mb-4" size={48} />
-                            <div className="stat-number text-5xl font-bold mb-2">12,5M</div>
-                            <div className="stat-label text-xl">Runderen in Nederland</div>
+                            <div className="stat-number text-5xl font-bold mb-2">525,8 miljoen dieren</div>
+                            <div className="stat-label text-xl">Geslachtten dieren per jaar</div>
                         </div>
                         <div className="stat-card bg-emerald-800 p-8 rounded-lg">
                             <TrendingUp className="mb-4" size={48} />
@@ -85,6 +85,7 @@ export default function VeeIndustrieLongread() {
                             <div className="stat-number text-5xl font-bold mb-2">45.000</div>
                             <div className="stat-label text-xl">Veehouderijen</div>
                         </div>
+                        <p>Bron geslacht in 2023: https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb </p>
                     </div>
                 </div>
             </section>
