@@ -3,6 +3,7 @@ import { ChevronDown, Users, TrendingUp, Building2, AlertCircle, Info, HelpCircl
 import StatsPopup from './popups/StatsPopup';
 import ScalePopup from './popups/ScalePopup';
 import FarmsPopup from './popups/FarmsPopup';
+import IntroductionSection from './sections/IntroductionSection';
 import './VeeIndustrieLongread.css';
 
 export default function VeeIndustrieLongread() {
@@ -60,16 +61,9 @@ export default function VeeIndustrieLongread() {
             </section>
 
             {/* Introductie */}
-            <section className="content-section bg-white text-neutral-900 py-24 px-6">
-                <article className="article-content max-w-3xl mx-auto">
-                    <p className="text-xl leading-relaxed mb-6 first-letter:text-6xl first-letter:font-bold first-letter:mr-2 first-letter:float-left">
-                        Achter de schermen van het Nederlandse beleid speelt zich een machtsstrijd af die de meeste burgers nooit zien. De vee-industrie, goed voor miljarden euro's omzet, heeft een invloed op politieke beslissingen die verder reikt dan veel mensen beseffen.
-                    </p>
-                    <p className="text-xl leading-relaxed mb-6">
-                        In deze longread duiken we in de wereld van lobby, belangen en de impact op milieu en maatschappij.
-                    </p>
-                </article>
-            </section>
+            <IntroductionSection />
+
+
 
             {/* Statistieken Sectie */}
             <section className="stats-section bg-emerald-900 text-white py-24 px-6">
@@ -304,7 +298,7 @@ export default function VeeIndustrieLongread() {
 
             {/* Footer */}
             <footer className="footer-section bg-neutral-900 py-12 px-6 text-center text-neutral-400">
-                <p className="mb-2">Een interactieve longread</p>
+                <p className="mb">Een interactieve longread door Danae van der Meer voor de minor De Staat van de Wereld</p>
                 <p className="text-sm">Bronnen: CBS, RIVM, Universiteit Utrecht, LTO Nederland, Wageningen Economic Research</p>
             </footer>
         </div>
