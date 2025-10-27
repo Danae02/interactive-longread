@@ -1,11 +1,17 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Users, TrendingUp, Building2, AlertCircle } from 'lucide-react';
+import { ChevronDown, Users, TrendingUp, Building2, AlertCircle, Info, HelpCircle } from 'lucide-react';
+import StatsPopup from './popups/StatsPopup';
+import ScalePopup from './popups/ScalePopup';
+import FarmsPopup from './popups/FarmsPopup';
 import './VeeIndustrieLongread.css';
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
     const [pollVote, setPollVote] = useState(null);
     const [showPollResults, setShowPollResults] = useState(false);
+    const [showStatsPopup, setShowStatsPopup] = useState(false);
+    const [showScalePopup, setShowScalePopup] = useState(false);
+    const [showFarmsPopup, setShowFarmsPopup] = useState(false);
     const [pollResults, setPollResults] = useState({
         transparanter: 42,
         strengereRegels: 38,
@@ -70,26 +76,75 @@ export default function VeeIndustrieLongread() {
                 <div className="max-w-6xl mx-auto">
                     <h2 className="section-title text-4xl font-bold mb-16 text-center">De Cijfers</h2>
                     <div className="stats-grid grid md:grid-cols-3 gap-8">
-                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
+                        {/* Dieren geslacht */}
+                        <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">
+                            <div className="absolute top-4 right-4 flex gap-2">
+                                <button
+                                    onClick={() => setShowStatsPopup(true)}
+                                    className="text-emerald-200 hover:text-white transition-colors"
+                                    title="Bekijk gedetailleerde cijfers"
+                                >
+                                    <Info size={20} />
+                                </button>
+                                <button
+                                    onClick={() => setShowScalePopup(true)}
+                                    className="text-emerald-200 hover:text-white transition-colors"
+                                    title="Hoeveel is dit eigenlijk?"
+                                >
+                                    <HelpCircle size={20} />
+                                </button>
+                            </div>
                             <Users className="mb-4" size={48} />
-                            <div className="stat-number text-5xl font-bold mb-2">525,8 miljoen dieren</div>
-                            <div className="stat-label text-xl">Geslachtten dieren per jaar</div>
+                            <div className="stat-number text-5xl font-bold mb-2">533 miljoen dieren</div>
+                            <div className="stat-label text-xl">Geslachte dieren per jaar</div>
+                            <div className="text-sm text-emerald-200 mt-2">
+                                Klik op de icoontjes voor meer informatie
+                            </div>
                         </div>
+
+                        {/* Omzet */}
                         <div className="stat-card bg-emerald-800 p-8 rounded-lg">
-                            <TrendingUp className="mb-4" size={48} />
-                            <div className="stat-number text-5xl font-bold mb-2">€8,5Mrd</div>
+                            <TrendingUp className="mb-4" size={48}/>
+                            <div className="stat-number text-5xl font-bold mb-2">€33,9 mrd</div>
                             <div className="stat-label text-xl">Jaarlijkse omzet</div>
+                            <div className="text-sm text-emerald-200 mt-2">
+                                <strong>Let op:</strong> Deze cijfers betreffen alleen de primaire veehouderij (boerenbedrijven).
+                                Verwerkende bedrijven, veevoerproducenten en distributeurs zijn niet meegenomen in deze omzetcijfers.
+                            </div>
+
                         </div>
-                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
+
+                        {/* Veehouderijen */}
+                        <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">
+                        <div className="absolute top-4 right-4">
+                                <button
+                                    onClick={() => setShowFarmsPopup(true)}
+                                    className="text-emerald-200 hover:text-white transition-colors"
+                                    title="Bekijk verdeling veehouderijen"
+                                >
+                                    <Info size={20} />
+                                </button>
+                            </div>
                             <Building2 className="mb-4" size={48} />
-                            <div className="stat-number text-5xl font-bold mb-2">45.000</div>
+                            <div className="stat-number text-5xl font-bold mb-2">49.900</div>
                             <div className="stat-label text-xl">Veehouderijen</div>
+                            <div className="text-sm text-emerald-200 mt-2">
+                                Klik op het icoontje voor meer informatie
+                            </div>
                         </div>
-                        <p>Bron geslacht in 2023: https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb </p>
                     </div>
+                    <p className="text-center text-emerald-200 mt-8 text-sm">
+                        Bronnen: <a href="https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb" target="_blank" rel="noreferrer" className="underline hover:text-white">CBS StatLine</a> & Wageningen Economic Research
+                    </p>
                 </div>
             </section>
 
+            {/* Popup Components */}
+            {showStatsPopup && <StatsPopup onClose={() => setShowStatsPopup(false)} />}
+            {showScalePopup && <ScalePopup onClose={() => setShowScalePopup(false)} />}
+            {showFarmsPopup && <FarmsPopup onClose={() => setShowFarmsPopup(false)} />}
+
+            {/* Rest van de component blijft hetzelfde */}
             {/* Hoofdverhaal 1 */}
             <section className="content-section bg-white text-neutral-900 py-24 px-6">
                 <article className="article-content max-w-3xl mx-auto">
@@ -171,9 +226,9 @@ export default function VeeIndustrieLongread() {
                                         return (
                                             <div key={key} className="poll-result-item">
                                                 <div className="flex justify-between mb-2">
-                          <span className={pollVote === key ? 'text-emerald-400' : ''}>
-                            {labels[key]}
-                          </span>
+                                                    <span className={pollVote === key ? 'text-emerald-400' : ''}>
+                                                        {labels[key]}
+                                                    </span>
                                                     <span className="font-bold">{percentage}%</span>
                                                 </div>
                                                 <div className="poll-result-bar w-full bg-neutral-600 rounded-full h-3">
@@ -250,17 +305,8 @@ export default function VeeIndustrieLongread() {
             {/* Footer */}
             <footer className="footer-section bg-neutral-900 py-12 px-6 text-center text-neutral-400">
                 <p className="mb-2">Een interactieve longread</p>
-                <p className="text-sm">Bronnen: CBS, RIVM, Universiteit Utrecht, LTO Nederland</p>
+                <p className="text-sm">Bronnen: CBS, RIVM, Universiteit Utrecht, LTO Nederland, Wageningen Economic Research</p>
             </footer>
-
-            <style jsx>{`
-
-                .article-content p {
-                    line-height: 1.8;
-                }
-
-                
-            `}</style>
         </div>
     );
 }
