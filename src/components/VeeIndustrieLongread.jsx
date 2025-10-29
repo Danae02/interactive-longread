@@ -12,6 +12,7 @@ import FooterSection from "./sections/FooterSection.jsx";
 import PollSection from "./sections/interactive/PollSection.jsx";
 import AudioSection from "./sections/interactive/AudioSection.jsx";
 import TimelineSection from "./sections/interactive/TimelineSection.jsx";
+import VideoSection from "./sections/interactive/VideoSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -171,6 +172,7 @@ export default function VeeIndustrieLongread() {
 
             <ThirdSection/>
 
+            <VideoSection/>
 
             <FooterSection/>
         </div>
