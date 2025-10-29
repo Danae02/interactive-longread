@@ -7,46 +7,60 @@ export default function TimelineSection() {
 
     const timelineData = [
         {
-            year: "1950",
-            title: "Kleinschalig Begin",
-            shortDesc: "Traditionele familiebedrijven",
-            content: "Na de Tweede Wereldoorlog bestaan de meeste boerderijen uit kleine familiebedrijven met gemiddeld 20-30 koeien. De focus ligt op lokale markten en directe verkoop.",
-            impact: "Basis voor de Nederlandse veehouderij"
+            year: "1934",
+            title: "Eerste Marketingcampagnes",
+            shortDesc: "Crisis Zuivelbureau opgericht",
+            content: "Nederland produceert zoveel melk dat er overschotten ontstaan. Het Crisis Zuivelbureau wordt opgericht in samenwerking met de overheid en reclamebureaus om melkconsumptie te stimuleren. Dit markeert het begin van grootschalige, door de overheid gesteunde marketing voor zuivelproducten.",
+            impact: "Start van georganiseerde voedselpromotie"
         },
         {
-            year: "1980",
-            title: "Industrialisatie",
-            shortDesc: "Schaalvergroting neemt een vlucht",
-            content: "De sector professionaliseert en industrialiseert snel. Nieuwe technieken en EU-subsidies maken het mogelijk om grootschaliger te produceren. Het gemiddelde bedrijf groeit naar 50-60 koeien.",
-            impact: "Productie verdubbelt in 10 jaar tijd"
+            year: "1945",
+            title: "Naoorlogs Herstel",
+            shortDesc: "'Nooit meer honger' beleid",
+            content: "Na de Hongerwinter wordt Sicco Mansholt minister van Landbouw. Onder het motto 'nooit meer honger' wordt beleid gevoerd om van kleinschalige gemengde bedrijven naar gespecialiseerde, grootschalige productie-eenheden te gaan. Het trauma van voedselonzekerheid drijft de focus op voedselzekerheid.",
+            impact: "Basis voor industriële landbouw gelegd"
         },
         {
-            year: "2000",
-            title: "EU-Uitbreiding",
-            shortDesc: "Nieuwe exportmarkten",
-            content: "Door de uitbreiding van de EU ontstaan nieuwe afzetmarkten. Nederlandse bedrijven gaan steeds meer exporteren. Megastallen worden normaal, met gemiddeld 100+ koeien per bedrijf.",
-            impact: "Nederland wordt 2e exporteur ter wereld"
+            year: "1948",
+            title: "Marshallplan",
+            shortDesc: "Amerikaanse modernisering",
+            content: "Het Amerikaanse Marshallplan (1948-1952) levert moderne landbouwtechnologie zoals tractoren en kunstmest. Financiële steun en kennisoverdracht geven een enorme push richting industriële landbouw. Boeren worden actief aangemoedigd te specialiseren en schaal te vergroten.",
+            impact: "Versnelling van mechanisatie en specialisatie"
         },
         {
-            year: "2015",
-            title: "Kritische Stemmen",
-            shortDesc: "Maatschappelijk debat",
-            content: "Het maatschappelijk debat over bio-industrie, dierenwelzijn en milieu-impact neemt toe. Documentaires en onderzoeken zorgen voor meer bewustwording bij consumenten.",
-            impact: "Eerste krimp in vleesconsumptie"
+            year: "1958",
+            title: "Melkbrigade & Joris Driepinter",
+            shortDesc: "Kinderen als marketingdoel",
+            content: "De Melk-brigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door 30 extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.",
+            impact: "Complete generatie beïnvloed in eetgedrag"
+        },
+        {
+            year: "1962",
+            title: "Europees Landbouwbeleid",
+            shortDesc: "GLB garandeert prijzen",
+            content: "Het Gemeenschappelijk Landbouwbeleid (GLB) van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.",
+            impact: "Explosieve groei vee-industrie mogelijk"
+        },
+        {
+            year: "1976",
+            title: "Binnenhof-BBQ",
+            shortDesc: "Politieke lobby verankerd",
+            content: "De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof. Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen.",
+            impact: "Vleesconsumptie genormaliseerd in politieke cultuur"
         },
         {
             year: "2019",
             title: "Stikstofcrisis",
             shortDesc: "PAS-uitspraak schudt sector op",
-            content: "De Raad van State vernietigt het Programma Aanpak Stikstof. Dit heeft enorme gevolgen voor de veehouderij. Veel bedrijven moeten inkrimpen of stoppen. De discussie over de toekomst van de sector laait op.",
-            impact: "Duizenden boeren in onzekerheid"
+            content: "De Raad van State vernietigt het Programma Aanpak Stikstof. Dit heeft enorme gevolgen voor de veehouderij. Veel bedrijven moeten inkrimpen of stoppen. De discussie over de toekomst van de sector laait op na decennia van groei.",
+            impact: "Duizenden boeren in onzekerheid, transitie noodzakelijk"
         },
         {
             year: "2024",
             title: "Transitie",
             shortDesc: "Kringlooplandbouw als toekomst?",
-            content: "De sector staat voor grote keuzes. Kringlooplandbouw, extensivering en innovatieve concepten worden omarmd door sommigen, terwijl anderen vasthouden aan het huidige model. De toekomst is onzeker.",
-            impact: "Verschuiving naar duurzamer produceren"
+            content: "De sector staat voor grote keuzes. Kringlooplandbouw, extensivering en innovatieve concepten worden omarmd door sommigen, terwijl anderen vasthouden aan het huidige model. De erfenis van 80 jaar groeibe-leid botst met ecologische grenzen.",
+            impact: "Fundamentele herbezinning op voedselsysteem"
         }
     ];
 
@@ -82,11 +96,11 @@ export default function TimelineSection() {
                     <div className="flex items-center justify-center gap-3 mb-3">
                         <Calendar className="text-emerald-400" size={28} />
                         <h2 className="text-2xl md:text-3xl font-bold text-white">
-                            Van Klein naar Groot
+                            Van Trauma tot Transitie
                         </h2>
                     </div>
-                    <p className="text-neutral-400 text-sm md:text-base">
-                        Klik op een jaar voor meer informatie
+                    <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto">
+                        De opkomst van de Nederlandse vee-industrie: van 'nooit meer honger' naar ecologische grenzen
                     </p>
                 </div>
 
@@ -96,7 +110,7 @@ export default function TimelineSection() {
 
                     <div className="flex justify-between items-start relative px-2">
                         {timelineData.map((item, index) => (
-                            <div key={index} className="flex flex-col items-center" style={{ width: '140px' }}>
+                            <div key={index} className="flex flex-col items-center" style={{ width: `${100 / timelineData.length}%` }}>
                                 <button
                                     onClick={() => handleYearClick(index)}
                                     onMouseEnter={() => setHoveredYear(index)}
@@ -111,11 +125,11 @@ export default function TimelineSection() {
                                     `}
                                     style={{ width: '64px', height: '64px' }}
                                 >
-                                    <span className="text-white font-bold text-base">{item.year}</span>
+                                    <span className="text-white font-bold text-sm">{item.year}</span>
                                 </button>
 
                                 {hoveredYear === index && (
-                                    <div className="absolute top-20 bg-neutral-700 p-3 rounded-lg shadow-xl w-44 pointer-events-none">
+                                    <div className="absolute top-20 bg-neutral-700 p-3 rounded-lg shadow-xl w-48 pointer-events-none z-20">
                                         <h4 className="font-bold text-white mb-1 text-sm">{item.title}</h4>
                                         <p className="text-xs text-neutral-300 mb-2">{item.shortDesc}</p>
                                         <p className="text-xs text-emerald-400 flex items-center gap-1">
@@ -161,8 +175,13 @@ export default function TimelineSection() {
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="sticky top-0 bg-neutral-800 border-b border-neutral-700 px-4 py-3 flex justify-between items-center z-10">
-                                <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm">
-                                    {timelineData[selectedYear].year}
+                                <div className="flex items-center gap-3">
+                                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm">
+                                        {timelineData[selectedYear].year}
+                                    </div>
+                                    <div className="text-xs text-neutral-400">
+                                        {selectedYear + 1} van {timelineData.length}
+                                    </div>
                                 </div>
                                 <button
                                     onClick={handleCloseModal}
@@ -183,7 +202,7 @@ export default function TimelineSection() {
                                 <div className="space-y-4">
                                     <div>
                                         <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-2">
-                                            Wat gebeurde er?
+                                            Historische Context
                                         </h4>
                                         <p className="text-neutral-200 leading-relaxed">
                                             {timelineData[selectedYear].content}
@@ -192,7 +211,7 @@ export default function TimelineSection() {
 
                                     <div className="bg-emerald-900/30 border border-emerald-700/50 rounded-lg p-4">
                                         <h4 className="text-xs font-semibold text-emerald-400 uppercase tracking-wide mb-2">
-                                            Impact
+                                            Impact op de Sector
                                         </h4>
                                         <p className="text-white font-medium">
                                             {timelineData[selectedYear].impact}
@@ -204,16 +223,16 @@ export default function TimelineSection() {
                                     <button
                                         onClick={() => selectedYear > 0 && setSelectedYear(selectedYear - 1)}
                                         disabled={selectedYear === 0}
-                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium"
+                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2"
                                     >
-                                        ← Vorige
+                                        ← Vorige periode
                                     </button>
                                     <button
                                         onClick={() => selectedYear < timelineData.length - 1 && setSelectedYear(selectedYear + 1)}
                                         disabled={selectedYear === timelineData.length - 1}
-                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium"
+                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2"
                                     >
-                                        Volgende →
+                                        Volgende periode →
                                     </button>
                                 </div>
                             </div>
