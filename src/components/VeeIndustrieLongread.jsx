@@ -10,9 +10,10 @@ import SecondSection from "./sections/SecondSection.jsx";
 import ThirdSection from "./sections/ThirdSection.jsx";
 import FooterSection from "./sections/FooterSection.jsx";
 import PollSection from "./sections/interactive/PollSection.jsx";
-import AudioSection from "./sections/interactive/AudioSection.jsx";
+import AudioSectionWouterWaayer from "./sections/interactive/AudioSectionWouterWaayer.jsx";
 import TimelineSection from "./sections/interactive/TimelineSection.jsx";
 import VideoSection from "./sections/interactive/VideoSection.jsx";
+import DefaultAudioSection from "./sections/interactive/DefaultAudioSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -168,7 +169,9 @@ export default function VeeIndustrieLongread() {
                 </div>
             </section>
 
-            <AudioSection/>
+            {/*<AudioSectionWouterWaayer/>*/}
+
+            <DefaultAudioSection/>
 
             <ThirdSection/>
 

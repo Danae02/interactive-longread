@@ -1,66 +1,94 @@
 import React, { useState, useEffect } from 'react';
-import { Calendar, ChevronRight, X } from 'lucide-react';
+import { Calendar, ChevronRight, X, Image as ImageIcon, Maximize2 } from 'lucide-react';
 
 export default function TimelineSection() {
     const [selectedYear, setSelectedYear] = useState(null);
     const [hoveredYear, setHoveredYear] = useState(null);
+    const [zoomedImage, setZoomedImage] = useState(null);
+    const basePath = '/interactive-longread';
 
     const timelineData = [
         {
             year: "1934",
             title: "Eerste Marketingcampagnes",
             shortDesc: "Crisis Zuivelbureau opgericht",
-            content: "Nederland produceert zoveel melk dat er overschotten ontstaan. Het Crisis Zuivelbureau wordt opgericht in samenwerking met de overheid en reclamebureaus om melkconsumptie te stimuleren. Dit markeert het begin van grootschalige, door de overheid gesteunde marketing voor zuivelproducten.",
-            impact: "Start van georganiseerde voedselpromotie"
+            content: "Door de wereldwijde economische crisis kelderen melk- en veeprijzen. Om een instorting van de melkveehouderij te voorkomen richt de overheid het Crisis-Zuivelbureau op. Het bureau coördineert crisismaatregelen, ondersteunt de sector en bevordert afzet van zuivelproducten.",
+            impact: "Start van georganiseerde voedselpromotie",
+            images: [
+                {
+                    src: `${basePath}/afbeeldingen-timeline/noodkreet2landbouw.png`,
+                    alt: "Noodkreet landbouw 1 - Crisis in de landbouwsector"
+                },
+                {
+                    src: `${basePath}/afbeeldingen-timeline/noodkreetlandbouw.png`,
+                    alt: "Noodkreet landbouw 2 - Problemen in de veehouderij"
+                },
+                {
+                    src: `${basePath}/afbeeldingen-timeline/prijzen.png`,
+                    alt: "Prijzenoverzicht - Dalende prijzen tijdens crisis"
+                }
+            ]
         },
         {
             year: "1945",
             title: "Naoorlogs Herstel",
             shortDesc: "'Nooit meer honger' beleid",
             content: "Na de Hongerwinter wordt Sicco Mansholt minister van Landbouw. Onder het motto 'nooit meer honger' wordt beleid gevoerd om van kleinschalige gemengde bedrijven naar gespecialiseerde, grootschalige productie-eenheden te gaan. Het trauma van voedselonzekerheid drijft de focus op voedselzekerheid.",
-            impact: "Basis voor industriële landbouw gelegd"
+            impact: "Basis voor industriële landbouw gelegd",
+            images: null
         },
         {
             year: "1948",
             title: "Marshallplan",
             shortDesc: "Amerikaanse modernisering",
             content: "Het Amerikaanse Marshallplan (1948-1952) levert moderne landbouwtechnologie zoals tractoren en kunstmest. Financiële steun en kennisoverdracht geven een enorme push richting industriële landbouw. Boeren worden actief aangemoedigd te specialiseren en schaal te vergroten.",
-            impact: "Versnelling van mechanisatie en specialisatie"
+            impact: "Versnelling van mechanisatie en specialisatie",
+            images: null
         },
         {
             year: "1958",
             title: "Melkbrigade & Joris Driepinter",
             shortDesc: "Kinderen als marketingdoel",
             content: "De Melk-brigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door 30 extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.",
-            impact: "Complete generatie beïnvloed in eetgedrag"
+            impact: "Complete generatie beïnvloed in eetgedrag",
+            images: [
+                {
+                    src: `${basePath}/afbeeldingen-timeline/logboek-mbrigade.jpg`,
+                    alt: "Logboek van de Melkbrigade uit 1958 - Kinderen werden aangemoedigd extra melk te drinken"
+                }
+            ]
         },
         {
             year: "1962",
             title: "Europees Landbouwbeleid",
             shortDesc: "GLB garandeert prijzen",
             content: "Het Gemeenschappelijk Landbouwbeleid (GLB) van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.",
-            impact: "Explosieve groei vee-industrie mogelijk"
+            impact: "Explosieve groei vee-industrie mogelijk",
+            images: null
         },
         {
             year: "1976",
             title: "Binnenhof-BBQ",
             shortDesc: "Politieke lobby verankerd",
             content: "De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof. Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen.",
-            impact: "Vleesconsumptie genormaliseerd in politieke cultuur"
+            impact: "Vleesconsumptie genormaliseerd in politieke cultuur",
+            images: null
         },
         {
             year: "2019",
             title: "Stikstofcrisis",
             shortDesc: "PAS-uitspraak schudt sector op",
             content: "De Raad van State vernietigt het Programma Aanpak Stikstof. Dit heeft enorme gevolgen voor de veehouderij. Veel bedrijven moeten inkrimpen of stoppen. De discussie over de toekomst van de sector laait op na decennia van groei.",
-            impact: "Duizenden boeren in onzekerheid, transitie noodzakelijk"
+            impact: "Duizenden boeren in onzekerheid, transitie noodzakelijk",
+            images: null
         },
         {
             year: "2024",
             title: "Transitie",
             shortDesc: "Kringlooplandbouw als toekomst?",
             content: "De sector staat voor grote keuzes. Kringlooplandbouw, extensivering en innovatieve concepten worden omarmd door sommigen, terwijl anderen vasthouden aan het huidige model. De erfenis van 80 jaar groeibe-leid botst met ecologische grenzen.",
-            impact: "Fundamentele herbezinning op voedselsysteem"
+            impact: "Fundamentele herbezinning op voedselsysteem",
+            images: null
         }
     ];
 
@@ -74,6 +102,14 @@ export default function TimelineSection() {
         document.body.style.overflow = 'unset';
     };
 
+    const handleImageClick = (imageSrc, imageAlt) => {
+        setZoomedImage({ src: imageSrc, alt: imageAlt });
+    };
+
+    const handleCloseZoom = () => {
+        setZoomedImage(null);
+    };
+
     useEffect(() => {
         return () => {
             document.body.style.overflow = 'unset';
@@ -83,11 +119,17 @@ export default function TimelineSection() {
     // Close modal on escape key
     useEffect(() => {
         const handleEscape = (e) => {
-            if (e.key === 'Escape') handleCloseModal();
+            if (e.key === 'Escape') {
+                if (zoomedImage) {
+                    handleCloseZoom();
+                } else if (selectedYear !== null) {
+                    handleCloseModal();
+                }
+            }
         };
         window.addEventListener('keydown', handleEscape);
         return () => window.removeEventListener('keydown', handleEscape);
-    }, []);
+    }, [zoomedImage, selectedYear]);
 
     return (
         <section className="timeline-section bg-neutral-800 py-12 md:py-16 px-4 sm:px-6">
@@ -132,6 +174,12 @@ export default function TimelineSection() {
                                     <div className="absolute top-20 bg-neutral-700 p-3 rounded-lg shadow-xl w-48 pointer-events-none z-20">
                                         <h4 className="font-bold text-white mb-1 text-sm">{item.title}</h4>
                                         <p className="text-xs text-neutral-300 mb-2">{item.shortDesc}</p>
+                                        {item.images && (
+                                            <div className="flex items-center gap-1 text-emerald-400 text-xs mb-1">
+                                                <ImageIcon size={12} />
+                                                <span>{item.images.length} afbeelding{item.images.length > 1 ? 'en' : ''}</span>
+                                            </div>
+                                        )}
                                         <p className="text-xs text-emerald-400 flex items-center gap-1">
                                             Klik voor details <ChevronRight size={12} />
                                         </p>
@@ -157,6 +205,12 @@ export default function TimelineSection() {
                                 <div className="flex-1 min-w-0">
                                     <h4 className="font-bold text-white text-sm">{item.title}</h4>
                                     <p className="text-xs text-neutral-400 truncate">{item.shortDesc}</p>
+                                    {item.images && (
+                                        <div className="flex items-center gap-1 text-emerald-400 text-xs mt-1">
+                                            <ImageIcon size={12} />
+                                            <span>{item.images.length} afbeelding{item.images.length > 1 ? 'en' : ''}</span>
+                                        </div>
+                                    )}
                                 </div>
                                 <ChevronRight className="text-emerald-400 flex-shrink-0" size={20} />
                             </div>
@@ -171,7 +225,7 @@ export default function TimelineSection() {
                         onClick={handleCloseModal}
                     >
                         <div
-                            className="bg-neutral-800 rounded-xl max-w-2xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl border border-emerald-900/50"
+                            className="bg-neutral-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl border border-emerald-900/50"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="sticky top-0 bg-neutral-800 border-b border-neutral-700 px-4 py-3 flex justify-between items-center z-10">
@@ -198,6 +252,52 @@ export default function TimelineSection() {
                                 <p className="text-emerald-400 text-base mb-6">
                                     {timelineData[selectedYear].shortDesc}
                                 </p>
+
+                                {timelineData[selectedYear].images && (
+                                    <div className="mb-6 bg-emerald-900/20 rounded-xl p-4 border border-emerald-700/30">
+                                        <div className="flex items-center justify-between text-emerald-300 mb-4">
+                                            <div className="flex items-center gap-2">
+                                                <ImageIcon size={20} />
+                                                <span className="font-medium">
+                                                    {timelineData[selectedYear].images.length} historische afbeelding{timelineData[selectedYear].images.length > 1 ? 'en' : ''}
+                                                </span>
+                                            </div>
+                                        </div>
+
+                                        <div className={`grid gap-4 ${
+                                            timelineData[selectedYear].images.length === 1
+                                                ? 'grid-cols-1'
+                                                : timelineData[selectedYear].images.length === 2
+                                                    ? 'grid-cols-1 md:grid-cols-2'
+                                                    : 'grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
+                                        }`}>
+                                            {timelineData[selectedYear].images.map((image, imgIndex) => (
+                                                <div key={imgIndex} className="group relative">
+                                                    <div
+                                                        className="cursor-pointer bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all"
+                                                        onClick={() => handleImageClick(image.src, image.alt)}
+                                                    >
+                                                        <img
+                                                            src={image.src}
+                                                            alt={image.alt}
+                                                            className="w-full h-48 object-contain rounded-md"
+                                                            onError={(e) => {
+                                                                console.error('Afbeelding niet gevonden:', e.target.src);
+                                                                e.target.style.display = 'none';
+                                                            }}
+                                                        />
+                                                        <div className="absolute top-2 right-2 bg-black/50 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                            <Maximize2 size={16} className="text-white" />
+                                                        </div>
+                                                    </div>
+                                                    <p className="text-xs text-neutral-400 mt-2 text-center italic">
+                                                        {image.alt}
+                                                    </p>
+                                                </div>
+                                            ))}
+                                        </div>
+                                    </div>
+                                )}
 
                                 <div className="space-y-4">
                                     <div>
@@ -236,6 +336,39 @@ export default function TimelineSection() {
                                     </button>
                                 </div>
                             </div>
+                        </div>
+                    </div>
+                )}
+
+                {/* Image Zoom Modal */}
+                {zoomedImage && (
+                    <div
+                        className="fixed inset-0 bg-black/95 backdrop-blur-md z-[60] flex items-center justify-center p-4"
+                        onClick={handleCloseZoom}
+                    >
+                        <button
+                            onClick={handleCloseZoom}
+                            className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors bg-neutral-900/80 rounded-full p-2 z-10"
+                        >
+                            <X size={24} />
+                        </button>
+                        <div className="relative max-w-7xl max-h-full flex items-center justify-center">
+                            <img
+                                src={zoomedImage.src}
+                                alt={zoomedImage.alt}
+                                className="max-w-full max-h-[90vh] w-auto h-auto object-contain rounded-lg shadow-2xl"
+                                onClick={(e) => e.stopPropagation()}
+                            />
+                        </div>
+                        {zoomedImage.alt && (
+                            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-neutral-900/90 px-6 py-3 rounded-lg max-w-3xl">
+                                <p className="text-center text-sm text-neutral-300 italic">
+                                    {zoomedImage.alt}
+                                </p>
+                            </div>
+                        )}
+                        <div className="absolute bottom-4 right-4 text-xs text-neutral-400 bg-neutral-900/80 px-3 py-1.5 rounded-full">
+                            Druk op ESC of klik om te sluiten
                         </div>
                     </div>
                 )}
