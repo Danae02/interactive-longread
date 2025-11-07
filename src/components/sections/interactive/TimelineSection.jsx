@@ -5,7 +5,6 @@ export default function TimelineSection() {
     const [selectedYear, setSelectedYear] = useState(null);
     const [hoveredYear, setHoveredYear] = useState(null);
     const [zoomedImage, setZoomedImage] = useState(null);
-    const basePath = '/interactive-longread';
 
     const timelineData = [
         {
@@ -16,27 +15,34 @@ export default function TimelineSection() {
             impact: "Start van georganiseerde voedselpromotie",
             images: [
                 {
-                    src: `${basePath}/afbeeldingen-timeline/noodkreet2landbouw.png`,
+                    src: "/afbeeldingen-timeline/noodkreet2landbouw.png",
                     alt: "Noodkreet landbouw 1 - Crisis in de landbouwsector"
                 },
                 {
-                    src: `${basePath}/afbeeldingen-timeline/noodkreetlandbouw.png`,
+                    src: "/afbeeldingen-timeline/noodkreetlandbouw.png",
                     alt: "Noodkreet landbouw 2 - Problemen in de veehouderij"
                 },
                 {
-                    src: `${basePath}/afbeeldingen-timeline/prijzen.png`,
+                    src: "/afbeeldingen-timeline/prijzen.png",
                     alt: "Prijzenoverzicht - Dalende prijzen tijdens crisis"
                 }
             ]
         },
+
         {
             year: "1945",
             title: "Naoorlogs Herstel",
             shortDesc: "'Nooit meer honger' beleid",
             content: "Na de Hongerwinter wordt Sicco Mansholt minister van Landbouw. Onder het motto 'nooit meer honger' wordt beleid gevoerd om van kleinschalige gemengde bedrijven naar gespecialiseerde, grootschalige productie-eenheden te gaan. Het trauma van voedselonzekerheid drijft de focus op voedselzekerheid.",
             impact: "Basis voor industriële landbouw gelegd",
-            images: null
+            images: [
+                {
+                    src: "/afbeeldingen-timeline/Sicco_Mansholt.webp",
+                    alt: "Sicco Mansholt - Minister van Landbouw die het 'nooit meer honger' beleid invoerde na de Tweede Wereldoorlog"
+                }
+            ]
         },
+
         {
             year: "1948",
             title: "Marshallplan",
@@ -45,6 +51,7 @@ export default function TimelineSection() {
             impact: "Versnelling van mechanisatie en specialisatie",
             images: null
         },
+
         {
             year: "1958",
             title: "Melkbrigade & Joris Driepinter",
@@ -53,11 +60,16 @@ export default function TimelineSection() {
             impact: "Complete generatie beïnvloed in eetgedrag",
             images: [
                 {
-                    src: `${basePath}/afbeeldingen-timeline/logboek-mbrigade.jpg`,
+                    src: "/afbeeldingen-timeline/logboek-mbrigade.jpg",
                     alt: "Logboek van de Melkbrigade uit 1958 - Kinderen werden aangemoedigd extra melk te drinken"
+                },
+                {
+                    src: "/afbeeldingen-timeline/jorisdriepinter.jpg",
+                    alt: "Joris Driepinter - Stripheld die kinderen aanmoedigde drie glazen melk per dag te drinken"
                 }
             ]
         },
+
         {
             year: "1962",
             title: "Europees Landbouwbeleid",
@@ -66,14 +78,29 @@ export default function TimelineSection() {
             impact: "Explosieve groei vee-industrie mogelijk",
             images: null
         },
+
         {
             year: "1976",
-            title: "Binnenhof-BBQ",
+            title: "Binnenhof-BBQ en vlees",
             shortDesc: "Politieke lobby verankerd",
-            content: "De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof. Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen.",
+            content: "De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof. Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen, maar stichting Voorlichtingsbureau Vlees, Vleeswaren en Vleesconserven heeft ook nog andere afbeeldingen",
             impact: "Vleesconsumptie genormaliseerd in politieke cultuur",
-            images: null
+            images: [
+                {
+                    src: "/afbeeldingen-timeline/minister-De-Ruiter-Justitie-eet-sate.jpg.webp",
+                    alt: "Barbecue op het Binnenhof op 24 juni 1982. Justitie-minister De Ruiter eet saté (Nationaal Archief, CC0 – Bogaerts, Rob / Anefo)"
+                },
+                {
+                    src: "/afbeeldingen-timeline/feestmetvlees.jpg",
+                    alt: "Stichting Voorlichtingsbureau Vlees campagne - Reclamebeeld met de boodschap dat vlees bij elk feest hoort, om vleesconsumptie te normaliseren bij sociale gelegenheden"
+                },
+                {
+                    src: "/afbeeldingen-timeline/vleesvoorsterkeslimmerds.jpg",
+                    alt: "Stichting Voorlichtingsbureau Vlees campagne - Reclame met de slogan 'vlees voor sterke slimmerds' die vlees associeert met kracht en intelligentie"
+                }
+            ]
         },
+
         {
             year: "2019",
             title: "Stikstofcrisis",
@@ -82,6 +109,7 @@ export default function TimelineSection() {
             impact: "Duizenden boeren in onzekerheid, transitie noodzakelijk",
             images: null
         },
+
         {
             year: "2024",
             title: "Transitie",

@@ -1,19 +1,20 @@
 import React, { useState, useEffect } from 'react';
 import { ChevronDown, Users, TrendingUp, Building2, AlertCircle, Info, HelpCircle } from 'lucide-react';
+import {Link} from 'react-router-dom';
 import StatsPopup from './popups/StatsPopup';
 import ScalePopup from './popups/ScalePopup';
 import FarmsPopup from './popups/FarmsPopup';
-import IntroductionSection from './sections/IntroductionSection';
+import IntroductionSection from './sections/text/00-IntroductionSection.jsx';
 import './VeeIndustrieLongread.css';
-import FirstSection from "./sections/FirstSection.jsx";
-import SecondSection from "./sections/SecondSection.jsx";
-import ThirdSection from "./sections/ThirdSection.jsx";
-import FooterSection from "./sections/FooterSection.jsx";
+import FirstSection from "./sections/text/FirstSection.jsx";
+import SecondSection from "./sections/text/SecondSection.jsx";
+import ThirdSection from "./sections/text/ThirdSection.jsx";
+import FooterSection from "./sections/text/FooterSection.jsx";
 import PollSection from "./sections/interactive/PollSection.jsx";
-import AudioSectionWouterWaayer from "./sections/interactive/AudioSectionWouterWaayer.jsx";
 import TimelineSection from "./sections/interactive/TimelineSection.jsx";
 import VideoSection from "./sections/interactive/VideoSection.jsx";
 import DefaultAudioSection from "./sections/interactive/DefaultAudioSection.jsx";
+import WetsvoorstelSimulator from "./sections/interactive/game/WetsvoorstelSimulator.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -48,12 +49,21 @@ export default function VeeIndustrieLongread() {
                     <p className="hero-subtitle text-2xl md:text-3xl text-neutral-300 mb-8">
                         Wie bepaalt wat we eten?
                     </p>
-                    <ChevronDown className="animate-bounce mx-auto" size={48} />
+                    <ChevronDown className="animate-bounce mx-auto" size={48}/>
                 </div>
             </section>
 
             {/* Introductie */}
-            <IntroductionSection />
+            <IntroductionSection/>
+
+
+            {/*/!* game *!/*/}
+            {/*<Link*/}
+            {/*    to="/naam-strijd-spel"*/}
+            {/*    className="inline-block bg-emerald-600 hover:bg-emerald-700 text-white font-bold py-4 px-8 rounded-lg text-xl transition-colors"*/}
+            {/*>*/}
+            {/*    Speel het Naam Strijd Spel*/}
+            {/*</Link>*/}
 
 
             <TimelineSection/>
@@ -71,17 +81,17 @@ export default function VeeIndustrieLongread() {
                                     className="text-emerald-200 hover:text-white transition-colors"
                                     title="Bekijk gedetailleerde cijfers"
                                 >
-                                    <Info size={20} />
+                                    <Info size={20}/>
                                 </button>
                                 <button
                                     onClick={() => setShowScalePopup(true)}
                                     className="text-emerald-200 hover:text-white transition-colors"
                                     title="Hoeveel is dit eigenlijk?"
                                 >
-                                    <HelpCircle size={20} />
+                                    <HelpCircle size={20}/>
                                 </button>
                             </div>
-                            <Users className="mb-4" size={48} />
+                            <Users className="mb-4" size={48}/>
                             <div className="stat-number text-5xl font-bold mb-2">533 miljoen dieren</div>
                             <div className="stat-label text-xl">Geslachte dieren per jaar</div>
                             <div className="text-sm text-emerald-200 mt-2">
@@ -95,24 +105,26 @@ export default function VeeIndustrieLongread() {
                             <div className="stat-number text-5xl font-bold mb-2">€33,9 mrd</div>
                             <div className="stat-label text-xl">Jaarlijkse omzet</div>
                             <div className="text-sm text-emerald-200 mt-2">
-                                <strong>Let op:</strong> Deze cijfers betreffen alleen de primaire veehouderij (boerenbedrijven).
-                                Verwerkende bedrijven, veevoerproducenten en distributeurs zijn niet meegenomen in deze omzetcijfers.
+                                <strong>Let op:</strong> Deze cijfers betreffen alleen de primaire veehouderij
+                                (boerenbedrijven).
+                                Verwerkende bedrijven, veevoerproducenten en distributeurs zijn niet meegenomen in deze
+                                omzetcijfers.
                             </div>
 
                         </div>
 
                         {/* Veehouderijen */}
                         <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">
-                        <div className="absolute top-4 right-4">
+                            <div className="absolute top-4 right-4">
                                 <button
                                     onClick={() => setShowFarmsPopup(true)}
                                     className="text-emerald-200 hover:text-white transition-colors"
                                     title="Bekijk verdeling veehouderijen"
                                 >
-                                    <Info size={20} />
+                                    <Info size={20}/>
                                 </button>
                             </div>
-                            <Building2 className="mb-4" size={48} />
+                            <Building2 className="mb-4" size={48}/>
                             <div className="stat-number text-5xl font-bold mb-2">49.900</div>
                             <div className="stat-label text-xl">Veehouderijen</div>
                             <div className="text-sm text-emerald-200 mt-2">
@@ -121,15 +133,17 @@ export default function VeeIndustrieLongread() {
                         </div>
                     </div>
                     <p className="text-center text-emerald-200 mt-8 text-sm">
-                        Bronnen: <a href="https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb" target="_blank" rel="noreferrer" className="underline hover:text-white">CBS StatLine</a> & Wageningen Economic Research
+                        Bronnen: <a href="https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb"
+                                    target="_blank" rel="noreferrer" className="underline hover:text-white">CBS
+                        StatLine</a> & Wageningen Economic Research
                     </p>
                 </div>
             </section>
 
             {/* Popup Components */}
-            {showStatsPopup && <StatsPopup onClose={() => setShowStatsPopup(false)} />}
-            {showScalePopup && <ScalePopup onClose={() => setShowScalePopup(false)} />}
-            {showFarmsPopup && <FarmsPopup onClose={() => setShowFarmsPopup(false)} />}
+            {showStatsPopup && <StatsPopup onClose={() => setShowStatsPopup(false)}/>}
+            {showScalePopup && <ScalePopup onClose={() => setShowScalePopup(false)}/>}
+            {showFarmsPopup && <FarmsPopup onClose={() => setShowFarmsPopup(false)}/>}
 
 
             <FirstSection/>
@@ -152,7 +166,7 @@ export default function VeeIndustrieLongread() {
 
             <PollSection/>
 
-          <SecondSection/>
+            <SecondSection/>
 
             {/* Parallax Beeld 3 */}
             <section className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
