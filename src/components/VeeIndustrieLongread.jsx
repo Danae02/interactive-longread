@@ -15,6 +15,7 @@ import TimelineSection from "./sections/interactive/TimelineSection.jsx";
 import VideoSection from "./sections/interactive/VideoSection.jsx";
 import DefaultAudioSection from "./sections/interactive/DefaultAudioSection.jsx";
 import WetsvoorstelSimulator from "./sections/interactive/game/WetsvoorstelSimulator.jsx";
+import Cards from "./sections/interactive/Cards.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -184,6 +185,8 @@ export default function VeeIndustrieLongread() {
             </section>
 
             {/*<AudioSectionWouterWaayer/>*/}
+
+            <Cards/>
 
             <DefaultAudioSection/>
 
