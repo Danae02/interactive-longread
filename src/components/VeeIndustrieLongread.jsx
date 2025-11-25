@@ -8,7 +8,7 @@ import FarmsPopup from './popups/FarmsPopup';
 import IntroductionSection from './sections/text/00-IntroductionSection.jsx';
 import './VeeIndustrieLongread.css';
 import './Navigation.css';
-import FirstSection from "./sections/text/FirstSection.jsx";
+import FirstSection from "./sections/text/HistoryIntroSection.jsx";
 import SecondSection from "./sections/text/SecondSection.jsx";
 import ThirdSection from "./sections/text/ThirdSection.jsx";
 import FooterSection from "./sections/text/FooterSection.jsx";
@@ -18,6 +18,8 @@ import VideoSection from "./sections/interactive/VideoSection.jsx";
 import DefaultAudioSection from "./sections/interactive/DefaultAudioSection.jsx";
 import WetsvoorstelSimulator from "./sections/interactive/game/WetsvoorstelSimulator.jsx";
 import Cards from "./sections/interactive/Cards.jsx";
+import HistoryIntroSection from "./sections/text/HistoryIntroSection.jsx";
+import CardsSection from "./sections/interactive/CardsSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -62,8 +64,12 @@ export default function VeeIndustrieLongread() {
                 <IntroductionSection/>
             </section>
 
+
+
+
             {/* Timeline - Add ID for navigation */}
             <section id="verleden">
+                <HistoryIntroSection/>
                 <TimelineSection/>
             </section>
 
@@ -145,7 +151,8 @@ export default function VeeIndustrieLongread() {
 
             {/* Heden sectie - Add ID for navigation */}
             <section id="heden">
-                <FirstSection/>
+
+                <CardsSection/>
 
                 {/* Parallax Beeld 2 */}
                 <div className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
@@ -181,7 +188,6 @@ export default function VeeIndustrieLongread() {
                     </div>
                 </div>
 
-                <Cards/>
                 <DefaultAudioSection/>
             </section>
 

@@ -1,10 +1,13 @@
-import React, { useState, useEffect } from 'react';
+
+import React, { useState, useEffect, useRef } from 'react';
 import { Calendar, ChevronRight, X, Image as ImageIcon, Maximize2 } from 'lucide-react';
 
 export default function TimelineSection() {
     const [selectedYear, setSelectedYear] = useState(null);
     const [hoveredYear, setHoveredYear] = useState(null);
     const [zoomedImage, setZoomedImage] = useState(null);
+    const modalRef = useRef(null);
+    const closeButtonRef = useRef(null);
 
     const timelineData = [
         {
@@ -139,12 +142,17 @@ export default function TimelineSection() {
     };
 
     useEffect(() => {
+        if (selectedYear !== null && closeButtonRef.current) {
+            closeButtonRef.current.focus();
+        }
+    }, [selectedYear]);
+
+    useEffect(() => {
         return () => {
             document.body.style.overflow = 'unset';
         };
     }, []);
 
-    // Close modal on escape key
     useEffect(() => {
         const handleEscape = (e) => {
             if (e.key === 'Escape') {
@@ -159,12 +167,46 @@ export default function TimelineSection() {
         return () => window.removeEventListener('keydown', handleEscape);
     }, [zoomedImage, selectedYear]);
 
+    useEffect(() => {
+        if (selectedYear !== null && modalRef.current) {
+            const focusableElements = modalRef.current.querySelectorAll(
+                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+            );
+            
+            const firstElement = focusableElements[0];
+            const lastElement = focusableElements[focusableElements.length - 1];
+
+            const trapFocus = (e) => {
+                if (e.key === 'Tab') {
+                    if (e.shiftKey) {
+                        if (document.activeElement === firstElement) {
+                            e.preventDefault();
+                            lastElement.focus();
+                        }
+                    } else {
+                        if (document.activeElement === lastElement) {
+                            e.preventDefault();
+                            firstElement.focus();
+                        }
+                    }
+                }
+            };
+
+            modalRef.current.addEventListener('keydown', trapFocus);
+            return () => {
+                if (modalRef.current) {
+                    modalRef.current.removeEventListener('keydown', trapFocus);
+                }
+            };
+        }
+    }, [selectedYear]);
+
     return (
-        <section className="timeline-section bg-neutral-800 py-12 md:py-16 px-4 sm:px-6">
+        <section className="timeline-section bg-neutral-800 py-12 md:py-16 px-4 sm:px-6" aria-label="Tijdlijn Nederlandse vee-industrie">
             <div className="max-w-6xl mx-auto">
                 <div className="text-center mb-8 md:mb-12">
                     <div className="flex items-center justify-center gap-3 mb-3">
-                        <Calendar className="text-emerald-400" size={28} />
+                        <Calendar className="text-emerald-400" size={28} aria-hidden="true" />
                         <h2 className="text-2xl md:text-3xl font-bold text-white">
                             Van Trauma tot Transitie
                         </h2>
@@ -175,41 +217,45 @@ export default function TimelineSection() {
                 </div>
 
                 {/* Desktop Timeline */}
-                <div className="hidden md:block relative pb-8">
-                    <div className="absolute top-8 left-4 right-4 h-0.5 bg-emerald-900" />
+                <div className="hidden md:block relative pb-8" role="list" aria-label="Tijdlijn gebeurtenissen">
+                    <div className="absolute top-8 left-4 right-4 h-0.5 bg-emerald-900" aria-hidden="true" />
 
                     <div className="flex justify-between items-start relative px-2">
                         {timelineData.map((item, index) => (
-                            <div key={index} className="flex flex-col items-center" style={{ width: `${100 / timelineData.length}%` }}>
+                            <div key={index} className="flex flex-col items-center" style={{ width: `${100 / timelineData.length}%` }} role="listitem">
                                 <button
                                     onClick={() => handleYearClick(index)}
                                     onMouseEnter={() => setHoveredYear(index)}
                                     onMouseLeave={() => setHoveredYear(null)}
+                                    onFocus={() => setHoveredYear(index)}
+                                    onBlur={() => setHoveredYear(null)}
                                     className={`
-                                        relative z-10 rounded-full transition-all duration-200 cursor-pointer
-                                        flex items-center justify-center border-2 border-white/20
-                                        ${hoveredYear === index
-                                        ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50 scale-110'
-                                        : 'bg-emerald-700 hover:bg-emerald-600'
-                                    }
-                                    `}
+relative z-10 rounded-full transition-all duration-200 cursor-pointer
+flex items-center justify-center border-2 border-white/20
+focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-neutral-800
+    ${hoveredYear === index
+    ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50 scale-110'
+    : 'bg-emerald-700 hover:bg-emerald-600'
+}
+    `}
                                     style={{ width: '64px', height: '64px' }}
+                                    aria-label={`${item.year}: ${item.title}. ${item.shortDesc}. Klik voor meer informatie.`}
                                 >
-                                    <span className="text-white font-bold text-sm">{item.year}</span>
+                                    <span className="text-white font-bold text-sm" aria-hidden="true">{item.year}</span>
                                 </button>
 
                                 {hoveredYear === index && (
-                                    <div className="absolute top-20 bg-neutral-700 p-3 rounded-lg shadow-xl w-48 pointer-events-none z-20">
+                                    <div className="absolute top-20 bg-neutral-700 p-3 rounded-lg shadow-xl w-48 pointer-events-none z-20" role="tooltip">
                                         <h4 className="font-bold text-white mb-1 text-sm">{item.title}</h4>
                                         <p className="text-xs text-neutral-300 mb-2">{item.shortDesc}</p>
                                         {item.images && (
                                             <div className="flex items-center gap-1 text-emerald-400 text-xs mb-1">
-                                                <ImageIcon size={12} />
+                                                <ImageIcon size={12} aria-hidden="true" />
                                                 <span>{item.images.length} afbeelding{item.images.length > 1 ? 'en' : ''}</span>
                                             </div>
                                         )}
                                         <p className="text-xs text-emerald-400 flex items-center gap-1">
-                                            Klik voor details <ChevronRight size={12} />
+                                            Klik voor details <ChevronRight size={12} aria-hidden="true" />
                                         </p>
                                     </div>
                                 )}
@@ -219,15 +265,17 @@ export default function TimelineSection() {
                 </div>
 
                 {/* Mobile Timeline - Compact */}
-                <div className="md:hidden space-y-3">
+                <div className="md:hidden space-y-3" role="list" aria-label="Tijdlijn gebeurtenissen">
                     {timelineData.map((item, index) => (
                         <button
                             key={index}
                             onClick={() => handleYearClick(index)}
-                            className="w-full bg-neutral-700 hover:bg-neutral-600 p-4 rounded-lg text-left transition-all border-l-4 border-emerald-600"
+                            className="w-full bg-neutral-700 hover:bg-neutral-600 p-4 rounded-lg text-left transition-all border-l-4 border-emerald-600 focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-neutral-800"
+                            role="listitem"
+                            aria-label={`${item.year}: ${item.title}. ${item.shortDesc}. Klik voor meer informatie.`}
                         >
                             <div className="flex items-center gap-3">
-                                <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm flex-shrink-0">
+                                <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm flex-shrink-0" aria-hidden="true">
                                     {item.year}
                                 </div>
                                 <div className="flex-1 min-w-0">
@@ -235,12 +283,12 @@ export default function TimelineSection() {
                                     <p className="text-xs text-neutral-400 truncate">{item.shortDesc}</p>
                                     {item.images && (
                                         <div className="flex items-center gap-1 text-emerald-400 text-xs mt-1">
-                                            <ImageIcon size={12} />
+                                            <ImageIcon size={12} aria-hidden="true" />
                                             <span>{item.images.length} afbeelding{item.images.length > 1 ? 'en' : ''}</span>
                                         </div>
                                     )}
                                 </div>
-                                <ChevronRight className="text-emerald-400 flex-shrink-0" size={20} />
+                                <ChevronRight className="text-emerald-400 flex-shrink-0" size={20} aria-hidden="true" />
                             </div>
                         </button>
                     ))}
@@ -251,14 +299,18 @@ export default function TimelineSection() {
                     <div
                         className="fixed inset-0 bg-black/80 backdrop-blur-sm z-50 flex items-center justify-center p-4"
                         onClick={handleCloseModal}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-labelledby="modal-title"
                     >
                         <div
+                            ref={modalRef}
                             className="bg-neutral-800 rounded-xl max-w-4xl w-full max-h-[90vh] overflow-y-auto relative shadow-2xl border border-emerald-900/50"
                             onClick={(e) => e.stopPropagation()}
                         >
                             <div className="sticky top-0 bg-neutral-800 border-b border-neutral-700 px-4 py-3 flex justify-between items-center z-10">
                                 <div className="flex items-center gap-3">
-                                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm">
+                                    <div className="bg-emerald-600 text-white px-3 py-1 rounded-full font-bold text-sm" aria-hidden="true">
                                         {timelineData[selectedYear].year}
                                     </div>
                                     <div className="text-xs text-neutral-400">
@@ -266,15 +318,36 @@ export default function TimelineSection() {
                                     </div>
                                 </div>
                                 <button
+                                    ref={closeButtonRef}
                                     onClick={handleCloseModal}
-                                    className="text-neutral-400 hover:text-white transition-colors bg-neutral-700 rounded-full p-1.5"
+                                    className="text-neutral-400 hover:text-white transition-colors bg-neutral-700 rounded-full p-1.5 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                                    aria-label="Sluit dialoogvenster"
                                 >
-                                    <X size={20} />
+                                    <X size={20} aria-hidden="true" />
                                 </button>
                             </div>
 
                             <div className="p-6">
-                                <h3 className="text-2xl md:text-3xl font-bold text-white mb-2">
+                                <div className="flex justify-between mb-6 pb-4 border-b border-neutral-700">
+                                    <button
+                                        onClick={() => selectedYear > 0 && setSelectedYear(selectedYear - 1)}
+                                        disabled={selectedYear === 0}
+                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 rounded px-2 py-1"
+                                        aria-label={selectedYear > 0 ? `Ga naar vorige periode: ${timelineData[selectedYear - 1].year}` : 'Geen vorige periode beschikbaar'}
+                                    >
+                                        ← Vorige periode
+                                    </button>
+                                    <button
+                                        onClick={() => selectedYear < timelineData.length - 1 && setSelectedYear(selectedYear + 1)}
+                                        disabled={selectedYear === timelineData.length - 1}
+                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2 focus:outline-none focus:ring-2 focus:ring-emerald-400 rounded px-2 py-1"
+                                        aria-label={selectedYear < timelineData.length - 1 ? `Ga naar volgende periode: ${timelineData[selectedYear + 1].year}` : 'Geen volgende periode beschikbaar'}
+                                    >
+                                        Volgende periode →
+                                    </button>
+                                </div>
+
+                                <h3 id="modal-title" className="text-2xl md:text-3xl font-bold text-white mb-2">
                                     {timelineData[selectedYear].title}
                                 </h3>
                                 <p className="text-emerald-400 text-base mb-6">
@@ -285,7 +358,7 @@ export default function TimelineSection() {
                                     <div className="mb-6 bg-emerald-900/20 rounded-xl p-4 border border-emerald-700/30">
                                         <div className="flex items-center justify-between text-emerald-300 mb-4">
                                             <div className="flex items-center gap-2">
-                                                <ImageIcon size={20} />
+                                                <ImageIcon size={20} aria-hidden="true" />
                                                 <span className="font-medium">
                                                     {timelineData[selectedYear].images.length} historische afbeelding{timelineData[selectedYear].images.length > 1 ? 'en' : ''}
                                                 </span>
@@ -301,9 +374,10 @@ export default function TimelineSection() {
                                         }`}>
                                             {timelineData[selectedYear].images.map((image, imgIndex) => (
                                                 <div key={imgIndex} className="group relative">
-                                                    <div
-                                                        className="cursor-pointer bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all"
+                                                    <button
+                                                        className="w-full cursor-pointer bg-white/5 rounded-lg p-2 hover:bg-white/10 transition-all focus:outline-none focus:ring-2 focus:ring-emerald-400"
                                                         onClick={() => handleImageClick(image.src, image.alt)}
+                                                        aria-label={`Vergroot afbeelding: ${image.alt}`}
                                                     >
                                                         <img
                                                             src={image.src}
@@ -314,10 +388,10 @@ export default function TimelineSection() {
                                                                 e.target.style.display = 'none';
                                                             }}
                                                         />
-                                                        <div className="absolute top-2 right-2 bg-black/50 rounded-full p-1.5 opacity-0 group-hover:opacity-100 transition-opacity">
+                                                        <div className="absolute top-2 right-2 bg-black/50 rounded-full p-1.5 opacity-0 group-hover:opacity-100 group-focus-within:opacity-100 transition-opacity" aria-hidden="true">
                                                             <Maximize2 size={16} className="text-white" />
                                                         </div>
-                                                    </div>
+                                                    </button>
                                                     <p className="text-xs text-neutral-400 mt-2 text-center italic">
                                                         {image.alt}
                                                     </p>
@@ -346,23 +420,6 @@ export default function TimelineSection() {
                                         </p>
                                     </div>
                                 </div>
-
-                                <div className="flex justify-between mt-6 pt-4 border-t border-neutral-700">
-                                    <button
-                                        onClick={() => selectedYear > 0 && setSelectedYear(selectedYear - 1)}
-                                        disabled={selectedYear === 0}
-                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2"
-                                    >
-                                        ← Vorige periode
-                                    </button>
-                                    <button
-                                        onClick={() => selectedYear < timelineData.length - 1 && setSelectedYear(selectedYear + 1)}
-                                        disabled={selectedYear === timelineData.length - 1}
-                                        className="text-sm text-emerald-400 hover:text-emerald-300 disabled:text-neutral-600 disabled:cursor-not-allowed transition-colors font-medium flex items-center gap-2"
-                                    >
-                                        Volgende periode →
-                                    </button>
-                                </div>
                             </div>
                         </div>
                     </div>
@@ -373,12 +430,16 @@ export default function TimelineSection() {
                     <div
                         className="fixed inset-0 bg-black/95 backdrop-blur-md z-[60] flex items-center justify-center p-4"
                         onClick={handleCloseZoom}
+                        role="dialog"
+                        aria-modal="true"
+                        aria-label="Vergrote afbeelding"
                     >
                         <button
                             onClick={handleCloseZoom}
-                            className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors bg-neutral-900/80 rounded-full p-2 z-10"
+                            className="absolute top-4 right-4 text-white hover:text-emerald-400 transition-colors bg-neutral-900/80 rounded-full p-2 z-10 focus:outline-none focus:ring-2 focus:ring-emerald-400"
+                            aria-label="Sluit vergrote afbeelding"
                         >
-                            <X size={24} />
+                            <X size={24} aria-hidden="true" />
                         </button>
                         <div className="relative max-w-7xl max-h-full flex items-center justify-center">
                             <img
@@ -389,13 +450,13 @@ export default function TimelineSection() {
                             />
                         </div>
                         {zoomedImage.alt && (
-                            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-neutral-900/90 px-6 py-3 rounded-lg max-w-3xl">
+                            <div className="absolute bottom-8 left-1/2 transform -translate-x-1/2 bg-neutral-900/90 px-6 py-3 rounded-lg max-w-3xl" role="complementary">
                                 <p className="text-center text-sm text-neutral-300 italic">
                                     {zoomedImage.alt}
                                 </p>
                             </div>
                         )}
-                        <div className="absolute bottom-4 right-4 text-xs text-neutral-400 bg-neutral-900/80 px-3 py-1.5 rounded-full">
+                        <div className="absolute bottom-4 right-4 text-xs text-neutral-400 bg-neutral-900/80 px-3 py-1.5 rounded-full" aria-live="polite">
                             Druk op ESC of klik om te sluiten
                         </div>
                     </div>
