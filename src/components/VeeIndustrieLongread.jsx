@@ -15,11 +15,10 @@ import FooterSection from "./sections/text/FooterSection.jsx";
 import PollSection from "./sections/interactive/PollSection.jsx";
 import TimelineSection from "./sections/interactive/TimelineSection.jsx";
 import VideoSection from "./sections/interactive/VideoSection.jsx";
-import DefaultAudioSection from "./sections/interactive/DefaultAudioSection.jsx";
-import WetsvoorstelSimulator from "./sections/interactive/game/WetsvoorstelSimulator.jsx";
 import Cards from "./sections/interactive/Cards.jsx";
 import HistoryIntroSection from "./sections/text/HistoryIntroSection.jsx";
 import CardsSection from "./sections/interactive/CardsSection.jsx";
+import InterviewsSection from "./sections/interactive/InterviewsSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -170,6 +169,8 @@ export default function VeeIndustrieLongread() {
                     </blockquote>
                 </div>
 
+                <InterviewsSection/>
+
                 <PollSection/>
                 <SecondSection/>
 
@@ -188,7 +189,7 @@ export default function VeeIndustrieLongread() {
                     </div>
                 </div>
 
-                <DefaultAudioSection/>
+                {/*<DefaultAudioSection/>*/}
             </section>
 
             {/* Interviews sectie - Add ID for navigation */}
