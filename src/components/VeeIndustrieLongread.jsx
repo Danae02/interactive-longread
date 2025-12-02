@@ -22,18 +22,66 @@ import InterviewsSection from "./sections/interactive/InterviewsSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
+    const [scrollProgress, setScrollProgress] = useState(0);
     const [showStatsPopup, setShowStatsPopup] = useState(false);
     const [showScalePopup, setShowScalePopup] = useState(false);
     const [showFarmsPopup, setShowFarmsPopup] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
 
     useEffect(() => {
-        const handleScroll = () => setScrollY(window.scrollY);
+        const handleScroll = () => {
+            setScrollY(window.scrollY);
+
+            // Bereken scroll percentage
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight;
+            const scrollable = documentHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / scrollable) * 100;
+
+            setScrollProgress(progress);
+
+            // Check if scrolled past hero for mobile visibility
+            setIsScrolled(window.scrollY > 100);
+        };
+
         window.addEventListener('scroll', handleScroll);
+        handleScroll(); // Call initially to set progress
         return () => window.removeEventListener('scroll', handleScroll);
     }, []);
 
     return (
         <div className="longread-container bg-neutral-900 text-neutral-100">
+
+            {/* Scroll Progress Bar - FIXED bovenaan, onder de navigation */}
+            <div
+                className="fixed left-0 w-full z-[60] transition-all duration-300"
+                style={{
+                    top: '80px', // Plaats onder de navigation (h-20 = 80px)
+                    opacity: isScrolled ? 1 : 0.7 // Minder zichtbaar bovenaan
+                }}
+            >
+                <div className="relative">
+                    {/* Progress percentage indicator - alleen tonen als niet 0% of 100% */}
+                    {scrollProgress > 0 && scrollProgress < 100 && (
+                        <div
+                            className="absolute right-4 -top-8 bg-neutral-800 text-white text-xs font-medium px-2 py-1 rounded shadow-lg z-[70]"
+                            style={{ opacity: isScrolled ? 1 : 0.5 }}
+                        >
+                            {Math.round(scrollProgress)}%
+                        </div>
+                    )}
+
+                    {/* Progress bar */}
+                    <div className="w-full h-1.5 bg-neutral-800/50 backdrop-blur-sm">
+                        <div
+                            className="h-full bg-gradient-to-r from-emerald-500 via-teal-400 to-cyan-400 transition-all duration-150 ease-out shadow-lg"
+                            style={{ width: `${scrollProgress}%` }}
+                        />
+                    </div>
+                </div>
+            </div>
+
             {/* Navigation Component */}
             <Navigation />
 
@@ -62,9 +110,6 @@ export default function VeeIndustrieLongread() {
             <section id="introductie">
                 <IntroductionSection/>
             </section>
-
-
-
 
             {/* Timeline - Add ID for navigation */}
             <section id="verleden">

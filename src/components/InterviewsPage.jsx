@@ -371,7 +371,8 @@ export default function InterviewsPage() {
         const interview = selectedInterview;
         return (
             <div className="min-h-screen bg-neutral-900 text-neutral-100">
-                <div className="max-w-4xl mx-auto px-6 py-12">
+                {/* EXTRA PADDING AAN DE TOP OM ONDER DE NAVIGATION TE BLIJVEN */}
+                <div className="pt-20 max-w-4xl mx-auto px-6 pb-12">
                     {/* Back button - gebruik navigate om terug te gaan */}
                     <button
                         onClick={() => navigate('/interviews')}
@@ -456,7 +457,8 @@ export default function InterviewsPage() {
     // Overview page (geen interview geselecteerd)
     return (
         <div className="min-h-screen bg-neutral-900 text-neutral-100">
-            <div className="max-w-6xl mx-auto px-6 py-16">
+            {/* EXTRA PADDING AAN DE TOP OM ONDER DE NAVIGATION TE BLIJVEN */}
+            <div className="pt-20 max-w-6xl mx-auto px-6 pb-16">
                 {/* Header */}
                 <div className="text-center mb-16">
                     <Link

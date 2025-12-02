@@ -1,14 +1,18 @@
 import React, { useState } from 'react';
-import { BookOpen, Film, ExternalLink, Heart, ArrowLeft, ChevronDown, ChevronUp, Sparkles, Users, MessageSquare, Quote } from 'lucide-react';
+import { BookOpen, Film, ExternalLink, Heart, ArrowLeft, ChevronDown, ChevronUp, Sparkles, Users, MessageSquare, Quote, Play } from 'lucide-react';
 
 
 export default function KunstCultuurPage() {
     const [expandedSections, setExpandedSections] = useState({
         poem: false,
         monument: false,
-        documentary: false,
+        documentaries: false, // Hoofdcategorie voor documentaires
+        boerocratie: false,  // Subcategorie
+        liesjes: false,      // Subcategorie
         recommendations: false
     });
+
+    const [showBoerocratieTrailer, setShowBoerocratieTrailer] = useState(false);
 
     const toggleSection = (section) => {
         setExpandedSections(prev => ({
@@ -17,13 +21,22 @@ export default function KunstCultuurPage() {
         }));
     };
 
+    const toggleSubSection = (section, parentSection) => {
+        setExpandedSections(prev => ({
+            ...prev,
+            [section]: !prev[section],
+            // Als de hoofdsectie nog niet open is, open die ook
+            [parentSection]: prev[parentSection] ? prev[parentSection] : true
+        }));
+    };
+
     const artItems = [
         {
             id: 'poem',
             icon: <BookOpen className="text-purple-400" size={28} />,
-            title: "Poëzie: Bekeerling",
+            title: "Gedicht: Bekeerling",
             subtitle: "Door Ester Naomi Perquin • Uit de bundel 'Servetten halfstok'",
-            teaser: "Gevonden en aangeraden door Rienk Wielenga",
+            teaser: "Gevonden en aangeraden door Rienk Wielenga....",
             content: (
                 <>
                     <div className="font-serif leading-relaxed space-y-6 text-neutral-200">
@@ -63,27 +76,13 @@ export default function KunstCultuurPage() {
                             servetten halfstok.
                         </p>
                     </div>
-
-                    {/*<div className="mt-8 pt-8 border-t border-neutral-700">*/}
-                    {/*    <h4 className="text-lg font-bold text-white mb-4">Over dit gedicht</h4>*/}
-                    {/*    <p className="text-neutral-300 leading-relaxed mb-4">*/}
-                    {/*        'Bekeerling' schetst de overgang van een vleesrijk bestaan naar een plantaardig leven.*/}
-                    {/*        Perquin gebruikt krachtige beelden: dieren die 's ochtends nog leven en 's avonds worden*/}
-                    {/*        opgediend, servetten die "halfstok" hangen als symbool van rouw.*/}
-                    {/*    </p>*/}
-                    {/*    <p className="text-neutral-300 leading-relaxed">*/}
-                    {/*        De laatste regel raakt de kern: <em className="text-purple-300">"Thuis hingen na de maaltijd*/}
-                    {/*        servetten halfstok"</em> – alsof er na elke maaltijd rouw gedragen wordt voor het leven*/}
-                    {/*        dat genomen is. Het gedicht vraagt ons stil te staan bij de normaliteit van geweld.*/}
-                    {/*    </p>*/}
-                    {/*</div>*/}
                 </>
             )
         },
         {
             id: 'monument',
-            icon: <div className="w-8 h-8 bg-emerald-900 rounded-lg flex items-center justify-center">
-                <span className="text-emerald-400 text-lg">🐄</span>
+            icon: <div className="w-8 h-8 bg-neutral-800 rounded-lg flex items-center justify-center border border-neutral-700">
+                <span className="text-neutral-300 text-lg">🐄</span>
             </div>,
             title: "Het Koeienmonument Amsterdam",
             subtitle: "Een monument voor 2 miljoen geslachte koeien • Jan van Galenstraat, Amsterdam West",
@@ -91,59 +90,78 @@ export default function KunstCultuurPage() {
             content: (
                 <>
                     <div className="prose prose-lg prose-invert max-w-none">
+                        {/* Afbeelding van het schetsontwerp */}
+                        <div className="mb-8 rounded-xl overflow-hidden border border-neutral-700 bg-gradient-to-br from-neutral-800 to-neutral-900">
+                            <div className="p-6 text-center">
+                                <h4 className="text-lg font-bold text-white mb-3">Schetsontwerp van het monument</h4>
+                                <p className="text-neutral-400 text-sm mb-6 max-w-2xl mx-auto">
+                                    Een springende koe als symbool van vrijheid en leven - het ontwerp voor het Koeienmonument Amsterdam
+                                </p>
+                                <div className="flex justify-center">
+                                    <img
+                                        src="/afbeeldingen-kunst-cultuur/koeienmonument-logo-springende-koe.png"
+                                        alt="Schetsontwerp van het Koeienmonument met een springende koe"
+                                        className="max-w-md w-full rounded-lg border-2 border-neutral-700 shadow-lg hover:border-neutral-600 transition-colors duration-300"
+                                    />
+                                </div>
+                                <p className="text-neutral-500 text-xs mt-4 italic">
+                                    Ontwerp: Mark Schalken • Beeld van een springende koe als symbool voor vrijheid en leven
+                                </p>
+                            </div>
+                        </div>
+
                         <p className="text-neutral-200 leading-relaxed mb-6">
                             Tussen 1984 en 2017 zijn ruim <strong className="text-white">twee miljoen koeien geslacht</strong> op
                             het besloten terrein van het Foodcenter aan de Jan van Galenstraat in West, bijgenaamd
-                            <em className="text-emerald-300"> 'De buik van Amsterdam'</em>. Nu, tien jaar later, wordt dit
+                            <em className="text-neutral-300"> 'De buik van Amsterdam'</em>. Nu, tien jaar later, wordt dit
                             terrein een woonwijk.
                         </p>
 
-                        <div className="bg-neutral-900 rounded-lg p-6 my-8 border-l-4 border-emerald-600">
+                        <div className="bg-neutral-800 rounded-lg p-6 my-8 border-l-4 border-neutral-600">
                             <h4 className="text-lg font-bold text-white mb-4">Doelen van het monument</h4>
                             <ul className="space-y-3 text-neutral-300">
                                 <li className="flex items-start gap-3">
-                                    <span className="text-emerald-400 mt-1">•</span>
+                                    <span className="text-neutral-400 mt-1">•</span>
                                     <span>De vele geslachte koeien herdenken</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-emerald-400 mt-1">•</span>
+                                    <span className="text-neutral-400 mt-1">•</span>
                                     <span>Een fysieke plek voor ontmoeting en educatie over omgang met dieren</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-emerald-400 mt-1">•</span>
+                                    <span className="text-neutral-400 mt-1">•</span>
                                     <span>De lokale stadsgeschiedenis levend houden</span>
                                 </li>
                                 <li className="flex items-start gap-3">
-                                    <span className="text-emerald-400 mt-1">•</span>
+                                    <span className="text-neutral-400 mt-1">•</span>
                                     <span>De kracht van kunst en cultuur inzetten voor maatschappelijke verandering</span>
                                 </li>
                             </ul>
                         </div>
 
-                        <div className="bg-emerald-900/20 rounded-lg p-6 my-8 border border-emerald-700/30">
-                            <p className="text-emerald-100 italic leading-relaxed">
+                        <div className="bg-neutral-800/50 rounded-lg p-6 my-8 border border-neutral-700">
+                            <p className="text-neutral-200 italic leading-relaxed">
                                 "Fietsend naar mijn atelier zag ik jarenlang de vrachtwagens met opeengepakte,
                                 angstig snuivende koeien staan bij de poort van het abattoir. Ik rook ze vaak
                                 al voordat ik ze zag. Ik was blij toen het abattoir stopte en het afgelopen
                                 was – maar het was natuurlijk helemaal niet afgelopen."
                             </p>
-                            <p className="text-emerald-300 text-sm mt-3">
+                            <p className="text-neutral-400 text-sm mt-3">
                                 — Mark Schalken, initiatiefnemer
                             </p>
                         </div>
 
-
                         <p className="text-neutral-300 leading-relaxed mb-6">
                             Het monument wil een <strong className="text-white">vredesmonument</strong> worden:
-                            een appèl aan stadsbewoners om anders te gaan eten – plantaardig – zodat de
+                            een appèl aan stadsbewoners om anders te gaan eten zodat de
                             dierenindustrie kan verdwijnen, en er ruimte ontstaat om zonder uitbuiting met
                             dieren om te gaan.
                         </p>
 
                         {/* Stripserie sectie */}
-                        <div className="bg-gradient-to-r from-purple-900/30 to-emerald-900/30 rounded-xl p-6 my-8 border border-purple-700/50">
+                        <div className="bg-gradient-to-r from-neutral-800 to-neutral-900 rounded-xl p-6 my-8 border border-neutral-700">
                             <div className="flex items-start gap-4 mb-4">
-                                <div className="bg-purple-900/50 p-3 rounded-lg">
+                                <div className="bg-neutral-700 p-3 rounded-lg">
                                     <span className="text-2xl">🎨</span>
                                 </div>
                                 <div>
@@ -166,13 +184,13 @@ export default function KunstCultuurPage() {
                                         href="https://markschalken.cargo.site/Koeienmonument-strips"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-purple-700 hover:bg-purple-600 text-white px-5 py-2.5 rounded-lg transition-colors font-medium text-sm"
+                                        className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-5 py-2.5 rounded-lg transition-colors font-medium text-sm"
                                     >
                                         <span>Lees de stripserie</span>
                                         <ExternalLink size={16} />
                                     </a>
                                 </div>
-                                <div className="bg-neutral-900/50 rounded-lg p-4 border border-neutral-700">
+                                <div className="bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
                                     <p className="text-neutral-400 text-sm italic mb-2">
                                         Of lees eerst meer over het monument
                                     </p>
@@ -180,7 +198,7 @@ export default function KunstCultuurPage() {
                                         href="https://markschalken.cargo.site/koeienmonument-plan"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors text-sm font-medium"
+                                        className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium"
                                     >
                                         <span>Bekijk het volledige plan</span>
                                         <ExternalLink size={16} />
@@ -194,7 +212,7 @@ export default function KunstCultuurPage() {
                                 href="https://markschalken.cargo.site/koeienmonument-plan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
                             >
                                 Lees het volledige plan
                                 <ExternalLink size={18} />
@@ -203,7 +221,7 @@ export default function KunstCultuurPage() {
                                 href="https://markschalken.cargo.site/Koeienmonument-strips"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-purple-700 hover:bg-purple-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
                             >
                                 <span>🎨</span>
                                 Lees de stripserie
@@ -215,93 +233,274 @@ export default function KunstCultuurPage() {
             )
         },
         {
-            id: 'documentary',
-            icon: <Film className="text-amber-400" size={28} />,
-            title: "Documentaire: Liesjes hok was leeg",
-            subtitle: "3LAB documentaire • Première: 30 oktober 2025",
-            teaser: "Over familie, tradities en de prijs van vlees...",
+            id: 'documentaries',
+            icon: <Film className="text-neutral-300" size={28} />,
+            title: "Documentaires",
+            subtitle: "Twee documentaires die de vee-industrie vanuit verschillende perspectieven belichten",
+            teaser: "Van politieke macht tot persoonlijke verhalen...",
             content: (
-                <>
-                    <div className="prose prose-lg prose-invert max-w-none">
-                        <p className="text-neutral-200 leading-relaxed mb-6">
-                            Toen boerenzoon <strong className="text-white">Wouter Waayer</strong> klein was, kreeg hij
-                            van zijn vader een kalfje om voor te zorgen. Dit knuffelkalf kreeg de naam <em className="text-amber-300">Liesje</em>.
-                            Vijf maanden later was het hok van Liesje ineens leeg. Die was, zoals dat nu eenmaal gaat
-                            met vleeskalveren in Nederland, naar het slachthuis gebracht.
-                        </p>
-
-                        <div className="bg-red-900/20 border-l-4 border-red-600 p-6 rounded-r-lg my-8">
-                            <p className="text-red-100 leading-relaxed">
-                                Dit moment zette het leven van Wouter op zijn kop. Inmiddels is hij vegan influencer
-                                en heeft hij zich aangesloten bij Extinction Rebellion, terwijl zijn vader Jan en
-                                broer Chiel nog altijd het vleeskalverenbedrijf in Geesteren runnen.
-                            </p>
-                        </div>
-
-                        <h4 className="text-xl font-bold text-white mb-4">Over de film</h4>
-                        <p className="text-neutral-300 leading-relaxed mb-4">
-                            In deze documentaire keert Wouter terug naar de boerderij in Twente, waar hij opnieuw een
-                            Liesje krijgt. We volgen het stierkalf van binnenkomst tot vertrek naar het slachthuis,
-                            zo'n vijf maanden later.
-                        </p>
-
-                        <p className="text-neutral-300 leading-relaxed mb-6">
-                            Tussen vader Jan, de nuchtere boer die een systeem heeft bedacht om de uitstoot in stallen
-                            te verminderen, en Wouter, de idealist die het liefst een koeienrusthuis zou beginnen,
-                            ontvouwt zich een zoektocht naar begrip. Tussen hen in: <strong className="text-white">Liesje</strong>,
-                            een kalf dat langzaam uitgroeit tot symbool voor alles wat schuurt tussen vader en zoon,
-                            traditie en systeemverandering, dierenliefde en het boerenbedrijf.
-                        </p>
-
-                        <div className="bg-neutral-800 rounded-lg p-6 my-8 border border-neutral-700">
-                            <h4 className="text-lg font-bold text-white mb-4">Thema's in de film</h4>
-                            <div className="grid md:grid-cols-2 gap-4">
-                                <div className="flex items-start gap-3">
-                                    <span className="text-amber-400 mt-1">→</span>
-                                    <span className="text-neutral-300">Familie en generatiekloof</span>
+                <div className="space-y-6">
+                    {/* Documentaire 1: Boerocratie */}
+                    <div className="border border-neutral-700 rounded-lg overflow-hidden">
+                        <button
+                            onClick={() => toggleSubSection('boerocratie', 'documentaries')}
+                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors"
+                        >
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center">
+                                            <span className="text-neutral-300 text-xs">🎬</span>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white">Boerocratie</h4>
+                                    </div>
+                                    <p className="text-neutral-400 text-sm mb-2">
+                                        Dutch Angle TV • De machtsgreep van Big Agro
+                                    </p>
+                                    <p className="text-neutral-300 text-sm">
+                                        Hoe multinationals achter vlees, veevoer en pesticiden hun invloed vestigen in de politiek...
+                                    </p>
                                 </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="text-amber-400 mt-1">→</span>
-                                    <span className="text-neutral-300">Traditie vs. verandering</span>
+                                <div className="flex-shrink-0">
+                                    {expandedSections.boerocratie ? (
+                                        <ChevronUp className="text-neutral-400" size={20} />
+                                    ) : (
+                                        <ChevronDown className="text-neutral-400" size={20} />
+                                    )}
                                 </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="text-amber-400 mt-1">→</span>
-                                    <span className="text-neutral-300">Dierenliefde vs. boerenbedrijf</span>
-                                </div>
-                                <div className="flex items-start gap-3">
-                                    <span className="text-amber-400 mt-1">→</span>
-                                    <span className="text-neutral-300">Hechten en loslaten</span>
+                            </div>
+                        </button>
+
+                        <div className={`overflow-hidden transition-all duration-300 ${
+                            expandedSections.boerocratie ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
+                            <div className="p-6 bg-neutral-900/50">
+                                <div className="prose prose-lg prose-invert max-w-none">
+                                    <p className="text-neutral-200 leading-relaxed mb-6">
+                                        De film onthult hoe de grote agro-industriebedrijven (<strong className="text-white">Big Agro</strong>) steeds
+                                        meer greep krijgen op de (inter)nationale politiek. Buiten het zicht van de kiezers om, hebben grote
+                                        agro- en bio-industriebedrijven een steeds grotere rol gespeeld in onze wet- en regelgeving.
+                                    </p>
+
+                                    <div className="bg-neutral-800 border-l-4 border-neutral-600 p-6 rounded-r-lg my-8">
+                                        <p className="text-neutral-200 italic leading-relaxed text-lg mb-3">
+                                            "De grootste bedreiging voor onze planeet in deze eeuw is niet alleen de klimaatcrisis,
+                                            maar ook de macht van Big Agro om elke hervorming tegen te houden."
+                                        </p>
+                                        <p className="text-neutral-400 text-sm">
+                                            — George Monbiot (The Guardian), Boerocratie
+                                        </p>
+                                    </div>
+
+                                    <h4 className="text-xl font-bold text-white mb-4">Over de film</h4>
+                                    <p className="text-neutral-300 leading-relaxed mb-4">
+                                        Ze bekleden sleutelposities in parlement en kabinet, zoals op het Nederlandse ministerie van
+                                        Landbouw, Visserij, Voedselkwaliteit en Natuur. Om hun handelen en invloed aan het licht te brengen,
+                                        hebben de onderzoeksjournalistieke documentairemakers van Dutch Angle TV een ontmaskerende
+                                        documentaire gemaakt waarin onderzoeksjournalist <strong className="text-white">George Monbiot</strong> zijn
+                                        analyses over de machtsgreep van Big Agro deelt.
+                                    </p>
+
+                                    <div className="bg-neutral-800 rounded-lg p-6 my-8 border border-neutral-700">
+                                        <h4 className="text-lg font-bold text-white mb-4">Centrale vragen</h4>
+                                        <div className="space-y-4">
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1 text-xl">•</span>
+                                                <span className="text-neutral-300">Hoe hebben de multinationals achter vlees, veevoer en pesticiden hun invloed in onze parlementaire democratie weten te vestigen?</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1 text-xl">•</span>
+                                                <span className="text-neutral-300">Was de razendsnelle opkomst van de BoerBurgerBeweging (BBB) het resultaat van een boerenopstand of van een strategie van de grote agrobedrijven en een reclamebureau in hun dienst?</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    {/* YouTube trailer sectie */}
+                                    {showBoerocratieTrailer && (
+                                        <div className="mb-8">
+                                            <div className="flex items-center gap-2 mb-4">
+                                                <Play className="text-neutral-300" size={24} />
+                                                <h4 className="text-xl font-bold text-white">Bekijk de trailer</h4>
+                                            </div>
+                                            <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-neutral-700">
+                                                <iframe
+                                                    src="https://www.youtube.com/embed/nW5UAEKvLf4?si=D1iQoasi7grQeFKP"
+                                                    title="Boerocratie Trailer"
+                                                    frameBorder="0"
+                                                    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                                    allowFullScreen
+                                                    className="absolute top-0 left-0 w-full h-full"
+                                                />
+                                            </div>
+                                            <p className="text-neutral-400 text-sm mt-2 italic">
+                                                Trailer: Boerocratie - De machtsgreep van Big Agro
+                                            </p>
+                                        </div>
+                                    )}
+
+                                    <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                                        <a
+                                            href="https://www.ngpf.nl/boerocratie"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1"
+                                        >
+                                            <ExternalLink size={18}/>
+                                            <span>Bekijk de volledige film</span>
+                                        </a>
+
+                                        <button
+                                            onClick={() => setShowBoerocratieTrailer(!showBoerocratieTrailer)}
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1 border border-neutral-700"
+                                        >
+                                            {showBoerocratieTrailer ? (
+                                                <>
+                                                    <Film size={18}/>
+                                                    <span>Verberg trailer</span>
+                                                </>
+                                            ) : (
+                                                <>
+                                                    <Play size={18}/>
+                                                    <span>Bekijk trailer</span>
+                                                </>
+                                            )}
+                                        </button>
+                                    </div>
+
+                                    <div className="mt-4 text-center">
+                                        <a
+                                            href="https://youtu.be/nW5UAEKvLf4?si=D1iQoasi7grQeFKP"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm"
+                                        >
+                                            <span>Open trailer in YouTube</span>
+                                            <ExternalLink size={14} />
+                                        </a>
+                                    </div>
                                 </div>
                             </div>
                         </div>
+                    </div>
 
-                        <p className="text-neutral-300 leading-relaxed mb-6 italic">
-                            Een beschouwende documentaire over wat er gebeurt als je ophoudt met wegkijken,
-                            en je beseft dat een dier geen nummer is, maar een levend wezen met een naam.
-                        </p>
+                    {/* Documentaire 2: Liesjes hok was leeg */}
+                    <div className="border border-neutral-700 rounded-lg overflow-hidden">
+                        <button
+                            onClick={() => toggleSubSection('liesjes', 'documentaries')}
+                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors"
+                        >
+                            <div className="flex items-start justify-between gap-4">
+                                <div className="flex-1">
+                                    <div className="flex items-center gap-3 mb-2">
+                                        <div className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center">
+                                            <span className="text-neutral-300 text-xs">🎞️</span>
+                                        </div>
+                                        <h4 className="text-lg font-bold text-white">Liesjes hok was leeg</h4>
+                                    </div>
+                                    <p className="text-neutral-400 text-sm mb-2">
+                                        3LAB documentaire • Première: 30 oktober 2025
+                                    </p>
+                                    <p className="text-neutral-300 text-sm">
+                                        Over familie, tradities en de prijs van vlees...
+                                    </p>
+                                </div>
+                                <div className="flex-shrink-0">
+                                    {expandedSections.liesjes ? (
+                                        <ChevronUp className="text-neutral-400" size={20} />
+                                    ) : (
+                                        <ChevronDown className="text-neutral-400" size={20} />
+                                    )}
+                                </div>
+                            </div>
+                        </button>
 
-                        <div className="flex flex-col sm:flex-row gap-4">
-                            <a
-                                href="https://www.human.nl/3lab/artikelen/3lab-liesjes-hok-was-leeg"
-                                target="_blank"
-                                rel="noopener noreferrer"
-                                className="inline-flex items-center justify-center gap-2 bg-amber-700 hover:bg-amber-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
-                            >
-                                Meer over de film
-                                <ExternalLink size={18} />
-                            </a>
-                            <button className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium">
-                                Bekijk de trailer
-                                <Film size={18} />
-                            </button>
+                        <div className={`overflow-hidden transition-all duration-300 ${
+                            expandedSections.liesjes ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
+                        }`}>
+                            <div className="p-6 bg-neutral-900/50">
+                                <div className="prose prose-lg prose-invert max-w-none">
+                                    <p className="text-neutral-200 leading-relaxed mb-6">
+                                        Toen boerenzoon <strong className="text-white">Wouter Waayer</strong> klein was, kreeg hij
+                                        van zijn vader een kalfje om voor te zorgen. Dit knuffelkalf kreeg de naam <em className="text-neutral-300">Liesje</em>.
+                                        Vijf maanden later was het hok van Liesje ineens leeg. Die was, zoals dat nu eenmaal gaat
+                                        met vleeskalveren in Nederland, naar het slachthuis gebracht.
+                                    </p>
+
+                                    <div className="bg-neutral-800 border-l-4 border-neutral-600 p-6 rounded-r-lg my-8">
+                                        <p className="text-neutral-200">
+                                            Dit moment zette het leven van Wouter op zijn kop. Inmiddels is hij vegan influencer
+                                            en heeft hij zich aangesloten bij Extinction Rebellion, terwijl zijn vader Jan en
+                                            broer Chiel nog altijd het vleeskalverenbedrijf in Geesteren runnen.
+                                        </p>
+                                    </div>
+
+                                    <h4 className="text-xl font-bold text-white mb-4">Over de film</h4>
+                                    <p className="text-neutral-300 leading-relaxed mb-4">
+                                        In deze documentaire keert Wouter terug naar de boerderij in Twente, waar hij opnieuw een
+                                        Liesje krijgt. We volgen het stierkalf van binnenkomst tot vertrek naar het slachthuis,
+                                        zo'n vijf maanden later.
+                                    </p>
+
+                                    <p className="text-neutral-300 leading-relaxed mb-6">
+                                        Tussen vader Jan, de nuchtere boer die een systeem heeft bedacht om de uitstoot in stallen
+                                        te verminderen, en Wouter, de idealist die het liefst een koeienrusthuis zou beginnen,
+                                        ontvouwt zich een zoektocht naar begrip. Tussen hen in: <strong className="text-white">Liesje</strong>,
+                                        een kalf dat langzaam uitgroeit tot symbool voor alles wat schuurt tussen vader en zoon,
+                                        traditie en systeemverandering, dierenliefde en het boerenbedrijf.
+                                    </p>
+
+                                    <div className="bg-neutral-800 rounded-lg p-6 my-8 border border-neutral-700">
+                                        <h4 className="text-lg font-bold text-white mb-4">Thema's in de film</h4>
+                                        <div className="grid md:grid-cols-2 gap-4">
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1">→</span>
+                                                <span className="text-neutral-300">Familie en generatiekloof</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1">→</span>
+                                                <span className="text-neutral-300">Traditie vs. verandering</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1">→</span>
+                                                <span className="text-neutral-300">Dierenliefde vs. boerenbedrijf</span>
+                                            </div>
+                                            <div className="flex items-start gap-3">
+                                                <span className="text-neutral-400 mt-1">→</span>
+                                                <span className="text-neutral-300">Hechten en loslaten</span>
+                                            </div>
+                                        </div>
+                                    </div>
+
+                                    <p className="text-neutral-300 leading-relaxed mb-6 italic">
+                                        Een beschouwende documentaire over wat er gebeurt als je ophoudt met wegkijken,
+                                        en je beseft dat een dier geen nummer is, maar een levend wezen met een naam.
+                                    </p>
+
+                                    <div className="flex flex-col sm:flex-row gap-4 mt-8">
+                                        <a
+                                            href="https://www.human.nl/3lab/artikelen/3lab-liesjes-hok-was-leeg"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                        >
+                                            Meer over de film
+                                            <ExternalLink size={18} />
+                                        </a>
+                                        <button className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium">
+                                            Bekijk de trailer
+                                            <Film size={18} />
+                                        </button>
+                                    </div>
+                                </div>
+                            </div>
                         </div>
                     </div>
-                </>
+                </div>
             )
         },
         {
             id: 'recommendations',
-            icon: <Sparkles className="text-cyan-400" size={28} />,
+            icon: <Sparkles className="text-neutral-300" size={28} />,
             title: "Meer Aanraders",
             subtitle: "Documentaires, boeken, podcasts en kunstwerken",
             teaser: "Ontdek meer werken die een andere kijk geven op de vee-industrie...",
@@ -311,26 +510,27 @@ export default function KunstCultuurPage() {
                         type="Documentaire"
                         title="Food for Profit"
                         description="Over de verwevenheid van de vee-industrie met Europese politiek en subsidies"
-                        link="#"
+                        link="https://www.vprogids.nl/cinema/films/film~15817732~food-for-profit~.html"
                     />
                     <RecommendationCard
-                        type="Boek"
-                        title="Eating Animals"
-                        description="Jonathan Safran Foer onderzoekt de morele implicaties van vleesconsumptie"
-                        link="#"
+                        type="Zembla Kort"
+                        title="De lobby van de agrarische industrie"
+                        description="Samenvatting van een uitzending van Zembla over de invloed van de agrarische lobby op beleid en besluitvorming"
+                        link="https://youtu.be/ChEUDmCfgJ0?si=n3eCBFiNiaTFtwPU"
                     />
                     <RecommendationCard
-                        type="Podcast"
-                        title="De Dag Podcast: De Boer"
-                        description="Serie over boeren in transitie en de toekomst van landbouw"
-                        link="#"
+                        type="Zembla Kort"
+                        title="De rol van banken in de landbouwcrisis"
+                        description="Samenvatting van een uitzending van Zembla over de schadelijke gevolgen van intensieve landbouw voor bodem en toekomst van voedselvoorziening"
+                        link="https://youtu.be/YDINOPHSqBM?si=Ciq3nXOmira0_Am5"
                     />
                     <RecommendationCard
-                        type="Kunst"
-                        title="Sue Coe's werk"
-                        description="Kunstenares die de realiteit van slachthuizen vastlegt"
-                        link="#"
+                        type="FoodUnfolded"
+                        title="How does the meat lobby influence EU policy?"
+                        description="Onderzoek van FoodUnfolded en Lighthouse Reports naar de invloed van de vleeslobby en de ware achtergrond van de Dublin Declaration"
+                        link="https://youtu.be/dEQM7nnyPqo?si=GOJkgXyTXqigpeMs"
                     />
+
                 </div>
             )
         }
@@ -341,7 +541,7 @@ export default function KunstCultuurPage() {
             {/* Header */}
             <header className="bg-neutral-950 border-b border-neutral-800 sticky top-0 z-10">
                 <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <a href="/" className="flex items-center gap-2 text-emerald-400 hover:text-emerald-300 transition-colors">
+                    <a href="/" className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors">
                         <ArrowLeft size={20} />
                         <span className="text-sm">Terug naar hoofdverhaal</span>
                     </a>
@@ -357,8 +557,8 @@ export default function KunstCultuurPage() {
                         Het Kunst en Cultuur Hoekje
                     </h1>
                     <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
-                        Waar cijfers en analyses stoppen, beginnen kunst en cultuur. Hier vind je werken die
-                        raken, herdenken en anders laten kijken naar onze relatie met dieren, ....
+                        Waar cijfers en analyses stoppen, beginnen kunst en cultuur. Hier vind je werken die mij aan het
+                        denken hebben gezet.
                     </p>
                 </div>
             </section>
@@ -404,10 +604,14 @@ export default function KunstCultuurPage() {
                                     </div>
                                 </button>
 
-                                {/* Expandable Content */}
+                                {/* Expandable Content - GROTER voor koeienmonument */}
                                 <div
                                     className={`overflow-hidden transition-all duration-300 ${
-                                        expandedSections[item.id] ? 'max-h-[2000px] opacity-100' : 'max-h-0 opacity-0'
+                                        expandedSections[item.id] ?
+                                            item.id === 'monument' || item.id === 'documentaries' ?
+                                                'max-h-[5000px] opacity-100'
+                                                : 'max-h-[2000px] opacity-100'
+                                            : 'max-h-0 opacity-0'
                                     }`}
                                 >
                                     <div className="p-6 md:p-8 pt-0">
@@ -422,10 +626,6 @@ export default function KunstCultuurPage() {
 
                     {/* Call to Action */}
                     <div className="mt-16 text-center">
-                        <div className="inline-flex items-center gap-2 bg-emerald-900/30 px-6 py-3 rounded-full border border-emerald-700/50 mb-6">
-                            <MessageSquare className="text-emerald-400" size={20} />
-                            <span className="text-emerald-300 font-medium">Meer verhalen lezen?</span>
-                        </div>
                         <h2 className="text-3xl font-bold text-white mb-6">
                             Terug naar het Hoofdverhaal
                         </h2>
@@ -435,7 +635,7 @@ export default function KunstCultuurPage() {
                         </p>
                         <a
                             href="/"
-                            className="inline-flex items-center gap-2 bg-emerald-700 hover:bg-emerald-600 text-white px-8 py-4 rounded-lg transition-colors font-medium text-lg"
+                            className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-8 py-4 rounded-lg transition-colors font-medium text-lg"
                         >
                             <ArrowLeft size={20} />
                             Terug naar de longread
@@ -449,15 +649,15 @@ export default function KunstCultuurPage() {
 
 function RecommendationCard({ type, title, description, link }) {
     return (
-        <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-cyan-700/50 transition-all">
-            <div className="text-cyan-400 text-xs font-bold uppercase tracking-wide mb-2">{type}</div>
+        <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-neutral-600 transition-all">
+            <div className="text-neutral-400 text-xs font-bold uppercase tracking-wide mb-2">{type}</div>
             <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
             <p className="text-neutral-400 text-sm mb-4">{description}</p>
             <a
                 href={link}
-                className="inline-flex items-center gap-2 text-cyan-400 hover:text-cyan-300 transition-colors text-sm font-medium"
+                className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium"
             >
-                Bekijk →
+                Meer informatie →
             </a>
         </div>
     );
