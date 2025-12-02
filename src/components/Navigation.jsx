@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Menu, X, MessageSquare } from 'lucide-react'; // Import MessageSquare toegevoegd
+import { Menu, X, MessageSquare } from 'lucide-react';
 import { Link, useLocation } from 'react-router-dom';
 
 export default function Navigation() {
@@ -129,14 +129,14 @@ export default function Navigation() {
                             <div className="h-6 w-px bg-neutral-700 mx-2"></div>
                         )}
 
-                        {/* Extra pagina's */}
+                        {/* Extra pagina's - NU NEUTRAAL */}
                         {additionalPages.map((page) => (
                             <Link
                                 key={page.path}
                                 to={page.path}
                                 className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
                                     location.pathname === page.path
-                                        ? 'bg-purple-600 text-white'
+                                        ? 'bg-neutral-700 text-white' // Veranderd van purple-600 naar neutral-700
                                         : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                                 }`}
                             >
@@ -145,12 +145,12 @@ export default function Navigation() {
                             </Link>
                         ))}
 
-                        {/* Interviews link - MET ICON NU */}
+                        {/* Interviews link - NEUTRAAL */}
                         <Link
                             to="/interviews"
                             className={`px-4 py-2 rounded-md text-sm font-medium transition-colors flex items-center gap-2 ${
                                 location.pathname === '/interviews'
-                                    ? 'bg-amber-600 text-white'
+                                    ? 'bg-neutral-700 text-white'
                                     : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                             }`}
                         >
@@ -196,7 +196,7 @@ export default function Navigation() {
                         <div className="border-t border-neutral-700 my-2"></div>
                     )}
 
-                    {/* Extra pagina's */}
+                    {/* Extra pagina's - NU NEUTRAAL */}
                     {additionalPages.map((page) => (
                         <Link
                             key={page.path}
@@ -204,7 +204,7 @@ export default function Navigation() {
                             onClick={() => setIsMobileMenuOpen(false)}
                             className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
                                 location.pathname === page.path
-                                    ? 'bg-purple-600 text-white'
+                                    ? 'bg-neutral-700 text-white' // Veranderd van purple-600 naar neutral-700
                                     : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                             }`}
                         >
@@ -215,16 +215,13 @@ export default function Navigation() {
                         </Link>
                     ))}
 
-
-
-
-                    {/* Interviews link */}
+                    {/* Interviews link - NEUTRAAL */}
                     <Link
                         to="/interviews"
                         onClick={() => setIsMobileMenuOpen(false)}
                         className={`block px-3 py-3 rounded-md text-base font-medium transition-colors ${
                             location.pathname === '/interviews'
-                                ? 'bg-amber-600 text-white'
+                                ? 'bg-neutral-700 text-white'
                                 : 'text-neutral-300 hover:text-white hover:bg-neutral-800'
                         }`}
                     >

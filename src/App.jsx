@@ -4,6 +4,7 @@ import VeeIndustrieLongread from "./components/VeeIndustrieLongread.jsx";
 import InterviewsPage from "./components/InterviewsPage.jsx";
 import KunstCultuurPage from "./components/KunstCultuurPage.jsx";
 import Navigation from "./components/Navigation.jsx";
+import WatKanIkDoenPage from "./components/WatKanIkDoenPage.jsx";
 
 function App() {
     return (
@@ -14,6 +15,7 @@ function App() {
                 <Route path="/interviews" element={<InterviewsPage />} />
                 <Route path="/interviews/:id" element={<InterviewsPage />} />
                 <Route path="/kunst-cultuur" element={<KunstCultuurPage />} />
+                <Route path="/wat-kan-ik-doen" element={<WatKanIkDoenPage />} />
             </Routes>
         </Router>
     );

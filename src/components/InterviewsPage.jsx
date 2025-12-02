@@ -455,6 +455,7 @@ export default function InterviewsPage() {
     }
 
     // Overview page (geen interview geselecteerd)
+// Overview page (geen interview geselecteerd)
     return (
         <div className="min-h-screen bg-neutral-900 text-neutral-100">
             {/* EXTRA PADDING AAN DE TOP OM ONDER DE NAVIGATION TE BLIJVEN */}
@@ -463,12 +464,12 @@ export default function InterviewsPage() {
                 <div className="text-center mb-16">
                     <Link
                         to="/"
-                        className="inline-flex items-center gap-2 text-emerald-400 hover:text-emerald-300 mb-6 transition-colors"
+                        className="inline-flex items-center gap-2 text-neutral-300 hover:text-white mb-6 transition-colors"
                     >
                         <ArrowLeft size={20} />
                         Terug naar longread
                     </Link>
-                    <h1 className="text-5xl font-bold mb-6">Alle Interviews</h1>
+                    <h1 className="text-5xl font-bold mb-6 text-white">Alle Interviews</h1>
                     <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
                         Volledige interviews met transcripties, audiofragmenten en video's.
                         Verschillende perspectieven op de Nederlandse vee-industrie.
@@ -491,8 +492,8 @@ export default function InterviewsPage() {
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                 <div className="absolute bottom-4 left-4 right-4">
-                                    <h3 className="text-2xl font-bold mb-1">{interview.name}</h3>
-                                    <p className="text-emerald-400">{interview.role}</p>
+                                    <h3 className="text-2xl font-bold mb-1 text-white">{interview.name}</h3>
+                                    <p className="text-neutral-300">{interview.role}</p>
                                 </div>
                             </div>
                             <div className="p-6">
@@ -506,13 +507,13 @@ export default function InterviewsPage() {
                                         {interview.keyTopics && interview.keyTopics.slice(0, 2).map((topic, idx) => (
                                             <span
                                                 key={idx}
-                                                className="bg-neutral-700 px-3 py-1 rounded-full text-xs"
+                                                className="bg-neutral-700 px-3 py-1 rounded-full text-xs text-neutral-200"
                                             >
-                                                {topic}
-                                            </span>
+                                            {topic}
+                                        </span>
                                         ))}
                                     </div>
-                                    <ExternalLink size={20} className="text-emerald-400" />
+                                    <ExternalLink size={20} className="text-neutral-300" />
                                 </div>
                             </div>
                         </div>
