@@ -12,7 +12,7 @@ export default function InterviewsSection() {
             role: 'Politicoloog & Lobbyisme-expert',
             type: 'tekst',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
-            quote: 'De vee-lobby heeft meer invloed op het beleid dan de meeste mensen zich realiseren. Het gaat niet alleen om geld, maar om jarenlange relaties en gedeelde overtuigingen.',
+            quote: '......',
             highlight: 'Onthult hoe lobbynetwerken werken'
         },
         {
@@ -21,27 +21,27 @@ export default function InterviewsSection() {
             role: 'Boerenzoon → Vegan Activist',
             type: 'audio',
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
-            quote: 'Ik groeide op tussen de koeien en varkens. De switch naar activisme was geen verraad aan mijn familie, maar een logisch gevolg van wat ik zag gebeuren.',
+            quote: '....',
             highlight: 'Van boerderij naar activisme',
             audioFragments: 3
         },
         {
             id: 'bbb-lid',
             name: 'Kevin Brouwer',
-            role: 'BBB - Tweede Kamerlid',
+            role: 'BBB - lid',
             type: 'text',
             image: '/afbeeldingen-interviews/Kevin-Brouwer_BBB.jpg',
-            quote: 'Boeren worden keer op keer weggezet als de boeman, terwijl ze dag en nacht werken om Nederland te voeden. De regeldruk is ondraaglijk geworden.',
+            quote: '......',
             highlight: 'Schriftelijk interview over boerenbelangen',
             note: 'Schriftelijk beantwoord'
         },
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
-            role: 'Vakjournalist Landbouw',
+            role: '...',
             type: 'tekst',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
-            quote: 'Het debat is zo gepolariseerd geworden dat nuance verloren gaat. Beide kanten hebben geldige punten, maar niemand luistert meer naar elkaar.',
+            quote: '....',
             highlight: 'De middenweg in een verhit debat'
         },
         {

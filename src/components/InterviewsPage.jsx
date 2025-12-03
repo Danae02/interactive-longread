@@ -19,28 +19,28 @@ export default function InterviewsPage() {
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
             bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op het gebied van lobbyisme en belangenbehartiging. Hij heeft uitgebreid onderzoek gedaan naar de invloed van lobby-organisaties op het Nederlandse politieke systeem en staat bekend om zijn kritische analyses van het stikstofbeleid en de positie van boeren.',
             keyTopics: ['Lobbyisme', 'Boerenbelangen', 'Stikstofbeleid', 'Politieke invloed'],
-            writtenInterview: [
-                {
-                    question: 'Waarom heeft Nederland volgens u zo\'n grote vee-industrie nodig?',
-                    answer: 'Het gaat niet om "nodig hebben" - het is er gewoon. Generaties families leven van de veehouderij. Ze produceren voedsel, beheren het landschap, en dragen miljarden bij aan onze economie. De vraag zou moeten zijn: waarom zouden we dat kapot willen maken? Natuurlijk moet er verduurzaamd worden, maar dat doe je samen met boeren, niet tegen ze in.'
-                },
-                {
-                    question: 'Hoe kijkt u aan tegen de kritiek dat de sector te veel invloed heeft op het beleid?',
-                    answer: 'Dat is een frame van milieuorganisaties die zelf miljoenenbegrotingen hebben en de media weten te bereiken. Boeren hebben niet té veel invloed - ze hebben juist te weinig. Kijk naar het stikstofbeleid: dat is erdoor geramd zonder echt naar boeren te luisteren. Ze moeten stoppen of drastisch inkrimpen. Waar is hun invloed dan? In werkelijkheid zijn boeren buitenspel gezet door een élite die denkt dat ze wel weten wat goed is voor het platteland.'
-                },
-                {
-                    question: 'Wat zou er volgens u moeten veranderen in de sector?',
-                    answer: 'Ten eerste: perspectief. Boeren moeten weten waar ze aan toe zijn. Geen nieuw beleid om de drie jaar. Ten tweede: eerlijke prijzen. Supermarkten drukken de prijzen, boeren draaien op voor de kosten. Ten derde: minder regeldruk. Boeren stikken in de bureaucratie. En ten vierde: erken hun bijdrage. Boeren zijn geen milieuvervuilers, ze zijn voedselproducenten die Nederland heeft opgebouwd.'
-                },
-                {
-                    question: 'Hoe reageert u op de stelling dat de sector moet krimpen voor het klimaat en milieu?',
-                    answer: 'Ik vraag me af of degenen die dat roepen wel beseffen wat ze vragen. Je vraagt families om hun levenswerk op te geven. Voor wat? Zodat we vlees gaan importeren uit Brazilië waar de regels veel laxer zijn? Dat is symboolpolitiek. Nederlandse boeren zijn de meest duurzame ter wereld. Als we hier krimpen zonder de import te reguleren, verplaats je het probleem alleen maar.'
-                },
-                {
-                    question: 'Wat zou een eerlijker lobbysysteem betekenen voor de veehouderij?',
-                    answer: 'Rechtvaardigheid. Boeren verdienen een eerlijke behandeling en een toekomst. We willen beleid dat gemaakt wordt mét boeren, niet over hun hoofden heen. We willen realistisch klimaatbeleid dat niet hele sectoren kapot maakt. En we willen dat Nederland haar voedselproducenten weer gaat waarderen in plaats van demoniseren. Deze mensen voeden ons land. Toon wat respect.'
-                }
-            ],
+            // writtenInterview: [
+            //     {
+            //         question: 'Waarom heeft Nederland volgens u zo\'n grote vee-industrie nodig?',
+            //         answer: 'Het gaat niet om "nodig hebben" - het is er gewoon. Generaties families leven van de veehouderij. Ze produceren voedsel, beheren het landschap, en dragen miljarden bij aan onze economie. De vraag zou moeten zijn: waarom zouden we dat kapot willen maken? Natuurlijk moet er verduurzaamd worden, maar dat doe je samen met boeren, niet tegen ze in.'
+            //     },
+            //     {
+            //         question: 'Hoe kijkt u aan tegen de kritiek dat de sector te veel invloed heeft op het beleid?',
+            //         answer: 'Dat is een frame van milieuorganisaties die zelf miljoenenbegrotingen hebben en de media weten te bereiken. Boeren hebben niet té veel invloed - ze hebben juist te weinig. Kijk naar het stikstofbeleid: dat is erdoor geramd zonder echt naar boeren te luisteren. Ze moeten stoppen of drastisch inkrimpen. Waar is hun invloed dan? In werkelijkheid zijn boeren buitenspel gezet door een élite die denkt dat ze wel weten wat goed is voor het platteland.'
+            //     },
+            //     {
+            //         question: 'Wat zou er volgens u moeten veranderen in de sector?',
+            //         answer: 'Ten eerste: perspectief. Boeren moeten weten waar ze aan toe zijn. Geen nieuw beleid om de drie jaar. Ten tweede: eerlijke prijzen. Supermarkten drukken de prijzen, boeren draaien op voor de kosten. Ten derde: minder regeldruk. Boeren stikken in de bureaucratie. En ten vierde: erken hun bijdrage. Boeren zijn geen milieuvervuilers, ze zijn voedselproducenten die Nederland heeft opgebouwd.'
+            //     },
+            //     {
+            //         question: 'Hoe reageert u op de stelling dat de sector moet krimpen voor het klimaat en milieu?',
+            //         answer: 'Ik vraag me af of degenen die dat roepen wel beseffen wat ze vragen. Je vraagt families om hun levenswerk op te geven. Voor wat? Zodat we vlees gaan importeren uit Brazilië waar de regels veel laxer zijn? Dat is symboolpolitiek. Nederlandse boeren zijn de meest duurzame ter wereld. Als we hier krimpen zonder de import te reguleren, verplaats je het probleem alleen maar.'
+            //     },
+            //     {
+            //         question: 'Wat zou een eerlijker lobbysysteem betekenen voor de veehouderij?',
+            //         answer: 'Rechtvaardigheid. Boeren verdienen een eerlijke behandeling en een toekomst. We willen beleid dat gemaakt wordt mét boeren, niet over hun hoofden heen. We willen realistisch klimaatbeleid dat niet hele sectoren kapot maakt. En we willen dat Nederland haar voedselproducenten weer gaat waarderen in plaats van demoniseren. Deze mensen voeden ons land. Toon wat respect.'
+            //     }
+            // ],
             date: 'December 2024',
             downloadUrl: 'https://example.com/arco-transcript.pdf'
         },
@@ -126,25 +126,10 @@ export default function InterviewsPage() {
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
-            role: 'Vakjournalist Landbouw',
-            affiliation: 'Boerderij Magazine',
-            duration: 'Video + transcriptie',
-            type: 'video',
+            role: '....',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
             bio: 'Lammert van Raan is al 25 jaar journalist in de landbouwsector. Hij schrijft voor verschillende vakbladen en probeert nuance te brengen in een steeds gepolariseerder debat.',
             keyTopics: ['Landbouwjournalistiek', 'Nuance', 'Polarisatie', 'Feiten vs emotie'],
-            date: 'Oktober 2024',
-            transcript: `
-                [00:00] Interviewer: "Als journalist die al decennia de sector volgt, wat valt je het meest op aan het huidige debat?"
-                
-                [00:12] Lammert: "De verharding. Vroeger kon je nog genuanceerd schrijven over voor- en nadelen, nu word je direct in een hoek geduwd. Schrijf je iets positiefs over boeren? Dan ben je een lobbyist. Iets kritisch? Dan ben je een 'boerenbasher'. De middenpositie is verdwenen."
-                
-                [00:50] "En dat is jammer, want beide kanten hebben valide punten. Ja, de sector moet verduurzamen. Maar ja, boeren zijn ook mensen met gezinnen en hypotheken. Ja, dierenwelzijn moet beter. Maar ja, consumenten willen wel goedkoop vlees. Niemand wil meer die complexiteit zien."
-                
-                [... volledige transcriptie ...]
-            `,
-            videoUrl: 'https://example.com/lammert-interview.mp4',
-            downloadUrl: 'https://example.com/lammert-transcript.pdf'
         },
         {
             id: 'caring-farmers',
@@ -156,7 +141,6 @@ export default function InterviewsPage() {
             image: '/afbeeldingen-interviews/caring-farmers-climate-miles.jpg',
             bio: 'Caring Farmers is een stichting die zich inzet voor een transitie naar een duurzame, diervriendelijke landbouw. Ze geven een stem aan boeren die bewust kiezen voor kleinschalige, extensieve en biologische landbouw en willen het geluid van deze duurzame koplopers laten horen.',
             keyTopics: ['Duurzame landbouw', 'Boerenbelangen', 'Kleinschalige landbouw', 'Transitie'],
-            date: 'December 2024',
             writtenInterview: [
                 {
                     question: 'Waar zet Caring Farmers zich concreet voor in en wat doen jullie precies?',
@@ -168,7 +152,7 @@ export default function InterviewsPage() {
                 },
                 {
                     question: 'Hoe verhouden jullie je tot de gevestigde belangenbehartiging in de sector?',
-                    answer: 'Wij hebben nauwelijks budget voor belangenbehartiging, in tegenstelling tot de gangbare, gevestigde partijen. Wij vragen namelijk alleen vrijwillige donaties van ‘onze’ boeren, omdat we weten dat ze het vaak financieel niet breed hebben. Andere belangenbehartigers hebben hele kantoren met lobbyisten, daar kunnen wij nauwelijks tegenop. Daarom doen we wat we kunnen om het geluid van de Caring Farmers te laten horen, maar van intensieve lobby is van onze kant geen sprake.'
+                    answer: 'Wij hebben nauwelijks budget voor belangenbehartiging, in tegenstelling tot de gangbare, gevestigde partijen. Wij vragen namelijk alleen vrijwillige donaties van onze boeren, omdat we weten dat ze het vaak financieel niet breed hebben. Andere belangenbehartigers hebben hele kantoren met lobbyisten, daar kunnen wij nauwelijks tegenop. Daarom doen we wat we kunnen om het geluid van de Caring Farmers te laten horen, maar van intensieve lobby is van onze kant geen sprake.'
                 },
                 {
                     question: 'Wat is volgens jullie nodig om meer boeren in beweging te krijgen en hoe hopen jullie dat de landbouw er over 10-20 jaar uitziet?',
@@ -188,7 +172,6 @@ export default function InterviewsPage() {
             image: '/afbeeldingen-interviews/dierenrecht.jpg',
             bio: 'Dier & Recht is een stichting die zich inzet voor de belangen van dieren in Nederland en Europa. Ze voeren juridische procedures, doen onderzoek naar dierenwelzijn en lobbyen voor betere wetgeving en beleid. Ze richten zich onder meer op het aanpakken van subsidies die de vee-industrie in stand houden.',
             keyTopics: ['Dierenwelzijn', 'EU-subsidies', 'Lobbycampagnes', 'Juridische acties'],
-            date: 'November 2024',
             writtenInterview: [
                 {
                     question: 'Het lobbykrachtveld: Welke tegenkrachten ervaart Dier & Recht bij het streven naar afschaffing van deze subsidies, zowel in Nederland als in Brussel?',
@@ -455,7 +438,6 @@ export default function InterviewsPage() {
     }
 
     // Overview page (geen interview geselecteerd)
-// Overview page (geen interview geselecteerd)
     return (
         <div className="min-h-screen bg-neutral-900 text-neutral-100">
             {/* EXTRA PADDING AAN DE TOP OM ONDER DE NAVIGATION TE BLIJVEN */}
@@ -481,14 +463,14 @@ export default function InterviewsPage() {
                     {interviews.map((interview) => (
                         <div
                             key={interview.id}
-                            className="bg-neutral-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer"
+                            className="bg-neutral-800 rounded-lg overflow-hidden hover:transform hover:scale-105 transition-all duration-300 cursor-pointer hover:bg-neutral-700"
                             onClick={() => navigate(`/interviews/${interview.id}`)}
                         >
                             <div className="relative h-64">
                                 <img
                                     src={interview.image}
                                     alt={interview.name}
-                                    className="w-full h-full object-cover grayscale hover:grayscale-0 transition-all duration-500"
+                                    className="w-full h-full object-cover transition-all duration-500 hover:brightness-110"
                                 />
                                 <div className="absolute inset-0 bg-gradient-to-t from-black/80 to-transparent" />
                                 <div className="absolute bottom-4 left-4 right-4">
@@ -509,11 +491,22 @@ export default function InterviewsPage() {
                                                 key={idx}
                                                 className="bg-neutral-700 px-3 py-1 rounded-full text-xs text-neutral-200"
                                             >
-                                            {topic}
-                                        </span>
+                                                {topic}
+                                            </span>
                                         ))}
                                     </div>
-                                    <ExternalLink size={20} className="text-neutral-300" />
+                                    <div className="flex items-center gap-4">
+                                        <button
+                                            onClick={(e) => {
+                                                e.stopPropagation();
+                                                navigate(`/interviews/${interview.id}`);
+                                            }}
+                                            className="px-3 py-2 rounded-md text-sm font-medium transition-colors bg-purple-600 text-white hover:bg-purple-500"
+                                        >
+                                            Lees interview
+                                        </button>
+                                        <ExternalLink size={20} className="text-neutral-300" />
+                                    </div>
                                 </div>
                             </div>
                         </div>
