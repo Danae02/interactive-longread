@@ -54,7 +54,20 @@ export default function InterviewsPage() {
             duration: 'Audio fragmenten + tekst',
             type: 'combined',
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
-            bio: 'Wouter Waayer groeide op op een melkveehouderij in Friesland. Na zijn studie Diergeneeskunde radicaliseerde hij en werd activist voor dierenrechten. Hij werkt nu als campagneleider bij Wakker Dier.',
+            bio: (
+                <>
+                    Wouter Waayer groeide op tussen de vleeskalveren in Twente. Hij maakte een radicale omslag van boerenzoon naar veganistische dierenrechtenactivist en heeft met zijn Instagram-account (
+                    <a
+                        href="https://www.instagram.com/wouterwaayer"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-emerald-400 hover:text-emerald-300 transition-colors"
+                    >
+                        @wouterwaayer
+                    </a>
+                    ) meer dan 20.000 volgers bereikt. Ondanks haatreacties blijft hij zich inzetten tegen dierenleed in de intensieve vee-industrie, waarbij hij zijn achtergrond als boerenzoon inzet om te laten zien waar het vlees op ons bord vandaan komt.
+                </>
+            ),
             keyTopics: ['Dierenwelzijn', 'Familie', 'Activisme', 'Veganisme'],
             writtenInterview: [
                 {
