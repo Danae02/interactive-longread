@@ -23,7 +23,7 @@ export default function InterviewsSection() {
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
             quote: '....',
             highlight: 'Van boerderij naar activisme',
-            audioFragments: 3
+            audioFragments: 5
         },
         {
             id: 'bbb-lid',

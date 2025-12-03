@@ -230,8 +230,8 @@ export default function InterviewsPage() {
             role: '....',
             duration: 'tekst',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
-            bio: 'Lammert van Raan is al 25 jaar journalist in de landbouwsector. Hij schrijft voor verschillende vakbladen en probeert nuance te brengen in een steeds gepolariseerder debat.',
-            keyTopics: ['Landbouwjournalistiek', 'Nuance', 'Polarisatie', 'Feiten vs emotie'],
+            bio: 'Lammert van Raan was van 2017 tot 2023 Tweede Kamerlid voor de Partij voor de Dieren. Als Kamerlid specialiseerde hij zich in financiën, klimaat, energie, luchtvaart, ICT en privacy. Hij is bekend van zijn initiatiefwetsvoorstellen over ecocide, het belasten van slacht, en het afschaffen van subsidies voor fossiele brandstoffen.',
+            keyTopics: ['Politiek', 'Klimaat', 'PVDD', 'Ecocide'],
         },
         {
             id: 'caring-farmers',
