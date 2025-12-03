@@ -20,7 +20,7 @@ export default function InterviewsPage() {
             duration: 'Schriftelijk interview',
             type: 'text',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
-            bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op het gebied van lobbyisme en belangenbehartiging. Hij heeft uitgebreid onderzoek gedaan naar de invloed van lobby-organisaties op het Nederlandse politieke systeem en staat bekend om zijn kritische analyses van het stikstofbeleid en de positie van boeren.',
+            bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op onder andere het gebied van lobbyen, politieke agendavorming en publiek beleid. .....',
             keyTopics: ['Lobbyisme', 'Boerenbelangen', 'Stikstofbeleid', 'Politieke invloed'],
             // writtenInterview: [
             //     {
