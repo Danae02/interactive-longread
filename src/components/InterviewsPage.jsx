@@ -17,7 +17,7 @@ export default function InterviewsPage() {
             name: 'Arco Timmermans',
             role: 'Politicoloog & Lobbyisme-expert',
             affiliation: 'Universiteit Leiden',
-            duration: 'Schriftelijk interview',
+            duration: 'Tekst',
             type: 'text',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
             bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op onder andere het gebied van lobbyen, politieke agendavorming en publiek beleid. .....',
@@ -141,36 +141,94 @@ export default function InterviewsPage() {
             duration: 'Schriftelijk interview',
             type: 'text',
             image: '/afbeeldingen-interviews/Kevin-Brouwer_BBB.jpg',
-            bio: 'Kevin Brouwer is Tweede Kamerlid voor de BoerBurgerBeweging (BBB) en actief in de commissies Landbouw, Natuur en Voedselkwaliteit. Hij vertegenwoordigt de belangen van boeren en het platteland in de politiek.',
+            bio: 'Kevin Brouwer is een jonge, gedreven kandidaat voor de BBB. Als beleidsmedewerker voor de BBB-Tweede Kamerfractie zet hij zich in voor het dichten van de kloof tussen overheid en samenleving. Hij staat voor veiligheid, vertrouwen en gezond verstand, en wil vooral de stem zijn voor mensen die zich niet gehoord voelen: agenten, zorgverleners, ondernemers en boeren.',
             keyTopics: ['Boerenbelangen', 'Regeldruk', 'Stikstofcrisis', 'Platteland'],
             writtenInterview: [
                 {
-                    question: 'Waarom heeft Nederland volgens u zo\'n grote vee-industrie nodig?',
-                    answer: 'Het gaat niet om "nodig hebben" - het is er gewoon. Generaties families leven van de veehouderij. Ze produceren voedsel, beheren het landschap, en dragen miljarden bij aan onze economie. De vraag zou moeten zijn: waarom zouden we dat kapot willen maken? Natuurlijk moet er verduurzaamd worden, maar dat doe je samen met boeren, niet tegen ze in.'
+                    question: 'Wat is volgens de BBB de belangrijkste bijdrage van de Nederlandse agrosector aan onze samenleving?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Voor ons staat een ding voorop: zonder boeren geen voedsel. De agrosector is allereerst dus letterlijk de basis van onze voedselzekerheid. In een wereld die onrustiger wordt, vinden wij het cruciaal dat Nederland/Europa zelf in staat blijft om voldoende, betaalbaar en veilig voedsel te produceren, in plaats van afhankelijk te zijn/worden van import uit derde landen (met vaak veel lagere standaarden voor milieu en dierenwelzijn).</p>
+                            <p>Daarnaast levert de sector een grote bijdrage aan de economie en werkgelegenheid: niet alleen de boerderij zelf, maar de hele keten van toeleveranciers, verwerkers, transport, handel en logistiek. Ook de bijdrage aan de leefbaarheid van het platteland mag niet onderschat worden. Scholen, verenigingen, dorpshuizen en voorzieningen bestaan vaak bij de gratie van een vitale agrarische sector. En tot slot, het landschap waar Nederland zo trots op is, met weides en koeien in de wei is geen natuur die "zomaar" is ontstaan, maar een agrarisch cultuurlandschap dat door generaties boeren is gemaakt en onderhouden. Boeren onderhouden meer dan de helft van ons landschap!</p>
+                        </div>
+                    )
                 },
                 {
-                    question: 'Hoe kijkt u aan tegen de kritiek dat de sector te veel invloed heeft op het beleid?',
-                    answer: 'Dat is een frame van milieuorganisaties die zelf miljoenenbegrotingen hebben en de media weten te bereiken. Boeren hebben niet té veel invloed - ze hebben juist te weinig. Kijk naar het stikstofbeleid: dat is erdoor geramd zonder echt naar boeren te luisteren. Ze moeten stoppen of drastisch inkrimpen. Waar is hun invloed dan? In werkelijkheid zijn boeren buitenspel gezet door een élite die denkt dat ze wel weten wat goed is voor het platteland.'
+                    question: 'De BBB is ontstaan uit onvrede over het stikstofbeleid. Kunnen jullie uitleggen waarom boeren zich (toen) niet gehoord voelden?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Er komen een paar dingen samen. Boeren werden vooral als probleem gezien, niet als partner. Wij zien, en gelukkig tegenwoordig meer partijen, boeren als onderdeel van de oplossing.</p>
+                            <p>Het stikstofbeleid is jarenlang over boeren uitgerold, zonder dat zij serieus zijn betrokken bij de keuzes. Wetgeving, normen en deadlines werden in Den Haag en Brussel bedacht, en op het erf kwam vooral een stapel regels. Die vaak onrealistisch, en onhaalbaar blijken.</p>
+                            <p>Wat daar dan ook bij kwam kijken is/was de eenzijdige focus op modellen, en weinig op praktijkkennis. Beleid en vergunningverlening leunen sterk op rekenmodellen zoals AERIUS en kritische depositiewaarden, terwijl boeren de impact daarvan op hun bedrijf vaak niet konden rijmen met wat zij in de praktijk zagen. Dat geeft een gevoel van willekeur en onrecht.</p>
+                            <p>Wat ook destijds erg meespeelde is het feit dat lasten vooral bij de landbouw werd neergelegd. Andere sectoren werden (meer) ontzien. Boeren kregen het gevoel dat zij als enigen en hardste moesten inleveren, terwijl luchtvaart, industrie en bijvoorbeeld mobiliteit (relatief langer) werden ontzien. Dat voelt scheef: als er een maatschappelijk probleem is, moet de oplossing ook eerlijk worden verdeeld.</p>
+                            <p>Het vooruitzicht van gedwongen uitkoop, strengere mestnormen en blijvend veranderend beleid, zonder langjarige zekerheid, bracht grote emoties en wantrouwen met zich mee. Boeren hebben vaak familiebedrijven, met grond die al generaties in de familie is. Als je dan hoort dat je "moet stoppen of verplaatsen", raakt dat aan identiteit en bestaanszekerheid.</p>
+                            <p>Samengevat: boeren voelden zich niet serieus genomen als volwaardige gesprekspartner, maar behandeld als sluitpost van een juridisch stikstofdossier.</p>
+                        </div>
+                    )
                 },
                 {
-                    question: 'Wat zou er volgens u moeten veranderen in de sector?',
-                    answer: 'Ten eerste: perspectief. Boeren moeten weten waar ze aan toe zijn. Geen nieuw beleid om de drie jaar. Ten tweede: eerlijke prijzen. Supermarkten drukken de prijzen, boeren draaien op voor de kosten. Ten derde: minder regeldruk. Boeren stikken in de bureaucratie. En ten vierde: erken hun bijdrage. Boeren zijn geen milieuvervuilers, ze zijn voedselproducenten die Nederland heeft opgebouwd.'
+                    question: 'De agrosector heeft te maken met grote spelers zoals veevoerbedrijven en vleesverwerkers. Hoe kijkt de BBB naar de machtspositie van deze bedrijven ten opzichte van individuele boeren?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Wij zien dat de machtsbalans in de keten vaak niet in het voordeel van de individuele boer is. Aan de inkoopkant zijn er een beperkt aantal grote veevoerbedrijven; aan de afzetkant een paar grote slachterijen/verwerkers/afnemers. De boer zit daar als relatief kleine speler tussen.</p>
+                            <p>Onze kernpunten daarbij: De primaire producent draagt veel risico (prijzen, regelgeving, dierziekten), maar krijgt vaak het kleinste deel van de marge. Contractvoorwaarden zijn soms eenzijdig; wie niet tekent, kan vaak nergens anders heen. BBB vindt dan ook dat beleid zich niet alleen moet richten op "de landbouw" in abstracte zin, maar specifiek op de positie van de boer in de keten. Wij zijn niet tegen grote bedrijven, maar wel tegen situaties waarin de boer feitelijk geen onderhandelingsvrijheid meer heeft.</p>
+                        </div>
+                    )
                 },
                 {
-                    question: 'Hoe reageert u op de stelling dat de sector moet krimpen voor het klimaat en milieu?',
-                    answer: 'Ik vraag me af of degenen die dat roepen wel beseffen wat ze vragen. Je vraagt families om hun levenswerk op te geven. Voor wat? Zodat we vlees gaan importeren uit Brazilië waar de regels veel laxer zijn? Dat is symboolpolitiek. Nederlandse boeren zijn de meest duurzame ter wereld. Als we hier krimpen zonder de import te reguleren, verplaats je het probleem alleen maar.'
+                    question: 'Boeren zijn vaak prijsnemer. Hoe kijkt de BBB naar deze dynamiek? Is dat een vrije markt die zijn werk doet, of een onevenwichtige machtspositie?',
+                    answer: 'In theorie is het een vrije markt. In de praktijk is het dat vaak niet. BBB vindt daarom dat je dit niet kunt afdoen met: "de markt doet zijn werk". De marktstructuur is uit balans, waardoor boeren onvoldoende onderhandelingsmacht hebben. Wij willen geen totale prijzendictatuur vanuit de overheid, maar wel meer ketenafspraken over eerlijke verdeling van marges, discussie binnen de EU voor instrumenten die boeren een minimum- of kostendekkende prijs dichterbij brengen en een sterkere positie van boeren(organisaties) in onderhandelingen met verwerkers en supermarkten.'
                 },
                 {
-                    question: 'Wat wilt u als BBB bereiken voor de veehouderij?',
-                    answer: 'Rechtvaardigheid. Boeren verdienen een eerlijke behandeling en een toekomst. We willen beleid dat gemaakt wordt mét boeren, niet over hun hoofden heen. We willen realistisch klimaatbeleid dat niet hele sectoren kapot maakt. En we willen dat Nederland haar voedselproducenten weer gaat waarderen in plaats van demoniseren. Deze mensen voeden ons land. Toon wat respect.'
+                    question: 'Hoe ziet de BBB de invloed van verschillende partijen op het beleid? En hoe zou volgens jullie een evenwichtig beleidsproces eruitzien?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ons beeld is dat de invloed scheef is komen te liggen. Grote ketenpartijen, NGO\'s en Brussel-gebaseerde organisaties hebben vaak een vaste stoel aan tafel, terwijl de individuele boer en ook kleinere ketenpartijen te vaak achteraf mogen aanhoren wat er besloten is. In Europees verband, maar toch ook Nederlands verband, zie je dat belangen van boeren soms ondersneeuwen onder een dikke laag beleidsrapporten en NGO-standpunten. De Tweede Kamer is ook overactief in het indienen/steunen van moties die vervolgens door opeenstapeling leiden tot een onwerkbare praktijk voor boeren.</p>
+                            <p>Een evenwichtiger beleidsproces zou volgens ons in ieder geval betekenen dat boeren en primaire producenten structureel aan de voorkant worden betrokken. Niet alleen in consultaties, maar in echte co-creatie van beleid.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe kijkt de BBB naar de rol van Europese subsidies zoals het Gemeenschappelijk Landbouwbeleid (GLB)?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Het GLB is enorm bepalend voor de inkomenspositie van boeren. Toch hechten wij er altijd veel waarde aan om te vermelden dat onze Nederlandse boeren percentueel gezien het minste van hun inkomen halen uit subsidies, afgezet tegen boeren in andere lidstaten.</p>
+                            <p>In de basis vinden wij het logisch dat er Europees landbouwbeleid is en dat er middelen gaan naar voedselproductie en plattelandsontwikkeling. Maar de manier waarop dat nu gebeurt, is niet altijd eerlijk en doelmatig. Wij delen de zorg dat het GLB in de praktijk vaak schaalvergroting heeft gestimuleerd. Betalingen vooral op basis van hectares, waardoor grotere bedrijven relatief meer ontvangen. En de complexe eco-regelingen die voor kleinere bedrijven moeilijker uitvoerbaar zijn.</p>
+                            <p>BBB wil dat er meer ruimte komt voor ondernemerschap en diversiteit in bedrijfsmodellen in plaats van één Brusselse blauwdruk.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'De agrosector wordt geconfronteerd met vraagstukken rond volksgezondheid, stikstof, klimaat en dierenwelzijn. Hoe weegt de BBB deze verschillende thema\'s?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>We zien deze thema\'s niet als losse eilandjes, maar als een pakket waar je integraal mee om moet gaan. Onze belangrijkste uitgangspunten op het gebied van volksgezondheid is dat je daar geen gok mee mag nemen. BBB vertrouwt in dat opzicht erg op onafhankelijke wetenschappelijke instituties.</p>
+                            <p>Stikstof en klimaat zijn belangrijke opgaven, maar we willen een aanpak proportioneel en uitvoerbaar is, en die niet eenzijdig bij de landbouw wordt neergelegd. Daarnaast is BBB van mening dat de modellenwerkelijkheid niet overeenkomt met de daadwerkelijke staat van de natuur in Nederland. Stikstof is op sommige hexagonen een drukfactor. Maar in veel gebieden spelen hele andere dingen mee, waar nu helemaal geen oog voor is, en wordt alles maar op stikstof gegooid.</p>
+                            <p>En qua dierenwelzijn: Nederland loopt al relatief voorop in regelgeving. Wij willen verdere verbeteringen koppelen aan verdienvermogen en marktpositie. Extra eisen zonder extra verdienmogelijkheden zijn niet houdbaar.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Welke richting ziet BBB als kansrijk voor de Nederlandse veehouderij: concurreren op prijs en volume, of inzetten op kwaliteit en onderscheidend vermogen?',
+                    answer: 'De vleesconsumptie verandert erg traag. Maar er wordt inderdaad minder vlees gegeten door consumenten. Het staat wat BBB betreft eenieder vrij om te eten wat hij/zij wil. BBB vindt dat de overheid terughoudend moet zijn als het gaat over het voedselpatroon van burgers. Maar als antwoord op je vraag: We geloven niet in een zwart-wit keuze. Maar Nederland gaat de wereld niet verslaan in een pure bulk- en volumecompetitie met landen waar grond en regels veel goedkoper zijn. Op termijn zal onze kracht waarschijnlijk inderdaad zijn het kwalitatief en onderscheidend vermogen.'
+                },
+                {
+                    question: 'Als jullie 20 jaar vooruit kijken, hoe ziet de Nederlandse veehouderij er dan uit in het meest realistische scenario?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>In het meest realistische en voor ons ook wenselijke scenario over 20 jaar zien we ongeveer dit beeld:</p>
+                            <p>Sterke bedrijven, die economisch gezond zijn en ruimte hebben om te investeren in dierenwelzijn, emissiereductie en innovatie. Ook denk ik dat er meer diversiteit in bedrijfsmodellen zullen zijn, van gangbaar en zeer efficiënt tot biologisch en natuurinclusief. Circulariteit zal de standaard worden. Met meer kringlooplandbouw, betere verwaarding van reststromen, koppelingen met akkerbouw, glastuinbouw en energie.</p>
+                            <p>Een heel belangrijk onderdeel van dit scenario is de doelsturing waar onze minister aan heeft gewerkt. En de komende tijd verder zal moeten worden uitgewerkt. Een overheid die duidelijke, haalbare en betaalbare doelen stelt, en niet micromanaget op erfniveau. Meer vertrouwen en duidelijke langjarige doelen.</p>
+                        </div>
+                    )
                 }
             ],
-            downloadUrl: 'https://example.com/bbb-interview.pdf'
         },
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
             role: '....',
+            duration: 'tekst',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
             bio: 'Lammert van Raan is al 25 jaar journalist in de landbouwsector. Hij schrijft voor verschillende vakbladen en probeert nuance te brengen in een steeds gepolariseerder debat.',
             keyTopics: ['Landbouwjournalistiek', 'Nuance', 'Polarisatie', 'Feiten vs emotie'],
@@ -406,7 +464,6 @@ export default function InterviewsPage() {
                                 {interview.audioFragments.map((fragment, idx) => {
                                     const audioKey = `${interview.id}-${idx}`;
                                     const progress = audioProgress[audioKey] || 0;
-                                    const duration = audioDurations[audioKey] || 0;
                                     const audioElement = audioRefs.current[audioKey];
                                     const currentTime = audioElement?.currentTime || 0;
 
