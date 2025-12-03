@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { ArrowLeft, Play, Pause, Download, ExternalLink, Calendar, Clock } from 'lucide-react';
 import { Link, useParams, useNavigate } from 'react-router-dom';
 
@@ -7,6 +7,9 @@ export default function InterviewsPage() {
     const navigate = useNavigate();
     const [selectedInterview, setSelectedInterview] = useState(null);
     const [playingAudio, setPlayingAudio] = useState(null);
+    const [audioProgress, setAudioProgress] = useState({});
+    const [audioDurations, setAudioDurations] = useState({});
+    const audioRefs = useRef({});
 
     const interviews = [
         {
@@ -41,52 +44,81 @@ export default function InterviewsPage() {
             //         answer: 'Rechtvaardigheid. Boeren verdienen een eerlijke behandeling en een toekomst. We willen beleid dat gemaakt wordt mét boeren, niet over hun hoofden heen. We willen realistisch klimaatbeleid dat niet hele sectoren kapot maakt. En we willen dat Nederland haar voedselproducenten weer gaat waarderen in plaats van demoniseren. Deze mensen voeden ons land. Toon wat respect.'
             //     }
             // ],
-            date: 'December 2024',
             downloadUrl: 'https://example.com/arco-transcript.pdf'
         },
         {
             id: 'wouter-waayer',
             name: 'Wouter Waayer',
-            role: 'Voormalig boerenzoon, nu dierenrechtenactivist',
-            affiliation: 'Wakker Dier',
+            role: 'Boerenzoon, nu dierenrechtenactivist',
+            affiliation: 'Social media',
             duration: 'Audio fragmenten + tekst',
-            type: 'audio',
+            type: 'combined',
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
             bio: 'Wouter Waayer groeide op op een melkveehouderij in Friesland. Na zijn studie Diergeneeskunde radicaliseerde hij en werd activist voor dierenrechten. Hij werkt nu als campagneleider bij Wakker Dier.',
-            keyTopics: ['Dierenwelzijn', 'Familiebreuk', 'Activisme', 'Veganisme'],
-            date: 'November 2024',
+            keyTopics: ['Dierenwelzijn', 'Familie', 'Activisme', 'Veganisme'],
+            writtenInterview: [
+                {
+                    question: 'Kun je iets vertellen over je jeugd op de boerderij? Welke rol speelde het boerenbedrijf in jouw dagelijks leven?',
+                    answer: 'Mijn jeugd op de boerderij was heel fijn. Ik had alle vrijheid. Veel ruimte om me heen. Altijd in de natuur. Crossbrommers. Crossauto waarmee over het land gecrossed kon worden. Dus dat was echt heel fijn. Vuurtjes stoken. Ja, altijd wel iets om je mee te vermaken. Ja, het voelt bijna als een soort niemandsland waar je gewoon kon doen wat je wilde doen. Geen haan die er naar kraaide. Daarnaast hielp ik natuurlijk altijd mee op de boerderij. Ja, zo gaat dat gewoon. Als je geboren bent op de boerderij, dan word je ook geacht mee te helpen. En ja, dat vond ik op zich wel leuk. Ja, meer dan dat was het nog niet per se. Het was wel leuk. Maar ja, het was ook gewoon werk.'
+                },
+                {
+                    question: 'Welke economische of sociale factoren maken het volgens jou moeilijk voor boeren om richting plantaardigere of alternatieve systemen te bewegen?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Dat is natuurlijk eigenlijk nog steeds de overheid die daar een belemmering in vormt, want er gaat gewoon heel veel subsidie naar vleesveebedrijven en veehouderijen. Die krijgen het grootste gros van de subsidies. En dat moet anders.</p>
+                            <p>Als boeren willen omschakelen, dan hebben ze daar hulp bij nodig, hoe krom dat ook klinkt, want het zijn in principe ondernemers en ondernemers die hebben ook hun eigen verantwoordelijkheid, maar in dit geval zie je gewoon dat ze die verantwoordelijkheid niet pakken. En er wordt natuurlijk nog steeds gestimuleerd middels subsidies. Dus ik denk dat de overheid daar een andere rol in moet pakken en toch moet zeggen, nou we gaan je helpen met omschakelen.</p>
+                            <p>Ja, er zit gewoon heel veel geld in. Ik denk ook wel dat de overheid er enigzins verantwoordelijk voor is en dat die verantwoordelijkheid wel moet nemen, omdat zij boeren wel richting die enorme schaalvergroting hebben gedrukt. Waardoor ze heel veel geld hebben moeten investeren en nu ook gewoon heel veel schulden hebben. Door die schulden is het ook wel moeilijk om om te schakelen. Want als je dus weer je bedrijf wil gaan veranderen, ja, dat kost ook weer heel veel geld. En dat hebben heel veel boeren niet.</p>
+                            <p>Ondanks dat ze toch wel veel vermogen hebben, hebben ze niet per se direct geld. En zouden ze daar weer een lening voor af moeten sluiten, wat niet per se wenselijk is. Dus ik zou zeggen dat geld dat wij nou gebruiken voor bijvoorbeeld het uitkopen van boeren, om om te schakelen, dat kunnen we ook gebruiken om boer om te schakelen naar plantaardige boerderijen of op z'n minst biologische bedrijven, kleinschalig.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Als je één boodschap zou kunnen meegeven aan mensen, wat zou dat zijn?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Dieren zijn geen nummers. Ik begrijp dat het heel lastig is als je zoveel dieren in een stal ziet staan. Dat het heel moeilijk is om de dieren nog als een individu te zien. Zeker ook omdat er elke dag in Nederland 1,8 miljoen dieren worden vermoord. Dit gewoon de normaalste zaak van de wereld geworden. En we zijn eigenlijk een beetje immuun geworden voor het leed dat zich dagelijks afspeelt in die stallen.</p>
+                            <p>En veel mensen zijn zich ook niet bewust van dat de meeste dieren, ik geloof dat het 90% is, als het niet meer is, nooit het daglicht ziet. Hun hele leven, hun hele korte leven in stallen blijft. Dus die dieren hebben gewoon een verschrikkelijk leven. En het is niet alsof die dieren dat verdienen. Want veel mensen denken, "ja, een kip of een koe wordt daarvoor geboren", maar dat is gewoon niet zo. We hebben ze zo gefokt.</p>
+                            <p>Daarnaast zijn het ontzettend intelligente dieren. En een koe, een stier, of een kalf heeft de cognitieve vaardigheden van een 4-jarige. Dat is vergelijkbaar met een hond. En in sommige gevallen zou ik zelfs durven zeggen dat ze sterker ontwikkeld zijn.</p>
+                            <p>Het zijn ook hele lieve dieren. Je kunt ze met knuffelen. Ze weten hun naam, ze hebben vrienden, familie. Ze missen ook andere dieren als ze verdwijnen naar de slacht of als bijvoorbeeld moeder en kalf gescheiden wordt. Dan heeft de moeder daar weken tot maanden lang last van. Ook al zeggen heel veel boeren dat dat niet zo is. Dat is echt wel zo.</p>
+                            <p>Dat kunnen we gewoon niet langer negeren. Ik hoop ook dat mensen hun harten weer open gaan stellen voor de dieren, want het zijn prachtige dieren, ook de dieren in de veeindustrie. Die hebben net zoveel rechten op liefde en aandacht en verzorging als andere dieren, als onze huisdieren en als alle andere dieren die in het wild leven.</p>
+                        </div>
+                    )
+                },
+
+            ],
             audioFragments: [
                 {
-                    title: 'Fragment 1: Opgroeien op de boerderij',
-                    duration: '8:34',
-                    description: 'Wouter vertelt over zijn jeugd tussen de koeien en het moment waarop hij begon te twijfelen aan de veehouderij.',
-                    audioUrl: 'https://example.com/wouter-1.mp3'
+                    title: 'Fragment 1: Omslagpunt',
+                    duration: '02:45',
+                    description: 'Wanneer begon je anders te kijken naar de veehouderij, en wat was daarin een belangrijk omslagpunt voor jou?',
+                    audioUrl: '/audio-wouter/audio2.m4a'
                 },
                 {
-                    title: 'Fragment 2: De breuk met zijn familie',
-                    duration: '12:15',
-                    description: 'Het emotionele verhaal over hoe zijn keuzes leidden tot vervreemding van zijn ouders en broers.',
-                    audioUrl: 'https://example.com/wouter-2.mp3'
+                    title: 'Fragment 2: Reacties uit omgeving',
+                    duration: '01:56',
+                    description: 'Hoe reageerden familie en mensen uit je oude omgeving toen je veganist werd, en hoe ga/ging je met die dynamiek om?',
+                    audioUrl: '/audio-wouter/audio4.m4a'
                 },
                 {
-                    title: 'Fragment 3: Waarom radicalere actie nodig is',
-                    duration: '7:23',
-                    description: 'Wouter legt uit waarom hij denkt dat het huidige tempo van verandering te langzaam is.',
-                    audioUrl: 'https://example.com/wouter-3.mp3'
-                }
-            ],
-            transcript: `
-                FRAGMENT 1: Opgroeien op de boerderij (8:34)
-                
-                [00:00] Interviewer: "Hoe was het om op te groeien op een boerderij?"
-                
-                [00:08] Wouter: "Ik vond het fantastisch. Ik voelde me vrij, was altijd buiten, en de dieren waren letterlijk mijn speelkameraden. Als klein jongetje heb ik uren tussen de kalveren doorgebracht. Dat gevoel van verbondenheid met die beesten... dat is nooit weggegaan."
-                
-                [00:45] "Maar er was ook een keerzijde. Ik zag koeien die ziek werden, kalveren die weggehaald werden bij hun moeders. Als kind vroeg ik daar naar, maar het antwoord was altijd: 'Zo hoort het nu eenmaal.' Ik accepteerde dat, want mijn vader deed het ook, mijn opa deed het ook."
-                
-                [... volledige transcripties van alle fragmenten ...]
-            `,
-            downloadUrl: 'https://example.com/wouter-transcript.pdf'
+                    title: 'Fragment 3: Varandering',
+                    duration: '02:17',
+                    description: 'Welke overtuigingen, routines of ideeën voelde je vroeger als vanzelfsprekend, en zie je nu in een ander licht?',
+                    audioUrl: '/audio-wouter/audio5.m4a'
+                },
+                {
+                    title: 'Fragment 4: Belangen',
+                    duration: '02:05',
+                    description: 'Welke rol spelen belangenorganisaties en ketenpartijen volgens jou in hoe het systeem werkt?',
+                    audioUrl: '/audio-wouter/audio7.m4a'
+                },
+                {
+                    title: 'Fragment 5: Vega(n)-termen en discussies',
+                    duration: '02:01',
+                    description: 'Je reageerde online eerder op discussies over termen als ‘gehakt’ en ‘burger’ voor plantaardige producten, hoe kijk je naar dat soort regulering?',
+                    audioUrl: '/audio-wouter/audio8.m4a'
+                },
+
+            ]
         },
         {
             id: 'bbb-lid',
@@ -98,7 +130,6 @@ export default function InterviewsPage() {
             image: '/afbeeldingen-interviews/Kevin-Brouwer_BBB.jpg',
             bio: 'Kevin Brouwer is Tweede Kamerlid voor de BoerBurgerBeweging (BBB) en actief in de commissies Landbouw, Natuur en Voedselkwaliteit. Hij vertegenwoordigt de belangen van boeren en het platteland in de politiek.',
             keyTopics: ['Boerenbelangen', 'Regeldruk', 'Stikstofcrisis', 'Platteland'],
-            date: 'November 2024',
             writtenInterview: [
                 {
                     question: 'Waarom heeft Nederland volgens u zo\'n grote vee-industrie nodig?',
@@ -183,7 +214,7 @@ export default function InterviewsPage() {
                 },
                 {
                     question: 'Het grotere plaatje: In hoeverre zijn deze reclamesubsidies volgens jullie symptomatisch voor een breder systeem van politieke en economische steun aan de sector?',
-                    answer: 'Ja, wij zien de promotiesubsidies voor vlees en zuivel als symptoom van een breder systeem waarin de intensieve veehouderij structureel ondersteund wordt. Bijvoorbeeld: De subsidies promoten consumptie van dierlijke producten, terwijl dat haaks staat op klimaat-, milieu- en dierenwelzijnsambities. Duurzame alternatieven krijgen structureel minder ondersteuning of promotie. Er is vaak sprake van gevestigde belangen en terugkerende steunmechanismen, waardoor transitie wordt tegengehouden of vertraagd. Dus ja: deze subsidies passen in een groter systeem van politieke en economische steun, van productie-logica, consumptiepatronen en regulering.'
+                    answer: 'Ja, wij zien de promotiesubsidies voor vlees en zuivel als symptoom van een breder systeem waarin de intensieve veehouderij structureel ondersteund wordt. Bijvoorbeeld: De subsidies promoten consumptie van dierlijke producten, terwijl dat haaks staat op klimaat-, milieu- en dierenwelzijnsambities. Duurzame alternatieven krijgen structureel minder ondersteuning of promotie. Er is vaak sprake van gevestigde belangen en terugkerende steunmechanismen, waardoor transitie wordt tegengehouden ou vertraagd. Dus ja: deze subsidies passen in een groter systeem van politieke en economische steun, van productie-logica, consumptiepatronen en regulierung.'
                 },
                 {
                     question: 'Toekomst: Hoe zien jullie de toekomst van deze EU-subsidies? Verwachten jullie veranderingen op korte of lange termijn, en welke strategieën zijn nodig om ze te verminderen of af te schaffen?',
@@ -219,30 +250,334 @@ export default function InterviewsPage() {
         }
     }, [selectedInterview]);
 
+    // Effect om audio te beheren wanneer playingAudio verandert
+    useEffect(() => {
+        // Stop alle audio wanneer we van pagina wisselen
+        return () => {
+            Object.values(audioRefs.current).forEach(audio => {
+                if (audio) {
+                    audio.pause();
+                    audio.currentTime = 0;
+                }
+            });
+            setPlayingAudio(null);
+            setAudioProgress({});
+            setAudioDurations({});
+        };
+    }, [selectedInterview]);
+
+    const handleAudioPlay = (idx) => {
+        const audioKey = `${selectedInterview?.id}-${idx}`;
+        const audioElement = audioRefs.current[audioKey];
+
+        if (!audioElement) return;
+
+        if (playingAudio === idx) {
+            // Pauzeren
+            audioElement.pause();
+            setPlayingAudio(null);
+        } else {
+            // Andere audio stoppen als er een speelt
+            if (playingAudio !== null) {
+                const previousAudioKey = `${selectedInterview?.id}-${playingAudio}`;
+                const previousAudio = audioRefs.current[previousAudioKey];
+                if (previousAudio) {
+                    previousAudio.pause();
+                }
+            }
+
+            // Nieuwe audio afspelen
+            audioElement.play()
+                .then(() => {
+                    setPlayingAudio(idx);
+                })
+                .catch(error => {
+                    console.error('Error playing audio:', error);
+                    alert('Er is een probleem met het afspelen van de audio. Controleer of het bestand bestaat.');
+                });
+        }
+    };
+
+    const handleTimeUpdate = (interviewId, idx) => {
+        const audioKey = `${interviewId}-${idx}`;
+        const audioElement = audioRefs.current[audioKey];
+
+        if (audioElement) {
+            const currentTime = audioElement.currentTime;
+            const duration = audioElement.duration || audioDurations[audioKey] || 0;
+
+            if (duration > 0) {
+                setAudioProgress(prev => ({
+                    ...prev,
+                    [audioKey]: (currentTime / duration) * 100
+                }));
+            }
+        }
+    };
+
+    const handleLoadedMetadata = (interviewId, idx) => {
+        const audioKey = `${interviewId}-${idx}`;
+        const audioElement = audioRefs.current[audioKey];
+
+        if (audioElement) {
+            setAudioDurations(prev => ({
+                ...prev,
+                [audioKey]: audioElement.duration
+            }));
+        }
+    };
+
+    const handleSeek = (interviewId, idx, value) => {
+        const audioKey = `${interviewId}-${idx}`;
+        const audioElement = audioRefs.current[audioKey];
+
+        if (audioElement) {
+            const duration = audioElement.duration || audioDurations[audioKey] || 0;
+            if (duration > 0) {
+                const newTime = (value / 100) * duration;
+                audioElement.currentTime = newTime;
+                setAudioProgress(prev => ({
+                    ...prev,
+                    [audioKey]: value
+                }));
+            }
+        }
+    };
+
+    const formatTime = (seconds) => {
+        if (isNaN(seconds) || seconds === Infinity) return '0:00';
+        const mins = Math.floor(seconds / 60);
+        const secs = Math.floor(seconds % 60);
+        return `${mins}:${secs < 10 ? '0' : ''}${secs}`;
+    };
+
     const renderInterviewContent = (interview) => {
+        // NIEUW: Combineren van tekst en audio
+        if (interview.type === 'combined' && (interview.writtenInterview || interview.audioFragments)) {
+            return (
+                <div className="space-y-12">
+                    {/* Geschreven interview sectie - ZONDER "Let op" balk voor Wouter */}
+                    {interview.writtenInterview && interview.writtenInterview.length > 0 && (
+                        <div>
+                            <h4 className="text-xl font-bold mb-6">Geschreven interview</h4>
+
+                            {/* Alleen "Let op" balk tonen voor andere interviews, niet voor Wouter */}
+                            {interview.id !== 'wouter-waayer' && (
+                                <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg mb-6">
+                                    <p className="text-amber-200 text-sm">
+                                        <strong>Let op:</strong> Deze vragen zijn schriftelijk beantwoord.
+                                    </p>
+                                </div>
+                            )}
+
+                            <div className="space-y-8">
+                                {interview.writtenInterview.map((qa, idx) => (
+                                    <div key={idx} className="border-l-4 border-emerald-500 pl-6">
+                                        <p className="font-bold text-lg mb-3 text-emerald-400">
+                                            {qa.question}
+                                        </p>
+                                        <p className="text-neutral-200 leading-relaxed whitespace-pre-line">
+                                            {qa.answer}
+                                        </p>
+                                    </div>
+                                ))}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Audio fragmenten sectie */}
+                    {interview.audioFragments && interview.audioFragments.length > 0 && (
+                        <div>
+                            <h4 className="text-xl font-bold mb-6">Audiofragmenten</h4>
+                            <div className="space-y-6">
+                                {interview.audioFragments.map((fragment, idx) => {
+                                    const audioKey = `${interview.id}-${idx}`;
+                                    const progress = audioProgress[audioKey] || 0;
+                                    const duration = audioDurations[audioKey] || 0;
+                                    const audioElement = audioRefs.current[audioKey];
+                                    const currentTime = audioElement?.currentTime || 0;
+
+                                    return (
+                                        <div key={idx} className="bg-neutral-700 p-6 rounded-lg">
+                                            <div className="flex items-start justify-between mb-3">
+                                                <div className="flex-1">
+                                                    <h5 className="font-bold text-lg">{fragment.title}</h5>
+                                                    <p className="text-sm text-neutral-400 flex items-center gap-2 mt-1">
+                                                        <Clock size={14} /> {fragment.duration}
+                                                    </p>
+                                                </div>
+                                                <div className="flex items-center gap-4">
+                                                    {/* Audio element - verborgen maar nodig voor afspelen */}
+                                                    <audio
+                                                        ref={el => audioRefs.current[audioKey] = el}
+                                                        src={fragment.audioUrl}
+                                                        preload="metadata"
+                                                        onEnded={() => setPlayingAudio(null)}
+                                                        onTimeUpdate={() => handleTimeUpdate(interview.id, idx)}
+                                                        onLoadedMetadata={() => handleLoadedMetadata(interview.id, idx)}
+                                                        onError={(e) => {
+                                                            console.error('Audio loading error:', e);
+                                                        }}
+                                                    />
+
+                                                    <button
+                                                        onClick={() => handleAudioPlay(idx)}
+                                                        className="bg-emerald-600 hover:bg-emerald-500 p-3 rounded-full transition-colors flex items-center justify-center"
+                                                    >
+                                                        {playingAudio === idx ? (
+                                                            <Pause size={20} className="text-white" />
+                                                        ) : (
+                                                            <Play size={20} className="text-white" />
+                                                        )}
+                                                    </button>
+
+                                                    {/* Volume control */}
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="1"
+                                                        step="0.1"
+                                                        defaultValue="1"
+                                                        onChange={(e) => {
+                                                            const audio = audioRefs.current[audioKey];
+                                                            if (audio) {
+                                                                audio.volume = parseFloat(e.target.value);
+                                                            }
+                                                        }}
+                                                        className="w-20 accent-emerald-500"
+                                                    />
+                                                </div>
+                                            </div>
+
+                                            <p className="text-neutral-300 mb-4">{fragment.description}</p>
+
+                                            {/* Progress bar en tijd display */}
+                                            <div className="space-y-2">
+                                                <div className="flex justify-between text-sm text-neutral-400">
+                                                    <span>{formatTime(currentTime)}</span>
+                                                </div>
+                                                <div className="flex items-center gap-3">
+                                                    <input
+                                                        type="range"
+                                                        min="0"
+                                                        max="100"
+                                                        step="0.1"
+                                                        value={progress}
+                                                        onChange={(e) => handleSeek(interview.id, idx, parseFloat(e.target.value))}
+                                                        className="flex-1 h-2 bg-neutral-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-emerald-500"
+                                                    />
+                                                </div>
+
+
+                                                {/* Status indicator */}
+                                                <div className="flex items-center justify-between text-xs text-neutral-400">
+                                                    <span>
+                                                        Status: {playingAudio === idx ? 'Afspelen...' : 'Gepauzeerd'}
+                                                    </span>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    );
+                                })}
+                            </div>
+                        </div>
+                    )}
+
+                    {/* Volledige transcriptie (indien beschikbaar) */}
+                    {interview.transcript && (
+                        <div>
+                            <h4 className="text-xl font-bold mb-4">Volledige transcriptie</h4>
+                            <div className="bg-neutral-700 p-6 rounded-lg">
+                                <pre className="whitespace-pre-wrap text-sm text-neutral-300 font-mono">
+                                    {interview.transcript}
+                                </pre>
+                            </div>
+                        </div>
+                    )}
+                </div>
+            );
+        }
+
         if (interview.type === 'audio' && interview.audioFragments) {
             return (
                 <div className="space-y-6">
                     <h4 className="text-xl font-bold">Audiofragmenten</h4>
-                    {interview.audioFragments.map((fragment, idx) => (
-                        <div key={idx} className="bg-neutral-700 p-6 rounded-lg">
-                            <div className="flex items-start justify-between mb-3">
-                                <div>
-                                    <h5 className="font-bold text-lg">{fragment.title}</h5>
-                                    <p className="text-sm text-neutral-400 flex items-center gap-2 mt-1">
-                                        <Clock size={14} /> {fragment.duration}
-                                    </p>
+                    {interview.audioFragments.map((fragment, idx) => {
+                        const audioKey = `${interview.id}-${idx}`;
+                        const progress = audioProgress[audioKey] || 0;
+                        const duration = audioDurations[audioKey] || 0;
+                        const audioElement = audioRefs.current[audioKey];
+                        const currentTime = audioElement?.currentTime || 0;
+
+                        return (
+                            <div key={idx} className="bg-neutral-700 p-6 rounded-lg">
+                                <div className="flex items-start justify-between mb-3">
+                                    <div className="flex-1">
+                                        <h5 className="font-bold text-lg">{fragment.title}</h5>
+                                        <p className="text-sm text-neutral-400 flex items-center gap-2 mt-1">
+                                            <Clock size={14} /> {fragment.duration}
+                                        </p>
+                                    </div>
+                                    <div className="flex items-center gap-4">
+                                        <audio
+                                            ref={el => audioRefs.current[audioKey] = el}
+                                            src={fragment.audioUrl}
+                                            preload="metadata"
+                                            onEnded={() => setPlayingAudio(null)}
+                                            onTimeUpdate={() => handleTimeUpdate(interview.id, idx)}
+                                            onLoadedMetadata={() => handleLoadedMetadata(interview.id, idx)}
+                                        />
+
+                                        <button
+                                            onClick={() => handleAudioPlay(idx)}
+                                            className="bg-emerald-600 hover:bg-emerald-500 p-3 rounded-full transition-colors"
+                                        >
+                                            {playingAudio === idx ? <Pause size={20} /> : <Play size={20} />}
+                                        </button>
+
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="1"
+                                            step="0.1"
+                                            defaultValue="1"
+                                            onChange={(e) => {
+                                                const audio = audioRefs.current[audioKey];
+                                                if (audio) {
+                                                    audio.volume = parseFloat(e.target.value);
+                                                }
+                                            }}
+                                            className="w-20 accent-emerald-500"
+                                        />
+                                    </div>
                                 </div>
-                                <button
-                                    onClick={() => setPlayingAudio(playingAudio === idx ? null : idx)}
-                                    className="bg-emerald-600 hover:bg-emerald-500 p-3 rounded-full transition-colors"
-                                >
-                                    {playingAudio === idx ? <Pause size={20} /> : <Play size={20} />}
-                                </button>
+
+                                <p className="text-neutral-300 mb-4">{fragment.description}</p>
+
+                                {/* Progress bar en tijd display */}
+                                <div className="space-y-2">
+                                    <div className="flex justify-between text-sm text-neutral-400">
+                                        <span>{formatTime(currentTime)}</span>
+                                        <span>{formatTime(duration)}</span>
+                                    </div>
+                                    <div className="flex items-center gap-3">
+                                        <input
+                                            type="range"
+                                            min="0"
+                                            max="100"
+                                            step="0.1"
+                                            value={progress}
+                                            onChange={(e) => handleSeek(interview.id, idx, parseFloat(e.target.value))}
+                                            className="flex-1 h-2 bg-neutral-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500"
+                                        />
+                                        <span className="text-sm text-neutral-400 w-16 text-right">
+                                            {progress.toFixed(1)}%
+                                        </span>
+                                    </div>
+                                </div>
                             </div>
-                            <p className="text-neutral-300">{fragment.description}</p>
-                        </div>
-                    ))}
+                        );
+                    })}
                 </div>
             );
         }
@@ -250,11 +585,14 @@ export default function InterviewsPage() {
         if (interview.type === 'text' && interview.writtenInterview) {
             return (
                 <div className="space-y-8">
-                    <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg">
-                        <p className="text-amber-200 text-sm">
-                            <strong>Let op:</strong> Dit interview is schriftelijk afgenomen. De vragen zijn per email verzonden en beantwoord.
-                        </p>
-                    </div>
+                    {/* "Let op" balk alleen voor tekst-only interviews, niet voor Wouter */}
+                    {interview.id !== 'wouter-waayer' && (
+                        <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg">
+                            <p className="text-amber-200 text-sm">
+                                <strong>Let op:</strong> Dit interview is schriftelijk afgenomen. De vragen zijn per email verzonden en beantwoord.
+                            </p>
+                        </div>
+                    )}
 
                     {interview.writtenInterview.map((qa, idx) => (
                         <div key={idx} className="border-l-4 border-emerald-500 pl-6">
