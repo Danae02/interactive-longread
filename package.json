@@ -6,7 +6,7 @@
   "homepage": "https://Danae02.github.io/interactive-longread",
   "scripts": {
     "dev": "vite",
-    "build": "vite build",
+    "build": "vite build && echo veeindustrie-longread.nl > dist/CNAME",
     "lint": "eslint .",
     "preview": "vite preview",
     "predeploy": "npm run build",

@@ -1,5 +1,6 @@
+// App.jsx
 import React from 'react';
-import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import { HashRouter as Router, Routes, Route } from 'react-router-dom';
 import VeeIndustrieLongread from "./components/VeeIndustrieLongread.jsx";
 import InterviewsPage from "./components/InterviewsPage.jsx";
 import KunstCultuurPage from "./components/KunstCultuurPage.jsx";
@@ -9,7 +10,7 @@ import WatKanIkDoenPage from "./components/WatKanIkDoenPage.jsx";
 function App() {
     return (
         <Router>
-            <Navigation /> {/* Voeg Navigation toe boven alle routes */}
+            <Navigation />
             <Routes>
                 <Route path="/" element={<VeeIndustrieLongread />} />
                 <Route path="/interviews" element={<InterviewsPage />} />
