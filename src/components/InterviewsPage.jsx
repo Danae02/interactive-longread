@@ -16,7 +16,7 @@ export default function InterviewsPage() {
         {
             id: 'arco-timmermans',
             name: 'Arco Timmermans',
-            role: 'Politicoloog & Lobbyisme-expert',
+            role: 'Politicoloog & Lobby-expert',
             affiliation: 'Universiteit Leiden',
             duration: 'Tekst (gesprek getranscribeerd)',
             type: 'text',
@@ -31,7 +31,7 @@ export default function InterviewsPage() {
                     question: 'Hoe groot is de lobbykracht van de Nederlandse vee-industrie vergeleken met andere sectoren?',
                     answer: (
                         <div className="space-y-4">
-                            <p>De lobbyinvloed, sowieso die van de landbouw -- dus landbouw, veeteelt en visserij -- is altijd groot geweest. In het verleden werd dat wel eens de "ijzeren ring" genoemd. Die is altijd groot geweest. Die is wel afgenomen, omdat er meer spelers zijn die ook heel zichtbaar zijn en die een tegengeluid vertolken.</p>
+                            <p>De lobbyinvloed, sowieso die van de landbouw – dus landbouw, veeteelt en visserij – is altijd groot geweest. In het verleden werd dat wel eens de "ijzeren ring" genoemd. Die is altijd groot geweest. Die is wel afgenomen, omdat er meer spelers zijn die ook heel zichtbaar zijn en die een tegengeluid vertolken.</p>
                             <p>De invloed is afgenomen, maar de invloed is nog wel heel duidelijk aanwezig. Je hebt natuurlijk wel de stille lobby. De stille lobby is vaak niet zichtbaar en is ook niet bedoeld om zichtbaar te zijn. Daar worden nog steeds heel veel zakelijke belangen behartigd. Dat gebeurt nog wel.</p>
                             <p>Maar over de hele linie denk ik dat de belangen van de sector minder vanzelfsprekend altijd op de eerste rang zitten. Belangenbehartigers uit die sector zitten dus ook minder vanzelfsprekend altijd op de eerste rang, of staan altijd vooraan om altijd te krijgen wat ze vragen. Of hebben ook minder grip gewoon op het hele beleidsproces gekregen. Dus dat is denk ik wel wat je ziet.</p>
                             <p>Dus er is nog steeds een machtspositie, maar die machtspositie is niet meer zo vanzelfsprekend, zou je kunnen zeggen, als die was.</p>
@@ -420,7 +420,7 @@ export default function InterviewsPage() {
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
-            role: '....',
+            role: 'Voormalig Tweede Kamerlid voor de Partij voor de Dieren',
             duration: 'tekst',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
             bio: 'Lammert van Raan was van 2017 tot 2023 Tweede Kamerlid voor de Partij voor de Dieren. Als Kamerlid specialiseerde hij zich in financiën, klimaat, energie, luchtvaart, ICT en privacy. Hij is bekend van zijn initiatiefwetsvoorstellen over ecocide, het belasten van slacht, en het afschaffen van subsidies voor fossiele brandstoffen.',
