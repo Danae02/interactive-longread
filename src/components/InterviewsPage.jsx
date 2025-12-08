@@ -11,40 +11,233 @@ export default function InterviewsPage() {
     const [audioDurations, setAudioDurations] = useState({});
     const audioRefs = useRef({});
 
+
     const interviews = [
         {
             id: 'arco-timmermans',
             name: 'Arco Timmermans',
             role: 'Politicoloog & Lobbyisme-expert',
             affiliation: 'Universiteit Leiden',
-            duration: 'Tekst',
+            duration: 'Tekst (gesprek getranscribeerd)',
             type: 'text',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
-            bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op onder andere het gebied van lobbyen, politieke agendavorming en publiek beleid. .....',
-            keyTopics: ['Lobbyisme', 'Boerenbelangen', 'Stikstofbeleid', 'Politieke invloed'],
-            // writtenInterview: [
-            //     {
-            //         question: 'Waarom heeft Nederland volgens u zo\'n grote vee-industrie nodig?',
-            //         answer: 'Het gaat niet om "nodig hebben" - het is er gewoon. Generaties families leven van de veehouderij. Ze produceren voedsel, beheren het landschap, en dragen miljarden bij aan onze economie. De vraag zou moeten zijn: waarom zouden we dat kapot willen maken? Natuurlijk moet er verduurzaamd worden, maar dat doe je samen met boeren, niet tegen ze in.'
-            //     },
-            //     {
-            //         question: 'Hoe kijkt u aan tegen de kritiek dat de sector te veel invloed heeft op het beleid?',
-            //         answer: 'Dat is een frame van milieuorganisaties die zelf miljoenenbegrotingen hebben en de media weten te bereiken. Boeren hebben niet té veel invloed - ze hebben juist te weinig. Kijk naar het stikstofbeleid: dat is erdoor geramd zonder echt naar boeren te luisteren. Ze moeten stoppen of drastisch inkrimpen. Waar is hun invloed dan? In werkelijkheid zijn boeren buitenspel gezet door een élite die denkt dat ze wel weten wat goed is voor het platteland.'
-            //     },
-            //     {
-            //         question: 'Wat zou er volgens u moeten veranderen in de sector?',
-            //         answer: 'Ten eerste: perspectief. Boeren moeten weten waar ze aan toe zijn. Geen nieuw beleid om de drie jaar. Ten tweede: eerlijke prijzen. Supermarkten drukken de prijzen, boeren draaien op voor de kosten. Ten derde: minder regeldruk. Boeren stikken in de bureaucratie. En ten vierde: erken hun bijdrage. Boeren zijn geen milieuvervuilers, ze zijn voedselproducenten die Nederland heeft opgebouwd.'
-            //     },
-            //     {
-            //         question: 'Hoe reageert u op de stelling dat de sector moet krimpen voor het klimaat en milieu?',
-            //         answer: 'Ik vraag me af of degenen die dat roepen wel beseffen wat ze vragen. Je vraagt families om hun levenswerk op te geven. Voor wat? Zodat we vlees gaan importeren uit Brazilië waar de regels veel laxer zijn? Dat is symboolpolitiek. Nederlandse boeren zijn de meest duurzame ter wereld. Als we hier krimpen zonder de import te reguleren, verplaats je het probleem alleen maar.'
-            //     },
-            //     {
-            //         question: 'Wat zou een eerlijker lobbysysteem betekenen voor de veehouderij?',
-            //         answer: 'Rechtvaardigheid. Boeren verdienen een eerlijke behandeling en een toekomst. We willen beleid dat gemaakt wordt mét boeren, niet over hun hoofden heen. We willen realistisch klimaatbeleid dat niet hele sectoren kapot maakt. En we willen dat Nederland haar voedselproducenten weer gaat waarderen in plaats van demoniseren. Deze mensen voeden ons land. Toon wat respect.'
-            //     }
-            // ],
-            downloadUrl: 'https://example.com/arco-transcript.pdf'
+            bio: 'Arco Timmermans is hoogleraar Publiek Beleid aan de Universiteit Leiden en expert op onder andere het gebied van lobbyen, politieke agendavorming en publiek beleid. Hij doet al jaren onderzoek naar lobbyisme en belangenbehartiging in Nederland en internationaal.',
+            keyTopics: ['Lobbyisme', 'Boerenbelangen', 'Stikstofbeleid', 'Politieke invloed', 'Transparantie'],
+            interviewNote: {
+                text: 'Dit gesprek is mondeling gevoerd en opgenomen. De onderstaande vragen en antwoorden zijn gebaseerd op de transcriptie van het gesprek.'
+            },
+            writtenInterview: [
+                {
+                    question: 'Hoe groot is de lobbykracht van de Nederlandse vee-industrie vergeleken met andere sectoren?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>De lobbyinvloed, sowieso die van de landbouw -- dus landbouw, veeteelt en visserij -- is altijd groot geweest. In het verleden werd dat wel eens de "ijzeren ring" genoemd. Die is altijd groot geweest. Die is wel afgenomen, omdat er meer spelers zijn die ook heel zichtbaar zijn en die een tegengeluid vertolken.</p>
+                            <p>De invloed is afgenomen, maar de invloed is nog wel heel duidelijk aanwezig. Je hebt natuurlijk wel de stille lobby. De stille lobby is vaak niet zichtbaar en is ook niet bedoeld om zichtbaar te zijn. Daar worden nog steeds heel veel zakelijke belangen behartigd. Dat gebeurt nog wel.</p>
+                            <p>Maar over de hele linie denk ik dat de belangen van de sector minder vanzelfsprekend altijd op de eerste rang zitten. Belangenbehartigers uit die sector zitten dus ook minder vanzelfsprekend altijd op de eerste rang, of staan altijd vooraan om altijd te krijgen wat ze vragen. Of hebben ook minder grip gewoon op het hele beleidsproces gekregen. Dus dat is denk ik wel wat je ziet.</p>
+                            <p>Dus er is nog steeds een machtspositie, maar die machtspositie is niet meer zo vanzelfsprekend, zou je kunnen zeggen, als die was.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Waarom en hoe is de Farmers Defence Force ontstaan?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Het afnemen van de invloed kun je eigenlijk een beetje zien als de reden waarom er bijvoorbeeld een Farmers Defence Force is ontstaan. Dat heeft te maken met het onder druk komen van de traditionele belangenorganisatie, LTO Nederland. Waardoor een aantal boeren en bedrijven dachten van: hé, wij moeten zorgen dat onze belangen wel goed verdedigd kunnen blijven.</p>
+                            <p>Dus in wezen – dat klinkt misschien tegenstrijdig, maar het luidruchtiger worden van de lobby uit de boerenhoek – is eigenlijk juist een teken dat de altijd aanwezige invloed is afgenomen.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Heeft de veehouderij-lobby nog evenveel invloed als vroeger?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>De veto-lobbyspelers, die zeggen "blijf met je poten van de veehouderij af", die krijgen echt niet meer wat ze willen zoals ze dat misschien tien of twintig of dertig jaar geleden kregen. Partijen die andere dingen vooropstellen, omdat ze idealen hebben voor een veiliger, eerlijker, diervriendelijker, milieuverantwoordelijker wereld, die hebben juist meer ruimte genomen ook op de politieke agenda.</p>
+                            <p>Vanuit een lobbymachtsperspectief is het voor mij dus niet zo dat de veehouderij iedereen wegspeelt. Dat is niet meer zo.</p>
+                            <p>Dus er is nog steeds een machtspositie, maar die machtspositie is niet meer zo vanzelfsprekend, zou je kunnen zeggen, als die was.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe kijkt u naar de manier waarop de vee-industrie erin slaagt nog haar belangen te beschermen, ondanks die groeiende maatschappelijke kritiek?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Dat doen ze door gewoon continu, full speed, 24/7, op allerlei manieren de invloed en de toegang die er is te blijven benutten. En door het verhaal, ik noem dat altijd, te dramatiseren. Daarmee bedoel ik niet "aanstelleritis", maar dramatisering betekent dat je van een meer technisch of zakelijk belang een veel bredere, emotionelere kwestie maakt.</p>
+                            <p>Dat zag je bij de boeren die het hebben over het voortbestaan van familiebedrijven. Zij maken van een belangenonderwerp over inkomen en de sector ook een identiteitsonderwerp of een existentieel onderwerp. Dus dat noem ik dan dramatisering, en dat zie je gebeuren.</p>
+                            <p>Maar dat is tegelijkertijd ook wel weer een teken dat de ouderwetse, vanzelfsprekende invloed er niet meer zo is. Als je makkelijk kunt lobbyen via je connecties, en zo invloed hebt op het regeerakkoord en dergelijke, dan hoef je niet die vergrotende trap van dramatisering te kiezen. Dan moet je wel laten zien dat je een achterban hebt.</p>
+                            <p>Maar ook de kiezersachterban – of de voorban moet ik eigenlijk zeggen, de partijen die boerenbelangen behartigen – daar zit veel verandering in. De BBB is nu kleiner geworden, het CDA is weer groter geworden, maar die profileren zich natuurlijk nu, zeker onder Bontenbal, niet meer alleen als een partij voor het platteland. Voor een deel is dat wel historisch en komt het ook nog steeds voor waar de kiezers vandaan komen, maar partijen zijn wat dat betreft veel meer aan het "snoepen" waar ze op de markt kiezers kunnen veroveren en verleiden.</p>
+                            <p>Daardoor moeten politieke partijen zich ook niet meer per se laten associëren met één soort achterban. Dat kunnen ze zich niet veroorloven. De spelers, de traditionele spelers of degenen die het meest dramatiseren, zullen natuurlijk proberen te laten zien dat we niet zomaar heel ingrijpend kunnen veranderen. Daar moet een prijs voor worden betaald, zou je kunnen zeggen. Het moet toekomstbestendig zijn voor familiebedrijven.</p>
+                            <p>Niet alle boerenbedrijven zijn familiebedrijven. Er is ook een hele grote georganiseerde sector achter deze bedrijven. Maar al met al, kijk maar naar de melkveehouderij, dat zijn gewoon boerenbedrijven die vaak in een coöperatie zitten, en die allemaal hun eigen aandeel hebben. Dat is een traditie en die bestaat nog. Ik denk ook niet dat dat verdwijnt. Het hoeft misschien ook helemaal niet te verdwijnen.</p>
+                            <p>De manier waarop mensen zich organiseren is één ding. Maar de inzet, waar men op inzet, welke toekomst men ziet, welke onderwerpen relevant zijn, hoe men het belang van de sector koppelt aan allerlei maatschappelijke vraagstukken – dat wordt ook gezien. Het is gewoon niet zo simpel om dat allemaal in balans te krijgen. Het is altijd duwen en trekken.</p>
+                            <p>Politiek en lobbyen gaan allebei om duwen en trekken en om druk uitoefenen. Dat spel is moeilijker geworden door de spelers die nu allerlei verschillende manieren van beïnvloeding gebruiken.</p>
+                            <p>Het is niet meer één front met één vertegenwoordiger van de organisatie. Er is eigenlijk een vermenigvuldiging van soorten spelers, waarbij sommigen willen vernieuwen en anderen liever niet. En dat is een lastige groep – moeilijk in de zin dat het niet meer zo makkelijk is om iedereen in het mandje te houden. Dus die kikkers die springen eruit, zo zie ik dat.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Verwacht u een totale systeemverandering in de Nederlandse veehouderij?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Er is best wel het een en ander veranderd, maar ik denk niet dat we in Nederland in de veehouderij een totale systeemverandering gaan krijgen. Wat misschien nodig is en wat haalbaar is, dat zijn twee verschillende dingen. En als ik kijk wat ik inschat in het krachtenspel, dan denk ik dat de traditionele, wat meer behoudende krachten nog voldoende invloed zullen overhouden om te voorkomen dat alles compleet over de schop gaat.</p>
+                            <p>Zelfs druk vanuit de omgeving als Brussel zal daar niet groot genoeg voor zijn om dat voor elkaar te krijgen, denk ik.</p>
+                            <p>Voor sommigen kan dit een sombere boodschap zijn, afhankelijk van je eigen standpunt. Ik probeer het een beetje realistisch in te schatten. Dus er ontstaan zeker veranderende krachtsverhoudingen. Er zijn spelers bijgekomen die maken dat de lobby van en voor boeren, landbouw en veehouderij niet per se altijd krijgt wat ze wil. Maar dat betekent ook weer niet dat ze helemaal niks meer krijgt.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe transparant is lobbyen in Nederland, in het algemeen maar ook met betrekking tot de vee-industrie-lobby?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Zakelijke belangen worden meestal niet behartigd met het idee dat iedereen mag meekijken. Dat geldt voor de vee-industrie, maar net zo goed voor de petrochemische of de maakindustrie, of welke sector dan ook.</p>
+                            <p>Bedrijven bestaan niet om te lobbyen. NGO's, die bestaan om te lobbyen. Of anders gezegd: hun doel is om via pleidooien mensen te overtuigen dat er iets moet veranderen of dat de huidige situatie niet houdbaar is.</p>
+                            <p>Maar bedrijven – of het nu boerenbedrijven of andere veehoudersbedrijven zijn - die bestaan niet om te lobbyen; zij lobbyen om te kunnen blijven bestaan. En dat doen ze vaak en georganiseerd. Net zoals vroeger, al zijn er nu wel meer verschillende manieren van lobbyen bijgekomen.</p>
+                            <p>Een deel daarvan is nog steeds de onzichtbare lobby. De directe contacten die er waren, die er nog zijn en die er ook zullen blijven zijn. In Nederland – maar ook in het buitenland – zijn die contacten om verschillende redenen niet zichtbaar.</p>
+                            <p>Het punt van onzichtbare lobby is dat die voor iedereen, dus ook voor mij, vaak moeilijk in kaart te brengen is. Onderzoeksjournalisten doen daar veel moeite voor, en soms met succes. Onderzoekers ook. Maar al met al kun je hooguit een beeld krijgen van welke afspraken er op ministeries worden gemaakt door goed door te vragen.</p>
+                            <p>En ja, dat maakt dat de transparantie – hoeveel wij kunnen weten en kunnen zien over wat er gebeurt – gewoon beperkt.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat wordt in deze context onder transparantie verstaan, en hoe wordt dit geregeld?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Het woord transparant gaat over verantwoording. Je kunt onzichtbaar lobbyen, maar je kunt wel zichtbaar maken voor wie je lobbyt, waarom en wanneer. Dan hebben we het over discussies die nu spelen: moeten we dan een register invoeren waar lobbyisten moeten staan? Of moeten de afspraken die ministers met lobbyisten maken openbaar worden zodat hun agenda's zichtbaar zijn? Zo kun je een heleboel noemen.</p>
+                            <p>In Nederland is daar eigenlijk nog steeds weinig over geregeld. Dat is ook weer een kwestie van politieke meerderheidsvorming. Dat begint een beetje te verschuiven, maar er heerst nog steeds een sterk laissez-faire. Het lobbywerk wordt dus erg vrijgelaten en mag zijn eigen gang gaan.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat belemmert het zicht op lobbyactiviteiten?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Het is niet alleen een kwestie van het maken van regels, maar ook van hoe bewust de ontvangende partijen zijn – dat zijn de mensen aan de kant van de overheid. Dat kunnen ambtenaren of volksvertegenwoordigers zijn, niet alleen in de Tweede Kamer, maar ook in de Provinciale Staten en gemeenten.</p>
+                            <p>De veehouderij heeft daar namelijk veel mee te maken, omdat bedrijven vaak lokaal of regionaal opereren en dus te maken hebben met beleid waar gemeenten en provincies over gaan.</p>
+                            <p>Die rol als ontvanger van lobby is in Nederland nog weinig bewust ontwikkeld. Het besef over hoe om te gaan met lobbyisten, zoals de georganiseerde veehouderij, of soms ook de ongeorganiseerde veehouders, is nog beperkt. Ook dat gebrek belemmert het zicht op wat er gebeurt. Daar kan nog heel veel verbeterd worden, denk ik.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat zou een eerlijker lobbysysteem betekenen voor de huidige vee-industrie?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Dat betekent dat we voor de intensieve vee-industrie, maar eigenlijk voor alle mogelijke terreinen waar gelobbyd wordt, meer werk moeten maken van registraties. Zoals een lobbyregister, of van mijn part het bijhouden van de agenda's. Maar ook het bewuster maken van degenen die aan de ontvangende kant zitten zoals ambtenaren, volksvertegenwoordigers en bestuurders. Zij moeten beter bijhouden met wie ze praten en hoe vaak ze dat doen.</p>
+                            <p>Zo kunnen we het speelveld opener maken en eerlijker voor degenen die niet vanzelfsprekend op de eerste rij zitten en geen toegangsprivileges hebben.</p>
+                            <p>Daarnaast is ook meer bewustzijn nodig bij de eindontvangers van lobby, dus iedereen die zo'n boodschap krijgt. Of dat nu is van veehouders, Wakker Dier of van wie dan ook. Het moet duidelijker worden wat er met die boodschap gebeurt.</p>
+                            <p>Een praktisch voorbeeld: als politieke partijen ambities in hun verkiezingsprogramma zetten, moeten ze, zodra ze in een kabinet zitten, beter bijhouden met wie ze over die onderwerpen praten. Hetzelfde geldt voor afspraken in een regeerakkoord. Houd dat bij en laat het maar zien.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat is er nodig om een effectief lobbyregister in te voeren?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Wat je daarvoor nodig hebt, is dat organisaties binnen het openbaar bestuur – dus de overheidsorganisaties – onderling zelf ook meer leren over hoe ze dat doen. En dat gebeurt heel weinig, bijna niet. Kijk bijvoorbeeld naar de provincies. De volksvertegenwoordigers in de Provinciale Staten hebben heel verschillende manieren waarop ze tegen partijen aankijken die komen lobbyen. Dat verschilt per provincie, en er zijn ook verschillende gedragsregels voor.</p>
+                            <p>Het zou helpen om dat beter te organiseren, de discussie daarover te voeren en ervan te leren. En te kijken wat wel werkt en wat minder.</p>
+                            <p>In Nederland hebben we over het algemeen best een goede vertegenwoordiging van een heleboel maatschappelijke belangen in de veehouderijwereld. Dat zijn niet per se veehouders zelf, maar andere spelers die onderwerpen rond de veehouderij op de agenda willen zetten. Zij hebben echt wel invloed op de agenda. Natuurlijk vinden zij dat vernieuwing, hervorming en herstructurering van de veehouderij te langzaam gaat, terwijl anderen zeggen: "Ho, niet zo snel, want dan leggen we het loodje."</p>
+                            <p>Ik probeer het een beetje te bekijken vanuit een neutraal perspectief. Het speelveld kan eerlijker worden door beter te letten op toegang en beter te letten op wat er met lobbyboodschappen gebeurt. Je zou bijvoorbeeld een paragraaf kunnen toevoegen aan nieuwe beleidsbeslissingen – wetgeving of begrotingsbeslissingen – waarin je laat zien met wie je gesproken hebt. Dan kun je ook terugvoeren wie het meest invloedrijk is geweest. Maar voor onderzoekers is het altijd een puzzel om precies uit te vogelen hoe dat in elkaar zit.</p>
+                            <p>Heel veel lobby is een beetje de dark side of the moon. Die is er wel – het is de helft van de maan of meer – maar je ziet hem niet per se. Dus hoe kun je daar nou zicht op krijgen? Betere regels en meer verantwoording helpen daarbij.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe vergelijkt u de situatie in Nederland met andere Europese landen wat betreft de invloed van lobby\'s?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Nederland is een heel druk landje wat betreft de discussie over lobbyen. Maar het gekke is eigenlijk dat er juist in Nederland relatief weinig georganiseerd en geregeld is – er zijn weinig formele regels of spelregels. Dat komt een beetje door onze overlegdemocratie. We hadden lange tijd het idee dat formele regels niet nodig waren, omdat we elkaar onderling wel kunnen vertrouwen.</p>
+                            <p>Als er vertrouwen is, hoef je niet allerlei expliciete officiële regels te maken. Regels zijn eigenlijk een soort codificatie, een vastlegging van wat misschien wel wantrouwen is.</p>
+                            <p>Het punt is alleen dat die goedmoedige vertrouwensbasis niet per se meer de werkelijkheid is. Er zijn nu spelers die veel heftiger in het spel staan dan vroeger. Er is juist veel wantrouwen, ook in de veehouderij en tussen de veehouderij en andere partijen. En dat wantrouwen wordt soms ook gekoesterd, omdat het helpt om je boodschap naar voren te brengen. Als je als NGO een tegenstander kunt aanwijzen, kun je dat goed gebruiken in je campagne. In een verhaal heb je vaak een tegenstander nodig, dat is retorisch.</p>
+                            <p>Daardoor is er wat ik wel eens "gekoesterd wantrouwen" noem. Het kan lijken alsof het wantrouwen groter is dan het in werkelijkheid is. Maar in Nederland is er dus relatief weinig officieel geregeld. We dachten lang dat dat niet nodig was, omdat de lijntjes kort zijn. Vroeger was het bijvoorbeeld heel normaal als iemand uit de politiek voorzitter werd van een vakbond of een boerenorganisatie – dat was een gewone carrièrestap.</p>
+                            <p>Nu zeggen we: ho, ho, ho, dat is een draaideurlobbyist. Iemand die de politiek verlaat en de volgende dag vanuit een zakelijk belang met een andere pet binnenkomt om zijn oude collega's aan te spreken. Dat noemen we tegenwoordig een draaideur.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat is het probleem met draaideurlobbyisten?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Oud-politici worden gevraagd om lobbyklussen te doen. Niet omdat ze zo'n aardig kopje hebben, maar omdat ze connecties hebben. Ze zijn daar bruikbaar voor. Ze hebben kennis die anderen niet hebben, maar dat kan wel belangenverstrengeling opleveren.</p>
+                            <p>En er zijn nog steeds veel politici... ik durf het wel zo te zeggen: bij zakelijke belangen wat meer aan de rechterkant, en bij maatschappelijke belangen wat meer aan de linkerkant, die de draaideurkwestie niet echt als een probleem zien. Dat is nog steeds zo.</p>
+                            <p>Als iemand de politiek uitgaat, dan wil je, als je nog niet te oud bent een nieuwe baan. Dan kun je misschien goed betaald worden, of je kunt geloven in de maatschappelijke doelen die je vanuit de politiek altijd hebt uitgedragen en dat dan voortzetten vanuit een maatschappelijke organisatie. Op zich kan dat allemaal heel begrijpelijk zijn, maar je moet wel oppassen dat er geen belangenverstrengelingsprobleem ontstaat.</p>
+                            <p>En ook daar geldt: vroeger deden we het op die manier, maar nu ontstaat er een risico van iets dat wel eens netwerkcorruptie wordt genoemd. Dat is niet corruptie in de zin van omkoping, maar doordat je binnen een netwerk snel na elkaar verschillende functies kunt vervullen. Daardoor kan een voordeel, een privilege of belangenverstrengeling ontstaan. Daar kijken we nu in Nederland kritischer naar. Tenminste, een deel van Nederland kijkt daar kritischer naar.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe wordt volgens u de publieke beeldvorming beïnvloed door de lobbyisten van de vee-industrie?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Een tijdje geleden werkte ik mee aan een uitzending over de lobby vanuit de melkveehouderij, en daarin kwam ook de varkenssector aan bod. Daar zag je allerlei reclamemateriaal – want dat was het eigenlijk – gericht op schoolklassen. Scholen gingen op bezoek bij de boerderij, en op zich is dat natuurlijk heel goed, denk ik.</p>
+                            <p>Maar wat je dan ziet – ik heb wat van dat materiaal wel eens gezien, en ik ben zelf geen nieuwsmaker, maar dan denk je: dit is wel heel erg gestuurde informatie. Is dit nou maatschappelijk, of is het eigenlijk commercieel? Daarmee ontstaat een risico op belangenverstrengeling. Ook scholen zijn in zekere zin ontvangers van lobby op deze manier, en dat is een voorbeeld van de aanwezige invloed van de melkveehouderij.</p>
+                            <p>Je moet je af blijven vragen: is dit leermateriaal, of is het consumptiemateriaal? In Nederland is dat ook heel lang vanzelfsprekend beleid geweest. Ik heb het zelf ook meegemaakt op school – we kregen veel melk. We hadden een melkplas in Europa. Dus: hoe drinken we dat nou allemaal weg, zodat die plas wat kleiner wordt?</p>
+                            <p>Een heleboel gebeurde. Maar het is interessant dat je, op het grensvlak van markt en niet-markt – met niet-markt bedoel ik alles wat niet commercieel is maar maatschappelijk – heel veel voorlichting en campagnes zag en ziet, voor die schoolbezoeken. Eigenlijk is dit toch al een beetje lobby. En daar moeten we denk ik eens goed naar kijken of dat eigenlijk wel eerlijk is.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat is een ander voorbeeld van lobbyinvloed?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Een ander voorbeeld is ook interessant: de belasting die je betaalt op alternatieven voor melk, die valt in hetzelfde belastingtarief als frisdranken. Dat is voor honderd procent het resultaat van lobbyen. Het verschil in belastingtarieven tussen dierlijke producten die we melk noemen, en niet-dierlijke alternatieven… dat is door lobby tot stand gekomen.</p>
+                            <p>Je ziet overigens dat melkveeconcerns wel daarin meegaan. Zij zeggen: "Ja, er is ruimte voor nieuwe producten naast koemelk." Maar terugkijkend is het opvallend dat de belasting op koemelk lager is dan op havermelk. Dat is ook een lobbyresultaat. En er zijn ontvangers van die lobby die oké vinden.</p>
+                            <p>Jij en ik kunnen misschien zeggen: dat is helemaal niet oké, dat is raar. Dat is voortrekken, of benadeling van alternatieven. Die zijn vaak al duurder, en dan komen ze ook nog eens in een hoger belastingtarief. Dat geeft allerlei prikkels aan bedrijven die iets alternatiefs willen bieden, maar de lobby rond die belasting maakt daarin natuurlijk wel een verschil.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Kent u een voorbeeld van een sector waarbij het gelukt is om een sterke lobby of machtstructuur te doorbreken?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Als er één sector is die zo goed als niet meer legaal kan lobbyen, en eigenlijk bijna verboden is om nog te lobbyen, dan is het wel de tabaks- en vaping-industrie. Als je kijkt, die is behoorlijk in het defensief gedrongen, wat lobbyen betreft. Er hoeft maar één incident te zijn en iedereen spreekt er meteen weer schande van.</p>
+                            <p>Dat is wel een voorbeeld van een sector die minder machtig is geworden, al heeft die sector natuurlijk nog steeds invloed. Dus helemaal alle kaarten uit handen geslagen is ook weer niet zo. We zien wel de afgenomen invloed van hun lobby, in die zin dat het product dat ze maken steeds meer ter discussie staat en er meer bezwaren tegen zijn.</p>
+                            <p>Als je kijkt naar de framing, dus hoe kijk je naar iets, hoe praat je over iets, dan zie je dat roken eerst in een "eigen keuze"-frame zat: iedereen moet dat zelf kunnen bepalen, of sterker nog, roken was een teken van onafhankelijkheid. Dat is volledig omgeslagen van een "eigen keuze"-frame naar een "gevaar"-frame.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Heeft de traditionele bedrijfslobby nog evenveel invloed?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ik denk dat in het algemeen de klassieke bedrijfslobby, op welk terrein van de economie ook, tegenwoordig minder vaak krijgt wat ze wil, en minder aan het langste eind trekt dan tien of vijftien jaar geleden. Daar zijn wel echt verschillen in.</p>
+                            <p>Er zijn nu meer tegengeluiden zichtbaar, en die wegen ook mee in de politieke arena. Dat is ook een reden waarom er zoveel politieke problemen zijn. Als het lobbyspeelveld eerlijker wordt en er meer verschillende geluiden toegang krijgen die meegewogen moeten worden, dan maakt dat de politieke besluitvorming niet makkelijker.</p>
+                            <p>Politieke partijen zijn ook kleiner geworden en hebben hun eigen achterban. Daardoor zie je bijvoorbeeld dat zelfs al het formeren van een kabinet een stuk moeilijker is geworden. Ik verlang niet terug naar de "goede oude tijd", dat bedoel ik niet, maar het heeft wel consequenties.</p>
+                            <p>Het speelveld is opener geworden, zeker in deze tijd waarin de drempel om te lobbyen steeds lager wordt. In deze digitale wereld hoef je geen grote massa de straat op te krijgen om invloed te hebben. Een influencer kan dat vanuit huis zo doen. En dat heeft enorme consequenties voor hoe beleidsmakers al die boodschappen moeten verwerken.</p>
+                            <p>We leven dus in een steeds verstrooidere wereld, waarbij de grip op het spel veel minder voorspelbaar is. Aan de ene kant houdt dit in dat de traditionele machten minder machtig zijn. Aan de andere kant weten we niet zeker wat ervoor in de plaats komt. Ik bedoel daarmee niet dat NGO's een monopolie op invloed krijgen – dat zal nooit gebeuren. Maar zij hebben wel degelijk een rol in het spel en ook invloed.</p>
+                            <p>Maar er zijn ook nog weer andere ontwikkelingen: de invloed van sociale media, waar gewone mensen meningen en hypes creëren, is voor beleidsmakers net zo belangrijk geworden als de invloed van zakelijke of maatschappelijke lobby. Daardoor is het veel minder voorspelbaar geworden wat er gebeurt. Het onvoorspelbare is eigenlijk de regel geworden.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hebben NGO\'s en lobby\'s met een wat groter budget een gelijk speelveld?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Nou, als het alleen zou gaan om hoeveel geld je hebt om te lobbyen, dan zou het geen gelijk speelveld zijn. In die zin is het ook niet eerlijk, want als je geld hebt en je kunt goede, slimme, getrainde lobbyisten inhuren, heb je vaak meer kans dan wanneer je een vrijwilligersorganisatie bent.</p>
+                            <p>Maar aan de andere kant kom ik terug bij dat punt van de uitdagers. Toch zie je dat kleine spelers, die ook een beetje de gunfactor meekrijgen, soms meer invloed hebben dan je op basis van de omvang van hun groep of organisatie zou verwachten. Als ze het spel maar slim spelen.</p>
+                            <p>Dus rijke lobby's winnen niet altijd. Zeker niet. Ze hebben wel meer mogelijkheden om het professioneel aan te pakken, zeker om de binnenroute te bewandelen. Dat betekent: gebruikmaken van directe contacten die ze al hebben, en daar hun ervaring op inzetten. Toegang tot beleidsmakers dus. Maar dat is niet per se alleen een kwestie van geld. Het gaat ook om connecties, om dat onzichtbare netwerk binnen een sector. Dat bouw je op, dat is als het ware een soort kapitaal dat je geleidelijk aan verzamelt.</p>
+                            <p>Wat we zien, is dat spelers die zeggen "wij gaan dat uitdagen", dat die best wel in staat zijn om daarin succesvol te zijn. Dat is dus in die zin ook wel een vermindering van de traditionele macht, en van het idee dat je met veel geld altijd de lobby wint.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Welke voordelen hebben spelers met een groter budget in het lobby-spel?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja, als je twee miljoen budget hebt om professionele lobbyisten in te huren of aan te nemen, dan heb je meer mogelijkheden dan wanneer je afhankelijk bent van een idealist die er maar voor 0,3 fte aan werkt. Alleen de idealist kan het heel slim doen. En dat is ook iets. Lobbyen gaat, juist door die dramatisering, niet alleen om wat jij doet, maar ook om met wie je het doet.</p>
+                            <p>En als je een heel goedkope maar effectieve coalitie kunt vormen met spelers die dezelfde ideeën hebben, dan kun je net als burgers die zich mobiliseren – die zeggen "we willen dit niet in onze achtertuin" – best indruk maken op beleidsmakers. En die kunnen dan ook niet zomaar genegeerd worden.</p>
+                            <p>Maar ja, er zijn zoveel partijen dat degene die het zakelijk aanpakt altijd wel gehoor vindt bij de ene partij, terwijl iemand met een ideaal over hetzelfde onderwerp – wat elkaar soms tegenspreekt – weer een luisterend oor vindt bij een andere partij. En dan is het een kwestie van: welke mensen zitten er uiteindelijk in het kabinet, en wie luistert naar wie?</p>
+                            <p>Maar dat het spel niet meer zo voorspelbaar is – en dus ook niet altijd de traditionele lobby wint – dat staat volgens mij wel vast. Alleen daar hebben we nog weinig zicht op, omdat er in Nederland weinig regels zijn. Daar kunnen we dus nog wel wat aan verbeteren, denk ik.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Denkt u dat consumenten zich meer bewust moeten worden over lobby?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja, ik denk van wel, zowel consumenten als burgers in hun rol. Ik had het vanochtend met studenten over: waar zou je nu voor gaan lobbyen als je bij een universiteit betrokken was? Ik denk dat elke speler die een aandeel heeft, en dus iets te winnen of te verliezen heeft in het politieke proces waarop de lobby is gericht, bewustzijn nodig heeft.</p>
+                            <p>De ontvangende kant, de overheid, heeft zeker meer bewustzijn nodig. Maar ik denk ook dat het goed zou zijn als alle groepen in de samenleving meer bewust worden van lobby – of dat ook gaat gebeuren, is natuurlijk de vraag. Ik denk niet dat we daar te veel illusies over moeten hebben, want er is ook veel volggedrag. Er is heel veel mimicking, naäperij. Je gaat mee met de richting van de stroom.</p>
+                            <p>Dat zie je ook aan de plotselinge veranderingen in verkiezingsuitslagen. Partijen waarvan men dacht dat ze zouden winnen, vallen soms tegen. Partijen die zouden verliezen, doen het dan weer beter. Dat komt ook door die plotselinge stroomversnellingen die ontstaan door sociale media en groepsgedrag.</p>
+                        </div>
+                    )
+                }
+            ],
         },
         {
             id: 'wouter-waayer',
@@ -127,7 +320,7 @@ export default function InterviewsPage() {
                 {
                     title: 'Fragment 5: Vega(n)-termen en discussies',
                     duration: '02:01',
-                    description: 'Je reageerde online eerder op discussies over termen als ‘gehakt’ en ‘burger’ voor plantaardige producten, hoe kijk je naar dat soort regulering?',
+                    description: `Je reageerde online eerder op discussies over termen als gehakt en burger voor plantaardige producten, hoe kijk je naar dat soort regulering?`,
                     audioUrl: '/audio-wouter/audio8.m4a'
                 },
 
@@ -183,7 +376,7 @@ export default function InterviewsPage() {
                     question: 'Hoe ziet de BBB de invloed van verschillende partijen op het beleid? En hoe zou volgens jullie een evenwichtig beleidsproces eruitzien?',
                     answer: (
                         <div className="space-y-4">
-                            <p>Ons beeld is dat de invloed scheef is komen te liggen. Grote ketenpartijen, NGO\'s en Brussel-gebaseerde organisaties hebben vaak een vaste stoel aan tafel, terwijl de individuele boer en ook kleinere ketenpartijen te vaak achteraf mogen aanhoren wat er besloten is. In Europees verband, maar toch ook Nederlands verband, zie je dat belangen van boeren soms ondersneeuwen onder een dikke laag beleidsrapporten en NGO-standpunten. De Tweede Kamer is ook overactief in het indienen/steunen van moties die vervolgens door opeenstapeling leiden tot een onwerkbare praktijk voor boeren.</p>
+                            <p>Ons beeld is dat de invloed scheef is komen te liggen. Grote ketenpartijen, NGO's en Brussel-gebaseerde organisaties hebben vaak een vaste stoel aan tafel, terwijl de individuele boer en ook kleinere ketenpartijen te vaak achteraf mogen aanhoren wat er besloten is. In Europees verband, maar toch ook Nederlands verband, zie je dat belangen van boeren soms ondersneeuwen onder een dikke laag beleidsrapporten en NGO-standpunten. De Tweede Kamer is ook overactief in het indienen/steunen van moties die vervolgens door opeenstapeling leiden tot een onwerkbare praktijk voor boeren.</p>
                             <p>Een evenwichtiger beleidsproces zou volgens ons in ieder geval betekenen dat boeren en primaire producenten structureel aan de voorkant worden betrokken. Niet alleen in consultaties, maar in echte co-creatie van beleid.</p>
                         </div>
                     )
@@ -202,7 +395,7 @@ export default function InterviewsPage() {
                     question: 'De agrosector wordt geconfronteerd met vraagstukken rond volksgezondheid, stikstof, klimaat en dierenwelzijn. Hoe weegt de BBB deze verschillende thema\'s?',
                     answer: (
                         <div className="space-y-4">
-                            <p>We zien deze thema\'s niet als losse eilandjes, maar als een pakket waar je integraal mee om moet gaan. Onze belangrijkste uitgangspunten op het gebied van volksgezondheid is dat je daar geen gok mee mag nemen. BBB vertrouwt in dat opzicht erg op onafhankelijke wetenschappelijke instituties.</p>
+                            <p>We zien deze thema's niet als losse eilandjes, maar als een pakket waar je integraal mee om moet gaan. Onze belangrijkste uitgangspunten op het gebied van volksgezondheid is dat je daar geen gok mee mag nemen. BBB vertrouwt in dat opzicht erg op onafhankelijke wetenschappelijke instituties.</p>
                             <p>Stikstof en klimaat zijn belangrijke opgaven, maar we willen een aanpak proportioneel en uitvoerbaar is, en die niet eenzijdig bij de landbouw wordt neergelegd. Daarnaast is BBB van mening dat de modellenwerkelijkheid niet overeenkomt met de daadwerkelijke staat van de natuur in Nederland. Stikstof is op sommige hexagonen een drukfactor. Maar in veel gebieden spelen hele andere dingen mee, waar nu helemaal geen oog voor is, en wordt alles maar op stikstof gegooid.</p>
                             <p>En qua dierenwelzijn: Nederland loopt al relatief voorop in regelgeving. Wij willen verdere verbeteringen koppelen aan verdienvermogen en marktpositie. Extra eisen zonder extra verdienmogelijkheden zijn niet houdbaar.</p>
                         </div>
@@ -432,8 +625,17 @@ export default function InterviewsPage() {
                         <div>
                             <h4 className="text-xl font-bold mb-6">Geschreven interview</h4>
 
-                            {/* Alleen "Let op" balk tonen voor andere interviews, niet voor Wouter */}
-                            {interview.id !== 'wouter-waayer' && (
+                            {/* Informatieblok voor specifieke interviews */}
+                            {interview.interviewNote && (
+                                <div className="bg-blue-900/20 border border-blue-700 p-4 rounded-lg mb-6">
+                                    <p className="text-blue-200 text-sm">
+                                        <strong>Over dit interview:</strong> {interview.interviewNote.text}
+                                    </p>
+                                </div>
+                            )}
+
+                            {/* Alleen "Let op" balk tonen voor andere interviews, niet voor Wouter en niet als er een interviewNote is */}
+                            {interview.id !== 'wouter-waayer' && !interview.interviewNote && (
                                 <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg mb-6">
                                     <p className="text-amber-200 text-sm">
                                         <strong>Let op:</strong> Deze vragen zijn schriftelijk beantwoord.
@@ -537,7 +739,6 @@ export default function InterviewsPage() {
                                                         className="flex-1 h-2 bg-neutral-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500 [&::-moz-range-thumb]:h-4 [&::-moz-range-thumb]:w-4 [&::-moz-range-thumb]:rounded-full [&::-moz-range-thumb]:bg-emerald-500"
                                                     />
                                                 </div>
-
 
                                                 {/* Status indicator */}
                                                 <div className="flex items-center justify-between text-xs text-neutral-400">
@@ -655,8 +856,17 @@ export default function InterviewsPage() {
         if (interview.type === 'text' && interview.writtenInterview) {
             return (
                 <div className="space-y-8">
-                    {/* "Let op" balk alleen voor tekst-only interviews, niet voor Wouter */}
-                    {interview.id !== 'wouter-waayer' && (
+                    {/* Informatieblok voor specifieke interviews (zoals Arco Timmermans) */}
+                    {interview.interviewNote && (
+                        <div className="bg-blue-900/20 border border-blue-700 p-4 rounded-lg">
+                            <p className="text-blue-200 text-sm">
+                                <strong>Over dit interview:</strong> {interview.interviewNote.text}
+                            </p>
+                        </div>
+                    )}
+
+                    {/* "Let op" balk alleen voor tekst-only interviews, niet voor Wouter en niet als er een interviewNote is */}
+                    {interview.id !== 'wouter-waayer' && !interview.interviewNote && (
                         <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg">
                             <p className="text-amber-200 text-sm">
                                 <strong>Let op:</strong> Dit interview is schriftelijk afgenomen. De vragen zijn per email verzonden en beantwoord.

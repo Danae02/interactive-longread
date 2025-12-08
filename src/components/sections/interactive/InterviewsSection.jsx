@@ -12,7 +12,7 @@ export default function InterviewsSection() {
             role: 'Politicoloog & Lobbyisme-expert',
             type: 'tekst',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
-            quote: '......',
+            quote: 'Het onvoorspelbare is eigenlijk de regel geworden.',
             highlight: 'Onthult hoe lobbynetwerken werken'
         },
         {
