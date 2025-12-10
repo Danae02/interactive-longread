@@ -1,14 +1,14 @@
 import React, { useState } from 'react';
 import { BookOpen, Film, ExternalLink, Heart, ArrowLeft, ChevronDown, ChevronUp, Sparkles, Users, MessageSquare, Quote, Play } from 'lucide-react';
 
-
-export default function KunstCultuurPage() {
+export default function KunstKennisCultuurPage() {
     const [expandedSections, setExpandedSections] = useState({
         poem: false,
         monument: false,
         documentaries: false, // Hoofdcategorie voor documentaires
         boerocratie: false,  // Subcategorie
         liesjes: false,      // Subcategorie
+        ecocide: false,      // Nieuwe sectie over ecocide
         recommendations: false
     });
 
@@ -499,6 +499,131 @@ export default function KunstCultuurPage() {
             )
         },
         {
+            id: 'ecocide',
+            icon: <MessageSquare className="text-green-400" size={28} />,
+            title: "Conceptualizing Ecocide: Dit is geen rechtszaak",
+            subtitle: "Een theaterexperiment van de Universiteit Utrecht over verantwoordelijkheid voor milieuschade",
+            teaser: "Wat als ecocide strafbaar zou zijn? Een voorstelling waar het publiek de jury is...",
+            content: (
+                <div className="prose prose-lg prose-invert max-w-none">
+                    <p className="text-neutral-200 leading-relaxed mb-6">
+                        <strong>Conceptualizing Ecocide</strong> vraagt om een aanpak die academische disciplines overstijgt. Dit project brengt onderzoekers van over de hele universiteit samen, evenals belanghebbenden en organisaties buiten de universiteit, wiens werk raakt aan enig aspect van het probleem van ecocide en de juridische, ecologische, wetenschappelijke, politieke, sociaal-culturele, criminologische, filosofische en historische dimensies ervan.
+                    </p>
+
+                    <div className="bg-neutral-800 border-l-4 border-green-600 p-6 rounded-r-lg my-8">
+                        <h4 className="text-xl font-bold text-white mb-3">Dit is geen rechtszaak</h4>
+                        <p className="text-neutral-200 italic leading-relaxed mb-3">
+                            "Laten we geen misverstand hebben: de klimaatcrisis is ook een crisis van cultuur, en dus van de verbeelding."
+                        </p>
+                        <p className="text-neutral-400 text-sm mb-4">— Amitav Ghosh</p>
+
+                        <p className="text-neutral-200 italic leading-relaxed">
+                            "Theater is de repetitie van de revolutie."
+                        </p>
+                        <p className="text-neutral-400 text-sm">— Douglas Estevam, Braziliaanse activist en dramaturg</p>
+                    </div>
+
+                    <p className="text-neutral-300 leading-relaxed mb-6">
+                        <strong>Dit is geen rechtszaak</strong> is een theaterexperiment ontwikkeld door het Conceptualizing Ecocide project dat het publiek uitnodigt om deel te worden van het urgente gesprek over hoe wij, als samenleving, kunnen nadenken over verantwoordelijkheid voor milieuschade. Wat zou het betekenen om ecocide voor de rechter te brengen? Kan de wet rechtvaardigheid brengen aan lokale gemeenschappen en ecosystemen, inclusief vogels, bomen en andere niet-menselijke wezens? En wie moet verantwoordelijk worden gehouden in deze keten van vernietiging?
+                    </p>
+
+                    <div className="bg-neutral-800 rounded-lg p-6 my-8 border border-neutral-700">
+                        <h4 className="text-lg font-bold text-white mb-4">De voorstelling</h4>
+                        <p className="text-neutral-300 leading-relaxed mb-4">
+                            Tijdens twee voorstellingen, op 18 en 19 juni in het ZIMIHC theater Stefanus in Utrecht Overvecht, brachten een groep kunstenaars, acteurs en studenten van de Universiteit Utrecht <strong>Dit is geen rechtszaak</strong> op de planken - en het publiek fungeerde als de jury.
+                        </p>
+
+                        <p className="text-neutral-300 leading-relaxed">
+                            De voorstelling speelt zich af in een fictieve rechtszaal in de nabije toekomst, waar ecocide – ernstige, grootschalige milieuschade – is opgenomen in het Nederlandse strafrecht, gebaseerd op de recent ingediende wetgeving door de Partij voor de Dieren. Het biedt een realistisch inkijkje in hoe zo'n wet in de rechtbank zou kunnen uitpakken.
+                        </p>
+                    </div>
+
+                    <div className="bg-gradient-to-r from-neutral-800 to-green-900/30 rounded-xl p-6 my-8 border border-neutral-700">
+                        <div className="flex items-start gap-4 mb-4">
+                            <div className="bg-neutral-700 p-3 rounded-lg">
+                                <span className="text-2xl">⚖️</span>
+                            </div>
+                            <div>
+                                <h4 className="text-xl font-bold text-white mb-2">De zaak</h4>
+                                <p className="text-neutral-300">
+                                    Ter berechting staat de fictieve Nederlandse multinational <strong>Smit Refineries N.V.</strong> en haar CEO, beschuldigd van de vernietiging van een Indonesisch ecosysteem waar nikkel en andere zeldzame aardmetalen worden gewonnen. Hoewel deze grondstoffen essentieel zijn voor de ontwikkeling van groene technologieën voor een duurzamere toekomst, vernietigt de nikkelmijnindustrie cruciale biodiversiteitsgebieden en hele ecosystemen, duwt unieke soorten zoals de Maleovogel tot aan de rand van uitsterven en verdrijft inheemse gemeenschappen van hun land.
+                                </p>
+                            </div>
+                        </div>
+                        <p className="text-neutral-200 italic mt-4">
+                            De rechtszaak dwingt de rechtbank een paradox te navigeren: kan milieuschade op één plek gerechtvaardigd worden door potentiële mondiale voordelen?
+                        </p>
+                    </div>
+
+                    <div className="mb-8 bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
+                        <div className="flex items-center gap-2 mb-3">
+                            <span className="text-lg">🎭</span>
+                            <h4 className="text-lg font-bold text-white">Theatrale vorm</h4>
+                        </div>
+                        <p className="text-neutral-300">
+                            De voorstelling volgt de traditie van het postdramatisch theater, waarbij onderzoek, documentaire en rechtszaaldrama worden vermengd met poëtische intermezzo's, multimedi-elementen, muziek en dans. Met deze gelaagde elementen willen we stem geven aan perspectieven die vaak ontbreken in de traditionele rechtszaal. Door de ingewikkelde banden tussen juridische kaders, ecologische kwesties, politieke dynamieken, historische erfenissen en culturele waarden te onderzoeken, vragen we uiteindelijk: Wat zijn de grenzen van het rechtssysteem, en van het concept ecocide, in het aanpakken van de mondiale ecologische crisis?
+                        </p>
+                    </div>
+
+                    {/* Nieuwe sectie: Kennisclip */}
+                    <div className="my-10 bg-gradient-to-br from-neutral-800 to-green-900/20 rounded-xl p-6 border border-neutral-700">
+                        <div className="flex items-center gap-3 mb-4">
+                            <Play className="text-green-400" size={24} />
+                            <h4 className="text-xl font-bold text-white">Bekijk een kennisclip over ecocide</h4>
+                        </div>
+                        <p className="text-neutral-300 mb-6">
+                            Het project 'Conceptualizing Ecocide' produceert korte video's met experts.
+                            Hier legt hoogleraar <strong>Cedric Ryngaert</strong> de relatie tussen ecocide en internationaal recht uit.
+                        </p>
+                        <div className="relative w-full aspect-video rounded-lg overflow-hidden border-2 border-neutral-700 bg-black">
+                            <iframe
+                                src="https://player.vimeo.com/video/988403774?h=7c5a8c4a0f&title=0&byline=0&portrait=0"
+                                title="Knowledge clip: Ecocide and International Law by Cedric Ryngaert"
+                                frameBorder="0"
+                                allow="autoplay; fullscreen; picture-in-picture"
+                                allowFullScreen
+                                className="absolute top-0 left-0 w-full h-full"
+                            />
+                        </div>
+                        <p className="text-neutral-400 text-sm mt-3 italic">
+                            Knowledge Clip 1: Ecocide and International Law • Cedric Ryngaert
+                        </p>
+                        <div className="mt-4">
+                            <a
+                                href="https://vimeo.com/988403774"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm"
+                            >
+                                <span>Open video op Vimeo</span>
+                                <ExternalLink size={14} />
+                            </a>
+                        </div>
+                    </div>
+
+                    <div className="bg-neutral-800 rounded-lg p-6 my-8 border-l-4 border-green-500">
+                        <h4 className="text-lg font-bold text-white mb-3">Credits</h4>
+                        <ul className="space-y-2 text-neutral-300">
+                            <li><strong>Geschreven en geregisseerd door:</strong> Reinier Noordzij</li>
+                            <li><strong>Gedicht "Wat beweegt het water":</strong> Geschreven en uitgevoerd door Emma Zuiderveen</li>
+                            <li><strong>Productie management:</strong> Julia van Berkel</li>
+                        </ul>
+                        <div className="mt-4">
+                            <a
+                                href="https://www.uu.nl/en/research/sustainability/gallery/project-gallery/signature-projects/conceptualizing-ecocide"
+                                target="_blank"
+                                rel="noopener noreferrer"
+                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+                            >
+                                <span>Bekijk het volledige project op de UU website</span>
+                                <ExternalLink size={16} />
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            )
+        },
+        {
             id: 'recommendations',
             icon: <Sparkles className="text-neutral-300" size={28} />,
             title: "Meer Aanraders",
@@ -530,7 +655,6 @@ export default function KunstCultuurPage() {
                         description="Onderzoek van FoodUnfolded en Lighthouse Reports naar de invloed van de vleeslobby en de ware achtergrond van de Dublin Declaration"
                         link="https://youtu.be/dEQM7nnyPqo?si=GOJkgXyTXqigpeMs"
                     />
-
                 </div>
             )
         }
@@ -608,7 +732,7 @@ export default function KunstCultuurPage() {
                                 <div
                                     className={`overflow-hidden transition-all duration-300 ${
                                         expandedSections[item.id] ?
-                                            item.id === 'monument' || item.id === 'documentaries' ?
+                                            item.id === 'monument' || item.id === 'documentaries' || item.id === 'ecocide' ?
                                                 'max-h-[5000px] opacity-100'
                                                 : 'max-h-[2000px] opacity-100'
                                             : 'max-h-0 opacity-0'
