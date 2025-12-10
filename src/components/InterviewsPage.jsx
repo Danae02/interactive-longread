@@ -420,11 +420,155 @@ export default function InterviewsPage() {
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
+            interviewNote: {
+                text: 'Dit gesprek is mondeling gevoerd en opgenomen. De onderstaande vragen en antwoorden zijn gebaseerd op de transcriptie van het gesprek.'
+            },
             role: 'Voormalig Tweede Kamerlid voor de Partij voor de Dieren',
-            duration: 'tekst',
+            duration: 'Tekst (gesprek getranscribeerd)',
+            type: 'text',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
             bio: 'Lammert van Raan was van 2017 tot 2023 Tweede Kamerlid voor de Partij voor de Dieren. Als Kamerlid specialiseerde hij zich in financiën, klimaat, energie, luchtvaart, ICT en privacy. Hij is bekend van zijn initiatiefwetsvoorstellen over ecocide, het belasten van slacht, en het afschaffen van subsidies voor fossiele brandstoffen.',
             keyTopics: ['Politiek', 'Klimaat', 'PVDD', 'Ecocide'],
+            writtenInterview: [
+                {
+                    question: 'Van alle voorstellen die u heeft gedaan tijdens uw tijd in de Tweede Kamer, zoals de ecocidewet, de slachttaks en het afschaffen van fossiele subsidies, welke stuitte op de felste politieke weerstand? Van welke partijen of lobby\'s kwam die weerstand het hardst aanwaaien?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Goede vraag. De slachttaks hebben we uiteindelijk nog niet ingediend; ik weet ook niet of ze dat nog gaan doen. Die is niet in de Tweede Kamer geweest. En de Ecocidewet moet nog behandeld worden. Eerlijk gezegd weet ik ook niet of ze dat gaan doen. Dat loopt natuurlijk parallel met de behandeling van de omzetting van de Environmental Crime Directive die Nederland heeft gedaan.</p>
+                            <p>Maar je vraagt welke op de felste weerstand ik stuitte. Ik vind het lastig om te zeggen. Ik heb voor ecocidewetgeving best veel moties en vragen ingediend in de Kamer – niet als initiatiefvoorstel zelf, maar wel als moties. Daar was altijd een grote meerderheid die die moties verwierp. Het meest opvallende was eigenlijk de onbekendheid met het onderwerp.</p>
+                            <p>Het afschaffen van de fossiele subsidies heb ik natuurlijk wel gedaan; dat is een initiatiefvoorstel geweest. Nou, ik kan niet zeggen wat nou de felste weerstand was, maar wel dat in alle drie de gevallen er geen meerderheid voor was te vinden.</p>
+                            <p>Wat betreft de slachttaks – dat hebben we wel eens besproken, dat ging dan met name in de commissie Financiën of bij de Financiële Beschouwingen. Mijn partij heeft door de jaren heen verschillende keren de slachttaks voorgesteld. Over het algemeen komt dan de grootste weerstand van VVD, CDA en PVV. Ja, eigenlijk alles rechts van D66, zou ik maar zeggen. Voor de Ecocidewet eigenlijk ook.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Kunt u een concreet voorbeeld geven van hoe weerstand er in de praktijk uitzag?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Dat varieerde van opmerkingen in commissievergaderingen zoals "hier heb je een partij die weer met zo'n belachelijk idee komt", tot – vanuit bijvoorbeeld het CDA, toen zij een minister van Financiën hadden (Hoekstra), of minister Wiebes van Economische Zaken bij de fossiele subsidies – de boodschap dat het vanuit hun ideologie een heel slecht idee was voor de economie. Het varieerde dus echt van belachelijk maken, tot het argument dat het "slecht voor de economie" was.</p>
+                            <p>De argumenten gingen veel over geld. Of, vanuit de PVV, dat het "afpakken" zou zijn van wat Nederlanders volgens die partij recht op hebben, zoals het afpakken van de gehaktbal.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Kunt u uitleggen wat ecocide precies inhoudt?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Voor mij was dat zo'n ontdekkingsverhaal. Ik heb het uiteraard niet zelf bedacht. Het is een beweging die haar wortels vindt in de jaren 30 van de vorige eeuw, toen men in het kader van oorlogsrecht sprak over: wat moeten we doen als een land de bestaansmogelijkheden van een ander land vernietigt, bijvoorbeeld door bronnen te vervuilen of te vergiftigen?</p>
+                            <p>Na de Tweede Wereldoorlog, na de rechtsontwikkeling van misdrijven tegen de menselijkheid en genocide, komt die gedachte ook weer terug. Maar die vraag "wat doen we als de natuur op grote schaal door mensen wordt vernietigd?" raakt daarna een tijd lang op de achtergrond.</p>
+                            <p>Tijdens de onderhandelingen over het Statuut van Rome kwam het in de jaren negentig weer op. Waarom? Omdat in de jaren zestig en zeventig chemici die hadden meegeholpen aan het maken van ontbladeringsmiddelen in de oorlog in Vietnam – dat was eigenlijk een koloniale oorlog, gevoerd door de Fransen, doorgezet door de Amerikanen – Agent Orange gebruikten om de jungle te ontbladeren, zodat ze de vijand (de vrijheidsstrijder, zou je nu zeggen) konden zien. Dat was zo ingrijpend dat de term "ecocide" voor het eerst werd gebruikt: grootschalige vernietiging van de natuur.</p>
+                            <p>Dat kwam ook naar voren bij de Club van Rome in 2002. Toen probeerde men dat gedrag onder te brengen bij de misdrijven tegen de menselijkheid in het Statuut van Rome. Dat is niet gelukt.</p>
+                            <p>In de jaren 2010 ontdekte een Schotse advocate, Polly Higgins, dat concept van grootschalige vernietiging van de natuur, en ontdekte dat dit niet strafbaar is. Zij maakte de vergelijking: stel dat we het begrip 'moord' niet zouden kennen, het ombrengen van een mens. Als we daar geen woord en geen begrip voor hadden, dan zou je het ook niet strafbaar kunnen stellen.</p>
+                            <p>En zij dacht: dat is toch belachelijk? Het "vermoorden" van de natuur staat niet in het wetboek van strafrecht. Hoe kan dat? Zij omschreef het zelf als een soort lightbulb moment – het licht ging aan in haar hoofd. En bij mij ook, toen ik daar een jaar of vijf later kennis van nam, via twee Nederlandse vrouwen die Polly Higgins naar Nederland hebben gebracht. Dus dat begrip ecocide is vanaf de jaren 2010 weer in de belangstelling komen te staan, en steeds meer. Het is dus het strafbaar stellen van grootschalige vernietiging van de leefomgeving.</p>
+                            <p>Het is wel de hoogste vorm van recht – strafrecht is een ultiem rechtsmiddel. De bewijslast is terecht hoog. De omschrijving van ecocide moet precies zijn. Het moet gaan om een ernstige, langdurige of omvangrijke vorm van schade, en ook om onkeerbaarheid. Wat problematisch is in de huidige definitie van ecocide, is dat er een soort intentie aan ten grondslag moet liggen. En dat is een belangrijk concept in het wetboek van strafrecht.</p>
+                            <p>Toen ik er zelf mee in aanraking kwam – nogmaals, vele anderen hadden het al ontdekt, dus ik ben vrij laat erachter gekomen – heb ik wel geprobeerd in elke bestuurslaag waar ik actief ben geweest dat begrip naar voren te brengen. Of het nou de gemeenteraad van Amsterdam, Provinciale Staten of de Tweede Kamer was.</p>
+                            <p>We hebben net een documentaire gemaakt, en daar zit een fragment in waarin ik minister Kaag vroeg – toch een hele belezen en ervaren persoon – "heeft u daar wel eens van gehoord?" Eigenlijk verwachtte ik dat ze zou zeggen "ja, daar heb ik van gehoord." Maar zij zei: "Daar heb ik eigenlijk nog nooit van gehoord."</p>
+                            <p>Dat was het moment dat ik samen met een aantal mensen een initiatiefnota heb geschreven. En toen die af was en ingediend, dacht ik: weet je wat, we kunnen net zo goed proberen een wet ervan te maken. Die sluit aan bij wat volgens mij een wereldwijde beweging is om ecocide strafbaar te maken.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'In hoeverre is de intensieve vee-industrie, met zijn impact op stikstof, biodiversiteit en waterkwaliteit, een voorbeeld van ecocide?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Wat ik denk is dat de manier van vleesproductie wereldwijd dermate absurd is geworden, dat ik geen moeite heb om die hele keten een "ecocidale keten" te noemen. Er is wat mij betreft een enorm verband, en daarin ben ik zeker niet de enige – lang niet de enige, maar ook niet de eerste, en hopelijk niet de laatste – die dat verband legt.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Hoe denkt u dat zo\'n soort wet gevolgen zou kunnen hebben voor de vee-industrie als ecocide iets strafbaars zou zijn? Dus bijvoorbeeld grote vleesbedrijven zoals verwerkers, zoals Van Drie Groep of Vion – zouden zij dan aansprakelijk worden gehouden? Of wie zou dan schuldig zijn daarvan?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja, dat is een super interessante vraag bij het maken van zo'n wet. En nogmaals, dit is een proces dat op veel plaatsen in de wereld speelt: wie moet je verantwoordelijk stellen? Waar gaat het eigenlijk om?</p>
+                            <p>Want inderdaad, die intentie – ook de baas van Van Drie zal echt niet 's ochtends uit zijn bed stappen en denken: "nou, we gaan even het oerwoud kapotmaken."</p>
+                            <p>Maar wat je nu wel langzamerhand ziet – en dat moet zich ook gaan bewijzen in de komende tijd, als de ecocidewetgeving die er nu is of in ontwikkeling is, wordt gehandhaafd – dan zul je zien, dat is de verwachting, dat het om de zwaarste gevallen gaat. De lijn die naar boven komt drijven, is dat degenen met de grootste verantwoordelijkheid het meest voor de hand liggen om aan te pakken. Maar dat geldt ook voor degenen die de keten in stand houden of uitbreiden.</p>
+                            <p>Dus ik vind het lastig om te zeggen: is zo'n keten als Van Drie of Vion dan… ? Bovendien, dat is ook wel weer het mooie, ik kan daar heel erg over speculeren met jou, en ik kan er ook een idee over hebben. Daarom is het zo belangrijk dat er dit soort wetten komen, strafbaarstellingen, want dan is het uiteindelijk aan de rechter om te bepalen: ja, inderdaad, meneer of mevrouw Van Drie, u heeft een verantwoordelijkheid die dermate groot is voor een productieproces dat dermate bijdraagt aan vernietiging, dat daar aansprakelijkheid is. En bijvoorbeeld niet de consument.</p>
+                            <p>Wat betreft boeren, die zien wij als Partij voor de Dieren nou niet vanzelfsprekend als de schuldigen. Wij noemen onszelf wel eens een boerenpartij. Dat zal de BBB verbazen, en boeren wellicht ook. Al is het alleen maar omdat die grootschalige productie van vlees niks te maken heeft met boeren. Dat zijn gewoon fabrieken. Dat zijn massavernietigingsfabrieken. Dus ja, boeren hebben niet zoveel van ons te vrezen in die zin. Maar de hele grote vleesproducenten – nogmaals, geen boeren – die wel.</p>
+                            <p>Wat wij ook niet uitsluiten, en die beweging ook niet, is: wie financiert het? Dus daar zitten ook allemaal aangrijpingspunten.</p>
+                            <p>De afgelopen pakweg 30 jaar zie je in deze beweging veel discussie: wat is die wet precies? Hoe ziet die eruit? Wat is nou eigenlijk ecocide? Die discussie is overigens nog steeds niet helemaal voorbij. Sommigen zeggen: die discussie is nog lang niet voorbij. Anderen zeggen: nou, bijna voorbij. Ik zeg: bijna voorbij. In ieder geval genoeg voorbij om concrete wetten te introduceren en over te gaan tot de volgende stap: die wetten – even afgezien van het feit dat ze moeten worden aangenomen – in de praktijk testen.</p>
+                            <p>Even in een zijlijn: er is afgelopen jaar een fantastisch toneelstuk geproduceerd in Utrecht, aan de Universiteit Utrecht, in het kader van het programma "Conceptualizing Ecocide". Masterstudenten, maar ook andere faculteiten deden mee om te onderzoeken: wat is ecocide eigenlijk?</p>
+                            <p>Een van de hoogtepunten was, voor mij en denk ik ook voor een hoop andere mensen, de opvoering van een mock trial, waarbij studenten zowel aanklager als verdediger waren, en ook rechter. Wat je daar zag – en dat was voor mij echt zo mooi om te zien – was dat door het zo realistisch na te bootsen, de werkelijkheid zichtbaar werd. Het ging over een tinfabriek in Indonesië. Je zag jonge juristen – masterstudenten, bijna klaar – worstelen met de discussie: wat is het nou precies? Is de mijnbouworganisatie in Nederland verantwoordelijk voor de dochteronderneming die dat in Indonesië veroorzaakt? Hoe zit het met de mensen die daar op de vloer werken?</p>
+                            <p>Omdat dat zo goed was gedaan, zie je voor je hoe dat kan gaan in een rechtszaak.</p>
+                            <p>Terugkomend: dan zie je dat dit soort zaken, en ook het visualiseren ervan – daar wordt veel over geschreven – de discussie verder brengt. Van: nou oké, die definitie, daar zijn we nu wel achter. We weten wat een ecosysteem is. Dat is algemeen bekend onder ecologen, biologen. We weten wat ernstige schade is. We weten of je de natuur daarvan kunt herstellen. Je kent de verantwoordelijkheidsketen… Er is zoveel kennis aanwezig dat we echt kunnen overgaan tot implementatie van die wetten, is mijn mening. En ook tot handhaving daarvan.</p>
+                            <p>Wat overigens ook de mening is van officieren van justitie die op zoek zijn naar meer instrumenten. Handhaving met bestaande wetgeving is sowieso superbelangrijk. Het kan meer, het kan beter. Er bestaat een heel uitgebreid arsenaal aan maatregelen om milieuvernietiging aan te pakken. Maar ecocide onderscheidt zich door het feit dat de vernietiging van de natuur op zichzelf ook strafbaar is.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Heeft u ervaring gehad met lobby en merkte u als dat gebeurde?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja, zeker. Er is geen besluitvorming zonder lobby. Overigens gaat dit wel twee kanten op – NGO's die voor ecocide pleiten, dat is ook een lobby. Maar ik durf wel te stellen, in mijn ervaring, dat de lobby van wat je de bestaande systemen zou kunnen noemen – de bankenwereld, de LTO, de boeren via de LTO, of de fossiele industrie – vele malen groter is.</p>
+                            <p>Ze hebben een groter budget. Maar het ironische is: een economie bestaat grofweg uit 80% optimalisatie van bestaande industrieën en 20% innovatie. Dat moeten we eigenlijk omdraaien, terwijl de hele lobbykracht juist gericht is op het in stand houden van het bestaande. En dat zie je echt op elk vlak.</p>
+                            <p>En dan heb je ook nog het punt dat de vee-industrie en de landbouw eigenlijk meer geld kosten dan dat ze opleveren. Er waren rapporten van Greenpeace en het PBL, uit 2023 of 2022 denk ik, die rekenden met schades van… ik noem nu even een bedrag uit mijn hoofd… 6 miljard euro. Dat zijn gewoon 6 miljard euro aan maatschappelijke kosten. Als je dat interessant vindt of nog van belang is, kan ik dat nog even nakijken. Maar misschien zijn er inmiddels wel veel nieuwe onderzoeken geweest.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Heeft u zelf ooit directe druk ervaren van lobbyisten uit de vee-industrie? Kunt u beschrijven hoe zo\'n gesprek of invloed in de praktijk verloopt?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja. Ik moet je zeggen, toen ik in 2017 in de Tweede Kamer kwam, zat de Partij voor de Dieren daar al tien jaar in. Elk nieuw Kamerlid – en dat zal nu ook weer gebeuren – krijgt in eerste instantie enorm veel kennismakingsvoorstellen en uitnodigingen over zich heen om te komen praten en kennis te maken.</p>
+                            <p>Maar de LTO zelf… daar ben ik nooit door uitgenodigd. Ik heb dat ook nooit zelf voorgesteld. Ik denk dat dat te maken had met het feit dat onze standpunten zo ver uiteen lagen, dat het zonde van elkaars tijd was. Bovendien was landbouw mijn dossier ook niet, dus dan krijg je dat toch minder.</p>
+                            <p>Maar ik zat wel op de dossiers fossiele industrie en luchtvaart. Daar word je wel benaderd met: "neem kennis van ons, kom eens praten. De groei van de luchtvaart is belangrijk voor de Nederlandse economie. Mensen willen ook graag op vakantie. U wilt mensen dat natuurlijk niet afnemen, meneer Van Raan."</p>
+                            <p>Wat je ook merkt – en dat is wel bekend – is dat de bankensector meeschrijft aan financiële regelgeving. Daar hoef je maar even naar te googelen en dan komt dat wel naar boven. Maar goed, andersom ook. Ik zeg altijd tegen mijn vrienden bij NGO's: jongens, wat Shell kan, kunnen wij ook. Want lobby op zich is niet verboden of raar. Het wordt raar als het helemaal verborgen is, als de feiten niet kloppen, of als het om geldschieting gaat.</p>
+                            <p>Wat ik wél heb ervaren – en dat mag je ook wel een lobby of druk noemen – was ten tijde van de slachttaks. Toen waren er wel biologische boeren die vlees produceerden, die aandacht vroegen voor hun positie. Omdat het hen ook zou raken. Biologisch vlees is al duurder, dus met zo'n slachttaks zou dat nog duurder worden. Daar zijn we toen mee in gesprek geweest. Met Caring Farmers. Over vragen als: moet er een uitzondering komen voor biologisch vlees? Dat soort zaken.</p>
+                            <p>Maar nee, Van Drie, Vion…, van de vier grote slachterijen moet ik zeggen. Daar heb ik nooit wat van gemerkt. Ironisch genoeg, terwijl zij daar veel meer bij te verliezen hadden natuurlijk. Maar die hebben waarschijnlijk gedacht: daar gaan we onze tijd niet aan verspillen.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Zonder krimp van de veestapel halen we de klimaatdoelen waarschijnlijk niet. Toch lijkt dit nog een beetje een politiek taboe. Waarom denkt u dat bijna geen politicus hier concreet over durft te beginnen?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Nou, ik denk dat dat inmiddels toch wel een misverstand is, dat dat niet zo is. Als je naar de geschiedenis kijkt – lang voordat de Partij voor de Dieren in de Kamer zat – zie je al dat er in de jaren tachtig van de vorige eeuw, om hele andere redenen (niet vanuit dierenwelzijn), werd gezegd: de veestapel moet krimpen, vanuit milieu-oogpunt.</p>
+                            <p>Toen de Partij voor de Dieren in 2007 in de Tweede Kamer kwam, waren wij wel de eerste partij die dat vanuit een dierenperspectief bekeken. Maar inmiddels – degene die heel veel credits heeft gekregen, en terecht, als mainstream politieke partij – is natuurlijk D66 geweest. Tjeerd de Groot, die het had over een halvering van de veestapel.</p>
+                            <p>Dus misschien is het aardig om de vraag te herformuleren naar: waarom durft geen politicus met een machtspositie het concreet door te zetten?</p>
+                            <p>Wij hebben natuurlijk een aanjagerrol en hebben die nog steeds. Maar er zijn inmiddels meer partijen die zeggen: jongens, de vleesconsumptie moet naar beneden. Maar echt concreet doorpakken – ja, dat is nog veel lastiger. En er is toch angst voor de kiezers, denk ik.</p>
+                            <p>Misschien zijn wij ook als ecocentrische beweging – en de middenpartijen en de linkse partijen meegerekend – niet in staat om een goed alternatief te geven, zowel aan de consument als aan boeren. Maar als je ziet hoeveel subsidies er naar boeren gaan… ja, daar moeten we eigenlijk een andere methode voor afspreken. Die subsidie moet je misschien in stand houden, maar dan wel voor plantaardig. Dan was het snel gepiept.</p>
+                            <p>En het is natuurlijk ook zo dat vleesvervangers in het algemeen net zo duur of duurder zijn dan vlees. Er valt aan genoeg knoppen te draaien om dat te veranderen.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Ik zag dat in Denemarken ze heel erg bezig zijn met CO2-heffing voor de landbouw en het veel kleiner proberen te houden. Wat denkt u dat wij als Nederland daarvan kunnen leren?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Aan de ene kant ben ik in die zin blij met politici als minister Jetten – minister van Economische Zaken en Klimaat geweest. Die weet heel goed wat er moet gebeuren. Die gaat kijken wat er allemaal wél kan. En als dat geladen wordt met wat er wél kan op het gebied van de energietransitie… ja, hij moet alleen zijn nieuwe beste vriend Omtzigt meekrijgen, die natuurlijk met een CDA-verleden zit en in die zin traditioneel… belobbyd… een goed belobbyd boerenbelang heeft.</p>
+                            <p>Maar daar moet het van komen: van politici die een machtspositie hebben, die daar ook voor durven gaan, en die durven consumenten daarbij te betrekken.</p>
+                            <p>Nou, dat. En ik ben er van overtuigd dat alle oplossingen er eigenlijk al zijn. Alleen moeten ze er nog doorheen komen.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Wat vindt u de grootste misvatting bij het publiek over wie er echt verantwoordelijk is voor het in stand houden van de intensieve veehouderij?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ja, dat vind ik een hele goede vraag. Het punt is... Ik heb de indruk dat het publiek niet ziet hoe problematisch die grootschalige, intensieve veehouderij is. En dat is een gezamenlijke verantwoordelijkheid van de politieke partijen, en natuurlijk van de lobbyclubs, maar ook van de financiers.</p>
+                            <p>Ik weet niet of je wel eens Rabobank-advertenties ziet. Als je die ziet, dan loop je bijna over van dankbaarheid voor wat de Rabobank allemaal doet voor jouw toekomst. Terwijl, als je even achter de schermen kijkt... ja, dan zijn ze jouw toekomst gewoon aan het kapotmaken.</p>
+                            <p>Ook denken veel mensen dat het de schuld van de boer is. Maar daar ben ik het niet mee eens. Daarom noemt de Partij voor de Dieren zich ook wel eens een boerenpartij. Want wij zien echt wel dat boeren gevangen zitten in een systeem dat ooit misschien een goed idee leek – maar ja, daar kun je van alles van vinden.</p>
+                            <p>Maar boeren kunnen alleen maar vooruit door meer te produceren tegen lagere prijzen. En lage prijzen krijg je door de omstandigheden slechter te maken en de echte kosten niet in rekening te brengen. We zijn dan ook het grootste slachthuis van Europa en verslepen halve koeienreservoirs hiernaartoe.</p>
+                            <p>Maar ook de consumenten, voor zover ze er al over nadenken, want de industrie doet er natuurlijk alles aan om te voorkomen dat ze hoeven na te denken. De industrie probeert begrippen als "kiloknallen" een positieve lading te geven, plaatst stickers op vrachtwagens die varkens vervoeren met "Knorretje staat vrolijk", en toont slagers met een glimlach. Ze houden de kosten verborgen, noem maar op.</p>
+                            <p>Dat is eigenlijk de grootste misvatting: het is een industrie die in oorlog is met de wereld, met de natuur.</p>
+                        </div>
+                    )
+                },
+                {
+                    question: 'Kijkt u, na al uw ervaringen, optimistisch of pessimistisch naar de toekomst? Ziet u de intensieve vee-industrie over 20 jaar krimpen, juist machtiger worden of hetzelfde blijven?',
+                    answer: (
+                        <div className="space-y-4">
+                            <p>Ik denk dat ik toch een onderscheid maak bij het beantwoorden van die vraag: tussen hoop en vrees aan de ene kant, en optimistisch en pessimistisch aan de andere kant.</p>
+                            <p>Je kunt niet anders zijn dan pessimistisch, volgens mij, als je kijkt naar de feiten, globaal gezien. Wie zei dat ook alweer? "We voeren de oorlog tegen de natuur. We zijn de oorlog tegen de natuur aan het winnen. En als we winnen, zijn we allemaal verloren." Dat is een combinatie van twee uitspraken – van een VN-secretaris-generaal en nog iemand.</p>
+                            <p>En zes van de negen kantelpunten, of zeven, zijn gepasseerd. Toen ik politiek bewuster werd, was dat de grote angst: vijf van de negen zijn gepasseerd.</p>
+                            <p>Dus je moet je optimisme halen uit lichtpuntjes. En dat is toch: het kan allemaal nog wel.</p>
+                            <p>Maar de feiten wijzen er anders op. En je ziet ook weer een terugval in duurzaamheid. Kijk maar naar de belangstelling voor de COP. Of hoe Trump tekeergaat, of het terugdraaien van klimaatmaatregelen in de EU.</p>
+                            <p>Tegelijkertijd, als je ziet wat China doet… Dat was altijd het verhaal van: "Die openen een kolencentrale per week of per dag." Ik weet niet waarmee de PVV ons allemaal bang maakte. Maar inmiddels maken ze zoveel zonne-energie aan, ongekende hoeveelheden.</p>
+                            <p>Ik heb mezelf ook een tijdje laten leiden door: "Ja, maar al die grondstoffen voor die duurzame transitie, dat is echt…" En dat is ook zo. Kijk naar batterijen, kijk naar zeldzame metalen. Maar als je kijkt hoeveel fossiel we nog steeds uit de grond halen en dat vergelijkt… dan zie je daar wel een verbetering in komen.</p>
+                            <p>Dus lang verhaal kort: overdag ben je pessimistisch, 's nachts hoop je op lichtpunten. En daar moet je hoop uit halen.</p>
+                        </div>
+                    )
+                },
+            ]
         },
         {
             id: 'caring-farmers',
@@ -616,29 +760,20 @@ export default function InterviewsPage() {
     };
 
     const renderInterviewContent = (interview) => {
-        // NIEUW: Combineren van tekst en audio
+        // Combineren van tekst en audio
         if (interview.type === 'combined' && (interview.writtenInterview || interview.audioFragments)) {
             return (
                 <div className="space-y-12">
-                    {/* Geschreven interview sectie - ZONDER "Let op" balk voor Wouter */}
+                    {/* Geschreven interview sectie */}
                     {interview.writtenInterview && interview.writtenInterview.length > 0 && (
                         <div>
                             <h4 className="text-xl font-bold mb-6">Geschreven interview</h4>
 
-                            {/* Informatieblok voor specifieke interviews */}
+                            {/* Informatieblok voor specifieke interviews (Arco Timmermans EN Lammert van Raan) */}
                             {interview.interviewNote && (
                                 <div className="bg-blue-900/20 border border-blue-700 p-4 rounded-lg mb-6">
                                     <p className="text-blue-200 text-sm">
                                         <strong>Over dit interview:</strong> {interview.interviewNote.text}
-                                    </p>
-                                </div>
-                            )}
-
-                            {/* Alleen "Let op" balk tonen voor andere interviews, niet voor Wouter en niet als er een interviewNote is */}
-                            {interview.id !== 'wouter-waayer' && !interview.interviewNote && (
-                                <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg mb-6">
-                                    <p className="text-amber-200 text-sm">
-                                        <strong>Let op:</strong> Deze vragen zijn schriftelijk beantwoord.
                                     </p>
                                 </div>
                             )}
@@ -742,9 +877,9 @@ export default function InterviewsPage() {
 
                                                 {/* Status indicator */}
                                                 <div className="flex items-center justify-between text-xs text-neutral-400">
-                                                    <span>
-                                                        Status: {playingAudio === idx ? 'Afspelen...' : 'Gepauzeerd'}
-                                                    </span>
+                                                <span>
+                                                    Status: {playingAudio === idx ? 'Afspelen...' : 'Gepauzeerd'}
+                                                </span>
                                                 </div>
                                             </div>
                                         </div>
@@ -759,9 +894,9 @@ export default function InterviewsPage() {
                         <div>
                             <h4 className="text-xl font-bold mb-4">Volledige transcriptie</h4>
                             <div className="bg-neutral-700 p-6 rounded-lg">
-                                <pre className="whitespace-pre-wrap text-sm text-neutral-300 font-mono">
-                                    {interview.transcript}
-                                </pre>
+                            <pre className="whitespace-pre-wrap text-sm text-neutral-300 font-mono">
+                                {interview.transcript}
+                            </pre>
                             </div>
                         </div>
                     )}
@@ -842,8 +977,8 @@ export default function InterviewsPage() {
                                             className="flex-1 h-2 bg-neutral-600 rounded-lg appearance-none cursor-pointer [&::-webkit-slider-thumb]:appearance-none [&::-webkit-slider-thumb]:h-4 [&::-webkit-slider-thumb]:w-4 [&::-webkit-slider-thumb]:rounded-full [&::-webkit-slider-thumb]:bg-emerald-500"
                                         />
                                         <span className="text-sm text-neutral-400 w-16 text-right">
-                                            {progress.toFixed(1)}%
-                                        </span>
+                                        {progress.toFixed(1)}%
+                                    </span>
                                     </div>
                                 </div>
                             </div>
@@ -856,7 +991,7 @@ export default function InterviewsPage() {
         if (interview.type === 'text' && interview.writtenInterview) {
             return (
                 <div className="space-y-8">
-                    {/* Informatieblok voor specifieke interviews (zoals Arco Timmermans) */}
+                    {/* Informatieblok voor specifieke interviews (Arco Timmermans EN Lammert van Raan) */}
                     {interview.interviewNote && (
                         <div className="bg-blue-900/20 border border-blue-700 p-4 rounded-lg">
                             <p className="text-blue-200 text-sm">
@@ -865,14 +1000,8 @@ export default function InterviewsPage() {
                         </div>
                     )}
 
-                    {/* "Let op" balk alleen voor tekst-only interviews, niet voor Wouter en niet als er een interviewNote is */}
-                    {interview.id !== 'wouter-waayer' && !interview.interviewNote && (
-                        <div className="bg-amber-900/20 border border-amber-700 p-4 rounded-lg">
-                            <p className="text-amber-200 text-sm">
-                                <strong>Let op:</strong> Dit interview is schriftelijk afgenomen. De vragen zijn per email verzonden en beantwoord.
-                            </p>
-                        </div>
-                    )}
+                    {/* GEEN "Let op" balk meer voor schriftelijke interviews */}
+                    {/* De balk "Let op: Dit interview is schriftelijk afgenomen..." is verwijderd */}
 
                     {interview.writtenInterview.map((qa, idx) => (
                         <div key={idx} className="border-l-4 border-emerald-500 pl-6">
@@ -951,9 +1080,9 @@ export default function InterviewsPage() {
                     </div>
                     <h4 className="text-xl font-bold">Transcriptie</h4>
                     <div className="bg-neutral-700 p-6 rounded-lg">
-                        <pre className="whitespace-pre-wrap text-sm text-neutral-300 font-mono">
-                            {interview.transcript}
-                        </pre>
+                    <pre className="whitespace-pre-wrap text-sm text-neutral-300 font-mono">
+                        {interview.transcript}
+                    </pre>
                     </div>
                 </div>
             );
