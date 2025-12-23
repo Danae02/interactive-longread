@@ -114,76 +114,76 @@ export default function VeeIndustrieLongread() {
                 <VerledenSection/>
             </section>
 
-            {/* Statistieken Sectie - Add ID for navigation */}
-            <section id="cijfers" className="stats-section bg-emerald-900 text-white py-24 px-6">
-                <div className="max-w-6xl mx-auto">
-                    <h2 className="section-title text-4xl font-bold mb-16 text-center">De Cijfers</h2>
-                    <div className="stats-grid grid md:grid-cols-3 gap-8">
-                        {/* Dieren geslacht */}
-                        <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">
-                            <div className="absolute top-4 right-4 flex gap-2">
-                                <button
-                                    onClick={() => setShowStatsPopup(true)}
-                                    className="text-emerald-200 hover:text-white transition-colors"
-                                    title="Bekijk gedetailleerde cijfers"
-                                >
-                                    <Info size={20}/>
-                                </button>
-                                <button
-                                    onClick={() => setShowScalePopup(true)}
-                                    className="text-emerald-200 hover:text-white transition-colors"
-                                    title="Hoeveel is dit eigenlijk?"
-                                >
-                                    <HelpCircle size={20}/>
-                                </button>
-                            </div>
-                            <Users className="mb-4" size={48}/>
-                            <div className="stat-number text-5xl font-bold mb-2">533 miljoen dieren</div>
-                            <div className="stat-label text-xl">Geslachte dieren per jaar</div>
-                            <div className="text-sm text-emerald-200 mt-2">
-                                Klik op de icoontjes voor meer informatie
-                            </div>
-                        </div>
+            {/*/!* Statistieken Sectie - Add ID for navigation *!/*/}
+            {/*<section id="cijfers" className="stats-section bg-emerald-900 text-white py-24 px-6">*/}
+            {/*    <div className="max-w-6xl mx-auto">*/}
+            {/*        <h2 className="section-title text-4xl font-bold mb-16 text-center">De Cijfers</h2>*/}
+            {/*        <div className="stats-grid grid md:grid-cols-3 gap-8">*/}
+            {/*            /!* Dieren geslacht *!/*/}
+            {/*            <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">*/}
+            {/*                <div className="absolute top-4 right-4 flex gap-2">*/}
+            {/*                    <button*/}
+            {/*                        onClick={() => setShowStatsPopup(true)}*/}
+            {/*                        className="text-emerald-200 hover:text-white transition-colors"*/}
+            {/*                        title="Bekijk gedetailleerde cijfers"*/}
+            {/*                    >*/}
+            {/*                        <Info size={20}/>*/}
+            {/*                    </button>*/}
+            {/*                    <button*/}
+            {/*                        onClick={() => setShowScalePopup(true)}*/}
+            {/*                        className="text-emerald-200 hover:text-white transition-colors"*/}
+            {/*                        title="Hoeveel is dit eigenlijk?"*/}
+            {/*                    >*/}
+            {/*                        <HelpCircle size={20}/>*/}
+            {/*                    </button>*/}
+            {/*                </div>*/}
+            {/*                <Users className="mb-4" size={48}/>*/}
+            {/*                <div className="stat-number text-5xl font-bold mb-2">533 miljoen dieren</div>*/}
+            {/*                <div className="stat-label text-xl">Geslachte dieren per jaar</div>*/}
+            {/*                <div className="text-sm text-emerald-200 mt-2">*/}
+            {/*                    Klik op de icoontjes voor meer informatie*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
 
-                        {/* Omzet */}
-                        <div className="stat-card bg-emerald-800 p-8 rounded-lg">
-                            <TrendingUp className="mb-4" size={48}/>
-                            <div className="stat-number text-5xl font-bold mb-2">€33,9 mrd</div>
-                            <div className="stat-label text-xl">Jaarlijkse omzet</div>
-                            <div className="text-sm text-emerald-200 mt-2">
-                                <strong>Let op:</strong> Deze cijfers betreffen alleen de primaire veehouderij
-                                (boerenbedrijven).
-                                Verwerkende bedrijven, veevoerproducenten en distributeurs zijn niet meegenomen in deze
-                                omzetcijfers.
-                            </div>
-                        </div>
+            {/*            /!* Omzet *!/*/}
+            {/*            <div className="stat-card bg-emerald-800 p-8 rounded-lg">*/}
+            {/*                <TrendingUp className="mb-4" size={48}/>*/}
+            {/*                <div className="stat-number text-5xl font-bold mb-2">€33,9 mrd</div>*/}
+            {/*                <div className="stat-label text-xl">Jaarlijkse omzet</div>*/}
+            {/*                <div className="text-sm text-emerald-200 mt-2">*/}
+            {/*                    <strong>Let op:</strong> Deze cijfers betreffen alleen de primaire veehouderij*/}
+            {/*                    (boerenbedrijven).*/}
+            {/*                    Verwerkende bedrijven, veevoerproducenten en distributeurs zijn niet meegenomen in deze*/}
+            {/*                    omzetcijfers.*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
 
-                        {/* Veehouderijen */}
-                        <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">
-                            <div className="absolute top-4 right-4">
-                                <button
-                                    onClick={() => setShowFarmsPopup(true)}
-                                    className="text-emerald-200 hover:text-white transition-colors"
-                                    title="Bekijk verdeling veehouderijen"
-                                >
-                                    <Info size={20}/>
-                                </button>
-                            </div>
-                            <Building2 className="mb-4" size={48}/>
-                            <div className="stat-number text-5xl font-bold mb-2">49.900</div>
-                            <div className="stat-label text-xl">Veehouderijen</div>
-                            <div className="text-sm text-emerald-200 mt-2">
-                                Klik op het icoontje voor meer informatie
-                            </div>
-                        </div>
-                    </div>
-                    <p className="text-center text-emerald-200 mt-8 text-sm">
-                        Bronnen: <a href="https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb"
-                                    target="_blank" rel="noreferrer" className="underline hover:text-white">CBS
-                        StatLine</a> & Wageningen Economic Research
-                    </p>
-                </div>
-            </section>
+            {/*            /!* Veehouderijen *!/*/}
+            {/*            <div className="stat-card bg-emerald-800 p-8 rounded-lg relative">*/}
+            {/*                <div className="absolute top-4 right-4">*/}
+            {/*                    <button*/}
+            {/*                        onClick={() => setShowFarmsPopup(true)}*/}
+            {/*                        className="text-emerald-200 hover:text-white transition-colors"*/}
+            {/*                        title="Bekijk verdeling veehouderijen"*/}
+            {/*                    >*/}
+            {/*                        <Info size={20}/>*/}
+            {/*                    </button>*/}
+            {/*                </div>*/}
+            {/*                <Building2 className="mb-4" size={48}/>*/}
+            {/*                <div className="stat-number text-5xl font-bold mb-2">49.900</div>*/}
+            {/*                <div className="stat-label text-xl">Veehouderijen</div>*/}
+            {/*                <div className="text-sm text-emerald-200 mt-2">*/}
+            {/*                    Klik op het icoontje voor meer informatie*/}
+            {/*                </div>*/}
+            {/*            </div>*/}
+            {/*        </div>*/}
+            {/*        <p className="text-center text-emerald-200 mt-8 text-sm">*/}
+            {/*            Bronnen: <a href="https://opendata.cbs.nl/#/CBS/nl/dataset/7123slac/table?fromstatweb"*/}
+            {/*                        target="_blank" rel="noreferrer" className="underline hover:text-white">CBS*/}
+            {/*            StatLine</a> & Wageningen Economic Research*/}
+            {/*        </p>*/}
+            {/*    </div>*/}
+            {/*</section>*/}
 
             {/* Popup Components */}
             {showStatsPopup && <StatsPopup onClose={() => setShowStatsPopup(false)}/>}

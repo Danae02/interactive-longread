@@ -7,18 +7,6 @@ export default function VerledenSection() {
     return (
         <section id="verleden" className="scroll-mt-20">
 
-            {/* INTRO VERLEDEN */}
-            <div className="py-16 px-6 bg-gradient-to-b from-neutral-900 to-amber-900/20">
-                <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">VERLEDEN</h2>
-                    <p className="text-xl md:text-2xl text-neutral-300 mb-4">
-                        Hoe is de vee-industrie ontstaan?
-                    </p>
-                    <p className="text-neutral-400">
-                        Van voedselzekerheid na de oorlog tot marketingcampagnes die ons eetgedrag vormgaven
-                    </p>
-                </div>
-            </div>
 
             {/* 1. HISTORISCHE INTRO */}
             <HistoryIntroSection />
