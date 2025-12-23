@@ -8,17 +8,13 @@ import FarmsPopup from './popups/FarmsPopup';
 import IntroductionSection from './sections/text/00-IntroductionSection.jsx';
 import './VeeIndustrieLongread.css';
 import './Navigation.css';
-import FirstSection from "./sections/text/HistoryIntroSection.jsx";
-import SecondSection from "./sections/text/SecondSection.jsx";
-import ThirdSection from "./sections/text/ThirdSection.jsx";
-import FooterSection from "./sections/text/FooterSection.jsx";
-import PollSection from "./sections/interactive/PollSection.jsx";
+import FooterSection from "./sections/text/FooterSection.jsx";;
 import TimelineSection from "./sections/interactive/TimelineSection.jsx";
-import VideoSection from "./sections/interactive/VideoSection.jsx";
-import Cards from "./sections/interactive/Cards.jsx";
-import HistoryIntroSection from "./sections/text/HistoryIntroSection.jsx";
-import CardsSection from "./sections/interactive/CardsSection.jsx";
-import InterviewsSection from "./sections/interactive/InterviewsSection.jsx";
+import HistoryIntroSection from "./sections/verleden/HistoryIntroSection.jsx";
+import HedenSection from "./sections/heden/HedenSection.jsx";
+import ToekomstSection from "./sections/toekomst/ToekomstSection.jsx";
+import ConclusieSection from "./sections/text/ConclusieSection.jsx";
+import VerledenSection from "./sections/verleden/VerledenSection.jsx";
 
 export default function VeeIndustrieLongread() {
     const [scrollY, setScrollY] = useState(0);
@@ -113,8 +109,9 @@ export default function VeeIndustrieLongread() {
 
             {/* Timeline - Add ID for navigation */}
             <section id="verleden">
-                <HistoryIntroSection/>
-                <TimelineSection/>
+                {/*<HistoryIntroSection/>*/}
+                {/*<TimelineSection/>*/}
+                <VerledenSection/>
             </section>
 
             {/* Statistieken Sectie - Add ID for navigation */}
@@ -193,58 +190,18 @@ export default function VeeIndustrieLongread() {
             {showScalePopup && <ScalePopup onClose={() => setShowScalePopup(false)}/>}
             {showFarmsPopup && <FarmsPopup onClose={() => setShowFarmsPopup(false)}/>}
 
-            {/* Heden sectie - Add ID for navigation */}
-            <section id="heden">
 
-                <CardsSection/>
 
-                {/* Parallax Beeld 2 */}
-                <div className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
-                    <div
-                        className="parallax-background absolute inset-0 bg-cover bg-center"
-                        style={{
-                            backgroundImage: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1560493676-04071c5f467b?w=1600)',
-                            transform: `translateY(${(scrollY - 1000) * 0.3}px)`
-                        }}
-                    />
-                    <blockquote className="parallax-quote relative z-10 text-center px-6 max-w-3xl">
-                        <p className="text-3xl md:text-4xl font-light italic">
-                            "Nulla nec erat et metus auctor faucibus."
-                        </p>
-                    </blockquote>
-                </div>
+            <HedenSection></HedenSection>
 
-                <InterviewsSection/>
 
-                <PollSection/>
-                <SecondSection/>
-
-                {/* Parallax Beeld 3 */}
-                <div className="parallax-section relative h-96 flex items-center justify-center overflow-hidden">
-                    <div
-                        className="parallax-background absolute inset-0 bg-cover bg-center"
-                        style={{
-                            backgroundImage: 'linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6)), url(https://images.unsplash.com/photo-1416879595882-3373a0480b5b?w=1600)',
-                            transform: `translateY(${(scrollY - 2500) * 0.3}px)`
-                        }}
-                    />
-                    <div className="parallax-stat relative z-10 text-center px-6">
-                        <div className="text-7xl font-bold mb-4">...</div>
-                        <div className="text-2xl">Feitje</div>
-                    </div>
-                </div>
-
-                {/*<DefaultAudioSection/>*/}
-            </section>
-
-            {/* Interviews sectie - Add ID for navigation */}
-            <section id="interviews">
-                <ThirdSection/>
-            </section>
-
-            {/* Toekomst sectie - Add ID for navigation */}
+            {/*/!* Toekomst sectie - Add ID for navigation *!/*/}
             <section id="toekomst">
-                <VideoSection/>
+                <ToekomstSection/>
+            </section>
+
+            <section id="">
+                <ConclusieSection/>
             </section>
 
             {/* Actie sectie - Add ID for navigation */}

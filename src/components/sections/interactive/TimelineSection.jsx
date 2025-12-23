@@ -104,23 +104,6 @@ export default function TimelineSection() {
             ]
         },
 
-        {
-            year: "2019",
-            title: "Stikstofcrisis",
-            shortDesc: "PAS-uitspraak schudt sector op",
-            content: "De Raad van State vernietigt het Programma Aanpak Stikstof. Dit heeft enorme gevolgen voor de veehouderij. Veel bedrijven moeten inkrimpen of stoppen. De discussie over de toekomst van de sector laait op na decennia van groei.",
-            impact: "Duizenden boeren in onzekerheid, transitie noodzakelijk",
-            images: null
-        },
-
-        {
-            year: "2024",
-            title: "Transitie",
-            shortDesc: "Kringlooplandbouw als toekomst?",
-            content: "De sector staat voor grote keuzes. Kringlooplandbouw, extensivering en innovatieve concepten worden omarmd door sommigen, terwijl anderen vasthouden aan het huidige model. De erfenis van 80 jaar groeibe-leid botst met ecologische grenzen.",
-            impact: "Fundamentele herbezinning op voedselsysteem",
-            images: null
-        }
     ];
 
     const handleYearClick = (index) => {
