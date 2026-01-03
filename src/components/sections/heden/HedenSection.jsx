@@ -17,37 +17,57 @@ export default function HedenSection() {
                 <div className="max-w-4xl mx-auto text-center">
                     <h2 className="text-4xl md:text-5xl font-bold mb-6">HEDEN</h2>
                     <p className="text-xl md:text-2xl text-neutral-300 mb-4">
-                        Hoe blijft dit systeem in stand?
-                    </p>
-                    <p className="text-neutral-400">
-                        Een netwerk van belangen, lobby, politiek en sociale acceptatie houdt de intensieve vee-industrie draaiende.
+                        Het verleden was een kwestie van beleid. Het heden is een kwestie van macht. De intensieve vee-industrie is uitgegroeid tot een machtssysteem dat zichzelf in stand houdt. Grote financiers, invloedrijke lobbyclubs, politieke partijen en een stortvloed aan marketing verdedigen de status quo. In dit hoofdstuk brengen we dit machtssysteem in kaart.
                     </p>
                 </div>
             </div>
 
             {/* 1. BEDRIJVEN - Interactive Cards */}
+            {/* 1. BEDRIJVEN - Interactive Cards */}
             <div className="py-12 px-6">
                 <div className="max-w-6xl mx-auto">
                     <h3 className="text-3xl font-bold mb-2 text-center">1. De Grote Spelers</h3>
-                    <p className="text-neutral-400 text-center mb-8">Wie verdient er aan de vee-industrie?</p>
-                    <CardsSection />
+
+                    <p className="text-xl md:text-2xl text-neutral-300 mb-4">
+                        De intensieve vee-industrie draait niet op toevalligheden, maar op economische belangen.
+                        Het is een zorgvuldig opgebouwd systeem waarin verschillende machtige spelers financieel
+                        profiteren van de voortzetting van dit systeem.
+                    </p>
+
+                    <p className="text-xl md:text-2xl text-neutral-300 mb-4">
+                        Ontdek hieronder zes belangrijke sectoren en hun grootste bedrijven die, vaak achter de
+                        schermen, de intensieve veehouderij draaiend houden en weerstand bieden aan verandering.
+                    </p>
+
+                    {/* Korte uitleg over selectiecriteria */}
+                    <div className="mb-6 p-4 bg-emerald-900/30 rounded-lg border border-emerald-800/50">
+                        <p className="text-lg text-neutral-300 text-center">
+                            <strong>Selectiecriteria:</strong> Per sector heb ik de drie meest invloedrijke bedrijven
+                            geselecteerd op basis van marktaandeel, omzet en politieke invloed in Nederland.
+                        </p>
+                        <p className="text-base text-neutral-400 text-center mt-2 italic">
+                            Klik op een kaart om de belangen, voorbeelden en bronnen te ontdekken
+                        </p>
+                    </div>
+
+                    <CardsSection/>
                 </div>
             </div>
 
             {/* 2. LOBBY */}
-            <LobbySection />
+            <LobbySection/>
 
             {/* 3. POLITIEK */}
-            <PoliticsSection />
+            <PoliticsSection/>
 
             {/* 4. SOCIALE FACTOREN */}
-            <SocialFactorsSection />
+            <SocialFactorsSection/>
 
             {/* 5. INTERVIEWS */}
-            <InterviewsSection />
+            <InterviewsSection/>
 
             {/* 6. FRAMING HERKENNEN */}
-            <FramingDetectionSection />
+            <FramingDetectionSection/>
 
             {/* 7. ECONOMISCHE WAARDE */}
             <EconomyPollSection />

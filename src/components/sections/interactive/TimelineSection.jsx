@@ -1,6 +1,5 @@
-
 import React, { useState, useEffect, useRef } from 'react';
-import { Calendar, ChevronRight, X, Image as ImageIcon, Maximize2 } from 'lucide-react';
+import { Calendar, ChevronRight, X, Image as ImageIcon, Maximize2, ExternalLink } from 'lucide-react';
 
 export default function TimelineSection() {
     const [selectedYear, setSelectedYear] = useState(null);
@@ -14,7 +13,21 @@ export default function TimelineSection() {
             year: "1934",
             title: "Eerste Marketingcampagnes",
             shortDesc: "Crisis Zuivelbureau opgericht",
-            content: "Door de wereldwijde economische crisis kelderen melk- en veeprijzen. Om een instorting van de melkveehouderij te voorkomen richt de overheid het Crisis-Zuivelbureau op. Het bureau coördineert crisismaatregelen, ondersteunt de sector en bevordert afzet van zuivelproducten.",
+            content: (
+                <>
+                    Door de wereldwijde economische crisis kelderen melk- en veeprijzen. Om een instorting van de melkveehouderij te voorkomen richt de overheid het{' '}
+                    <a
+                        href="https://www.onderwijsconsument.nl/waarom-melk-drinken-op-school/#:~:text=Het%20Crisis%20Zuivelbureau,van%20het%20drinken%20van%20melk."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        Crisis-Zuivelbureau
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>{' '}
+                    op. Het bureau coördineert crisismaatregelen, ondersteunt de sector en bevordert afzet van zuivelproducten.
+                </>
+            ),
             impact: "Start van georganiseerde voedselpromotie",
             images: [
                 {
@@ -36,7 +49,30 @@ export default function TimelineSection() {
             year: "1945",
             title: "Naoorlogs Herstel",
             shortDesc: "'Nooit meer honger' beleid",
-            content: "Na de Hongerwinter wordt Sicco Mansholt minister van Landbouw. Onder het motto 'nooit meer honger' wordt beleid gevoerd om van kleinschalige gemengde bedrijven naar gespecialiseerde, grootschalige productie-eenheden te gaan. Het trauma van voedselonzekerheid drijft de focus op voedselzekerheid.",
+            content: (
+                <>
+                    Na de Hongerwinter werd{' '}
+                    <a
+                        href="https://nl.wikipedia.org/wiki/Sicco_Mansholt"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        Sicco Mansholt
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>{' '}
+                    minister van Landbouw. Onder het motto 'nooit meer honger' voerde de overheid beleid om voedselzekerheid te garanderen. Boeren werden gestimuleerd om over te stappen van kleinschalige, gemengde bedrijven naar gespecialiseerde bedrijven die zich richtten op één product, zoals melkvee, varkens of pluimvee. Het ministerie van Landbouw ondersteunde deze overgang actief.{' '}
+                    <a
+                        href="https://npokennis.nl/longread/7535/wat-is-de-vee-industrie#:~:text=De%20overheid%20wil%20dat%20boerenbedrijven%20zich%20nog%20maar%20op%20%C3%A9%C3%A9n%20onderdeel%20richten.%20Een%20boer%20houdt%20dan%20bijvoorbeeld%20alleen%20maar%20kippen%2C%20varkens%20of%20melkkoeien.%20Het%20ministerie%20van%20Landbouw%2C%20onder%20leiding%20van%20minister%20Sicco%20Mansholt%2C%20helpt%20de%20boeren%20om%20deze%20overstap%20te%20maken."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        (Bron: NPO Kennis)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>
+                </>
+            ),
             impact: "Basis voor industriële landbouw gelegd",
             images: [
                 {
@@ -50,7 +86,21 @@ export default function TimelineSection() {
             year: "1948",
             title: "Marshallplan",
             shortDesc: "Amerikaanse modernisering",
-            content: "Het Amerikaanse Marshallplan (1948-1952) levert moderne landbouwtechnologie zoals tractoren en kunstmest. Financiële steun en kennisoverdracht geven een enorme push richting industriële landbouw. Boeren worden actief aangemoedigd te specialiseren en schaal te vergroten.",
+            content: (
+                <>
+                    Het Amerikaanse Marshallplan (1948-1952) levert moderne landbouwtechnologie zoals tractoren en kunstmest.{' '}
+                    <a
+                        href="https://www.trouw.nl/duurzaamheid-economie/de-tractor-veranderde-alles-op-het-nederlandse-platteland~b8ddc8ca/#:~:text=Marshallhulp,dure%20aanschaf%20doen%3F"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        (Bron: Trouw)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>{' '}
+                    Financiële steun en kennisoverdracht geven een enorme push richting industriële landbouw. Boeren worden actief aangemoedigd te specialiseren en schaal te vergroten.
+                </>
+            ),
             impact: "Versnelling van mechanisatie en specialisatie",
             images: null
         },
@@ -59,7 +109,20 @@ export default function TimelineSection() {
             year: "1958",
             title: "Melkbrigade & Joris Driepinter",
             shortDesc: "Kinderen als marketingdoel",
-            content: "De Melk-brigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door 30 extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.",
+            content: (
+                <>
+                    De Melk-brigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door 30 extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.{' '}
+                    <a
+                        href="https://anderetijden.nl/aflevering/348/Melk-de-witte-motor#:~:text=Sinds%20de%20oprichting%20van%20het,is%20goed%20voor%20elk%E2%80%9D%20gebruikt."
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        (Bron: Andere Tijden)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>
+                </>
+            ),
             impact: "Complete generatie beïnvloed in eetgedrag",
             images: [
                 {
@@ -77,7 +140,21 @@ export default function TimelineSection() {
             year: "1962",
             title: "Europees Landbouwbeleid",
             shortDesc: "GLB garandeert prijzen",
-            content: "Het Gemeenschappelijk Landbouwbeleid (GLB) van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.",
+            content: (
+                <>
+                    Het{' '}
+                    <a
+                        href="https://agriculture.ec.europa.eu/common-agricultural-policy/cap-overview/cap-glance_nl"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        Gemeenschappelijk Landbouwbeleid (GLB)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>{' '}
+                    van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.
+                </>
+            ),
             impact: "Explosieve groei vee-industrie mogelijk",
             images: null
         },
@@ -86,7 +163,30 @@ export default function TimelineSection() {
             year: "1976",
             title: "Binnenhof-BBQ en vlees",
             shortDesc: "Politieke lobby verankerd",
-            content: "De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof. Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen, maar stichting Voorlichtingsbureau Vlees, Vleeswaren en Vleesconserven heeft ook nog andere afbeeldingen",
+            content: (
+                <>
+                    De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof.{' '}
+                    <a
+                        href="https://historiek.net/worsten-op-het-binnenhof/157138/#:~:text=Meer%20vlees,6%20kilo%20vlees%20per%20jaar.&text=De%20barbecue%20was%20begin%20jaren,iets%20zeer%20smakelijks%20te%20bereiden.%E2%80%9D"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        (Bron: Historiek)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>{' '}
+                    Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen, maar stichting Voorlichtingsbureau Vlees, Vleeswaren en Vleesconserven heeft ook nog andere afbeeldingen{' '}
+                    <a
+                        href="https://www.lastdodo.nl/nl/areas/3516299-stichting-voorlichtingsbureau-vlees-vleeswaren-en-vleesconserven"
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className="text-blue-400 hover:text-blue-300 underline underline-offset-2 transition-colors inline-flex items-center gap-1"
+                    >
+                        (Bron: LastDodo)
+                        <ExternalLink size={14} aria-hidden="true" />
+                    </a>
+                </>
+            ),
             impact: "Vleesconsumptie genormaliseerd in politieke cultuur",
             images: [
                 {
@@ -103,8 +203,12 @@ export default function TimelineSection() {
                 }
             ]
         },
-
     ];
+
+    // Voeg een onclick handler toe voor links in de modal
+    const handleModalLinkClick = (e) => {
+        e.stopPropagation();
+    };
 
     const handleYearClick = (index) => {
         setSelectedYear(index);
@@ -153,9 +257,9 @@ export default function TimelineSection() {
     useEffect(() => {
         if (selectedYear !== null && modalRef.current) {
             const focusableElements = modalRef.current.querySelectorAll(
-                'button, [href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
+                'button, a[href], input, select, textarea, [tabindex]:not([tabindex="-1"])'
             );
-            
+
             const firstElement = focusableElements[0];
             const lastElement = focusableElements[focusableElements.length - 1];
 
@@ -187,17 +291,17 @@ export default function TimelineSection() {
     return (
         <section className="timeline-section bg-neutral-800 py-12 md:py-16 px-4 sm:px-6" aria-label="Tijdlijn Nederlandse vee-industrie">
             <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-8 md:mb-12">
-                    <div className="flex items-center justify-center gap-3 mb-3">
-                        <Calendar className="text-emerald-400" size={28} aria-hidden="true" />
-                        <h2 className="text-2xl md:text-3xl font-bold text-white">
-                            Van Trauma tot Transitie
-                        </h2>
-                    </div>
-                    <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto">
-                        De opkomst van de Nederlandse vee-industrie: van 'nooit meer honger' naar ecologische grenzen
-                    </p>
-                </div>
+                {/*<div className="text-center mb-8 md:mb-12">*/}
+                {/*    <div className="flex items-center justify-center gap-3 mb-3">*/}
+                {/*        <Calendar className="text-emerald-400" size={28} aria-hidden="true" />*/}
+                {/*        <h2 className="text-2xl md:text-3xl font-bold text-white">*/}
+                {/*            Van Trauma tot Transitie*/}
+                {/*        </h2>*/}
+                {/*    </div>*/}
+                {/*    <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto">*/}
+                {/*        De opkomst van de Nederlandse vee-industrie: van 'nooit meer honger' naar ecologische grenzen*/}
+                {/*    </p>*/}
+                {/*</div>*/}
 
                 {/* Desktop Timeline */}
                 <div className="hidden md:block relative pb-8" role="list" aria-label="Tijdlijn gebeurtenissen">
@@ -213,14 +317,14 @@ export default function TimelineSection() {
                                     onFocus={() => setHoveredYear(index)}
                                     onBlur={() => setHoveredYear(null)}
                                     className={`
-relative z-10 rounded-full transition-all duration-200 cursor-pointer
-flex items-center justify-center border-2 border-white/20
-focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-neutral-800
-    ${hoveredYear === index
-    ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50 scale-110'
-    : 'bg-emerald-700 hover:bg-emerald-600'
-}
-    `}
+                                        relative z-10 rounded-full transition-all duration-200 cursor-pointer
+                                        flex items-center justify-center border-2 border-white/20
+                                        focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus:ring-offset-neutral-800
+                                        ${hoveredYear === index
+                                        ? 'bg-emerald-500 shadow-lg shadow-emerald-500/50 scale-110'
+                                        : 'bg-emerald-700 hover:bg-emerald-600'
+                                    }
+                                    `}
                                     style={{ width: '64px', height: '64px' }}
                                     aria-label={`${item.year}: ${item.title}. ${item.shortDesc}. Klik voor meer informatie.`}
                                 >
@@ -389,9 +493,9 @@ focus:outline-none focus:ring-2 focus:ring-emerald-400 focus:ring-offset-2 focus
                                         <h4 className="text-xs font-semibold text-neutral-400 uppercase tracking-wide mb-2">
                                             Historische Context
                                         </h4>
-                                        <p className="text-neutral-200 leading-relaxed">
+                                        <div className="text-neutral-200 leading-relaxed" onClick={handleModalLinkClick}>
                                             {timelineData[selectedYear].content}
-                                        </p>
+                                        </div>
                                     </div>
 
                                     <div className="bg-emerald-900/30 border border-emerald-700/50 rounded-lg p-4">
