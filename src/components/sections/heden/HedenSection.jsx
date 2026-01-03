@@ -23,7 +23,6 @@ export default function HedenSection() {
             </div>
 
             {/* 1. BEDRIJVEN - Interactive Cards */}
-            {/* 1. BEDRIJVEN - Interactive Cards */}
             <div className="py-12 px-6">
                 <div className="max-w-6xl mx-auto">
                     <h3 className="text-3xl font-bold mb-2 text-center">1. De Grote Spelers</h3>
