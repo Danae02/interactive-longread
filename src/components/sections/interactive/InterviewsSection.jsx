@@ -21,7 +21,7 @@ export default function InterviewsSection() {
             role: 'Boerenzoon → Vegan Activist',
             type: 'audio',
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
-            quote: '....',
+            quote: 'We zijn eigenlijk een beetje immuun geworden voor het leed dat zich dagelijks afspeelt in die stallen.',
             highlight: 'Van boerderij naar activisme',
             audioFragments: 5
         },
@@ -31,7 +31,7 @@ export default function InterviewsSection() {
             role: 'BBB - lid',
             type: 'text',
             image: '/afbeeldingen-interviews/Kevin-Brouwer_BBB.jpg',
-            quote: '......',
+            quote: 'Voor ons staat een ding voorop: zonder boeren geen voedsel. De agrosector is allereerst dus letterlijk de basis van onze voedselzekerheid.',
             highlight: 'Schriftelijk interview over boerenbelangen',
             note: 'Schriftelijk beantwoord'
         },
@@ -92,9 +92,9 @@ export default function InterviewsSection() {
                         Stemmen uit de Sector
                     </h2>
                     <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
-                        We spraken met mensen die de vee-industrie van binnenuit kennen:
+                        Ik sprak met mensen die de vee-industrie van binnenuit kennen:
                         van beleidsmakers tot activisten, van boeren tot journalisten.
-                        Vier perspectieven, één complex verhaal.
+                        Meerdere perspectieven, één complex verhaal.
                     </p>
                 </div>
 

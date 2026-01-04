@@ -17,7 +17,7 @@ export default function PoliticsSection() {
                 "Deze angst wordt gevoed door:",
                 "• De opkomst van BBB als direct verzet tegen verandering",
                 "• CDA's traditionele achterban die historisch verbonden is met boeren",
-                "• Polarisatie: elk voorstel wordt gezien als 'aanval op de boer'",
+                "• Polarisatie: veel voorstellen worden gezien als 'aanval op de boer'",
             ]
         },
         {
@@ -92,13 +92,13 @@ export default function PoliticsSection() {
             title: "Intimidatie als Politiek Wapen",
             description: "Boerenprotesten waarbij ministers werden geïntimideerd, blokkades van distributiecentra en bedreigingen ondermijnen politieke moed.",
             facts: [
-                "Protesten breken politieke wil (zoals in Murcia)",
+                "Protesten breken politieke wil (zoals in Regio Murcia in Spanje waar ze het lokale regeringsgebouw bestormde. Hierna werden de nieuwe beperkingen ingetrokken)",
                 "Bedreigingen van politici en ambtenaren",
                 "Dramatisering als strategie werkt: 'van technisch naar existentieel'"
             ]
         },
         {
-            title: "Ministerie van LNV: Erfenis van Mansholt",
+            title: "Ministerie van Landbouw, Visserij, Voedselzekerheid en Natuur: Erfenis van Mansholt",
             description: "Historisch sterk verbonden met landbouwbelangen, balanceert tussen economische belangen en duurzaamheidsdoelen.",
             facts: [
                 "Direct benaderd door lobbyorganisaties",
@@ -416,24 +416,24 @@ export default function PoliticsSection() {
                                 niet in staat om een goed alternatief te geven, zowel aan de consument als aan boeren."
                             </blockquote>
 
-                            <div className="mb-6 p-4 bg-emerald-900/20 rounded-lg">
-                                <blockquote className="text-lg italic mb-4 text-neutral-200">
-                                    "Je moet handelingsperspectief houden, maar je kunt niet anders zijn dan pessimistisch,
-                                    volgens mij, als je kijkt naar de feiten."
-                                </blockquote>
-                                <div className="flex items-center justify-between">
-                                    <div className="text-sm text-neutral-400">- Lammert van Raan</div>
-                                    <a
-                                        href={interviewUrl}
-                                        target="_blank"
-                                        rel="noopener noreferrer"
-                                        className="text-sm text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1"
-                                    >
-                                        Bekijk volledig interview
-                                        <ExternalLink size={12} />
-                                    </a>
-                                </div>
-                            </div>
+                            {/*<div className="mb-6 p-4 bg-emerald-900/20 rounded-lg">*/}
+                            {/*    <blockquote className="text-lg italic mb-4 text-neutral-200">*/}
+                            {/*        "Je moet handelingsperspectief houden, maar je kunt niet anders zijn dan pessimistisch,*/}
+                            {/*        volgens mij, als je kijkt naar de feiten."*/}
+                            {/*    </blockquote>*/}
+                            {/*    <div className="flex items-center justify-between">*/}
+                            {/*        <div className="text-sm text-neutral-400">- Lammert van Raan</div>*/}
+                            {/*        <a*/}
+                            {/*            href={interviewUrl}*/}
+                            {/*            target="_blank"*/}
+                            {/*            rel="noopener noreferrer"*/}
+                            {/*            className="text-sm text-emerald-400 hover:text-emerald-300 inline-flex items-center gap-1"*/}
+                            {/*        >*/}
+                            {/*            Bekijk volledig interview*/}
+                            {/*            <ExternalLink size={12} />*/}
+                            {/*        </a>*/}
+                            {/*    </div>*/}
+                            {/*</div>*/}
 
                             <div className="flex items-center gap-4 mt-8">
                                 <div className="w-12 h-12 rounded-full bg-neutral-700 flex items-center justify-center">
@@ -472,8 +472,8 @@ export default function PoliticsSection() {
                             </p>
                             <p className="text-lg text-neutral-300 mt-4 leading-relaxed">
                                 Zolang het systeem financieel beloont voor schaalvergroting en politiek angst heeft voor
-                                verandering, blijft de patstelling bestaan. De oplossingen zijn er volgens Van Raan:
-                                "alle oplossingen zijn er eigenlijk al." Wat ontbreekt is de politieke moed om ze door te zetten.
+                                verandering, blijft de patstelling bestaan. Volgens Van Raan zijn
+                                "alle oplossingen [...] er eigenlijk al." Wat ontbreekt is de politieke moed om ze door te zetten.
                             </p>
                             <div className="mt-6 pt-6 border-t border-neutral-700">
                                 <div className="flex items-start gap-3">
