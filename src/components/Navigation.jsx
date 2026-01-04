@@ -80,7 +80,7 @@ export default function Navigation() {
     ];
 
     const additionalPages = [
-        { path: '/wat-kan-ik-doen', label: 'Actiepagina', icon: '📢' },
+        // { path: '/wat-kan-ik-doen', label: 'Actiepagina', icon: '📢' },
         { path: '/kunst-kennis-cultuur', label: 'Kunst, Kennis & Cultuur hoekje', icon: '🎭' }
     ];
 
