@@ -1,193 +1,375 @@
 // components/sections/toekomst/FutureScenariosSection.jsx
 import React, { useState } from 'react';
-import { TrendingUp, TrendingDown, RefreshCw, AlertTriangle } from 'lucide-react';
+import {
+    TrendingDown,
+    RefreshCw,
+    AlertTriangle,
+    ChevronRight,
+    BarChart3,
+    Leaf,
+    Shield,
+    Users,
+    Clock,
+    Target,
+    Zap
+} from 'lucide-react';
 
 export default function FutureScenariosSection() {
     const [activeScenario, setActiveScenario] = useState('scenario2');
 
+
     const scenarios = {
         scenario1: {
-            name: "Business as usual",
-            description: "Cosmetische verandering, systeem blijft intact",
-            icon: <TrendingDown className="text-yellow-500" size={24} />,
-            color: "bg-yellow-900/30 border-yellow-700",
+            id: 'scenario1',
+            name: "Business as Usual",
+            tagline: "Kosmetische verandering, systeem blijft intact",
+            icon: <TrendingDown className="w-6 h-6" />,
+            iconColor: "text-yellow-400",
+            gradient: "from-yellow-900/20 via-yellow-900/10 to-transparent",
+            borderColor: "border-yellow-500/30",
+            bgColor: "bg-yellow-900/10",
+            summary: "Kleine aanpassingen maar fundamentele problemen blijven bestaan.",
             characteristics: [
-                "Marginale daling veestapel (5-10%)",
-                "Greenwashing neemt toe",
-                "Klimaatdoelen worden gemist",
-                "Biodiversiteit blijft achteruitgaan"
+                {
+                    icon: <TrendingDown size={16} />,
+                    text: "Marginale daling veestapel (5-10%)",
+                    impact: "negatief"
+                },
+                {
+                    icon: <Leaf size={16} />,
+                    text: "Greenwashing neemt toe",
+                    impact: "negatief"
+                },
+                {
+                    icon: <Target size={16} />,
+                    text: "Klimaatdoelen worden gemist",
+                    impact: "negatief"
+                },
+                {
+                    icon: <Shield size={16} />,
+                    text: "Biodiversiteit blijft achteruitgaan",
+                    impact: "negatief"
+                }
             ],
-            probability: "Hoog (politieke onwil)",
-            quote: "We blijven doen wat we deden, en krijgen wat we kregen."
+            implications: {
+                economie: {
+                    status: "Kwetsbaar",
+                    description: "Afhankelijk van subsidies, concurrentie op prijs",
+                    trend: "stagnatie"
+                },
+                natuur: {
+                    status: "Verslechtering",
+                    description: "Stikstofcrisis blijft, Natura 2000 verslechtert",
+                    trend: "afnemend"
+                },
+                dierenwelzijn: {
+                    status: "Marginaal beter",
+                    description: "Kleine verbeteringen, fundamentele problemen blijven",
+                    trend: "minimaal"
+                },
+                maatschappij: {
+                    status: "Polarisatie",
+                    description: "Frustratie bij zowel activisten als boeren neemt toe",
+                    trend: "conflict"
+                }
+            },
+
         },
         scenario2: {
-            name: "Gestuurde transitie",
-            description: "Beleidsgestuurde verschuiving naar kwaliteit",
-            icon: <RefreshCw className="text-emerald-500" size={24} />,
-            color: "bg-emerald-900/30 border-emerald-700",
+            id: 'scenario2',
+            name: "Gestuurde Transitie",
+            tagline: "Beleidsgestuurde verschuiving naar kwaliteit",
+            icon: <RefreshCw className="w-6 h-6" />,
+            iconColor: "text-emerald-400",
+            gradient: "from-emerald-900/20 via-emerald-900/10 to-transparent",
+            borderColor: "border-emerald-500/30",
+            bgColor: "bg-emerald-900/10",
+            summary: "Gefaseerde omslag waarbij Nederland koploper wordt in duurzame landbouw.",
             characteristics: [
-                "Veestapel krimpt 30-50%",
-                "Focus op kwaliteit ipv volume",
-                "Plantaardige sector groeit sterk",
-                "Natuurherstel komt op gang"
+                {
+                    icon: <BarChart3 size={16} />,
+                    text: "Veestapel krimpt 30-50%",
+                    impact: "positief"
+                },
+                {
+                    icon: <Target size={16} />,
+                    text: "Focus op kwaliteit i.p.v. volume",
+                    impact: "positief"
+                },
+                {
+                    icon: <Leaf size={16} />,
+                    text: "Plantaardige sector groeit sterk",
+                    impact: "positief"
+                },
+                {
+                    icon: <Shield size={16} />,
+                    text: "Natuurherstel komt op gang",
+                    impact: "positief"
+                }
             ],
-            probability: "Realistisch (met politieke moed)",
-            quote: "Het kan anders, als we het durven."
+            implications: {
+                economie: {
+                    status: "Winstgevend",
+                    description: "Zonder subsidies, kwaliteit als exportproduct",
+                    trend: "groei"
+                },
+                natuur: {
+                    status: "Herstel",
+                    description: "Stikstofcrisis neemt af, biodiversiteit herstelt",
+                    trend: "verbeterend"
+                },
+                dierenwelzijn: {
+                    status: "Significant beter",
+                    description: "Veel minder dieren, veel betere levens",
+                    trend: "sterk verbeterend"
+                },
+                maatschappij: {
+                    status: "Samenwerking",
+                    description: "Boeren krijgen perspectief, regionale economie diverser",
+                    trend: "constructief"
+                }
+            },
+
+            keyFactors: [
+                "Politieke durf voor vleestaks",
+                "Subsidiehervorming GLB",
+                "Groeiend maatschappelijk draagvlak",
+                "Schaalvoordeel plantaardige alternatieven"
+            ]
         },
         scenario3: {
-            name: "Radicale verandering",
-            description: "Systeemverandering door crisis of doorbraak",
-            icon: <AlertTriangle className="text-rose-500" size={24} />,
-            color: "bg-rose-900/30 border-rose-700",
+            id: 'scenario3',
+            name: "Radicale Verandering",
+            tagline: "Systeemverandering door crisis of doorbraak",
+            icon: <AlertTriangle className="w-6 h-6" />,
+            iconColor: "text-rose-400",
+            gradient: "from-rose-900/20 via-rose-900/10 to-transparent",
+            borderColor: "border-rose-500/30",
+            bgColor: "bg-rose-900/10",
+            summary: "Fundamentele transformatie waarbij Nederland wereldleider wordt in alternatieve eiwitten.",
             characteristics: [
-                "Veestapel krimpt 60-70%",
-                "Intensieve veehouderij verdwijnt",
-                "Kweekvlees wordt mainstream",
-                "Nederland leider in plantaardige eiwitten"
+                {
+                    icon: <Zap size={16} />,
+                    text: "Veestapel krimpt 60-70%",
+                    impact: "zeer positief"
+                },
+                {
+                    icon: <Users size={16} />,
+                    text: "Intensieve veehouderij verdwijnt",
+                    impact: "transformatief"
+                },
+                {
+                    icon: <Target size={16} />,
+                    text: "Kweekvlees wordt mainstream",
+                    impact: "innovatief"
+                },
+                {
+                    icon: <Leaf size={16} />,
+                    text: "Nederland leider in plantaardige eiwitten",
+                    impact: "leiderschap"
+                }
             ],
-            probability: "Mogelijk (bij crisis of technologische doorbraak)",
-            quote: "Alles moet veranderen, zodat alles kan blijven."
+            implications: {
+                economie: {
+                    status: "Getransformeerd",
+                    description: "Leider in innovatieve eiwitproductie, nieuwe banen",
+                    trend: "revolutie"
+                },
+                natuur: {
+                    status: "Spectaculair herstel",
+                    description: "Klimaatneutraal, natuur floreert",
+                    trend: "exponentieel"
+                },
+                dierenwelzijn: {
+                    status: "Fundamenteel anders",
+                    description: "Bijna geen dierenleed, extensief als norm",
+                    trend: "paradigmaverschuiving"
+                },
+                maatschappij: {
+                    status: "Transformatie",
+                    description: "Nieuwe plattelandscultuur, sociale innovatie",
+                    trend: "vernieuwing"
+                }
+            },
+
+            triggers: [
+                "Klimaatcrisis dwingt tot actie",
+                "Technologische doorbraak kweekvlees",
+                "Grootschalige ziekte-uitbraak",
+                "Rechterlijke uitspraken à la Urgenda"
+            ]
         }
     };
 
     const scenario = scenarios[activeScenario];
+    const allScenarios = Object.values(scenarios);
+
+
 
     return (
-        <div className="future-scenarios py-20 px-6 bg-neutral-800">
-            <div className="max-w-6xl mx-auto">
-                <div className="text-center mb-12">
-                    <h3 className="text-3xl font-bold mb-4">Hoofdstuk 2: Drie toekomsten voor 2045</h3>
-                    <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-                        Welke toekomst wordt werkelijkheid? Dat hangt af van onze keuzes nu.
+        <div className="future-scenarios py-24 px-4 sm:px-6 bg-gradient-to-b from-neutral-900 to-black">
+            <div className="max-w-7xl mx-auto">
+                {/* HEADER */}
+                <div className="text-center mb-16">
+
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6 bg-gradient-to-r from-white via-emerald-100 to-white bg-clip-text text-transparent">
+                        Welke toekomst kiezen we?
+                    </h2>
+                    <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
+                        Drie scenario's voor de Nederlandse vee-industrie.
+                        Het pad dat we inslaan wordt bepaald door <span className="text-emerald-300 font-medium">politieke moed</span>,
+                        <span className="text-emerald-300 font-medium"> economische verschuivingen</span> en
+                        <span className="text-emerald-300 font-medium"> maatschappelijke keuzes</span>.
                     </p>
                 </div>
 
-                {/* SCENARIO SELECTOR */}
-                <div className="grid grid-cols-1 md:grid-cols-3 gap-4 mb-12">
-                    {Object.entries(scenarios).map(([key, scenario]) => (
+                {/* SCENARIO SELECTOR - IMPROVED */}
+                <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 mb-12">
+                    {allScenarios.map((s) => (
                         <button
-                            key={key}
-                            onClick={() => setActiveScenario(key)}
-                            className={`p-6 rounded-xl border-2 transition-all ${
-                                activeScenario === key
-                                    ? `${scenario.color} ring-2 ring-white/20`
-                                    : 'bg-neutral-900/50 border-neutral-700 hover:bg-neutral-700/50'
+                            key={s.id}
+                            onClick={() => setActiveScenario(s.id)}
+                            className={`relative group overflow-hidden rounded-2xl border-2 p-6 transition-all duration-300 ${
+                                activeScenario === s.id
+                                    ? `${s.borderColor} ${s.bgColor} scale-[1.02] shadow-2xl`
+                                    : 'border-neutral-800 bg-neutral-900/50 hover:bg-neutral-800/70 hover:scale-[1.01]'
                             }`}
                         >
-                            <div className="flex items-center gap-3 mb-4">
-                                {scenario.icon}
-                                <h4 className="text-xl font-bold">{scenario.name}</h4>
+                            {/* Background gradient */}
+                            <div className={`absolute inset-0 bg-gradient-to-br ${s.gradient} opacity-0 group-hover:opacity-100 transition-opacity duration-500`} />
+
+                            <div className="relative z-10">
+                                <div className="flex items-center justify-between mb-4">
+                                    <div className="flex items-center gap-3">
+                                        <div className={`p-2 rounded-lg ${s.bgColor}`}>
+                                            <div className={s.iconColor}>
+                                                {s.icon}
+                                            </div>
+                                        </div>
+                                        <h3 className="text-xl font-bold">{s.name}</h3>
+                                    </div>
+                                    {activeScenario === s.id && (
+                                        <div className="w-3 h-3 rounded-full bg-emerald-500 animate-pulse" />
+                                    )}
+                                </div>
+
+                                <p className="text-sm text-neutral-300 mb-4 text-left">
+                                    {s.tagline}
+                                </p>
+
                             </div>
-                            <p className="text-sm text-neutral-300 text-left">{scenario.description}</p>
                         </button>
                     ))}
                 </div>
 
                 {/* ACTIVE SCENARIO DETAILS */}
-                <div className={`${scenario.color} border rounded-2xl p-8 mb-8`}>
-                    <div className="flex flex-col md:flex-row justify-between items-start md:items-center mb-8">
-                        <div>
-                            <h4 className="text-2xl font-bold mb-2">{scenario.name}</h4>
-                            <p className="text-lg text-neutral-300">{scenario.description}</p>
-                        </div>
-                        <div className="mt-4 md:mt-0 px-4 py-2 bg-neutral-900/50 rounded-full">
-                            Waarschijnlijkheid: <span className="font-bold">{scenario.probability}</span>
-                        </div>
-                    </div>
+                <div className={`relative overflow-hidden rounded-3xl border ${scenario.borderColor} mb-12`}>
+                    {/* Animated background */}
+                    <div className={`absolute inset-0 bg-gradient-to-br ${scenario.gradient}`} />
 
-                    <div className="grid md:grid-cols-2 gap-8">
-                        <div>
-                            <h5 className="text-xl font-bold mb-4">Kenmerken van dit scenario</h5>
-                            <ul className="space-y-3">
-                                {scenario.characteristics.map((char, index) => (
-                                    <li key={index} className="flex items-start gap-3">
-                                        <div className="w-2 h-2 rounded-full bg-emerald-500 mt-2 flex-shrink-0"></div>
-                                        <span>{char}</span>
-                                    </li>
-                                ))}
-                            </ul>
-                        </div>
+                    <div className="relative z-10 p-8">
+                        {/* Header with probability meter */}
 
-                        <div>
-                            <h5 className="text-xl font-bold mb-4">Implicaties voor Nederland</h5>
-                            <div className="space-y-4">
-                                <div className="bg-neutral-900/50 p-4 rounded-lg">
-                                    <div className="font-bold mb-1">Economie</div>
-                                    <div className="text-sm text-neutral-300">
-                                        {activeScenario === 'scenario1' && 'Afhankelijk van subsidies, kwetsbaar voor concurrentie'}
-                                        {activeScenario === 'scenario2' && 'Winstgevend zonder subsidies, kwaliteit als exportproduct'}
-                                        {activeScenario === 'scenario3' && 'Getransformeerd, leider in innovatieve eiwitproductie'}
-                                    </div>
-                                </div>
-                                <div className="bg-neutral-900/50 p-4 rounded-lg">
-                                    <div className="font-bold mb-1">Natuur & klimaat</div>
-                                    <div className="text-sm text-neutral-300">
-                                        {activeScenario === 'scenario1' && 'Doelen worden niet gehaald, natuur verslechtert'}
-                                        {activeScenario === 'scenario2' && 'Doelen worden gehaald, natuurherstel begint'}
-                                        {activeScenario === 'scenario3' && 'Klimaatneutraal, natuur spectaculair hersteld'}
-                                    </div>
-                                </div>
-                                <div className="bg-neutral-900/50 p-4 rounded-lg">
-                                    <div className="font-bold mb-1">Dierenwelzijn</div>
-                                    <div className="text-sm text-neutral-300">
-                                        {activeScenario === 'scenario1' && 'Marginale verbeteringen, fundamentele problemen blijven'}
-                                        {activeScenario === 'scenario2' && 'Significante verbetering, veel minder dierenleed'}
-                                        {activeScenario === 'scenario3' && 'Fundamenteel anders, bijna geen dierenleed'}
-                                    </div>
+
+                        {/* Content grid */}
+                        <div className="grid lg:grid-cols-2 gap-8 mb-8">
+                            {/* Characteristics */}
+                            <div>
+                                <h4 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                    <ChevronRight size={20} className={scenario.iconColor} />
+                                    Kenmerken
+                                </h4>
+                                <ul className="space-y-4">
+                                    {scenario.characteristics.map((char, index) => (
+                                        <li
+                                            key={index}
+                                            className="flex items-start gap-3 p-3 rounded-lg bg-neutral-900/50 hover:bg-neutral-800/70 transition-colors"
+                                        >
+                                            <div className={`p-2 rounded-md ${scenario.bgColor} mt-0.5`}>
+                                                <div className={scenario.iconColor}>
+                                                    {char.icon}
+                                                </div>
+                                            </div>
+                                            <span className="flex-1">{char.text}</span>
+                                        </li>
+                                    ))}
+                                </ul>
+                            </div>
+
+                            {/* Implications */}
+                            <div>
+                                <h4 className="text-xl font-bold mb-6 flex items-center gap-2">
+                                    <BarChart3 size={20} className={scenario.iconColor} />
+                                    Implicaties
+                                </h4>
+                                <div className="grid grid-cols-2 gap-4">
+                                    {Object.entries(scenario.implications).map(([key, imp]) => (
+                                        <div
+                                            key={key}
+                                            className="bg-neutral-900/50 p-4 rounded-xl hover:bg-neutral-800/70 transition-colors"
+                                        >
+                                            <div className="text-sm text-neutral-400 mb-1 capitalize">
+                                                {key}
+                                            </div>
+                                            <div className="font-bold mb-2">{imp.status}</div>
+                                            <div className="text-sm text-neutral-300">{imp.description}</div>
+                                        </div>
+                                    ))}
                                 </div>
                             </div>
                         </div>
-                    </div>
 
-                    {/* QUOTE */}
-                    <div className="mt-8 pt-8 border-t border-white/10">
-                        <blockquote className="text-xl italic text-neutral-300">
-                            "{scenario.quote}"
-                        </blockquote>
+                        {/* Key factors or triggers */}
+                        {(scenario.keyFactors || scenario.triggers) && (
+                            <div className="mb-8">
+                                <h4 className="text-xl font-bold mb-4">
+                                    {scenario.keyFactors ? 'Sleutelfactoren' : 'Mogelijke triggers'}
+                                </h4>
+                                <div className="flex flex-wrap gap-3">
+                                    {(scenario.keyFactors || scenario.triggers).map((factor, index) => (
+                                        <span
+                                            key={index}
+                                            className="px-4 py-2 bg-neutral-900/70 rounded-full text-sm border border-neutral-800"
+                                        >
+                                            {factor}
+                                        </span>
+                                    ))}
+                                </div>
+                            </div>
+                        )}
+
+                        {/* Quote */}
+
                     </div>
                 </div>
 
-                {/* INTERACTIVE COMPARISON */}
-                <div className="bg-neutral-900/50 p-8 rounded-2xl">
-                    <h4 className="text-2xl font-bold mb-6 text-center">Vergelijkingstabel</h4>
 
-                    <div className="overflow-x-auto">
-                        <table className="w-full">
-                            <thead>
-                            <tr className="border-b border-neutral-700">
-                                <th className="text-left py-3">Aspect</th>
-                                {Object.values(scenarios).map((s, index) => (
-                                    <th key={index} className="text-center py-3">{s.name}</th>
-                                ))}
-                            </tr>
-                            </thead>
-                            <tbody>
-                            <tr className="border-b border-neutral-800">
-                                <td className="py-3">Veestapel (2045)</td>
-                                <td className="text-center py-3 text-yellow-300">-10%</td>
-                                <td className="text-center py-3 text-emerald-300">-40%</td>
-                                <td className="text-center py-3 text-rose-300">-65%</td>
-                            </tr>
-                            <tr className="border-b border-neutral-800">
-                                <td className="py-3">Vleesconsumptie p.p.</td>
-                                <td className="text-center py-3">70 kg</td>
-                                <td className="text-center py-3">45 kg</td>
-                                <td className="text-center py-3">20 kg</td>
-                            </tr>
-                            <tr className="border-b border-neutral-800">
-                                <td className="py-3">Klimaatdoelen</td>
-                                <td className="text-center py-3 text-rose-300">❌ Gemist</td>
-                                <td className="text-center py-3 text-emerald-300">✅ Gehaald</td>
-                                <td className="text-center py-3 text-emerald-300">✅✅ Overtroffen</td>
-                            </tr>
-                            <tr>
-                                <td className="py-3">Natuurherstel</td>
-                                <td className="text-center py-3 text-yellow-300">🟡 Beperkt</td>
-                                <td className="text-center py-3 text-emerald-300">🟢 Begonnen</td>
-                                <td className="text-center py-3 text-emerald-300">🟢🟢 Spectaculair</td>
-                            </tr>
-                            </tbody>
-                        </table>
+
+
+
+
+
+
+
+
+
+                {/* FINAL MESSAGE */}
+                <div className="text-center p-8 rounded-3xl bg-gradient-to-r from-neutral-900 via-emerald-900/10 to-neutral-900 border border-emerald-500/20">
+                    <h5 className="text-2xl font-bold mb-4">De keuze is aan ons</h5>
+                    <p className="text-lg text-neutral-300 max-w-3xl mx-auto mb-6">
+                        Welk scenario werkelijkheid wordt, hangt af van politieke moed, economische
+                        verschuivingen en maatschappelijke keuzes. De komende 5-10 jaar zijn beslissend.
+                    </p>
+                    <div className="flex flex-wrap justify-center gap-4">
+                        <div className="px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">
+                            <span className="text-emerald-300">Politieke durf</span> nodig
+                        </div>
+                        <div className="px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">
+                            <span className="text-emerald-300">Economische verschuiving</span> vereist
+                        </div>
+                        <div className="px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">
+                            <span className="text-emerald-300">Maatschappelijke keuze</span> mogelijk
+                        </div>
                     </div>
                 </div>
             </div>

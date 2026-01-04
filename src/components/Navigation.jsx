@@ -75,9 +75,7 @@ export default function Navigation() {
     const longreadMenuItems = [
         { id: 'introductie', label: 'Introductie' },
         { id: 'verleden', label: 'Verleden' },
-        { id: 'cijfers', label: 'Cijfers' },
         { id: 'heden', label: 'Heden' },
-        { id: 'interviews', label: 'Interviews' },
         { id: 'toekomst', label: 'Toekomst' },
     ];
 

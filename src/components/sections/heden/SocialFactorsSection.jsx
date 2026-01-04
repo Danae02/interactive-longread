@@ -5,7 +5,7 @@ import { createClient } from '@supabase/supabase-js';
 
 // Supabase configuratie - VERVANG DIT MET JE EIGENE
 const supabaseUrl = 'https://hvbfeebfffuzyfjilqvc.supabase.co'
-const supabaseAnonKey = 'sb_publishable_Eej7gt67g_ek2zT9PeZldQ_gq5q0vyf' // ← DIT IS JE KEY!
+const supabaseAnonKey = 'seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YmZlZWJmZmZ1enlmamlscXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc0OTU5ODAsImV4cCI6MjA4MzA3MTk4MH0.LgAfCE_MlFAxMY6EWf2hsIMxJaXItxEsDG1v3qVtRPc'
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export default function SocialFactorsSection() {
@@ -506,6 +506,39 @@ export default function SocialFactorsSection() {
                             <p className="text-xs text-neutral-500">
                                 Stemmen worden opgeslagen in een gedeelde database. Je kunt maar één keer stemmen per browser.
                             </p>
+                        </div>
+                    </div>
+                </div>
+
+
+
+
+
+
+
+                {/* CONCLUSIE */}
+                <div className="mt-16 mb-8">
+                    <div className="bg-gradient-to-r from-emerald-900/20 to-neutral-800/50 p-8 rounded-lg border-l-4 border-emerald-500">
+                        <h4 className="text-2xl font-bold mb-6 text-center">Conclusie</h4>
+
+                        <div className="max-w-4xl mx-auto">
+                            <div className="space-y-6 text-lg text-neutral-300">
+                                <p>
+                                    De sociale acceptatie van de vee-industrie is het resultaat van decennia van marketing, culturele inbedding en strategische framing.
+                                </p>
+
+                                <p>
+                                    <strong>De kloof tussen weten en doen</strong> is geen individueel falen, maar een systeemprobleem. Terwijl het bewustzijn groeit—door wetenschappelijke adviezen, onderzoeksjournalistiek en activisme—blijft de dagelijkse praktijk vaak achter door gewoonten, gemak, misleiding en een systeem dat intensieve productie beloont.
+                                </p>
+
+                                <div className="bg-neutral-900/50 p-6 rounded-lg my-6 border border-neutral-700">
+                                    <p className="text-center font-medium text-emerald-300">
+                                        De vraag is niet of consumenten 'schuldig' zijn, maar of het systeem hen überhaupt de mogelijkheid geeft om anders te kiezen.
+                                    </p>
+                                </div>
+
+
+                            </div>
                         </div>
                     </div>
                 </div>

@@ -1,17 +1,93 @@
 // components/sections/toekomst/MoodMeterSection.jsx
 import React, { useState, useEffect } from 'react';
-import { Smile, Frown, Meh, TrendingUp, TrendingDown } from 'lucide-react';
+import { Smile, Frown, Meh, TrendingUp, TrendingDown, Database, RefreshCw } from 'lucide-react';
+import { createClient } from '@supabase/supabase-js';
+
+
+const supabaseUrl = 'https://pnceluzqojuxqkmozopm.supabase.co'
+const supabaseKey = "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6InBuY2VsdXpxb2p1eHFrbW96b3BtIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc1MTgwNDUsImV4cCI6MjA4MzA5NDA0NX0.JXM47wQhJcULF4N--k6HBeS4wM6BcybxedIObOoIa7w"
+const supabase = createClient(supabaseUrl, supabaseKey)
 
 export default function MoodMeterSection() {
     const [userMood, setUserMood] = useState(null);
     const [moodSubmitted, setMoodSubmitted] = useState(false);
     const [globalMood, setGlobalMood] = useState({ optimistic: 0, neutral: 0, pessimistic: 0 });
+    const [loading, setLoading] = useState(false);
+    const [hasVoted, setHasVoted] = useState(false);
+    const [isConnected, setIsConnected] = useState(false);
 
-    // Laad globale stemming bij opstart
+    // Check of gebruiker al gestemd heeft
     useEffect(() => {
-        const savedMood = JSON.parse(localStorage.getItem('future-mood-meter') || '{"optimistic":0,"neutral":0,"pessimistic":0}');
-        setGlobalMood(savedMood);
+        const checkVote = () => {
+            const voted = localStorage.getItem('future-mood-voted');
+            const voteData = localStorage.getItem('future-mood-data');
+            if (voted) {
+                setHasVoted(true);
+                setMoodSubmitted(true);
+                setUserMood(voteData);
+            }
+        };
+        checkVote();
     }, []);
+
+    // Laad globale stemming van Supabase
+    const loadGlobalMood = async () => {
+        try {
+            // Test verbinding eerst
+            const { data, error, count } = await supabase
+                .from('mood_meter_votes')
+                .select('mood', { count: 'exact', head: true });
+
+            if (error) {
+                console.log('Supabase error:', error);
+                throw error;
+            }
+
+            // Haal alle votes op
+            const { data: votes, error: votesError } = await supabase
+                .from('mood_meter_votes')
+                .select('mood');
+
+            if (votesError) throw votesError;
+
+            // Tel stemmen
+            const counts = { optimistic: 0, neutral: 0, pessimistic: 0 };
+            if (votes) {
+                votes.forEach(vote => {
+                    if (vote.mood === 'optimistic') counts.optimistic++;
+                    else if (vote.mood === 'neutral') counts.neutral++;
+                    else if (vote.mood === 'pessimistic') counts.pessimistic++;
+                });
+            }
+
+            setGlobalMood(counts);
+            setIsConnected(true);
+            console.log('Loaded from Supabase:', counts);
+            return true;
+        } catch (error) {
+            console.error('Fout bij laden stemming:', error);
+            // Fallback naar localStorage als Supabase faalt
+            const savedMood = JSON.parse(localStorage.getItem('future-mood-meter') || '{"optimistic":0,"neutral":0,"pessimistic":0}');
+            setGlobalMood(savedMood);
+            setIsConnected(false);
+            return false;
+        }
+    };
+
+    // Laad data bij opstart
+    useEffect(() => {
+        loadGlobalMood();
+    }, []);
+
+    // Genereer een unieke identifier voor gebruiker
+    const generateUserId = () => {
+        let userId = localStorage.getItem('future-mood-user-id');
+        if (!userId) {
+            userId = 'user_' + Date.now() + '_' + Math.random().toString(36).substr(2, 9);
+            localStorage.setItem('future-mood-user-id', userId);
+        }
+        return userId;
+    };
 
     const moods = [
         {
@@ -40,16 +116,75 @@ export default function MoodMeterSection() {
         }
     ];
 
-    const handleMoodSelection = (moodId) => {
+    const handleMoodSelection = async (moodId) => {
+        setLoading(true);
         setUserMood(moodId);
 
-        // Update globale stemming
-        const updatedMood = { ...globalMood, [moodId]: globalMood[moodId] + 1 };
-        setGlobalMood(updatedMood);
-        localStorage.setItem('future-mood-meter', JSON.stringify(updatedMood));
+        const userId = generateUserId();
 
-        // Toon resultaten na korte delay
-        setTimeout(() => setMoodSubmitted(true), 500);
+        try {
+            console.log('Saving vote to Supabase:', moodId, 'for user:', userId);
+
+            // Probeer op te slaan in Supabase
+            const { data, error } = await supabase
+                .from('mood_meter_votes')
+                .insert([
+                    {
+                        mood: moodId,
+                        session_id: userId
+                    }
+                ]);
+
+            if (error) {
+                console.error('Supabase insert error:', error);
+                throw error;
+            }
+
+            console.log('Vote saved successfully:', data);
+
+            // Update lokale cache
+            localStorage.setItem('future-mood-voted', 'true');
+            localStorage.setItem('future-mood-data', moodId);
+
+            // Wacht even en laad dan opnieuw
+            setTimeout(async () => {
+                await loadGlobalMood();
+                setHasVoted(true);
+                setMoodSubmitted(true);
+            }, 1000);
+
+        } catch (error) {
+            console.error('Fout bij opslaan stem:', error);
+
+            // Fallback naar localStorage als Supabase faalt
+            const updatedMood = {
+                ...globalMood,
+                [moodId]: (globalMood[moodId] || 0) + 1
+            };
+            setGlobalMood(updatedMood);
+            localStorage.setItem('future-mood-meter', JSON.stringify(updatedMood));
+            localStorage.setItem('future-mood-voted', 'true');
+            localStorage.setItem('future-mood-data', moodId);
+
+            setHasVoted(true);
+            setMoodSubmitted(true);
+            setIsConnected(false);
+            setLoading(false);
+        }
+    };
+
+    const resetVote = () => {
+        localStorage.removeItem('future-mood-voted');
+        localStorage.removeItem('future-mood-data');
+        setHasVoted(false);
+        setMoodSubmitted(false);
+        setUserMood(null);
+    };
+
+    const refreshResults = async () => {
+        setLoading(true);
+        await loadGlobalMood();
+        setLoading(false);
     };
 
     const totalVotes = Object.values(globalMood).reduce((a, b) => a + b, 0);
@@ -67,6 +202,21 @@ export default function MoodMeterSection() {
                     </p>
                 </div>
 
+                {/* Database status */}
+                <div className="mb-4 flex justify-center">
+                    {isConnected ? (
+                        <div className="flex items-center gap-2 px-4 py-2 bg-emerald-900/30 text-emerald-400 rounded-full text-sm">
+                            <Database size={16} />
+                            <span>Live verbonden • {totalVotes} stemmen</span>
+                        </div>
+                    ) : (
+                        <div className="flex items-center gap-2 px-4 py-2 bg-yellow-900/30 text-yellow-400 rounded-full text-sm">
+                            <Database size={16} />
+                            <span>Lokale gegevens • {totalVotes} stemmen</span>
+                        </div>
+                    )}
+                </div>
+
                 {/* MOOD SELECTION */}
                 {!moodSubmitted ? (
                     <div className="bg-neutral-800/50 backdrop-blur-sm border border-neutral-700 rounded-2xl p-8 mb-12">
@@ -81,7 +231,8 @@ export default function MoodMeterSection() {
                                 <button
                                     key={mood.id}
                                     onClick={() => handleMoodSelection(mood.id)}
-                                    className={`p-8 rounded-xl border-2 ${mood.borderColor} ${mood.color} transition-all duration-300 transform hover:scale-105`}
+                                    disabled={loading}
+                                    className={`p-8 rounded-xl border-2 ${mood.borderColor} ${mood.color} transition-all duration-300 transform hover:scale-105 disabled:opacity-50 disabled:cursor-not-allowed`}
                                 >
                                     <div className="flex flex-col items-center">
                                         <div className="mb-4">{mood.icon}</div>
@@ -91,16 +242,36 @@ export default function MoodMeterSection() {
                                 </button>
                             ))}
                         </div>
+
+                        {loading && (
+                            <div className="text-center mt-6">
+                                <div className="inline-block animate-spin rounded-full h-8 w-8 border-b-2 border-white"></div>
+                                <p className="mt-2 text-neutral-400">Stem wordt opgeslagen...</p>
+                            </div>
+                        )}
                     </div>
                 ) : (
                     /* MOOD RESULTS */
                     <div className="bg-neutral-800/50 backdrop-blur-sm border border-neutral-700 rounded-2xl p-8 mb-12">
-                        <h4 className="text-2xl font-bold mb-6 text-center">Resultaten</h4>
+                        <div className="flex justify-between items-center mb-6">
+                            <h4 className="text-2xl font-bold">Resultaten</h4>
+                            <button
+                                onClick={refreshResults}
+                                disabled={loading}
+                                className="flex items-center gap-2 px-4 py-2 bg-neutral-700 hover:bg-neutral-600 rounded-lg transition-colors disabled:opacity-50"
+                            >
+                                <RefreshCw size={16} className={loading ? 'animate-spin' : ''} />
+                                {loading ? 'Laden...' : 'Verversen'}
+                            </button>
+                        </div>
 
                         {/* GLOBALE STEMNING */}
                         <div className="mb-8">
                             <div className="flex justify-between mb-4">
-                                <div className="text-lg">Globale stemming ({totalVotes} stemmen)</div>
+                                <div className="text-lg">
+                                    Globale stemming ({totalVotes} stemmen)
+                                    {!isConnected && <span className="text-yellow-400 text-sm ml-2">(lokaal)</span>}
+                                </div>
                                 <div className="text-sm text-neutral-400">
                                     {userMood && `Jij stemde: ${moods.find(m => m.id === userMood)?.label}`}
                                 </div>
@@ -176,17 +347,7 @@ export default function MoodMeterSection() {
                             </p>
                         </div>
 
-                        <div className="text-center">
-                            <button
-                                onClick={() => {
-                                    setMoodSubmitted(false);
-                                    setUserMood(null);
-                                }}
-                                className="px-6 py-2 bg-neutral-700 hover:bg-neutral-600 rounded-lg transition-colors"
-                            >
-                                Opnieuw stemmen
-                            </button>
-                        </div>
+
                     </div>
                 )}
 

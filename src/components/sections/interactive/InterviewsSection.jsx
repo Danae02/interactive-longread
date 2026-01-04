@@ -9,16 +9,16 @@ export default function InterviewsSection() {
         {
             id: 'arco-timmermans',
             name: 'Arco Timmermans',
-            role: 'Politicoloog & Lobbyisme-expert',
+            role: 'Politicoloog & Lobby-expert',
             type: 'tekst',
             image: '/afbeeldingen-interviews/arco-timmermans.jpg',
             quote: 'Het onvoorspelbare is eigenlijk de regel geworden.',
-            highlight: 'Onthult hoe lobbynetwerken werken'
+            highlight: 'Legt meer uit over lobbynetwerken'
         },
         {
             id: 'wouter-waayer',
             name: 'Wouter Waayer',
-            role: 'Boerenzoon → Vegan Activist',
+            role: 'Boerenzoon en nu dierenrechtenactivist',
             type: 'audio',
             image: '/afbeeldingen-interviews/Wouter_waayer.jpg',
             quote: 'We zijn eigenlijk een beetje immuun geworden voor het leed dat zich dagelijks afspeelt in die stallen.',
@@ -38,10 +38,10 @@ export default function InterviewsSection() {
         {
             id: 'lammert-van-raan',
             name: 'Lammert van Raan',
-            role: '...',
+            role: 'Voormalig Tweede Kamerlid voor de Partij voor de Dieren',
             type: 'tekst',
             image: '/afbeeldingen-interviews/lammert-van-raan.webp',
-            quote: '....',
+            quote: 'Ik ben er van overtuigd dat alle oplossingen er eigenlijk al zijn. Alleen moeten ze er nog doorheen komen.',
             highlight: 'De middenweg in een verhit debat'
         },
         {
@@ -60,7 +60,7 @@ export default function InterviewsSection() {
             type: 'tekst',
             image: '/afbeeldingen-interviews/dierenrecht.jpg',
             quote: 'Er is vaak sprake van gevestigde belangen en terugkerende steunmechanismen, waardoor transitie wordt tegengehouden of vertraagd.',
-            highlight: 'Vecht tegen EU-promotiesubsidies voor vlees'
+            highlight: 'Vecht tegen dierenleed'
         }
     ];
 
@@ -92,9 +92,7 @@ export default function InterviewsSection() {
                         Stemmen uit de Sector
                     </h2>
                     <p className="text-xl text-neutral-300 max-w-3xl mx-auto">
-                        Ik sprak met mensen die de vee-industrie van binnenuit kennen:
-                        van beleidsmakers tot activisten, van boeren tot journalisten.
-                        Meerdere perspectieven, één complex verhaal.
+                        Om het systeem te begrijpen, moet je luisteren naar de mensen die er middenin staan.  Ik ging in gesprek met verschillende mensen en organisaties. Van BBB-lid tot dierenactivist, van lobby-expert tot boerenzoon. Samen vertellen ze het verhaal van een sector op een kruispunt.
                     </p>
                 </div>
 

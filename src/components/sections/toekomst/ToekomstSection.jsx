@@ -4,6 +4,7 @@ import FutureIntroSection from "./FutureIntroSection.jsx";
 import OptimisticNewsSection from "./OptimisticNewsSection.jsx";
 import FutureScenariosSection from "./FutureScenriosSection.jsx";
 import MoodMeterSection from "./MoodMeterSection.jsx";
+import WhatshappeningNow from "./WhatshappeningNow.jsx";
 
 
 export default function ToekomstSection() {
@@ -13,11 +14,13 @@ export default function ToekomstSection() {
             {/* Introductie Toekomst */}
             <FutureIntroSection />
 
-            {/* Optimistisch Nieuws */}
-            <OptimisticNewsSection />
+            {/*<WhatshappeningNow/>*/}
 
             {/* Toekomstscenario's */}
             <FutureScenariosSection />
+
+            {/* Optimistisch Nieuws */}
+            <OptimisticNewsSection />
 
             {/* Stemming-meter */}
             <MoodMeterSection />
