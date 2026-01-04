@@ -484,12 +484,17 @@ export default function KunstKennisCultuurPage() {
                                             className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
                                         >
                                             Meer over de film
-                                            <ExternalLink size={18} />
+                                            <ExternalLink size={18}/>
                                         </a>
-                                        <button className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium">
-                                            Bekijk de trailer
-                                            <Film size={18} />
-                                        </button>
+                                        <a
+                                            href="https://www.npodoc.nl/documentaires/2025/12/liesjes-hok-was-leeg.html"
+                                            target="_blank"
+                                            rel="noopener noreferrer"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                        >
+                                            Bekijk de film
+                                            <Film size={18}/>
+                                        </a>
                                     </div>
                                 </div>
                             </div>
@@ -500,7 +505,7 @@ export default function KunstKennisCultuurPage() {
         },
         {
             id: 'ecocide',
-            icon: <MessageSquare className="text-green-400" size={28} />,
+            icon: <MessageSquare className="text-green-400" size={28}/>,
             title: "Conceptualizing Ecocide: Dit is geen rechtszaak",
             subtitle: "Een theaterexperiment van de Universiteit Utrecht over verantwoordelijkheid voor milieuschade",
             teaser: "Wat als ecocide strafbaar zou zijn? Een voorstelling waar het publiek de jury is...",
