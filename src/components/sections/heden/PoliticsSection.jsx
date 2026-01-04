@@ -198,7 +198,7 @@ export default function PoliticsSection() {
                 <div className="text-center mb-16">
                     <div className="inline-flex items-center gap-3 mb-4">
                         <Vote className="text-emerald-500" size={32} />
-                        <h3 className="text-4xl font-bold">3. Politieke Blokade: Waarom Verandering (nog) Niet lukt</h3>
+                        <h3 className="text-4xl font-bold">3. Politieke Blokkade: Waarom Verandering (nog) Niet lukt</h3>
                     </div>
                     <p className="text-xl text-neutral-300 max-w-3xl mx-auto leading-relaxed">
                         Hoewel de urgentie voor verandering groeit, blijft concrete politieke actie uit.
