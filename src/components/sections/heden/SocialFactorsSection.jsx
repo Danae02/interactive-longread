@@ -4,14 +4,14 @@ import { Package, Tv, BookOpen } from 'lucide-react';
 import { createClient } from '@supabase/supabase-js';
 
 // Supabase configuratie - VERVANG DIT MET JE EIGENE
-const supabaseUrl = 'https://hvbfeebfffuzyfjilqvc.supabase.co'
-const supabaseAnonKey = 'seyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Imh2YmZlZWJmZmZ1enlmamlscXZjIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc0OTU5ODAsImV4cCI6MjA4MzA3MTk4MH0.LgAfCE_MlFAxMY6EWf2hsIMxJaXItxEsDG1v3qVtRPc'
+const supabaseUrl = 'https://mjdjtyzetdtetuaxexag.supabase.co'
+const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1qZGp0eXpldGR0ZXR1YXhleGFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc1NzA1NjQsImV4cCI6MjA4MzE0NjU2NH0.LhipRc-nj_M7U7dVBmkIzpQ8Q6b5x-gxVBRqPq0OERQ'
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
 export default function SocialFactorsSection() {
     const [activeStrategy, setActiveStrategy] = useState(0);
     const [pollData, setPollData] = useState({
-        votes: [0, 0, 0, 0, 0],
+        votes: [0, 0, 0, 0, 0, 0], // Nu 6 items i.p.v. 5
         totalVotes: 0
     });
     const [hasVoted, setHasVoted] = useState(false);
@@ -35,8 +35,15 @@ export default function SocialFactorsSection() {
             if (error) throw error;
 
             if (data) {
+                // Zorg ervoor dat er 6 items zijn (nieuwe array voor backwards compatibility)
+                const votesArray = data.votes || [0, 0, 0, 0, 0, 0];
+                // Als de oude data maar 5 items had, voeg dan een 6e toe
+                if (votesArray.length === 5) {
+                    votesArray.push(0); // Voeg de nieuwe optie toe met 0 stemmen
+                }
+
                 setPollData({
-                    votes: data.votes || [0, 0, 0, 0, 0],
+                    votes: votesArray,
                     totalVotes: data.total_votes || 0
                 });
             }
@@ -72,8 +79,14 @@ export default function SocialFactorsSection() {
 
             if (!currentData) throw new Error('Poll data niet gevonden');
 
+            // Zorg ervoor dat de votes array 6 items heeft
+            let currentVotes = currentData.votes || [0, 0, 0, 0, 0, 0];
+            if (currentVotes.length === 5) {
+                currentVotes.push(0); // Voeg de nieuwe optie toe indien nodig
+            }
+
             // Update votes array
-            const newVotes = [...currentData.votes];
+            const newVotes = [...currentVotes];
             newVotes[index] += 1;
             const newTotalVotes = currentData.total_votes + 1;
 
@@ -116,15 +129,15 @@ export default function SocialFactorsSection() {
 
     const pollOptions = [
         {
-            text: "Culturele gewoontes & tradities",
+            text: "Culturele gewoontes en tradities",
             description: "Het hoort er gewoon bij bij feestdagen, familie-eten, etc."
         },
         {
-            text: "Misleidende marketing & greenwashing",
+            text: "Misleidende marketing en greenwashing",
             description: "Het is lastig betrouwbare, duurzame keuzes te maken"
         },
         {
-            text: "Gemak & beschikbaarheid",
+            text: "Gemak en beschikbaarheid",
             description: "Vlees en zuivel zijn overal, goedkoop en makkelijk"
         },
         {
@@ -132,9 +145,14 @@ export default function SocialFactorsSection() {
             description: "Het voelt als afwijken van de norm of aanval op identiteit"
         },
         {
+            text: "Ik vind het gewoon lekker",
+            description: "De smaak van vlees en zuivelproducten vind ik te goed om op te geven"
+        },
+        {
             text: "Ik zie geen belemmeringen",
             description: "Ik vind het niet moeilijk om minder dierlijke producten te eten"
-        }
+        },
+
     ];
 
     const marketingStrategies = [
@@ -500,7 +518,6 @@ export default function SocialFactorsSection() {
                             )}
                         </div>
 
-
                         {/* Disclaimer */}
                         <div className="text-center mt-6">
                             <p className="text-xs text-neutral-500">
@@ -509,12 +526,6 @@ export default function SocialFactorsSection() {
                         </div>
                     </div>
                 </div>
-
-
-
-
-
-
 
                 {/* CONCLUSIE */}
                 <div className="mt-16 mb-8">
@@ -536,13 +547,10 @@ export default function SocialFactorsSection() {
                                         De vraag is niet of consumenten 'schuldig' zijn, maar of het systeem hen überhaupt de mogelijkheid geeft om anders te kiezen.
                                     </p>
                                 </div>
-
-
                             </div>
                         </div>
                     </div>
                 </div>
-
             </div>
         </div>
     );
