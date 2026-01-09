@@ -1,6 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { ChevronDown, Users, TrendingUp, Building2, Info, HelpCircle } from 'lucide-react';
-import { Link } from 'react-router-dom';
+import { ChevronDown } from 'lucide-react';
 import Navigation from './Navigation';
 import StatsPopup from './popups/StatsPopup';
 import ScalePopup from './popups/ScalePopup';
@@ -8,9 +7,7 @@ import FarmsPopup from './popups/FarmsPopup';
 import IntroductionSection from './sections/text/00-IntroductionSection.jsx';
 import './VeeIndustrieLongread.css';
 import './Navigation.css';
-import FooterSection from "./sections/text/FooterSection.jsx";;
-import TimelineSection from "./sections/interactive/TimelineSection.jsx";
-import HistoryIntroSection from "./sections/verleden/HistoryIntroSection.jsx";
+import FooterSection from "./sections/text/FooterSection.jsx";
 import HedenSection from "./sections/heden/HedenSection.jsx";
 import ToekomstSection from "./sections/toekomst/ToekomstSection.jsx";
 import ConclusieSection from "./sections/text/ConclusieSection.jsx";
@@ -24,6 +21,63 @@ export default function VeeIndustrieLongread() {
     const [showFarmsPopup, setShowFarmsPopup] = useState(false);
     const [isScrolled, setIsScrolled] = useState(false);
 
+    // 🔥 CRITIEKE FIX: Forceer scroll naar top bij mount
+    useEffect(() => {
+        console.log('🔍 VeeIndustrieLongread mounting - forcing to top');
+
+        // 1. Zet browser scroll restoration uit
+        if ('scrollRestoration' in window.history) {
+            window.history.scrollRestoration = 'manual';
+        }
+
+        // 2. Verwijder hash uit URL
+        if (window.location.hash) {
+            window.history.replaceState(null, null, window.location.pathname + window.location.search);
+            console.log('🔍 Hash removed from URL');
+        }
+
+        // 3. Forceer scroll naar top - meerdere methoden voor betrouwbaarheid
+        window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+
+        // 4. Extra scroll na korte delay voor de zekerheid
+        const forceScroll = () => {
+            if (window.scrollY > 0) {
+                console.log(`🔍 Still scrolled down to ${window.scrollY}, forcing to top`);
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+                return true;
+            }
+            return false;
+        };
+
+        // Probeer meerdere keren
+        forceScroll();
+        setTimeout(forceScroll, 10);
+        setTimeout(forceScroll, 50);
+        setTimeout(forceScroll, 100);
+        setTimeout(forceScroll, 200);
+
+        // 5. Blijf controleren voor de eerste 2 seconden
+        let scrollCheckInterval;
+        let attempts = 0;
+        const maxAttempts = 40; // 2 seconden bij 50ms interval
+
+        scrollCheckInterval = setInterval(() => {
+            attempts++;
+            if (window.scrollY > 50 && attempts < maxAttempts) {
+                console.log(`🔍 Scroll check ${attempts}: at ${window.scrollY}, correcting...`);
+                window.scrollTo({ top: 0, left: 0, behavior: 'instant' });
+            } else if (attempts >= maxAttempts) {
+                clearInterval(scrollCheckInterval);
+                console.log('🔍 Stopped scroll correction');
+            }
+        }, 50);
+
+        return () => {
+            if (scrollCheckInterval) clearInterval(scrollCheckInterval);
+        };
+    }, []); // ✅ Lege dependency array: alleen bij eerste mount
+
+    // Bestaande scroll tracking
     useEffect(() => {
         const handleScroll = () => {
             setScrollY(window.scrollY);
@@ -48,7 +102,6 @@ export default function VeeIndustrieLongread() {
 
     return (
         <div className="longread-container bg-neutral-900 text-neutral-100">
-
             {/* Scroll Progress Bar - FIXED bovenaan, onder de navigation */}
             <div
                 className="fixed left-0 w-full z-[60] transition-all duration-300"
@@ -107,26 +160,19 @@ export default function VeeIndustrieLongread() {
                 <IntroductionSection/>
             </section>
 
-
             {/* Timeline - Add ID for navigation */}
             <section id="verleden">
-                {/*<HistoryIntroSection/>*/}
-                {/*<TimelineSection/>*/}
                 <VerledenSection/>
             </section>
-
 
             {/* Popup Components */}
             {showStatsPopup && <StatsPopup onClose={() => setShowStatsPopup(false)}/>}
             {showScalePopup && <ScalePopup onClose={() => setShowScalePopup(false)}/>}
             {showFarmsPopup && <FarmsPopup onClose={() => setShowFarmsPopup(false)}/>}
 
-
-
             <HedenSection></HedenSection>
 
-
-            {/*/!* Toekomst sectie - Add ID for navigation *!/*/}
+            {/* Toekomst sectie - Add ID for navigation */}
             <section id="toekomst">
                 <ToekomstSection/>
             </section>
