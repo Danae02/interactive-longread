@@ -20,18 +20,18 @@ export default function SocialFactorsSection() {
     const [hasVoted, setHasVoted] = useState(false);
     const [isLoading, setIsLoading] = useState(true);
     const [userVote, setUserVote] = useState(null);
+    const [pollVersion, setPollVersion] = useState(0);
 
     // Laad poll data bij opstart
     useEffect(() => {
         loadPollData();
-        checkIfVoted();
     }, []);
 
     const loadPollData = async () => {
         try {
             const { data, error } = await supabase
                 .from('poll_stats')
-                .select('votes, total_votes')
+                .select('votes, total_votes, updated_at')
                 .eq('id', 1)
                 .single();
 
@@ -39,10 +39,33 @@ export default function SocialFactorsSection() {
                 // Als de rij niet bestaat, maak dan een nieuwe aan
                 if (error.code === 'PGRST116') {
                     await initializePollData();
+                    // Reset localStorage omdat poll opnieuw is begonnen
+                    localStorage.removeItem('socialFactorsPollVoted');
+                    localStorage.removeItem('socialFactorsPollVoteIndex');
+                    localStorage.removeItem('socialFactorsPollVersion');
                 } else {
                     throw error;
                 }
             } else if (data) {
+                // Haal huidige poll versie/timestamp op
+                const currentPollVersion = data.updated_at;
+
+                // Controleer of de poll gereset is sinds je laatste stem
+                const lastVoteTimestamp = localStorage.getItem('socialFactorsPollVersion');
+                const lastVote = localStorage.getItem('socialFactorsPollVoted');
+
+                // Als je eerder gestemd hebt, maar de poll is bijgewerkt (gereset)
+                if (lastVote === 'true' && lastVoteTimestamp !== currentPollVersion) {
+                    // Poll is gewijzigd, reset je stemgegevens
+                    localStorage.removeItem('socialFactorsPollVoted');
+                    localStorage.removeItem('socialFactorsPollVoteIndex');
+                    setHasVoted(false);
+                    setUserVote(null);
+                }
+
+                // Sla huidige poll versie op
+                localStorage.setItem('socialFactorsPollVersion', currentPollVersion);
+
                 // Zorg ervoor dat er 6 items zijn
                 const votesArray = data.votes || [0, 0, 0, 0, 0, 0];
                 if (votesArray.length === 5) {
@@ -53,6 +76,9 @@ export default function SocialFactorsSection() {
                     votes: votesArray,
                     totalVotes: data.total_votes || 0
                 });
+
+                // Controleer of gebruiker al gestemd heeft
+                checkIfVoted();
             }
         } catch (error) {
             console.error('Fout bij laden poll:', error);
@@ -68,12 +94,13 @@ export default function SocialFactorsSection() {
 
     const initializePollData = async () => {
         try {
+            const now = new Date().toISOString();
             const initialData = {
                 id: 1,
                 votes: [0, 0, 0, 0, 0, 0],
                 total_votes: 0,
-                created_at: new Date().toISOString(),
-                updated_at: new Date().toISOString()
+                created_at: now,
+                updated_at: now
             };
 
             const { error } = await supabase
@@ -88,62 +115,74 @@ export default function SocialFactorsSection() {
             });
 
             console.log('Poll data geïnitialiseerd');
+            return now; // Retourneer de timestamp
         } catch (error) {
             console.error('Fout bij initialiseren poll:', error);
             throw error;
         }
     };
 
-
-
-
     const checkIfVoted = () => {
         const voted = localStorage.getItem('socialFactorsPollVoted');
         const voteIndex = localStorage.getItem('socialFactorsPollVoteIndex');
 
-        if (voted && voteIndex !== null) {
+        if (voted === 'true' && voteIndex !== null) {
             setHasVoted(true);
             setUserVote(parseInt(voteIndex));
+        } else {
+            setHasVoted(false);
+            setUserVote(null);
         }
     };
 
     const handleVote = async (index) => {
-        if (hasVoted) return;
+        if (hasVoted || isLoading) return;
 
         setIsLoading(true);
 
         try {
             // Haal huidige data op
-            const { data: currentData } = await supabase
+            const { data: currentData, error: fetchError } = await supabase
                 .from('poll_stats')
                 .select('votes, total_votes')
                 .eq('id', 1)
                 .single();
 
-            if (!currentData) throw new Error('Poll data niet gevonden');
+            let currentVotes, currentTotalVotes;
 
-            // Zorg ervoor dat de votes array 6 items heeft
-            let currentVotes = currentData.votes || [0, 0, 0, 0, 0, 0];
-            if (currentVotes.length === 5) {
-                currentVotes.push(0); // Voeg de nieuwe optie toe indien nodig
+            if (fetchError && fetchError.code === 'PGRST116') {
+                // Rij bestaat niet, initialiseer
+                currentVotes = [0, 0, 0, 0, 0, 0];
+                currentTotalVotes = 0;
+            } else if (fetchError) {
+                throw fetchError;
+            } else {
+                currentVotes = currentData.votes || [0, 0, 0, 0, 0, 0];
+                currentTotalVotes = currentData.total_votes || 0;
             }
 
-            // Update votes array
+            // Zorg voor 6 items
+            if (currentVotes.length === 5) {
+                currentVotes.push(0);
+            }
+
+            // Update votes
             const newVotes = [...currentVotes];
             newVotes[index] += 1;
-            const newTotalVotes = currentData.total_votes + 1;
+            const newTotalVotes = currentTotalVotes + 1;
+            const now = new Date().toISOString();
 
             // Update database
-            const { error } = await supabase
+            const { error: updateError } = await supabase
                 .from('poll_stats')
-                .update({
+                .upsert({
+                    id: 1,
                     votes: newVotes,
                     total_votes: newTotalVotes,
-                    updated_at: new Date().toISOString()
-                })
-                .eq('id', 1);
+                    updated_at: now
+                });
 
-            if (error) throw error;
+            if (updateError) throw updateError;
 
             // Update local state
             setPollData({
@@ -151,13 +190,14 @@ export default function SocialFactorsSection() {
                 totalVotes: newTotalVotes
             });
 
-            // Markeer als gestemd
+            // Update UI state
             setHasVoted(true);
             setUserVote(index);
 
             // Sla op in localStorage
             localStorage.setItem('socialFactorsPollVoted', 'true');
             localStorage.setItem('socialFactorsPollVoteIndex', index.toString());
+            localStorage.setItem('socialFactorsPollVersion', now);
 
             // Toon bevestiging
             alert(`✅ Bedankt voor je stem! Je koos: "${pollOptions[index].text}"`);
@@ -169,6 +209,23 @@ export default function SocialFactorsSection() {
             setIsLoading(false);
         }
     };
+
+    // FUNCTIE OM JE STEM TE RESETTEN (voor testen)
+    const resetLocalVote = () => {
+        localStorage.removeItem('socialFactorsPollVoted');
+        localStorage.removeItem('socialFactorsPollVoteIndex');
+        localStorage.removeItem('socialFactorsPollVersion');
+        setHasVoted(false);
+        setUserVote(null);
+        alert('Je stem is gereset. Je kunt nu opnieuw stemmen.');
+    };
+
+
+
+
+
+
+
 
     const pollOptions = [
         {
