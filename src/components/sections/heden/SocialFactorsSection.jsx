@@ -149,7 +149,7 @@ export default function SocialFactorsSection() {
             description: "De smaak van vlees en zuivelproducten vind ik te goed om op te geven"
         },
         {
-            text: "Ik zie geen belemmeringen",
+            text: "Ik voel geen belemmeringen",
             description: "Ik vind het niet moeilijk om minder dierlijke producten te eten"
         },
 
