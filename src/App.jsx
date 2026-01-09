@@ -8,11 +8,11 @@ import Navigation from "./components/Navigation.jsx";
 
 // Component om scroll gedrag te beheren
 function ScrollManager() {
-    const { pathname, hash, key } = useLocation();
+    const {pathname, hash, key} = useLocation();
 
     useEffect(() => {
         // Log voor debugging
-        console.log('Location changed:', { pathname, hash, key });
+        console.log('Location changed:', {pathname, hash, key});
 
         // Als we op de hoofdpagina zijn EN er is een hash
         if (pathname === '/' && hash) {
@@ -26,10 +26,10 @@ function ScrollManager() {
                 const element = document.getElementById(elementId);
                 if (element) {
                     console.log('Scrolling to element:', elementId);
-                    element.scrollIntoView({ behavior: 'smooth' });
+                    element.scrollIntoView({behavior: 'smooth'});
                 } else {
                     console.log('Element not found, scrolling to top');
-                    window.scrollTo({ top: 0, behavior: 'smooth' });
+                    window.scrollTo({top: 0, behavior: 'smooth'});
                 }
             }, 500); // Langere timeout voor zekerheid
 
@@ -38,12 +38,12 @@ function ScrollManager() {
         // Als we op de hoofdpagina zijn zonder hash
         else if (pathname === '/' && !hash) {
             console.log('No hash, scrolling to top');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
         // Voor andere routes
         else {
             console.log('Different route, scrolling to top');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo({top: 0, behavior: 'smooth'});
         }
     }, [pathname, hash, key]);
 

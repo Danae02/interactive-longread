@@ -107,6 +107,7 @@ export default function VeeIndustrieLongread() {
                 <IntroductionSection/>
             </section>
 
+
             {/* Timeline - Add ID for navigation */}
             <section id="verleden">
                 {/*<HistoryIntroSection/>*/}
