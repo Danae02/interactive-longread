@@ -8,10 +8,13 @@ const supabaseUrl = 'https://mjdjtyzetdtetuaxexag.supabase.co'
 const supabaseAnonKey = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6Im1qZGp0eXpldGR0ZXR1YXhleGFnIiwicm9sZSI6ImFub24iLCJpYXQiOjE3Njc1NzA1NjQsImV4cCI6MjA4MzE0NjU2NH0.LhipRc-nj_M7U7dVBmkIzpQ8Q6b5x-gxVBRqPq0OERQ'
 const supabase = createClient(supabaseUrl, supabaseAnonKey)
 
+
+
+
 export default function SocialFactorsSection() {
     const [activeStrategy, setActiveStrategy] = useState(0);
     const [pollData, setPollData] = useState({
-        votes: [0, 0, 0, 0, 0, 0], // Nu 6 items i.p.v. 5
+        votes: [0, 0, 0, 0, 0, 0],
         totalVotes: 0
     });
     const [hasVoted, setHasVoted] = useState(false);
@@ -32,14 +35,18 @@ export default function SocialFactorsSection() {
                 .eq('id', 1)
                 .single();
 
-            if (error) throw error;
-
-            if (data) {
-                // Zorg ervoor dat er 6 items zijn (nieuwe array voor backwards compatibility)
+            if (error) {
+                // Als de rij niet bestaat, maak dan een nieuwe aan
+                if (error.code === 'PGRST116') {
+                    await initializePollData();
+                } else {
+                    throw error;
+                }
+            } else if (data) {
+                // Zorg ervoor dat er 6 items zijn
                 const votesArray = data.votes || [0, 0, 0, 0, 0, 0];
-                // Als de oude data maar 5 items had, voeg dan een 6e toe
                 if (votesArray.length === 5) {
-                    votesArray.push(0); // Voeg de nieuwe optie toe met 0 stemmen
+                    votesArray.push(0);
                 }
 
                 setPollData({
@@ -49,10 +56,46 @@ export default function SocialFactorsSection() {
             }
         } catch (error) {
             console.error('Fout bij laden poll:', error);
+            // Fallback naar default data
+            setPollData({
+                votes: [0, 0, 0, 0, 0, 0],
+                totalVotes: 0
+            });
         } finally {
             setIsLoading(false);
         }
     };
+
+    const initializePollData = async () => {
+        try {
+            const initialData = {
+                id: 1,
+                votes: [0, 0, 0, 0, 0, 0],
+                total_votes: 0,
+                created_at: new Date().toISOString(),
+                updated_at: new Date().toISOString()
+            };
+
+            const { error } = await supabase
+                .from('poll_stats')
+                .upsert(initialData);
+
+            if (error) throw error;
+
+            setPollData({
+                votes: initialData.votes,
+                totalVotes: initialData.total_votes
+            });
+
+            console.log('Poll data geïnitialiseerd');
+        } catch (error) {
+            console.error('Fout bij initialiseren poll:', error);
+            throw error;
+        }
+    };
+
+
+
 
     const checkIfVoted = () => {
         const voted = localStorage.getItem('socialFactorsPollVoted');
