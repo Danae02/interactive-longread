@@ -25,7 +25,7 @@ export default function TimelineSection() {
                         Crisis-Zuivelbureau
                         <ExternalLink size={14} aria-hidden="true" />
                     </a>{' '}
-                    op. Het bureau coördineert crisismaatregelen, ondersteunt de sector en bevordert afzet van zuivelproducten.
+                    op. Het bureau coördineert crisismaatregelen, ondersteunt de sector en bevordert de afzet van zuivelproducten.
                 </>
             ),
             impact: "Start van georganiseerde voedselpromotie",
@@ -48,7 +48,7 @@ export default function TimelineSection() {
         {
             year: "1945",
             title: "Naoorlogs Herstel",
-            shortDesc: "'Nooit meer honger' beleid",
+            shortDesc: "'Nooit meer honger'-beleid",
             content: (
                 <>
                     Na de Hongerwinter werd{' '}
@@ -111,7 +111,7 @@ export default function TimelineSection() {
             shortDesc: "Kinderen als marketingdoel",
             content: (
                 <>
-                    De Melk-brigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door 30 extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.{' '}
+                    De Melkbrigade wordt gelanceerd: kinderen worden 'Melkbrigadiers' door dertig extra glazen melk te drinken. Joris Driepinter volgt als stripheld die problemen oplost met drie glazen melk per dag. Campagnes gebruiken scholen, strips en evenementen om consumptie te normaliseren.{' '}
                     <a
                         href="https://anderetijden.nl/aflevering/348/Melk-de-witte-motor#:~:text=Sinds%20de%20oprichting%20van%20het,is%20goed%20voor%20elk%E2%80%9D%20gebruikt."
                         target="_blank"
@@ -152,7 +152,7 @@ export default function TimelineSection() {
                         Gemeenschappelijk Landbouwbeleid (GLB)
                         <ExternalLink size={14} aria-hidden="true" />
                     </a>{' '}
-                    van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.
+                    gaat van start met gegarandeerde minimumprijzen. Boeren kunnen investeren zonder marktrisico. Exportbarrières verdwijnen, Nederland kan heel Europa bedienen. Subsidies voor modernisering belonen schaalvergroting direct.
                 </>
             ),
             impact: "Explosieve groei vee-industrie mogelijk",
@@ -165,7 +165,7 @@ export default function TimelineSection() {
             shortDesc: "Politieke lobby verankerd",
             content: (
                 <>
-                    De Stichting Voorlichtingsbureau voor Vlees organiseert de eerste parlementaire barbecue op het Binnenhof.{' '}
+                    De Stichting Voorlichtingsbureau voor Vlees, Vleeswaren en Vleesconserven organiseert de eerste parlementaire barbecue op het Binnenhof.{' '}
                     <a
                         href="https://historiek.net/worsten-op-het-binnenhof/157138/#:~:text=Meer%20vlees,6%20kilo%20vlees%20per%20jaar.&text=De%20barbecue%20was%20begin%20jaren,iets%20zeer%20smakelijks%20te%20bereiden.%E2%80%9D"
                         target="_blank"
@@ -175,7 +175,7 @@ export default function TimelineSection() {
                         (Bron: Historiek)
                         <ExternalLink size={14} aria-hidden="true" />
                     </a>{' '}
-                    Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen, maar stichting Voorlichtingsbureau Vlees, Vleeswaren en Vleesconserven heeft ook nog andere afbeeldingen{' '}
+                    Politici, ambtenaren en journalisten genieten gezamenlijk van worstjes en saté. De campagne 'Vlees mevrouw, u weet wel waarom' richt zich op Nederlandse huisvrouwen, maar de stichting Voorlichtingsbureau Vlees, Vleeswaren en Vleesconserven heeft ook nog andere afbeeldingen{' '}
                     <a
                         href="https://www.lastdodo.nl/nl/areas/3516299-stichting-voorlichtingsbureau-vlees-vleeswaren-en-vleesconserven"
                         target="_blank"
@@ -291,17 +291,7 @@ export default function TimelineSection() {
     return (
         <section className="timeline-section bg-neutral-800 py-12 md:py-16 px-4 sm:px-6" aria-label="Tijdlijn Nederlandse vee-industrie">
             <div className="max-w-6xl mx-auto">
-                {/*<div className="text-center mb-8 md:mb-12">*/}
-                {/*    <div className="flex items-center justify-center gap-3 mb-3">*/}
-                {/*        <Calendar className="text-emerald-400" size={28} aria-hidden="true" />*/}
-                {/*        <h2 className="text-2xl md:text-3xl font-bold text-white">*/}
-                {/*            Van Trauma tot Transitie*/}
-                {/*        </h2>*/}
-                {/*    </div>*/}
-                {/*    <p className="text-neutral-400 text-sm md:text-base max-w-2xl mx-auto">*/}
-                {/*        De opkomst van de Nederlandse vee-industrie: van 'nooit meer honger' naar ecologische grenzen*/}
-                {/*    </p>*/}
-                {/*</div>*/}
+
 
                 {/* Desktop Timeline */}
                 <div className="hidden md:block relative pb-8" role="list" aria-label="Tijdlijn gebeurtenissen">

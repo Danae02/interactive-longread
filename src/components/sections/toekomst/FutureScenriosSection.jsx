@@ -216,9 +216,9 @@ export default function FutureScenariosSection() {
                         Welke toekomst kiezen we?
                     </h2>
                     <p className="text-xl text-neutral-400 max-w-3xl mx-auto leading-relaxed">
-                        Drie scenario's voor de Nederlandse vee-industrie.
+                        Drie mogelijke scenario's voor de Nederlandse vee-industrie.
                         Het pad dat we inslaan wordt bepaald door <span className="text-emerald-300 font-medium">politieke moed</span>,
-                        <span className="text-emerald-300 font-medium"> economische verschuivingen</span> en
+                        <span className="text-emerald-300 font-medium"> economische veranderingen</span> en
                         <span className="text-emerald-300 font-medium"> maatschappelijke keuzes</span>.
                     </p>
                 </div>
@@ -357,8 +357,8 @@ export default function FutureScenariosSection() {
                 <div className="text-center p-8 rounded-3xl bg-gradient-to-r from-neutral-900 via-emerald-900/10 to-neutral-900 border border-emerald-500/20">
                     <h5 className="text-2xl font-bold mb-4">De keuze is aan ons</h5>
                     <p className="text-lg text-neutral-300 max-w-3xl mx-auto mb-6">
-                        Welk scenario werkelijkheid wordt, hangt af van politieke moed, economische
-                        verschuivingen en maatschappelijke keuzes. De komende 5-10 jaar zijn beslissend.
+                        Welk scenario werkelijkheid wordt, wordt bepaald door politieke moed, economische
+                        vernaderingen en maatschappelijke keuzes. De komende 5-10 jaar zijn cruciaal.
                     </p>
                     <div className="flex flex-wrap justify-center gap-4">
                         <div className="px-4 py-2 bg-emerald-500/20 rounded-full border border-emerald-500/30">

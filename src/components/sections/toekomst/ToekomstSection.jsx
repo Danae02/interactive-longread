@@ -31,7 +31,7 @@ export default function ToekomstSection() {
                     <h3 className="text-3xl font-bold mb-6">Wat nu?</h3>
                     <p className="text-xl text-neutral-300 mb-8">
                         Je hebt gezien hoe het systeem werkt, wie er belang bij heeft, en wat er mogelijk is.
-                        De toekomst is niet voorbestemd - die maken we samen.
+                        De toekomst is niet voorbestemd, maar die maken we samen.
                     </p>
                     <div className="animate-pulse">
                         <svg className="w-12 h-12 mx-auto text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

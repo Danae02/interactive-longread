@@ -10,7 +10,7 @@ export default function OptimisticNewsSection() {
             title: "Kweekvleesboerderij in Schipluiden",
             date: "November 2025",
             description: "De eerste kweekvleesboerderij ter wereld geopend op een melkveehouderij.",
-            impact: "Potentieel: 95% minder land, minder stikstof, geen dierenleed.",
+            impact: "Potentieel: 95% minder landgebruik, sterk verminderde stikstofuitstoot, volledig zonder dierenleed.",
             fullStory: "In Schipluiden is de eerste kweekvleesboerderij ter wereld geopend. Boer Corné van Leeuwen ziet dit als een kans voor nieuwe inkomstenmodellen naast traditionele landbouw. Net zoals melkrobots ooit sceptisch werden ontvangen maar nu standaard zijn.",
             icon: <Zap className="text-emerald-400" size={24} />,
             source: "https://nos.nl/artikel/2592079-schipluiden-krijgt-de-eerste-kweekvleesboerderij-ter-wereld"
@@ -77,7 +77,7 @@ export default function OptimisticNewsSection() {
                 <div className="text-center mb-12">
                     <h3 className="text-3xl font-bold mb-4">Hoofdstuk 2: Het kan wél</h3>
                     <p className="text-xl text-neutral-400 max-w-3xl mx-auto">
-                        Positieve ontwikkelingen die laten zien dat verandering mogelijk is - en al bezig is
+                        Positieve ontwikkelingen die bewijzen dat verandering niet alleen mogelijk is, maar al in gang is gezet
                     </p>
                 </div>
 
@@ -172,9 +172,9 @@ export default function OptimisticNewsSection() {
                 {/* HOOPVOLLE CONCLUSIE */}
                 <div className="mt-8 text-center text-neutral-400">
                     <p className="text-lg">
-                        Deze ontwikkelingen tonen aan: verandering is al bezig op meerdere fronten.
+                        Deze ontwikkelingen laten zien dat verandering op meerdere fronten al in gang is gezet.
                         <span className="block mt-2 font-semibold text-emerald-300">
-                            De toekomst is niet voorbestemd - we kunnen haar vormgeven.
+                            De toekomst is niet vastgelegd, we hebben de kracht het te veranderen.
                         </span>
                     </p>
                 </div>

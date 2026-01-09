@@ -19,7 +19,7 @@ export default function HistoryIntroSection() {
                 {/* Introductietekst */}
                 <div className="prose prose-lg prose-invert max-w-none">
                     <p className="text-lg md:text-xl leading-relaxed text-neutral-200 mb-6">
-                        Veel mensen zijn opgegroeid met concepten als Joris Driepinter, de Melkbrigade, "Melk is goed voor elk", en het idee dat een maaltijd pas écht compleet is met vlees erbij. Dit is geen toeval. Na de vele doden door honger in de oorlog en Hongerwinter werd "Nooit meer honger" het motto dat het beleid ging leiden. Het doel was duidelijk: meer, groter, sneller. Maar wat leek op vooruitgang, had een prijs: het ontstaan van de{' '}
+                        Veel mensen zijn opgegroeid met concepten als Joris Driepinter, de Melkbrigade, "Melk is goed voor elk", en het idee dat een maaltijd pas écht compleet is met vlees erbij. Dit is geen toeval. Na de vele doden door honger in de oorlog en de Hongerwinter werd "Nooit meer honger" het motto dat het beleid begon te leiden. Het doel was duidelijk: meer, groter, sneller. Maar wat leek op vooruitgang had een prijs: het ontstaan van de{' '}
                         <span className="relative group inline-block">
                             <span className="border-b border-dotted border-emerald-400 cursor-help">
                                 intensieve vee-industrie

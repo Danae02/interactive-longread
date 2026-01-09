@@ -5,23 +5,37 @@ export default function KunstKennisCultuurPage() {
     const [expandedSections, setExpandedSections] = useState({
         poem: false,
         monument: false,
-        documentaries: false, // Hoofdcategorie voor documentaires
-        boerocratie: false,  // Subcategorie
-        liesjes: false,      // Subcategorie
-        ecocide: false,      // Nieuwe sectie over ecocide
+        documentaries: false,
+        boerocratie: false,
+        liesjes: false,
+        ecocide: false,
         recommendations: false
     });
 
     const [showBoerocratieTrailer, setShowBoerocratieTrailer] = useState(false);
 
-    const toggleSection = (section) => {
+    const toggleSection = (section, event) => {
+        if (event) {
+            // Voor keyboard toegankelijkheid
+            if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+            }
+        }
+
         setExpandedSections(prev => ({
             ...prev,
             [section]: !prev[section]
         }));
     };
 
-    const toggleSubSection = (section, parentSection) => {
+    const toggleSubSection = (section, parentSection, event) => {
+        if (event) {
+            // Voor keyboard toegankelijkheid
+            if (event.key === ' ' || event.key === 'Enter') {
+                event.preventDefault();
+            }
+        }
+
         setExpandedSections(prev => ({
             ...prev,
             [section]: !prev[section],
@@ -30,10 +44,17 @@ export default function KunstKennisCultuurPage() {
         }));
     };
 
+    const handleKeyDown = (event, action, ...args) => {
+        if (event.key === 'Enter' || event.key === ' ') {
+            event.preventDefault();
+            action(...args);
+        }
+    };
+
     const artItems = [
         {
             id: 'poem',
-            icon: <BookOpen className="text-purple-400" size={28} />,
+            icon: <BookOpen className="text-purple-400" size={28} aria-hidden="true" />,
             title: "Gedicht: Bekeerling",
             subtitle: "Door Ester Naomi Perquin • Uit de bundel 'Servetten halfstok'",
             teaser: "Gevonden en aangeraden door Rienk Wielenga....",
@@ -82,7 +103,7 @@ export default function KunstKennisCultuurPage() {
         {
             id: 'monument',
             icon: <div className="w-8 h-8 bg-neutral-800 rounded-lg flex items-center justify-center border border-neutral-700">
-                <span className="text-neutral-300 text-lg">🐄</span>
+                <span className="text-neutral-300 text-lg" aria-hidden="true">🐄</span>
             </div>,
             title: "Het Koeienmonument Amsterdam",
             subtitle: "Een monument voor 2 miljoen geslachte koeien • Jan van Galenstraat, Amsterdam West",
@@ -162,7 +183,7 @@ export default function KunstKennisCultuurPage() {
                         <div className="bg-gradient-to-r from-neutral-800 to-neutral-900 rounded-xl p-6 my-8 border border-neutral-700">
                             <div className="flex items-start gap-4 mb-4">
                                 <div className="bg-neutral-700 p-3 rounded-lg">
-                                    <span className="text-2xl">🎨</span>
+                                    <span className="text-2xl" aria-hidden="true">🎨</span>
                                 </div>
                                 <div>
                                     <h4 className="text-xl font-bold text-white mb-2">Stripserie: Koeienmonument in de maak</h4>
@@ -184,10 +205,11 @@ export default function KunstKennisCultuurPage() {
                                         href="https://markschalken.cargo.site/Koeienmonument-strips"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-5 py-2.5 rounded-lg transition-colors font-medium text-sm"
+                                        className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-5 py-2.5 rounded-lg transition-colors font-medium text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                        aria-label="Lees de stripserie over het Koeienmonument (opent in nieuw tabblad)"
                                     >
                                         <span>Lees de stripserie</span>
-                                        <ExternalLink size={16} />
+                                        <ExternalLink size={16} aria-hidden="true" />
                                     </a>
                                 </div>
                                 <div className="bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
@@ -198,10 +220,11 @@ export default function KunstKennisCultuurPage() {
                                         href="https://markschalken.cargo.site/koeienmonument-plan"
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium"
+                                        className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900 rounded px-1 py-1"
+                                        aria-label="Bekijk het volledige plan van het Koeienmonument (opent in nieuw tabblad)"
                                     >
                                         <span>Bekijk het volledige plan</span>
-                                        <ExternalLink size={16} />
+                                        <ExternalLink size={16} aria-hidden="true" />
                                     </a>
                                 </div>
                             </div>
@@ -212,20 +235,22 @@ export default function KunstKennisCultuurPage() {
                                 href="https://markschalken.cargo.site/koeienmonument-plan"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                aria-label="Lees het volledige plan van het Koeienmonument (opent in nieuw tabblad)"
                             >
                                 Lees het volledige plan
-                                <ExternalLink size={18} />
+                                <ExternalLink size={18} aria-hidden="true" />
                             </a>
                             <a
                                 href="https://markschalken.cargo.site/Koeienmonument-strips"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                aria-label="Lees de stripserie over het Koeienmonument (opent in nieuw tabblad)"
                             >
-                                <span>🎨</span>
+                                <span aria-hidden="true">🎨</span>
                                 Lees de stripserie
-                                <ExternalLink size={18} />
+                                <ExternalLink size={18} aria-hidden="true" />
                             </a>
                         </div>
                     </div>
@@ -234,7 +259,7 @@ export default function KunstKennisCultuurPage() {
         },
         {
             id: 'documentaries',
-            icon: <Film className="text-neutral-300" size={28} />,
+            icon: <Film className="text-neutral-300" size={28} aria-hidden="true" />,
             title: "Documentaires",
             subtitle: "Twee documentaires die de vee-industrie vanuit verschillende perspectieven belichten",
             teaser: "Van politieke macht tot persoonlijke verhalen...",
@@ -243,14 +268,17 @@ export default function KunstKennisCultuurPage() {
                     {/* Documentaire 1: Boerocratie */}
                     <div className="border border-neutral-700 rounded-lg overflow-hidden">
                         <button
-                            onClick={() => toggleSubSection('boerocratie', 'documentaries')}
-                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors"
+                            onClick={(e) => toggleSubSection('boerocratie', 'documentaries', e)}
+                            onKeyDown={(e) => handleKeyDown(e, toggleSubSection, 'boerocratie', 'documentaries')}
+                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                            aria-expanded={expandedSections.boerocratie}
+                            aria-controls="boerocratie-content"
                         >
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center">
-                                            <span className="text-neutral-300 text-xs">🎬</span>
+                                            <span className="text-neutral-300 text-xs" aria-hidden="true">🎬</span>
                                         </div>
                                         <h4 className="text-lg font-bold text-white">Boerocratie</h4>
                                     </div>
@@ -263,17 +291,21 @@ export default function KunstKennisCultuurPage() {
                                 </div>
                                 <div className="flex-shrink-0">
                                     {expandedSections.boerocratie ? (
-                                        <ChevronUp className="text-neutral-400" size={20} />
+                                        <ChevronUp className="text-neutral-400" size={20} aria-hidden="true" />
                                     ) : (
-                                        <ChevronDown className="text-neutral-400" size={20} />
+                                        <ChevronDown className="text-neutral-400" size={20} aria-hidden="true" />
                                     )}
                                 </div>
                             </div>
                         </button>
 
-                        <div className={`overflow-hidden transition-all duration-300 ${
-                            expandedSections.boerocratie ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
-                        }`}>
+                        <div
+                            id="boerocratie-content"
+                            className={`overflow-hidden transition-all duration-300 ${
+                                expandedSections.boerocratie ? 'max-h-[5000px] opacity-100' : 'max-h-0 opacity-0'
+                            }`}
+                            aria-hidden={!expandedSections.boerocratie}
+                        >
                             <div className="p-6 bg-neutral-900/50">
                                 <div className="prose prose-lg prose-invert max-w-none">
                                     <p className="text-neutral-200 leading-relaxed mb-6">
@@ -319,7 +351,7 @@ export default function KunstKennisCultuurPage() {
                                     {showBoerocratieTrailer && (
                                         <div className="mb-8">
                                             <div className="flex items-center gap-2 mb-4">
-                                                <Play className="text-neutral-300" size={24} />
+                                                <Play className="text-neutral-300" size={24} aria-hidden="true" />
                                                 <h4 className="text-xl font-bold text-white">Bekijk de trailer</h4>
                                             </div>
                                             <div className="relative w-full aspect-video rounded-lg overflow-hidden border border-neutral-700">
@@ -330,6 +362,7 @@ export default function KunstKennisCultuurPage() {
                                                     allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
                                                     allowFullScreen
                                                     className="absolute top-0 left-0 w-full h-full"
+                                                    aria-label="YouTube video: Boerocratie Trailer"
                                                 />
                                             </div>
                                             <p className="text-neutral-400 text-sm mt-2 italic">
@@ -343,24 +376,27 @@ export default function KunstKennisCultuurPage() {
                                             href="https://www.ngpf.nl/boerocratie"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                            aria-label="Bekijk de volledige film Boerocratie (opent in nieuw tabblad)"
                                         >
-                                            <ExternalLink size={18}/>
+                                            <ExternalLink size={18} aria-hidden="true"/>
                                             <span>Bekijk de volledige film</span>
                                         </a>
 
                                         <button
                                             onClick={() => setShowBoerocratieTrailer(!showBoerocratieTrailer)}
-                                            className="inline-flex items-center justify-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1 border border-neutral-700"
+                                            onKeyDown={(e) => handleKeyDown(e, () => setShowBoerocratieTrailer(!showBoerocratieTrailer))}
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-800 hover:bg-neutral-700 text-white px-6 py-3 rounded-lg transition-colors font-medium flex-1 border border-neutral-700 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                                            aria-expanded={showBoerocratieTrailer}
                                         >
                                             {showBoerocratieTrailer ? (
                                                 <>
-                                                    <Film size={18}/>
+                                                    <Film size={18} aria-hidden="true"/>
                                                     <span>Verberg trailer</span>
                                                 </>
                                             ) : (
                                                 <>
-                                                    <Play size={18}/>
+                                                    <Play size={18} aria-hidden="true"/>
                                                     <span>Bekijk trailer</span>
                                                 </>
                                             )}
@@ -372,10 +408,11 @@ export default function KunstKennisCultuurPage() {
                                             href="https://youtu.be/nW5UAEKvLf4?si=D1iQoasi7grQeFKP"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm"
+                                            className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900 rounded px-1 py-1"
+                                            aria-label="Open de Boerocratie trailer in YouTube (opent in nieuw tabblad)"
                                         >
                                             <span>Open trailer in YouTube</span>
-                                            <ExternalLink size={14} />
+                                            <ExternalLink size={14} aria-hidden="true" />
                                         </a>
                                     </div>
                                 </div>
@@ -386,14 +423,17 @@ export default function KunstKennisCultuurPage() {
                     {/* Documentaire 2: Liesjes hok was leeg */}
                     <div className="border border-neutral-700 rounded-lg overflow-hidden">
                         <button
-                            onClick={() => toggleSubSection('liesjes', 'documentaries')}
-                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors"
+                            onClick={(e) => toggleSubSection('liesjes', 'documentaries', e)}
+                            onKeyDown={(e) => handleKeyDown(e, toggleSubSection, 'liesjes', 'documentaries')}
+                            className="w-full text-left p-6 bg-neutral-800 hover:bg-neutral-750 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                            aria-expanded={expandedSections.liesjes}
+                            aria-controls="liesjes-content"
                         >
                             <div className="flex items-start justify-between gap-4">
                                 <div className="flex-1">
                                     <div className="flex items-center gap-3 mb-2">
                                         <div className="w-6 h-6 bg-neutral-700 rounded-full flex items-center justify-center">
-                                            <span className="text-neutral-300 text-xs">🎞️</span>
+                                            <span className="text-neutral-300 text-xs" aria-hidden="true">🎞️</span>
                                         </div>
                                         <h4 className="text-lg font-bold text-white">Liesjes hok was leeg</h4>
                                     </div>
@@ -406,17 +446,21 @@ export default function KunstKennisCultuurPage() {
                                 </div>
                                 <div className="flex-shrink-0">
                                     {expandedSections.liesjes ? (
-                                        <ChevronUp className="text-neutral-400" size={20} />
+                                        <ChevronUp className="text-neutral-400" size={20} aria-hidden="true" />
                                     ) : (
-                                        <ChevronDown className="text-neutral-400" size={20} />
+                                        <ChevronDown className="text-neutral-400" size={20} aria-hidden="true" />
                                     )}
                                 </div>
                             </div>
                         </button>
 
-                        <div className={`overflow-hidden transition-all duration-300 ${
-                            expandedSections.liesjes ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
-                        }`}>
+                        <div
+                            id="liesjes-content"
+                            className={`overflow-hidden transition-all duration-300 ${
+                                expandedSections.liesjes ? 'max-h-[3000px] opacity-100' : 'max-h-0 opacity-0'
+                            }`}
+                            aria-hidden={!expandedSections.liesjes}
+                        >
                             <div className="p-6 bg-neutral-900/50">
                                 <div className="prose prose-lg prose-invert max-w-none">
                                     <p className="text-neutral-200 leading-relaxed mb-6">
@@ -481,19 +525,21 @@ export default function KunstKennisCultuurPage() {
                                             href="https://www.human.nl/3lab/artikelen/3lab-liesjes-hok-was-leeg"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                            aria-label="Meer informatie over Liesjes hok was leeg (opent in nieuw tabblad)"
                                         >
                                             Meer over de film
-                                            <ExternalLink size={18}/>
+                                            <ExternalLink size={18} aria-hidden="true"/>
                                         </a>
                                         <a
                                             href="https://www.npodoc.nl/documentaires/2025/12/liesjes-hok-was-leeg.html"
                                             target="_blank"
                                             rel="noopener noreferrer"
-                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium"
+                                            className="inline-flex items-center justify-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-6 py-3 rounded-lg transition-colors font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                                            aria-label="Bekijk de film Liesjes hok was leeg (opent in nieuw tabblad)"
                                         >
                                             Bekijk de film
-                                            <Film size={18}/>
+                                            <Film size={18} aria-hidden="true"/>
                                         </a>
                                     </div>
                                 </div>
@@ -505,7 +551,7 @@ export default function KunstKennisCultuurPage() {
         },
         {
             id: 'ecocide',
-            icon: <MessageSquare className="text-green-400" size={28}/>,
+            icon: <MessageSquare className="text-green-400" size={28} aria-hidden="true"/>,
             title: "Conceptualizing Ecocide: Dit is geen rechtszaak",
             subtitle: "Een theaterexperiment van de Universiteit Utrecht over verantwoordelijkheid voor milieuschade",
             teaser: "Wat als ecocide strafbaar zou zijn? Een voorstelling waar het publiek de jury is...",
@@ -546,7 +592,7 @@ export default function KunstKennisCultuurPage() {
                     <div className="bg-gradient-to-r from-neutral-800 to-green-900/30 rounded-xl p-6 my-8 border border-neutral-700">
                         <div className="flex items-start gap-4 mb-4">
                             <div className="bg-neutral-700 p-3 rounded-lg">
-                                <span className="text-2xl">⚖️</span>
+                                <span className="text-2xl" aria-hidden="true">⚖️</span>
                             </div>
                             <div>
                                 <h4 className="text-xl font-bold text-white mb-2">De zaak</h4>
@@ -562,7 +608,7 @@ export default function KunstKennisCultuurPage() {
 
                     <div className="mb-8 bg-neutral-800/50 rounded-lg p-4 border border-neutral-700">
                         <div className="flex items-center gap-2 mb-3">
-                            <span className="text-lg">🎭</span>
+                            <span className="text-lg" aria-hidden="true">🎭</span>
                             <h4 className="text-lg font-bold text-white">Theatrale vorm</h4>
                         </div>
                         <p className="text-neutral-300">
@@ -573,7 +619,7 @@ export default function KunstKennisCultuurPage() {
                     {/* Nieuwe sectie: Kennisclip */}
                     <div className="my-10 bg-gradient-to-br from-neutral-800 to-green-900/20 rounded-xl p-6 border border-neutral-700">
                         <div className="flex items-center gap-3 mb-4">
-                            <Play className="text-green-400" size={24} />
+                            <Play className="text-green-400" size={24} aria-hidden="true" />
                             <h4 className="text-xl font-bold text-white">Bekijk een kennisclip over ecocide</h4>
                         </div>
                         <p className="text-neutral-300 mb-6">
@@ -588,6 +634,7 @@ export default function KunstKennisCultuurPage() {
                                 allow="autoplay; fullscreen; picture-in-picture"
                                 allowFullScreen
                                 className="absolute top-0 left-0 w-full h-full"
+                                aria-label="Vimeo video: Knowledge clip over Ecocide en Internationaal Recht door Cedric Ryngaert"
                             />
                         </div>
                         <p className="text-neutral-400 text-sm mt-3 italic">
@@ -598,10 +645,11 @@ export default function KunstKennisCultuurPage() {
                                 href="https://vimeo.com/988403774"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm"
+                                className="inline-flex items-center gap-2 text-neutral-400 hover:text-neutral-300 transition-colors text-sm focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900 rounded px-1 py-1"
+                                aria-label="Open de video over Ecocide en Internationaal Recht op Vimeo (opent in nieuw tabblad)"
                             >
                                 <span>Open video op Vimeo</span>
-                                <ExternalLink size={14} />
+                                <ExternalLink size={14} aria-hidden="true" />
                             </a>
                         </div>
                     </div>
@@ -618,10 +666,11 @@ export default function KunstKennisCultuurPage() {
                                 href="https://www.uu.nl/en/research/sustainability/gallery/project-gallery/signature-projects/conceptualizing-ecocide"
                                 target="_blank"
                                 rel="noopener noreferrer"
-                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors"
+                                className="inline-flex items-center gap-2 text-green-400 hover:text-green-300 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900 rounded px-1 py-1"
+                                aria-label="Bekijk het volledige project Conceptualizing Ecocide op de Universiteit Utrecht website (opent in nieuw tabblad)"
                             >
                                 <span>Bekijk het volledige project op de UU website</span>
-                                <ExternalLink size={16} />
+                                <ExternalLink size={16} aria-hidden="true" />
                             </a>
                         </div>
                     </div>
@@ -630,7 +679,7 @@ export default function KunstKennisCultuurPage() {
         },
         {
             id: 'recommendations',
-            icon: <Sparkles className="text-neutral-300" size={28} />,
+            icon: <Sparkles className="text-neutral-300" size={28} aria-hidden="true" />,
             title: "Meer Aanraders",
             subtitle: "Documentaires, boeken, podcasts en kunstwerken",
             teaser: "Ontdek meer werken die een andere kijk geven op de vee-industrie...",
@@ -670,17 +719,24 @@ export default function KunstKennisCultuurPage() {
             {/* Header */}
             <header className="bg-neutral-950 border-b border-neutral-800 sticky top-0 z-10">
                 <div className="max-w-5xl mx-auto px-6 py-4 flex items-center justify-between">
-                    <a href="/" className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors">
-                        <ArrowLeft size={20} />
+                    <a
+                        href="/"
+                        className="flex items-center gap-2 text-neutral-300 hover:text-white transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-950 rounded px-2 py-1"
+                        aria-label="Terug naar hoofdverhaal"
+                    >
+                        <ArrowLeft size={20} aria-hidden="true" />
                         <span className="text-sm">Terug naar hoofdverhaal</span>
                     </a>
                     <h1 className="text-xl md:text-2xl font-bold text-white">Kunst & Cultuur</h1>
-                    <div className="w-24"></div> {/* Spacer for centering */}
+                    <div className="w-24" aria-hidden="true"></div>
                 </div>
             </header>
 
             {/* Hero Section */}
-            <section className="relative py-20 px-6 bg-gradient-to-b from-neutral-900 to-neutral-800">
+            <section
+                className="relative py-20 px-6 bg-gradient-to-b from-neutral-900 to-neutral-800"
+                aria-label="Introductie"
+            >
                 <div className="max-w-4xl mx-auto text-center">
                     <h1 className="text-4xl md:text-6xl font-bold mb-6 leading-tight">
                         Het Kunst en Cultuur Hoekje
@@ -693,22 +749,28 @@ export default function KunstKennisCultuurPage() {
             </section>
 
             {/* Main Content - Clickable Sections */}
-            <section className="py-8 px-6 bg-neutral-900">
+            <section
+                className="py-8 px-6 bg-neutral-900"
+                aria-label="Kunstwerken en documentaires"
+            >
                 <div className="max-w-4xl mx-auto">
-                    <div className="space-y-6">
+                    <div className="space-y-6" role="list">
                         {artItems.map((item) => (
-                            <div
+                            <article
                                 key={item.id}
-                                className="bg-neutral-800 rounded-xl border border-neutral-700 overflow-hidden transition-all duration-300 hover:border-neutral-600"
+                                className="bg-neutral-800 rounded-xl border border-neutral-700 overflow-hidden transition-all duration-300 hover:border-neutral-600 focus-within:border-blue-500"
                             >
                                 {/* Clickable Header */}
                                 <button
-                                    onClick={() => toggleSection(item.id)}
-                                    className="w-full text-left p-6 md:p-8 hover:bg-neutral-750 transition-colors"
+                                    onClick={(e) => toggleSection(item.id, e)}
+                                    onKeyDown={(e) => handleKeyDown(e, toggleSection, item.id)}
+                                    className="w-full text-left p-6 md:p-8 hover:bg-neutral-750 transition-colors focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-inset"
+                                    aria-expanded={expandedSections[item.id]}
+                                    aria-controls={`${item.id}-content`}
                                 >
                                     <div className="flex items-start justify-between gap-4">
                                         <div className="flex items-start gap-4">
-                                            <div className="mt-1">
+                                            <div className="mt-1" aria-hidden="true">
                                                 {item.icon}
                                             </div>
                                             <div className="flex-1">
@@ -723,7 +785,7 @@ export default function KunstKennisCultuurPage() {
                                                 </p>
                                             </div>
                                         </div>
-                                        <div className="flex-shrink-0">
+                                        <div className="flex-shrink-0" aria-hidden="true">
                                             {expandedSections[item.id] ? (
                                                 <ChevronUp className="text-neutral-400" size={24} />
                                             ) : (
@@ -733,8 +795,9 @@ export default function KunstKennisCultuurPage() {
                                     </div>
                                 </button>
 
-                                {/* Expandable Content - GROTER voor koeienmonument */}
+                                {/* Expandable Content */}
                                 <div
+                                    id={`${item.id}-content`}
                                     className={`overflow-hidden transition-all duration-300 ${
                                         expandedSections[item.id] ?
                                             item.id === 'monument' || item.id === 'documentaries' || item.id === 'ecocide' ?
@@ -742,6 +805,8 @@ export default function KunstKennisCultuurPage() {
                                                 : 'max-h-[2000px] opacity-100'
                                             : 'max-h-0 opacity-0'
                                     }`}
+                                    aria-hidden={!expandedSections[item.id]}
+                                    tabIndex={expandedSections[item.id] ? 0 : -1}
                                 >
                                     <div className="p-6 md:p-8 pt-0">
                                         <div className="border-t border-neutral-700 pt-6">
@@ -749,7 +814,7 @@ export default function KunstKennisCultuurPage() {
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </article>
                         ))}
                     </div>
 
@@ -764,9 +829,10 @@ export default function KunstKennisCultuurPage() {
                         </p>
                         <a
                             href="/"
-                            className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-8 py-4 rounded-lg transition-colors font-medium text-lg"
+                            className="inline-flex items-center gap-2 bg-neutral-700 hover:bg-neutral-600 text-white px-8 py-4 rounded-lg transition-colors font-medium text-lg focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-900"
+                            aria-label="Ga terug naar de longread over vee-industrie"
                         >
-                            <ArrowLeft size={20} />
+                            <ArrowLeft size={20} aria-hidden="true" />
                             Terug naar de longread
                         </a>
                     </div>
@@ -777,14 +843,30 @@ export default function KunstKennisCultuurPage() {
 }
 
 function RecommendationCard({ type, title, description, link }) {
+    const handleKeyDown = (e) => {
+        if (e.key === 'Enter' || e.key === ' ') {
+            e.preventDefault();
+            window.open(link, '_blank', 'noopener,noreferrer');
+        }
+    };
+
     return (
-        <div className="bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-neutral-600 transition-all">
+        <div
+            className="bg-neutral-800 rounded-lg p-6 border border-neutral-700 hover:border-neutral-600 transition-all focus-within:border-blue-500"
+            tabIndex="0"
+            role="article"
+            aria-label={`${type}: ${title}`}
+            onKeyDown={handleKeyDown}
+        >
             <div className="text-neutral-400 text-xs font-bold uppercase tracking-wide mb-2">{type}</div>
             <h3 className="text-xl font-bold text-white mb-2">{title}</h3>
             <p className="text-neutral-400 text-sm mb-4">{description}</p>
             <a
                 href={link}
-                className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="inline-flex items-center gap-2 text-neutral-300 hover:text-white transition-colors text-sm font-medium focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-offset-2 focus:ring-offset-neutral-800 rounded px-1 py-1"
+                aria-label={`Meer informatie over ${title} (opent in nieuw tabblad)`}
             >
                 Meer informatie →
             </a>

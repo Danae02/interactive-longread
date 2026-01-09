@@ -18,11 +18,7 @@ export default function FutureIntroSection() {
 
                     <div className="max-w-3xl mx-auto">
                         <p className="text-xl text-neutral-300 mb-8 leading-relaxed">
-                            De intensieve vee-industrie lijkt een gesloten systeem, maar is niet onwrikbaar.
-                            Machtsstructuren worden altijd doorbroken door een combinatie van
-                            interne spanningen en externe druk. Dit hoofdstuk onderzoekt hoe maatschappelijke,
-                            politieke en economische krachten samenkomen in een perfecte storm die het systeem
-                            fundamenteel kan veranderen.
+                            De intensieve vee-industrie lijkt een gesloten systeem, maar is niet onwrikbaar. Interne spanningen en externe druk kunnen de machtsstructuren doorbreken. Dit hoofdstuk onderzoekt hoe maatschappelijke, politieke en economische krachten samenkomen in een perfecte storm die het systeem radicaal kan veranderen.
                         </p>
 
                         <div className="bg-neutral-800/50 p-6 rounded-2xl border border-neutral-700 mb-8">
@@ -37,7 +33,7 @@ export default function FutureIntroSection() {
 
                         <p className="text-lg text-neutral-400 mb-12">
                             De toekomst is niet voorbestemd. Welk scenario werkelijkheid wordt, hangt af van
-                            keuzes die we <span className="font-bold text-emerald-300">nu</span> maken.
+                            keuzes die we <span className="font-bold text-emerald-300">vandaag</span> maken.
                         </p>
 
 

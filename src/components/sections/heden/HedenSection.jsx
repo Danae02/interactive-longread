@@ -15,7 +15,7 @@ export default function HedenSection() {
             {/* INTRO HEDEN */}
             <div className="py-16 px-6 bg-gradient-to-b from-neutral-900 to-neutral-800">
                 <div className="max-w-4xl mx-auto text-center">
-                    <h2 className="text-4xl md:text-5xl font-bold mb-6">HEDEN</h2>
+                    <h2 className="text-4xl md:text-5xl font-bold mb-6">Heden</h2>
                     <p className="text-xl md:text-2xl text-neutral-300 mb-4">
                         Het verleden was een kwestie van beleid. Het heden is een kwestie van macht. De intensieve vee-industrie is uitgegroeid tot een machtssysteem dat zichzelf in stand houdt. Grote financiers, invloedrijke lobbyclubs, politieke partijen en een stortvloed aan marketing verdedigen de status quo. In dit hoofdstuk brengen we dit machtssysteem in kaart.
                     </p>
@@ -45,7 +45,7 @@ export default function HedenSection() {
                             geselecteerd op basis van marktaandeel, omzet en politieke invloed in Nederland.
                         </p>
                         <p className="text-base text-neutral-400 text-center mt-2 italic">
-                            Klik op een kaart om de belangen, voorbeelden en bronnen te ontdekken
+                            Klik op een kaart om de belangen, voorbeelden en bronnen te ontdekken.
                         </p>
                     </div>
 
@@ -77,7 +77,7 @@ export default function HedenSection() {
                     <h3 className="text-3xl font-bold mb-6">Hoe kan het anders?</h3>
                     <p className="text-xl text-neutral-300 mb-8">
                         Het systeem lijkt onwrikbaar, maar er zijn krachten die verandering mogelijk maken.
-                        Wat als we een andere toekomst kunnen bouwen?
+                        Wat als we een andere toekomst zouden kunnen bouwen?
                     </p>
                     <div className="animate-pulse">
                         <svg className="w-12 h-12 mx-auto text-emerald-500" fill="none" stroke="currentColor" viewBox="0 0 24 24">

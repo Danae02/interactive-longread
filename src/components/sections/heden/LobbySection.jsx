@@ -4,7 +4,6 @@ import { Users, TrendingUp, Shield, MessageSquare, BookOpen, Mic, Target, Volume
 
 export default function LobbySection() {
     const [activeStrategy, setActiveStrategy] = useState(0);
-    const [activeExample, setActiveExample] = useState(0);
 
     const lobbyStrategies = [
         {
@@ -43,7 +42,7 @@ export default function LobbySection() {
             title: "Financiering tegenonderzoek",
             subtitle: "Wetenschap als wapen",
             icon: <FileText size={24} />,
-            description: "Sectorfinancierde 'onafhankelijke' onderzoeken die overheidscijfers in twijfel trekken, zoals Stichting Agrifacts.",
+            description: "Sector-gefinancierde 'onafhankelijke' onderzoeken die overheidscijfers in twijfel trekken, zoals Stichting Agrifacts.",
             quote: "",
             author: "",
             role: "",
@@ -200,7 +199,7 @@ export default function LobbySection() {
                             </div>
                             <div className="border-l-4 border-amber-500 pl-4">
                                 <h5 className="font-bold text-amber-300 mb-1">Zichtbaarheid als kracht</h5>
-                                <p className="text-sm text-neutral-300">Waar traditionele lobby stilletjes opereerde, gebruikt de nieuwe lobby geluid, media-aandacht en politieke mobilisatie.</p>
+                                <p className="text-sm text-neutral-300">Waar de traditionele lobby stilletjes opereerde, gebruikt de nieuwe lobby geluid, media-aandacht en politieke mobilisatie.</p>
                             </div>
                             <div className="border-l-4 border-amber-500 pl-4">
                                 <h5 className="font-bold text-amber-300 mb-1">Van belang naar emotie</h5>
@@ -216,7 +215,7 @@ export default function LobbySection() {
 
                     <div className="text-center max-w-3xl mx-auto mb-8">
                         <p className="text-lg text-neutral-300 mb-4">
-                            De lobby van vandaag speelt zich niet alleen af in achterkamertjes, maar in klaslokalen,
+                            De lobby van vandaag speelt zich niet alleen af in achterkamertjes, maar ook in klaslokalen,
                             op sociale media en in de publieke opinie. Ontdek strategieën die onder andere het
                             huidige debat vormgeven.
                         </p>
@@ -266,10 +265,10 @@ export default function LobbySection() {
                                     <ul className="text-sm text-neutral-300 space-y-2">
                                         {activeStrategy === 0 && ( // Dramatisering
                                             <>
-                                                <li>• BBB modelleerde zich op Partij voor de Dieren als één-issue
+                                                <li>• BBB profileerde zich op Partij voor de Dieren als één-issue
                                                     partij
                                                 </li>
-                                                <li>• Financiering protesten door grote agribedrijven zoals Vion en
+                                                <li>• Financiering protesten door grote agrarische bedrijven zoals Vion en
                                                     ForFarmers
                                                 </li>
                                                 <li>• "Gehaktbal als symbool" frame in politiek debat</li>
@@ -417,7 +416,7 @@ export default function LobbySection() {
                                 De lobby van de vee-industrie is geen statisch machtsblok, maar een <span className="font-semibold text-emerald-300">adaptief netwerk</span> dat meebeweegt met de tijd. Waar de traditionele 'ijzeren ring' via stille toegang opereerde, heeft de nieuwe generatie geluid, drama en politieke mobilisatie omarmd.
                             </p>
                             <p className="text-lg text-neutral-300 mt-4 leading-relaxed">
-                                Deze combinatie van tactieken — van dramatisering en echo-kamers tot educatieve beïnvloeding en gefinancierd tegenonderzoek — zorgt ervoor dat de sector zijn invloed kan behouden. De uitdaging voor beleid en democratie ligt in het creëren van een <span className="font-semibold text-emerald-300">eerlijker en transparanter speelveld</span>, waarin niet alleen geld en toegang, maar ook maatschappelijke waarden en wetenschappelijke inzichten serieus worden gewogen.
+                                Deze combinatie van tactieken, van dramatisering en echo-kamers tot educatieve beïnvloeding en gefinancierd tegenonderzoek, zorgt ervoor dat de sector zijn invloed kan behouden. De uitdaging voor beleid en democratie ligt in het creëren van een <span className="font-semibold text-emerald-300">eerlijker en transparanter speelveld</span>, waarin niet alleen geld en toegang, maar ook maatschappelijke waarden en wetenschappelijke inzichten serieus worden gewogen.
                             </p>
                         </div>
                     </div>

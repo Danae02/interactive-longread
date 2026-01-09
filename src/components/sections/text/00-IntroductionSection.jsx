@@ -30,7 +30,7 @@ const IntroductionSection = () => {
                 {/* Intro tekst met drop cap */}
                 <div className="prose prose-lg md:prose-xl max-w-none text-black">
                     <p className="text-lg md:text-xl leading-relaxed mb-6 first-letter:text-7xl first-letter:font-bold first-letter:text-emerald-700 first-letter:mr-3 first-letter:float-left first-letter:leading-none first-letter:mt-1 text-black">
-                        Terwijl ik dit schrijf, staat het nieuws er weer vol van: een kat overleden aan vogelgriep, overgedragen door pluimvee (<a href="https://nos.nl/artikel/2592930-jonge-katjes-dood-door-vogelgriep-moeten-de-baasjes-zich-zorgen-maken" className="text-emerald-700 hover:text-emerald-800 underline" target="_blank" rel="noopener noreferrer">nos.nl</a>). Verborgen camera's in stallen waar koeien worden getaserd, geschopt en kalveren kreupel op transport worden gezet (<a href="https://www.ongehoord.nl/onderzoek/uitgemolken-transport-koeien-kalfjes" className="text-emerald-700 hover:text-emerald-800 underline" target="_blank" rel="noopener noreferrer">ongehoord.nl</a>). Het zijn horrorscenario's die laten zien hoeveel impact deze manier van vee-industrie heeft.
+                        Terwijl ik dit schrijf, staat het nieuws er weer vol van: een kat overleden aan vogelgriep, overgedragen door pluimvee (<a href="https://nos.nl/artikel/2592930-jonge-katjes-dood-door-vogelgriep-moeten-de-baasjes-zich-zorgen-maken" className="text-emerald-700 hover:text-emerald-800 underline" target="_blank" rel="noopener noreferrer">nos.nl</a>). Verborgen camera's in stallen waar koeien worden getaserd en geschopt en kalveren kreupel op transport worden gezet (Zie hieronder). Het zijn horrorscenario's die laten zien hoeveel impact deze vorm van vee-industrie heeft.
                     </p>
 
                     {/* Video sectie met trigger warning */}
@@ -44,18 +44,22 @@ const IntroductionSection = () => {
                                 Ongehoord legde met verborgen camera's het in- en uitladen van dieren vast op vijf locaties in Nederland. Op alle bedrijven worden koeien en kalfjes geschopt, geslagen met stokken of opgejaagd met stroomstootwapens.
                             </p>
 
+
+
+
+
                             {!showVideo && !showWarning && (
                                 <div className="space-y-4">
-                                    <div className="flex items-start p-4 bg-yellow-50 border border-yellow-200 rounded-lg">
-                                        <svg className="w-6 h-6 text-yellow-600 mr-3 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                    <div className="flex items-start p-3 bg-yellow-50/80 border border-yellow-200 rounded-lg">
+                                        <svg className="w-5 h-5 text-yellow-600 mr-2 mt-0.5 flex-shrink-0" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                             <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 9v2m0 4h.01m-6.938 4h13.856c1.54 0 2.502-1.667 1.732-2.5L13.732 4c-.77-.833-1.732-.833-2.464 0L4.732 16.5c-.77.833.192 2.5 1.732 2.5z" />
                                         </svg>
                                         <div>
-                                            <p className="font-medium text-black mb-1">
+                                            <p className="font-medium text-black mb-1 text-sm">
                                                 Waarschuwing: Deze video bevat schokkende beelden
                                             </p>
-                                            <p className="text-sm text-black">
-                                                Bevat expliciete scenes van dierenleed, geweld en lijden.
+                                            <p className="text-yellow-800 text-xs">
+                                                Bevat expliciete scènes van dierenleed, geweld en lijden.
                                             </p>
                                         </div>
                                     </div>
@@ -63,9 +67,9 @@ const IntroductionSection = () => {
                                     <div className="flex flex-col sm:flex-row gap-3">
                                         <button
                                             onClick={handleVideoClick}
-                                            className="flex-1 py-3 px-4 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2"
+                                            className="flex-1 py-2 px-4 bg-emerald-600 text-white font-medium rounded-lg hover:bg-emerald-700 transition-colors flex items-center justify-center gap-2 text-sm"
                                         >
-                                            <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                                            <svg className="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M14.752 11.168l-3.197-2.132A1 1 0 0010 9.87v4.263a1 1 0 001.555.832l3.197-2.132a1 1 0 000-1.664z" />
                                                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M21 12a9 9 0 11-18 0 9 9 0 0118 0z" />
                                             </svg>
@@ -73,9 +77,15 @@ const IntroductionSection = () => {
                                         </button>
 
                                     </div>
-
                                 </div>
                             )}
+
+
+
+
+
+
+
 
                             {showWarning && (
                                 <div className="fixed inset-0 bg-black bg-opacity-70 flex items-center justify-center p-4 z-50">
@@ -157,7 +167,7 @@ const IntroductionSection = () => {
                     </p>
 
                     <p className="text-lg md:text-xl leading-relaxed mb-6 text-black">
-                        Het gaat over een hele andere vraag: <em className="text-black">Hoe kan een sector met zulke duidelijke en bekende problemen — voor klimaat, volksgezondheid en dieren — gewoon doorgaan alsof er niets aan de hand is?</em>
+                        Het gaat over een hele andere vraag: <em className="text-black">Hoe kan een sector met zulke duidelijke en bekende problemen voor klimaat, volksgezondheid en dieren, gewoon doorgaan alsof er niets aan de hand is?</em>
                     </p>
 
                     {/* Highlight box met kernvragen */}
@@ -168,7 +178,7 @@ const IntroductionSection = () => {
                     </div>
 
                     <p className="text-lg md:text-xl leading-relaxed mb-6 text-black">
-                        De afgelopen maanden ben ik in die vragen gedoken. Wat ik vond, was geen simpele "blame game", maar een netwerk van macht, lobby en historische keuzes. Een industrie die niet toevallig is ontstaan, maar is ontworpen. En wat ontworpen is, kan ook worden herontworpen.
+                        De afgelopen maanden ben ik in die vragen gedoken. Wat ik vond, was geen simpele 'blame game', maar een netwerk van macht, lobby en historische keuzes. Een industrie die niet toevallig is ontstaan, maar is ontworpen. En wat ontworpen is, kan ook worden herontworpen.
                     </p>
 
                     <p className="text-lg md:text-xl leading-relaxed mb-8 text-black">

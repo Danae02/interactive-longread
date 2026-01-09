@@ -29,7 +29,7 @@ export default function PoliticsSection() {
             content: [
                 "Het politieke debat over de toekomst van de landbouw en de natuur wordt niet alleen gekenmerkt door diepe inhoudelijke tegenstellingen, maar ook door een sterk versplinterd politiek landschap. Het aantal partijen in de Tweede Kamer is groot, en stabiele meerderheden voor ingrijpende systeemverandering zijn zeldzaam. Dit leidt vaak tot compromissen waarbij de meest vergaande voorstellen stranden of sterk worden afgezwakt.",
                 "",
-                "Drie concrete voorbeelden van hoe wetgeving mislukt:",
+                "Drie concrete voorbeelden van wetvoorstellen die niet zijn gelukt:",
                 "",
                 "1. De Vleestaks/Slachtaks",
                 "Een belasting op vlees om de werkelijke kosten (6 miljard euro schade) te verrekenen, strandde op politieke weerstand. 'Over het algemeen komt dan de grootste weerstand bij VVD, CDA en PVV. Ja, eigenlijk alles rechts van D66.' - Lammert van Raan",
@@ -56,7 +56,7 @@ export default function PoliticsSection() {
                 "• Marktbescherming die concurrentie beperkt",
                 "",
                 "Bijna 1/3 van het hele EU-budget gaat naar landbouwsubsidies.",
-                "80% van de inkomenssteun komt terecht bij de top-20% industriegiganten."
+                "80% van de inkomenssteun komt terecht bij de top 20% industriegiganten."
             ]
         },
         {
@@ -66,7 +66,7 @@ export default function PoliticsSection() {
             color: "text-cyan-400",
             bgColor: "bg-cyan-900/30",
             content: [
-                "'Boeren zijn gevangen in een systeem wat ooit misschien een goed idee leek.' - Lammert van Raan",
+                "'Boeren zijn gevangen in een systeem dat ooit misschien een goed idee leek.' - Lammert van Raan",
                 "Dit systeem wordt in stand gehouden door:",
                 "• Financiers (banken) die alleen intensivering financieren",
                 "• Afnemers (Vion, Van Drie) die lage prijzen afdwingen",
@@ -85,14 +85,14 @@ export default function PoliticsSection() {
             facts: [
                 "Directe financiering van grote agribedrijven",
                 "Lobbyist in de Eerste Kamer gebracht",
-                "Politieke macht via dreigen met kiezersverloop"
+                "Politieke macht door te dreigen met kiezersverloop"
             ]
         },
         {
             title: "Intimidatie als Politiek Wapen",
             description: "Boerenprotesten waarbij ministers werden geïntimideerd, blokkades van distributiecentra en bedreigingen ondermijnen politieke moed.",
             facts: [
-                "Protesten breken politieke wil (zoals in Regio Murcia in Spanje waar ze het lokale regeringsgebouw bestormde. Hierna werden de nieuwe beperkingen ingetrokken)",
+                "Protesten breken politieke wil (zoals in Regio Murcia in Spanje waar zij het lokale regeringsgebouw bestormden. Hierna werden de nieuwe beperkingen ingetrokken)",
                 "Bedreigingen van politici en ambtenaren",
                 "Dramatisering als strategie werkt: 'van technisch naar existentieel'"
             ]
